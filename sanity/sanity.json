@@ -1,7 +1,7 @@
 {
   "root": true,
   "api": {
-    "projectId": "ypvk88wt",
+    "projectId": "1fcdf5t0",
     "dataset": "production"
   },
   "project": {
@@ -17,7 +17,9 @@
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [
