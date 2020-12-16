@@ -1,4 +1,7 @@
 import { HiOutlineDocumentDuplicate as icon } from 'react-icons/hi';
+import { supportedLanguages } from '../objects/localeString';
+
+const baseLanguage = supportedLanguages.find((l) => l.isDefault);
 
 export default {
   name: 'page',
@@ -9,13 +12,13 @@ export default {
     {
       name: 'title',
       title: 'Titre',
-      type: 'string',
+      type: 'localeString',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'titleMenu',
       title: 'Titre pour le menu (optionnel)',
-      type: 'string',
+      type: 'localeString',
     },
     {
       name: 'slug',
@@ -33,4 +36,9 @@ export default {
     //   type: 'pageType',
     // },
   ],
+  preview: {
+    select: {
+      title: `title.${baseLanguage.id}`,
+    },
+  },
 };

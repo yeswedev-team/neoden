@@ -14,7 +14,7 @@ export default () =>
         )
         .title('Menu principal')
         .child(
-          S.editor().schemaType('singletonMenu').documentId('singletonMenu')
+          S.editor().schemaType('menuSingleton').documentId('menuSingleton')
         ),
       // Add a visual divider (optional)
       S.divider(),
