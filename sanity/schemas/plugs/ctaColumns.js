@@ -1,10 +1,12 @@
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FiLink } from 'react-icons/fi';
+import { BsLayoutThreeColumns as icon } from 'react-icons/bs';
 
 export default {
   type: 'object',
   name: 'ctaColumns',
   title: 'Colonnes CTA avec 2 images superposées',
+  icon,
   fields: [
     {
       type: 'image',
