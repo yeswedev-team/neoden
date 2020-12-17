@@ -1,7 +1,10 @@
+import { MdCallToAction as icon } from 'react-icons/md';
+
 export default {
   title: 'Call to action',
   name: 'cta',
   type: 'object',
+  icon,
   fieldsets: [
     {
       title: 'Lien',
