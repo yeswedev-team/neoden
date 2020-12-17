@@ -25,16 +25,18 @@ export default {
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: `title.${baseLanguage.id}`,
         maxLength: 100,
       },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Champ obligatoire'),
     },
-    // {
-    //   title: 'Sélectionnez le type de page',
-    //   name: 'pageType',
-    //   type: 'pageType',
-    // },
+    {
+      name: 'content',
+      type: 'array',
+      title: 'Sections',
+      description: 'Ajouter, modifier et ordonner les sections',
+      of: [{ type: 'ctaColumns' }, { type: 'ctaPlug' }],
+    },
   ],
   preview: {
     select: {
