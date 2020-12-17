@@ -9,7 +9,9 @@ import localeString from './objects/localeString';
 import singletonSite from './documents/singletonSite';
 import singletonMenu from './documents/singletonMenu';
 import page from './documents/page';
+import offre from './documents/offre';
 import service from './documents/service';
+import blocks from './documents/blocks';
 
 import * as plugs from './plugs';
 import plugDefaultFields from './plugs/_plugDefaultFields';
@@ -29,6 +31,15 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes
-    .concat([localeString, singletonSite, singletonMenu, page, service, cta])
+    .concat([
+      localeString,
+      singletonSite,
+      singletonMenu,
+      page,
+      offre,
+      service,
+      blocks,
+      cta,
+    ])
     .concat(allPlugs),
 });

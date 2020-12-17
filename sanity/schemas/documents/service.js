@@ -15,18 +15,6 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      type: 'string',
-      name: 'duration',
-      title: 'Durée',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      type: 'number',
-      name: 'price',
-      title: 'Prix (sera exprimé en euros)',
-      validation: (Rule) => Rule.required(),
-    },
-    {
       name: 'text',
       title: 'Texte',
       type: 'array',

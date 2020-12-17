@@ -35,7 +35,11 @@ export default {
       type: 'array',
       title: 'Sections',
       description: 'Ajouter, modifier et ordonner les sections',
-      of: [{ type: 'ctaColumns' }, { type: 'ctaPlug' }],
+      of: [
+        { type: 'ctaColumns' },
+        { type: 'ctaPlug' },
+        { type: 'reference', to: [{ type: 'blocks' }] },
+      ],
     },
   ],
   preview: {
