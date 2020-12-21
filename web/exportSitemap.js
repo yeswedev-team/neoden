@@ -1,3 +1,4 @@
+/*
 const {exportPathMap} = require('./next.config')
 const sm = require('sitemap')
 const fs = require('fs')
@@ -24,3 +25,4 @@ client.fetch(`*[_id == "global-config"] {url}[0]`).then(config => {
     })
   })
 })
+*/
