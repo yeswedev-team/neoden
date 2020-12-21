@@ -1,8 +1,8 @@
 import sanityClient from '@sanity/client'
 const client = sanityClient({
-  projectId: '1fcdf5t0',
+  projectId: process.env.SANITY_PROJECT_ID,
   dataset: 'production',
-  token: '', // or leave blank to be anonymous user
+  token: process.env.SANITY_TOKEN, // or leave blank to be anonymous user
   useCdn: false // `false` if you want to ensure fresh data
 })
 
