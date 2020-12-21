@@ -7,8 +7,8 @@ import localeString from './objects/localeString';
 
 // document schemas
 import singletonSite from './documents/singletonSite';
-import singletonMenu from './documents/singletonMenu';
 import page from './documents/page';
+import route from './documents/route';
 import offre from './documents/offre';
 import service from './documents/service';
 import blocks from './documents/blocks';
@@ -34,8 +34,8 @@ export default createSchema({
     .concat([
       localeString,
       singletonSite,
-      singletonMenu,
       page,
+      route,
       offre,
       service,
       blocks,

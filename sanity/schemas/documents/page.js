@@ -23,16 +23,6 @@ export default {
       type: 'localeString',
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: `title.${baseLanguage.id}`,
-        maxLength: 100,
-      },
-      validation: (Rule) => Rule.required().error('Champ obligatoire'),
-    },
-    {
       name: 'hero',
       type: 'array',
       title: 'Entête',
