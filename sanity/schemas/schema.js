@@ -18,6 +18,7 @@ import plugDefaultFields from './plugs/_plugDefaultFields';
 
 // Object types
 import cta from './objects/cta';
+import logo from './objects/logo';
 
 const allPlugs = Object.values(plugs).map((plug) => ({
   ...plug,
@@ -40,6 +41,7 @@ export default createSchema({
       service,
       blocks,
       cta,
+      logo,
     ])
     .concat(allPlugs),
 });

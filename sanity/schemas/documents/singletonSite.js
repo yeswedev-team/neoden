@@ -33,22 +33,9 @@ export default {
       to: { type: 'page' },
     },
     {
-      title: 'Logo de la marque Neoden',
-      description:
-        "Le meilleur choix es d'utiliser un SVG où les couleurs sont définies avec la couleur courant (currentColor)",
       name: 'logo',
-      type: 'image',
-      fields: [
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Texte alternatif',
-          description: "Important pour le SEO et l'accessibilité.",
-          options: {
-            isHighlighted: true,
-          },
-        },
-      ],
+      title: 'Logo de la marque Neoden',
+      type: 'logo',
     },
     {
       title: 'Main navigation',
