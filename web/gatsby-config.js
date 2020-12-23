@@ -1,1 +1,85 @@
-// This file is empty, but some people were reporting that it would not start unless they had an empty file. So here it is! You can delete the comment. Or replace it with your favourite shania twain lyrics.
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '.env' });
+
+export default {
+  siteMetadata: {
+    title: `Neoden`,
+    description: 'espace de flottaison',
+  },
+  plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Neoden - espace de flottaison`,
+        short_name: `Neoden`,
+        start_url: `/`,
+        background_color: `#2e2e2e`,
+        theme_color: `#c3a050`,
+        display: `standalone`,
+        icon: `src/assets/images/icon.png`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        sitemap: null,
+        host: null,
+        policy: [{ userAgent: '*', disallow: ['/'] }],
+      },
+    },
+    // `gatsby-transformer-sharp`,
+    // `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images/`,
+      },
+    },
+    `gatsby-plugin-styled-components`,
+    // {
+    //   resolve: 'gatsby-plugin-transition-link',
+    //   options: {
+    //     injectPageProps: false,
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-plugin-sanity-image',
+    //   options: {
+    //     // Sanity project info (required)
+    //     projectId: process.env.SANITY_PROJECT_ID,
+    //     dataset: 'production',
+    //   },
+    // },
+    // `gatsby-plugin-optimize-svgs`,
+    // {
+    //   resolve: 'gatsby-plugin-react-svg',
+    //   options: {
+    //     rule: {
+    //       include: /\.inline\.svg$/,
+    //     },
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-web-font-loader`,
+    //   options: {
+    //     custom: {
+    //       families: ['Source Sans Pro', 'Cassannet Plus', 'Made Cannes'],
+    //       urls: ['/fonts/fonts.css'],
+    //     },
+    //   },
+    // },
+    {
+      // this is the name of the plugin you are adding
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: '1fcdf5t0',
+        dataset: 'production',
+        watchMode: true,
+        useCdn: true,
+        token: process.env.SANITY_TOKEN,
+      },
+    },
+  ],
+};

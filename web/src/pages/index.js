@@ -1,9 +1,6 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 export default function HomePage() {
-  return (
-    <div>
-      <p>Hey! I'm the homepage!</p>
-    </div>
-  );
+  return <p>Hey! I'm the homepage!</p>;
 }
