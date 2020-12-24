@@ -8,6 +8,7 @@ import Nav from './Nav';
 const HeaderStyles = styled.header`
   background: var(--brown);
   padding-top: ${pxtoem(25)};
+  position: relative;
 
   .container {
     align-items: center;
@@ -16,6 +17,10 @@ const HeaderStyles = styled.header`
   }
   .logo {
     display: block;
+    left: 50%;
+    position: absolute;
+    top: ${pxtoem(15)};
+    transform: translateX(-50%);
     width: ${pxtoem(160)};
   }
 `;
