@@ -12,6 +12,9 @@ const NavStyles = styled.nav`
       color: var(--white);
       padding: ${remCalc(10)} ${remCalc(15)};
     }
+    &:first-child {
+      margin-left: ${remCalc(-15)};
+    }
   }
 `;
 
@@ -24,7 +27,7 @@ export default function Nav({ navItems }) {
       <ul className="navList">
         {items.map((item, index) => (
           <li className="menuItem" key={`item-${index}`}>
-            <Link to={item.slug.current}>
+            <Link to={`/${item.slug.current}`}>
               {item.page.titleMenu ? (
                 <span className="text">{item.page.titleMenu.fr}</span>
               ) : (
