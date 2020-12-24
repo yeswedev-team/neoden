@@ -62,24 +62,15 @@ export default {
     //     dataset: 'production',
     //   },
     // },
-    // `gatsby-plugin-optimize-svgs`,
-    // {
-    //   resolve: 'gatsby-plugin-react-svg',
-    //   options: {
-    //     rule: {
-    //       include: /\.inline\.svg$/,
-    //     },
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-plugin-web-font-loader`,
-    //   options: {
-    //     custom: {
-    //       families: ['Source Sans Pro', 'Cassannet Plus', 'Made Cannes'],
-    //       urls: ['/fonts/fonts.css'],
-    //     },
-    //   },
-    // },
+    `gatsby-plugin-optimize-svgs`,
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/,
+        },
+      },
+    },
     {
       // this is the name of the plugin you are adding
       resolve: 'gatsby-source-sanity',
