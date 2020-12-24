@@ -3,10 +3,6 @@ import { remCalc, calcClamp } from './Mixins';
 
 const Typography = createGlobalStyle`
 
-  html {
-    color: var(--white);
-  }
-
   h1,h2,h3,h4,h5,h6 {
     font-family: var(--font-titles);
     line-height: calc(66 / 55);
@@ -14,7 +10,7 @@ const Typography = createGlobalStyle`
   }
 
   a {
-    color: var(--white);
+    color: var(--brown);
     text-decoration: none;
   }
 

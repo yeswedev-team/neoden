@@ -3,14 +3,10 @@ import { pxtoem, remCalc, pxtovw } from './Mixins';
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --grey: #353537;
+    --grey: #F2F2F2;
     --grey-dark: #2e2e2e;
-    --gold-light: #dfcca2;
     --white: #ffffff;
-    --beige: #f6efe5;
-    --gold: #c3a050;
-    --green: #688376;
-    --blue: #6c8a9d;
+    --brown: #916D5B;
     --font: 'Source Sans Pro', sans-serif;
     --font-titles: 'Cassannet Plus', serif;
     --font-index: 'Made Cannes', serif;
@@ -25,8 +21,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-      background: var(--grey);
-      color: var(--white);
+      background: var(--white);
+      color: var(--brown);
       font-family: var(--font);
       font-size: 16px;
       line-height: calc(85 / 60);
