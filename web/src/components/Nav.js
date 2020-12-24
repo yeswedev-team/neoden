@@ -1,9 +1,19 @@
 import { Link } from 'gatsby';
 import React from 'react';
-
 import styled from 'styled-components';
+import { remCalc } from '../styles/Mixins';
 
-const NavStyles = styled.nav``;
+const NavStyles = styled.nav`
+  .navList {
+    display: flex;
+  }
+  .menuItem {
+    a {
+      color: var(--white);
+      padding: ${remCalc(10)} ${remCalc(15)};
+    }
+  }
+`;
 
 export default function Nav({ navItems }) {
   console.log(navItems);

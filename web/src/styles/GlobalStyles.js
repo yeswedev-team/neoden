@@ -57,17 +57,38 @@ const GlobalStyles = createGlobalStyle`
 
   /* Layout */
 
+  .container {
+    margin: 0 auto;
+    max-width: ${pxtoem(275)};
+
+    &--xs {
+      max-width: ${pxtoem(485)};
+    }
+    &--sm {
+      max-width: ${pxtoem(695)};
+    }
+    &--md {
+      max-width: ${pxtoem(905)};
+    }
+    &--lg {
+      max-width: ${pxtoem(1115)};
+    }
+    &--xl {
+      max-width: ${pxtoem(1278)};
+    }
+  }
+
   /* Custom styles */
   .button {
     align-items: center;
-    background: var(--gold);
+    background: var(--white);
     border: none;
-    color: var(--white);
-    display: inline-flex;
-    font-size: ${remCalc(30)};
-    max-height: ${remCalc(73)};
-    padding: ${remCalc(24)} ${remCalc(216)};
-    text-transform: uppercase;
+    border-radius: ${pxtoem(18)};
+    color: var(--brown);
+    display: flex;
+    font-size: ${remCalc(16)};
+    padding: ${remCalc(8)} ${remCalc(30)};
+    white-space: nowrap;
   }
 `;
 

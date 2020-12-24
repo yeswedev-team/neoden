@@ -4,7 +4,7 @@ import 'normalize.css';
 import styled from 'styled-components';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
-import Nav from './Nav';
+import Header from './Header';
 
 const LayoutStyles = styled.div``;
 
@@ -36,7 +36,7 @@ export default function Layout({ children }) {
       <GlobalStyles />
       <Typography />
       <LayoutStyles>
-        <Nav navItems={navItems} />
+        <Header navItems={navItems} />
         <div className="content">{children}</div>
       </LayoutStyles>
     </>
