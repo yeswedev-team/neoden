@@ -7,10 +7,8 @@ const GlobalStyles = createGlobalStyle`
     --grey-dark: #2e2e2e;
     --white: #ffffff;
     --brown: #916D5B;
-    --font: 'Source Sans Pro', sans-serif;
-    --font-titles: 'Cassannet Plus', serif;
-    --font-index: 'Made Cannes', serif;
-    --width-ratio: ${pxtovw(1841, 1920)};
+    --font: 'Raleway', sans-serif;
+    --font-titles: 'Crimson Text', serif;
   }
 
   html {
