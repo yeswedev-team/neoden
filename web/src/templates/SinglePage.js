@@ -1,10 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-export default function HomePage({ pageContext, data }) {
+export default function HomePage({ pageContext, data: { singlePage } }) {
   console.log(pageContext);
-  console.log(data);
-  return <p>title</p>;
+  const { title } = singlePage.page;
+  return <h1>{title.fr}</h1>;
 }
 
 export const query = graphql`
