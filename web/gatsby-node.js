@@ -2,7 +2,7 @@ import path from 'path';
 
 async function turnRoutesIntoPages({ graphql, actions }) {
   // Get a template for this page
-  const pageTemplate = path.resolve('./src/pages/index.js');
+  const pageTemplate = path.resolve('./src/templates/SinglePage.js');
   // Query all pages
   const { data } = await graphql(`
     query {
@@ -18,8 +18,13 @@ async function turnRoutesIntoPages({ graphql, actions }) {
 
   // Loop over each page and create a page for that page
   data.routes.nodes.forEach((page) => {
+    let uri = page.slug.current;
+    if (page.slug.current === 'home') {
+      uri = '';
+    }
+    console.log(page.slug.current);
     actions.createPage({
-      path: `/${page.slug.current}`,
+      path: `/${uri}`,
       component: pageTemplate,
       context: {
         slug: page.slug.current,
