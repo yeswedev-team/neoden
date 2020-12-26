@@ -38,6 +38,7 @@
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-source-filesystem": "^2.8.1",
     "gatsby-source-sanity": "^6.0.4",
+    "gatsby-transformer-sharp": "^2.9.0",
     "gsap": "file:gsap-bonus.tgz",
     "isomorphic-fetch": "^2.2.1",
     "netlify-cli": "^2.62.0",
