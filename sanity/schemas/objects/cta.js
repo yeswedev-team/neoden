@@ -23,7 +23,7 @@ export default {
       name: 'ctaPageLink',
       title: 'Lien vers la page',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'page' }] }],
+      of: [{ type: 'reference', to: [{ type: 'route' }] }],
       validation: (Rule) => [
         Rule.required().min(1).error('Champ obligatoire'),
         Rule.max(1).error('Un seul lien possible'),
