@@ -1,3 +1,4 @@
+export { default as intro } from './intro';
 export { default as ctaColumns } from './ctaColumns';
 export { default as ctaPlug } from './ctaPlug';
 export { default as offers } from './offers';

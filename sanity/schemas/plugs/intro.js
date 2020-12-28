@@ -1,33 +1,17 @@
-import { HiOutlineDocumentDuplicate as icon } from 'react-icons/hi';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FiLink } from 'react-icons/fi';
-import { supportedLanguages } from '../objects/localeString';
-
-const baseLanguage = supportedLanguages.find((l) => l.isDefault);
+import { BsCardText as icon } from 'react-icons/bs';
 
 export default {
-  name: 'page',
-  title: 'Pages',
-  type: 'document',
+  type: 'object',
+  name: 'intro',
+  title: 'Introduction',
   icon,
   fields: [
     {
+      type: 'string',
       name: 'title',
       title: 'Titre',
-      type: 'localeString',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'titleMenu',
-      title: 'Titre pour le menu (optionnel)',
-      type: 'localeString',
-    },
-    {
-      name: 'hero',
-      type: 'array',
-      title: 'Entête',
-      description: 'Ajouter une entête',
-      of: [{ type: 'hero' }],
     },
     {
       name: 'text',
@@ -58,6 +42,13 @@ export default {
             decorators: [
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
+              {
+                title: 'Exposant',
+                value: 'sup',
+                blockEditor: {
+                  icon: () => 'E',
+                },
+              },
             ],
             // Annotations can be any object structure – e.g. a link or a footnote.
             annotations: [
@@ -112,22 +103,16 @@ export default {
         },
       ],
     },
-    {
-      name: 'content',
-      type: 'array',
-      title: 'Sections',
-      description: 'Ajouter, modifier et ordonner les sections',
-      of: [
-        { type: 'intro' },
-        { type: 'ctaColumns' },
-        { type: 'ctaPlug' },
-        { type: 'reference', to: [{ type: 'blocks' }] },
-      ],
-    },
   ],
   preview: {
     select: {
-      title: `title.${baseLanguage.id}`,
+      title: 'title',
+      text: 'text',
+    },
+    prepare({ title, text }) {
+      return {
+        title: `Intro : "${title || text}"`,
+      };
     },
   },
 };
