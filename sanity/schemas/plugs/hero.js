@@ -18,6 +18,11 @@ export default {
       type: 'illustration',
     },
     {
+      type: 'boolean',
+      name: 'hasLogo',
+      title: 'Faire apparaître le logo Neoden ?',
+    },
+    {
       name: 'cta',
       type: 'cta',
     },

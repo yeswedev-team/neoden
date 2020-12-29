@@ -103,6 +103,11 @@ export default {
         },
       ],
     },
+    {
+      type: 'boolean',
+      name: 'hasWave',
+      title: 'Ajouter une vague animée ?',
+    },
   ],
   preview: {
     select: {

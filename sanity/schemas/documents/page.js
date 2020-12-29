@@ -28,6 +28,7 @@ export default {
       title: 'Entête',
       description: 'Ajouter une entête',
       of: [{ type: 'hero' }],
+      validation: (Rule) => Rule.max(1).error('Une seule entête possible'),
     },
     {
       name: 'text',
