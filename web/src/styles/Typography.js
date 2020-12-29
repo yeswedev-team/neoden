@@ -5,7 +5,7 @@ const Typography = createGlobalStyle`
 
   h1,h2,h3,h4,h5,h6 {
     font-family: var(--font-titles);
-    line-height: calc(66 / 55);
+    line-height: calc(50 / 55);
     margin: 0;
   }
 
@@ -19,26 +19,23 @@ const Typography = createGlobalStyle`
   }
 
   /* Custom */
-  .page__title {
-    border-bottom: 2px solid var(--gold);
-    font-size: ${calcClamp(2.1, 3.75)};
-    font-weight: 500;
-    line-height: 1;
-    opacity: 1;
-    padding: ${remCalc(22)} ${remCalc(40)} ${remCalc(16)};
+  .page-title {
+    font-size: 4.4375rem;
     text-align: center;
-    transition: opacity 200ms linear;
-    width: 100%;
-
-    .wf-loading & {
-      font-family: Arial;
-      font-size: ${remCalc(55)};
-      opacity: 0;
-    }
-
-    &--gold {
-      background: var(--gold);
-    }
+  }
+  .overtitle {
+    font-family: var(--font);
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+  .section-title {
+    font-size: 3.4375rem;
+    font-weight: normal;
+  }
+  .text-content {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: calc(23 / 16);
   }
 `;
 

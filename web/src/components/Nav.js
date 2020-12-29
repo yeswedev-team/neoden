@@ -19,7 +19,6 @@ const NavStyles = styled.nav`
 `;
 
 export default function Nav({ navItems }) {
-  console.log(navItems);
   const items = navItems.mainNavigation;
 
   return (

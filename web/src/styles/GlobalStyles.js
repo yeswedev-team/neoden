@@ -9,6 +9,10 @@ const GlobalStyles = createGlobalStyle`
     --brown: #916D5B;
     --font: 'Raleway', sans-serif;
     --font-titles: 'Crimson Text', serif;
+    --gap: 2.5rem; /* 40px */
+    --section-bot-padding: 4.375rem;
+    --section-top-padding: 5.3125rem;
+
   }
 
   html {
@@ -24,24 +28,6 @@ const GlobalStyles = createGlobalStyle`
       font-family: var(--font);
       font-size: 16px;
       line-height: calc(85 / 60);
-      overflow: hidden;
-  }
-
-  html,
-  body,
-  .tl-edges,
-  .tl-wrapper,
-  #___gatsby,
-  #gatsby-focus-wrapper {
-    height: 100%;
-  }
-
-  html,
-  body,
-  #___gatsby,
-  #gatsby-focus-wrapper {
-    display: flex;
-    flex-direction: column;
   }
 
   ul,
@@ -56,6 +42,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   /* Layout */
+
+  .content {
+    overflow: hidden;
+  }
 
   .container {
     margin: 0 auto;
@@ -78,6 +68,71 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  /* Sections */
+  .section {
+    position: relative;
+
+    &__columns {
+      .container {
+        display: flex;
+        gap: var(--gap);
+      }
+
+      &--two {
+        .col {
+          width: 50%;
+        }
+      }
+    }
+
+    &.has-wave-bt {
+      /* overflow-x: hidden; */
+      padding-bottom: 0;
+
+      + .section {
+        padding-top: calc(var(--section-top-padding) * 1.5);
+      }
+    }
+  }
+
+  .wave-down,
+  .wave-down-bis {
+    animation: waves 20s linear infinite;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    will-change: transform;
+  }
+  .wave-down-bis {
+    animation: wavesbis 20s linear infinite;
+  }
+  @keyframes waves {
+    0% {
+      transform: translate(0, 100%);
+    }
+    50% {
+      transform: translate(100%, 100%);
+    }
+    100% {
+      /* from width of the svg file */
+      transform: translate(0, 100%);
+    }
+  }
+
+  @keyframes wavesbis {
+    0% {
+      transform: translate(-100%, 100%) scaleX(-1);
+    }
+    50% {
+      transform: translate(0, 100%) scaleX(-1);
+    }
+    100% {
+      transform: translate(-100%, 100%) scaleX(-1);
+    }
+  }
+
+
   /* Custom styles */
   .button {
     align-items: center;
@@ -85,10 +140,15 @@ const GlobalStyles = createGlobalStyle`
     border: none;
     border-radius: ${pxtoem(18)};
     color: var(--brown);
-    display: flex;
+    display: inline-flex;
     font-size: ${remCalc(16)};
     padding: ${remCalc(8)} ${remCalc(30)};
     white-space: nowrap;
+
+    &--brown {
+      background: var(--brown);
+      color: var(--white);
+    }
   }
 `;
 

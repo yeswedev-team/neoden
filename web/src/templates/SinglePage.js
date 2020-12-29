@@ -1,29 +1,47 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MapToComponents } from 'react-map-to-components';
-import PortableText from '../components/PortableText';
 import Blocks from '../components/sections/Block';
 import TwoColumnsWithOverlayedImages from '../components/sections/TwoColumnsWithOverlayedImages';
+import Intro from '../components/sections/Intro';
+import Hero from '../components/Hero';
 
 export default function SinglePage({ pageContext, data: { singlePage } }) {
-  console.log(pageContext);
-  const { title, content, _rawText } = singlePage.page;
-  console.log(content);
+  const { title, content, hero } = singlePage.page;
   return (
     <>
-      <section className="intro-text">
-        <div className="container container--lg">
-          <h1>{title.fr}</h1>
-          <PortableText blocks={_rawText} />
-        </div>
-      </section>
+      <Hero hero={hero} title={title} />
       <MapToComponents
         getKey={(section) => section.id || section._key}
         getType={(section) => section._type}
         list={content}
         map={{
+          intro: Intro,
           blocks: Blocks,
           ctaColumns: TwoColumnsWithOverlayedImages,
+        }}
+        mapDataToProps={{
+          intro: ({ data }) => ({
+            title: data.title,
+            text: data._rawText,
+            hasWave: data.hasWave,
+          }),
+          ctaColumns: ({ data }) => ({
+            title: data.title,
+            overtitle: data.overtitle,
+            backImage: data.backImage,
+            frontImage: data.frontImage,
+            intro: data._rawIntro,
+            ctas: data.ctas,
+          }),
+          SanitySectionImage: ({ data }) => ({ section: data.section }),
+          SanitySectionIntro: ({ data }) => ({
+            image: data.image,
+            title: data.title,
+            subtitle: data.subtitle,
+          }),
+          SanitySectionSkill: ({ data }) => ({ section: data.section }),
         }}
       />
     </>
@@ -38,7 +56,35 @@ export const query = graphql`
           fr
         }
         _rawText(resolveReferences: { maxDepth: 10 })
+        hero {
+          text
+          hasLogo
+          illustration {
+            image {
+              asset {
+                fluid(maxWidth: 1600) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+          }
+          cta {
+            title
+            ctaPageLink {
+              slug {
+                current
+              }
+            }
+          }
+        }
         content {
+          ... on SanityIntro {
+            _key
+            _type
+            title
+            _rawText(resolveReferences: { maxDepth: 10 })
+            hasWave
+          }
           ... on SanityBlocks {
             id
             _key
@@ -49,6 +95,31 @@ export const query = graphql`
           ... on SanityCtaColumns {
             _key
             _type
+            title
+            overtitle
+            _rawIntro(resolveReferences: { maxDepth: 10 })
+            backImage {
+              asset {
+                fluid(maxWidth: 600) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            frontImage {
+              asset {
+                fluid(maxWidth: 600) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            ctas {
+              title
+              ctaPageLink {
+                slug {
+                  current
+                }
+              }
+            }
           }
         }
       }

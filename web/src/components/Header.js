@@ -6,9 +6,11 @@ import { pxtoem } from '../styles/Mixins';
 import Nav from './Nav';
 
 const HeaderStyles = styled.header`
-  background: var(--brown);
+  /* background: var(--brown); */
   padding-top: ${pxtoem(25)};
-  position: relative;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 
   .container {
     align-items: center;
