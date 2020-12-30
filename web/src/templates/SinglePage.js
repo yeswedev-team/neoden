@@ -11,7 +11,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
   const { title, content, hero } = singlePage.page;
   return (
     <>
-      <Hero hero={hero} title={title} />
+      <Hero hero={hero} title={title} context={pageContext.slug} />
       <MapToComponents
         getKey={(section) => section.id || section._key}
         getType={(section) => section._type}

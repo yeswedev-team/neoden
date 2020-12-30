@@ -14,25 +14,37 @@ const HeroStyles = styled.section`
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  .page-title {
+    color: var(--white);
+    margin-top: 1.25rem;
+    padding-left: ${(props) => (props.location === 'home' ? '2.5rem' : '0')};
+    padding-right: ${(props) => (props.location === 'home' ? '2.5rem' : '0')};
+  }
+
+  .button {
+    margin-top: 1.875rem;
+  }
 `;
 
-export default function Hero({ hero, title }) {
-  const { illustration, hasLogo, cta } = hero[0];
-  console.log(cta);
+export default function Hero({ hero, title, context }) {
+  console.log(context);
   return (
-    <HeroStyles className="section section__hero">
-      <div className="hero__illustr">
-        <Img fluid={illustration.image.asset.fluid} alt={title.fr} />
-      </div>
+    <HeroStyles className="section section__hero" location={context}>
+      {hero[0]?.illustration && (
+        <div className="hero__illustr">
+          <Img fluid={hero[0].illustration?.image.asset.fluid} alt={title.fr} />
+        </div>
+      )}
       <div className="hero__content">
         <div className="container container--sm">
-          {hasLogo && <Logo className="logo-only" />}
+          {hero[0]?.hasLogo && <Logo className="logo-only" />}
           {title && <h1 className="page-title">{title.fr}</h1>}
-          {cta.ctaPageLink && (
+          {hero[0]?.cta?.ctaPageLink && (
             <Button
-              target={cta.ctaPageLink[0].slug.current}
+              target={hero[0]?.cta?.ctaPageLink[0]?.slug.current}
               styles="transparent"
-              title={cta.title}
+              title={hero[0]?.cta?.title}
             />
           )}
         </div>
