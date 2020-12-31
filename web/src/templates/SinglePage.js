@@ -35,13 +35,9 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             intro: data._rawIntro,
             ctas: data.ctas,
           }),
-          SanitySectionImage: ({ data }) => ({ section: data.section }),
-          SanitySectionIntro: ({ data }) => ({
-            image: data.image,
-            title: data.title,
-            subtitle: data.subtitle,
+          blocks: ({ data }) => ({
+            block: data.block,
           }),
-          SanitySectionSkill: ({ data }) => ({ section: data.section }),
         }}
       />
     </>
@@ -89,8 +85,28 @@ export const query = graphql`
             id
             _key
             _type
-            title
-            _rawBlock(resolveReferences: { maxDepth: 10 })
+            block {
+              ... on SanityOffers {
+                _key
+                title
+                overtitle
+                offerLink {
+                  id
+                  title
+                  imageAlt {
+                    asset {
+                      fluid(maxWidth: 600, maxHeight: 707) {
+                        ...GatsbySanityImageFluid
+                      }
+                    }
+                  }
+                }
+              }
+              ... on SanityCta {
+                _key
+                title
+              }
+            }
           }
           ... on SanityCtaColumns {
             _key

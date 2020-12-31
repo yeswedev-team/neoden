@@ -32,6 +32,7 @@ const Typography = createGlobalStyle`
   .section-title {
     font-size: 3.4375rem;
     font-weight: normal;
+    line-height: calc(50 / 55);
   }
   .text-content {
     font-size: 1rem;

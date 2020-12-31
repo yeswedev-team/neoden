@@ -70,6 +70,8 @@ const GlobalStyles = createGlobalStyle`
 
   /* Sections */
   .section {
+    padding-bottom: var(--section-bot-padding);
+    padding-top: var(--section-top-padding);
     position: relative;
 
     &__columns {

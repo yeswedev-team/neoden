@@ -6,8 +6,6 @@ import PortableText from '../PortableText';
 import { pxtopc } from '../../styles/Mixins';
 
 const TwoColumnsWOIStyles = styled.section`
-  padding-bottom: var(--section-bot-padding);
-  padding-top: var(--section-top-padding);
 
   .col {
     position: relative;

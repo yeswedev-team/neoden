@@ -6,6 +6,7 @@ import Button from './Button';
 
 const HeroStyles = styled.section`
   max-height: 95vh;
+  padding: 0;
 
   .hero__content {
     left: 50%;
@@ -32,7 +33,7 @@ export default function Hero({ hero, title, context }) {
     <HeroStyles className="section section__hero" location={context}>
       {hero[0]?.illustration && (
         <div className="hero__illustr">
-          <Img fluid={hero[0].illustration?.image.asset.fluid} alt={title.fr} />
+          <Img fluid={hero[0].illustration?.image.asset.fluid} alt={title.fr}  />
         </div>
       )}
       <div className="hero__content">

@@ -13,6 +13,15 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title',
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'image',
       title: 'Image pour les onglets',
       type: 'image',
