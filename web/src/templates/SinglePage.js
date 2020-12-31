@@ -100,6 +100,9 @@ export const query = graphql`
                       }
                     }
                   }
+                  slug {
+                    current
+                  }
                 }
               }
               ... on SanityCta {

@@ -33,6 +33,7 @@ const BlockOffersStyles = styled.section`
     &__title {
       color: var(--white);
       font-size: 1.875rem;
+      font-weight: normal;
       left: 50%;
       position: absolute;
       z-index: 2;
@@ -52,6 +53,9 @@ const BlockOffersStyles = styled.section`
     img {
       border-radius: 5px;
     }
+    .button {
+      transform: translateY(-50%);
+    }
   }
 `;
 
@@ -68,8 +72,16 @@ export default function Offers({ title, overtitle, offerLink }) {
               console.log(offer);
               return (
                 <div key={offer.id} className="offer">
-                  <h3 className="offer__title">{offer.title}</h3>
-                  <Img fluid={offer.imageAlt.asset.fluid} alt={offer.title} />
+                  <Link to={`/offres/${offer.slug.current}`}>
+                    <h3 className="offer__title">{offer.title}</h3>
+                    <Img fluid={offer.imageAlt.asset.fluid} alt={offer.title} />
+                  </Link>
+                  <Link
+                    to={`/offres/${offer.slug.current}`}
+                    className="button button--brown"
+                  >
+                    En savoir plus
+                  </Link>
                 </div>
               );
             })}
