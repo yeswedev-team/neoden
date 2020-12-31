@@ -10,6 +10,14 @@ const IntroTextStyles = styled.section`
   padding-top: var(--section-top-padding);
   text-align: center;
 
+  .wave-up,
+  .wave-up-bis {
+    background: url(${WaveBg}) 0 0 repeat;
+    /*height from the svg file*/
+    height: 70px;
+    transform: translateY(-100%);
+  }
+
   .wave-down,
   .wave-down-bis {
     background: url(${WaveBg}) 0 0 repeat;
@@ -21,8 +29,14 @@ const IntroTextStyles = styled.section`
 
 const Intro = ({ title, text, hasWave }) => (
   <IntroTextStyles
-    className={`section intro-text${hasWave ? ' has-wave-bt' : ''}`}
+    className={`section intro-text${hasWave ? ' has-wave-bt has-wave-up' : ''}`}
   >
+    {hasWave && (
+      <>
+        <div className="wave-up" />
+        <div className="wave-up-bis" />
+      </>
+    )}
     <div className="container container--md">
       {title && <h2 className="section-title">{title}</h2>}
       {text && <PortableText blocks={text} />}

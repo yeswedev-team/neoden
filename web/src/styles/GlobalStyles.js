@@ -93,20 +93,40 @@ const GlobalStyles = createGlobalStyle`
         padding-top: calc(var(--section-top-padding) * 1.5);
       }
     }
+    &.has-wave-up {
+      padding-top: 1.25rem;
+    }
   }
 
+  .wave-up,
+  .wave-up-bis,
   .wave-down,
   .wave-down-bis {
-    animation: waves 20s linear infinite;
     bottom: 0;
     left: 0;
     position: absolute;
     width: 100%;
     will-change: transform;
   }
+  .wave-up,
+  .wave-up-bis {
+    bottom: auto;
+    top: 0;
+  }
+
+  .wave-down {
+    animation: waves 20s linear infinite;
+  }
   .wave-down-bis {
     animation: wavesbis 20s linear infinite;
   }
+  .wave-up {
+    animation: wavesup 20s linear infinite;
+  }
+  .wave-up-bis {
+    animation: wavesupbis 20s linear infinite;
+  }
+
   @keyframes waves {
     0% {
       transform: translate(0, 100%);
@@ -132,6 +152,31 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  @keyframes wavesup {
+    0% {
+      transform: translate(0, -100%) scale(1, -1);
+    }
+    50% {
+      transform: translate(100%, -100%) scale(1, -1);
+    }
+    100% {
+      /* from width of the svg file */
+      transform: translate(0, -100%) scale(1, -1);
+    }
+  }
+
+  @keyframes wavesupbis {
+    0% {
+      transform: translate(-100%, -100%) scale(-1, -1);
+    }
+    50% {
+      transform: translate(0, -100%) scale(-1, -1);
+    }
+    100% {
+      transform: translate(-100%, -100%) scale(-1, -1);
+    }
+  }
+
 
   /* Custom styles */
   .button {
@@ -148,6 +193,10 @@ const GlobalStyles = createGlobalStyle`
     &--brown {
       background: var(--brown);
       color: var(--white);
+    }
+
+    &--transparent {
+      background: rgba(242, 242, 242, 0.6);
     }
   }
 `;
