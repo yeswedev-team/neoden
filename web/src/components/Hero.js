@@ -28,7 +28,6 @@ const HeroStyles = styled.section`
 `;
 
 export default function Hero({ hero, title, context }) {
-  console.log(context);
   return (
     <HeroStyles className="section section__hero" location={context}>
       {hero[0]?.illustration && (

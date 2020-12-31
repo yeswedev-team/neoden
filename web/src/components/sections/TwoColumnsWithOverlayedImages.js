@@ -45,7 +45,6 @@ const TwoColumnsWOIStyles = styled.section`
 
 export default function TwoColumnsWithOverlayedImages(data) {
   const cta = data.ctas[0];
-  console.log(cta);
   return (
     <TwoColumnsWOIStyles className="section section__columns section__columns--two">
       <div className="container container--lg">
