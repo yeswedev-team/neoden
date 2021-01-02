@@ -37,6 +37,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
           }),
           blocks: ({ data }) => ({
             block: data.block,
+            title: data.title,
           }),
         }}
       />
@@ -85,6 +86,7 @@ export const query = graphql`
             id
             _key
             _type
+            title
             block {
               ... on SanityOffers {
                 _key
@@ -108,6 +110,11 @@ export const query = graphql`
               ... on SanityCta {
                 _key
                 title
+                ctaPageLink {
+                  slug {
+                    current
+                  }
+                }
               }
             }
           }

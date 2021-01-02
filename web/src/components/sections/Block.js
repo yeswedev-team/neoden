@@ -1,10 +1,11 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { MapToComponents } from 'react-map-to-components';
 import BlockOffers from './BlockOffers';
 import BlockCta from './BlockCta';
 
-export default function Block({ block }) {
-  console.log(block);
+export default function Block({ block, title }) {
+  console.log(title);
   return (
     <>
       <MapToComponents
@@ -13,7 +14,7 @@ export default function Block({ block }) {
         list={block}
         map={{
           SanityOffers: BlockOffers,
-          SanityCta: BlockCta,
+          SanityCta: (props) => <BlockCta title={title} {...props} />,
         }}
         mapDataToProps={{
           SanityOffers: ({ data }) => ({
@@ -22,7 +23,8 @@ export default function Block({ block }) {
             offerLink: data.offerLink,
           }),
           SanityCta: ({ data }) => ({
-            title: data.title,
+            buttonTitle: data.title,
+            link: data.ctaPageLink,
           }),
         }}
       />

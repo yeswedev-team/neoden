@@ -34,6 +34,11 @@ const Typography = createGlobalStyle`
     font-weight: normal;
     line-height: calc(50 / 55);
   }
+  .middle-title {
+    font-size: 2.1875rem;
+    font-weight: normal;
+    line-height: 1;
+  }
   .text-content {
     font-size: 1rem;
     font-weight: 500;
