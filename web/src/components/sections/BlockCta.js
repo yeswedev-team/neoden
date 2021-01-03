@@ -19,7 +19,6 @@ const BlockCtaStyles = styled.section`
 `;
 
 export default function Cta({ title, buttonTitle, link }) {
-  console.log(link);
   return (
     <BlockCtaStyles className="section">
       <div className="container container--xs">

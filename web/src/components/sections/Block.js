@@ -5,7 +5,6 @@ import BlockOffers from './BlockOffers';
 import BlockCta from './BlockCta';
 
 export default function Block({ block, title }) {
-  console.log(title);
   return (
     <>
       <MapToComponents

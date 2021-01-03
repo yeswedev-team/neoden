@@ -60,7 +60,6 @@ const BlockOffersStyles = styled.section`
 `;
 
 export default function Offers({ title, overtitle, offerLink }) {
-  console.log(offerLink);
   return (
     <BlockOffersStyles className="section section__block-offers">
       <div className="container container--md">
@@ -68,23 +67,20 @@ export default function Offers({ title, overtitle, offerLink }) {
         {title && <h2 className="section-title">{title}</h2>}
         {offerLink && (
           <div className="offersList">
-            {offerLink.map((offer) => {
-              console.log(offer);
-              return (
-                <div key={offer.id} className="offer">
-                  <Link to={`/offres/${offer.slug.current}`}>
-                    <h3 className="offer__title">{offer.title}</h3>
-                    <Img fluid={offer.imageAlt.asset.fluid} alt={offer.title} />
-                  </Link>
-                  <Link
-                    to={`/offres/${offer.slug.current}`}
-                    className="button button--brown"
-                  >
-                    En savoir plus
-                  </Link>
-                </div>
-              );
-            })}
+            {offerLink.map((offer) => (
+              <div key={offer.id} className="offer">
+                <Link to={`/offres/${offer.slug.current}`}>
+                  <h3 className="offer__title">{offer.title}</h3>
+                  <Img fluid={offer.imageAlt.asset.fluid} alt={offer.title} />
+                </Link>
+                <Link
+                  to={`/offres/${offer.slug.current}`}
+                  className="button button--brown"
+                >
+                  En savoir plus
+                </Link>
+              </div>
+            ))}
           </div>
         )}
       </div>
