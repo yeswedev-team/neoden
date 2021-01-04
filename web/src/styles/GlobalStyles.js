@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     --gap: 2.5rem; /* 40px */
     --section-bot-padding: 4.375rem;
     --section-top-padding: 5.3125rem;
+    --radius: 5px;
 
   }
 
@@ -84,6 +85,30 @@ const GlobalStyles = createGlobalStyle`
         .col {
           width: 50%;
         }
+      }
+    }
+
+    &__hero {
+      padding: 0;
+
+      .hero__content {
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &--boxed {
+        background-color: rgba(145, 109, 91, 0.59);
+        color: var(--white);
+        padding-top: 7.625rem;
+
+        .hero__content {
+          left: auto;
+          position: relative;
+          top: auto;
+          transform: none;
+        }        
       }
     }
 

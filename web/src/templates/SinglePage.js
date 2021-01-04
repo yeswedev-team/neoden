@@ -54,10 +54,20 @@ export const query = graphql`
         }
         _rawText(resolveReferences: { maxDepth: 10 })
         hero {
-          text
+          _rawText(resolveReferences: { maxDepth: 10 })
           hasLogo
-          illustration {
+          isBackground
+          frontimage {
             image {
+              asset {
+                fluid(maxWidth: 1115, maxHeight: 346) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+          }
+          background {
+            bgimage {
               asset {
                 fluid(maxWidth: 1600) {
                   ...GatsbySanityImageFluid

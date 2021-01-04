@@ -3,7 +3,8 @@ export { default as ctaColumns } from './ctaColumns';
 export { default as ctaPlug } from './ctaPlug';
 export { default as offers } from './offers';
 export { default as hero } from './hero';
-export { default as illustration } from './illustration';
+export { default as frontimage } from './frontimage';
+export { default as background } from './background';
 
 /*
 export { default as infoRows } from './infoRows'

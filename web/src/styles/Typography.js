@@ -22,6 +22,7 @@ const Typography = createGlobalStyle`
   .page-title {
     font-size: 4.4375rem;
     font-weight: normal;
+    line-height: calc(50 / 55);
     text-align: center;
   }
   .overtitle {
