@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from '../Button';
 
 const BlockCtaStyles = styled.section`
-  padding-bottom: var(--section-bot-padding);
+  padding-bottom: calc(var(--section-bot-padding) * 1.2);
   padding-top: var(--section-top-padding);
 
   .container {

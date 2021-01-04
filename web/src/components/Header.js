@@ -35,9 +35,14 @@ const Header = ({ navItems }) => (
         <Logo className="logo" />
       </Link>
       <div className="header__actions">
-        <Link className="button" to="#">
+        <a
+          href="https://www.nouvellevague.fr"
+          className="button"
+          target="_blank"
+          rel="noreferrer"
+        >
           Réserver ou offrir
-        </Link>
+        </a>
       </div>
     </div>
   </HeaderStyles>

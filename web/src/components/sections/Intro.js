@@ -10,8 +10,8 @@ const IntroTextStyles = styled.section`
   padding-top: var(--section-top-padding);
   text-align: center;
 
-  .wave-up,
-  .wave-up-bis {
+  .wave-reverse-up,
+  .wave-reverse-up-bis {
     background: url(${WaveBg}) 0 0 repeat;
     /*height from the svg file*/
     height: 70px;
@@ -33,8 +33,8 @@ const Intro = ({ title, text, hasWave }) => (
   >
     {hasWave && (
       <>
-        <div className="wave-up" />
-        <div className="wave-up-bis" />
+        <div className="wave-reverse-up" />
+        <div className="wave-reverse-up-bis" />
       </>
     )}
     <div className="container container--md">

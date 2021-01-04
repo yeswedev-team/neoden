@@ -6,6 +6,8 @@ const GlobalStyles = createGlobalStyle`
     --grey: #F2F2F2;
     --grey-dark: #2e2e2e;
     --white: #ffffff;
+    --brownlighter: #E1E0DC;
+    --brownlight: #C2AFA5;
     --brown: #916D5B;
     --font: 'Raleway', sans-serif;
     --font-titles: 'Crimson Text', serif;
@@ -100,6 +102,8 @@ const GlobalStyles = createGlobalStyle`
 
   .wave-up,
   .wave-up-bis,
+  .wave-reverse-up,
+  .wave-reverse-up-bis,
   .wave-down,
   .wave-down-bis {
     bottom: 0;
@@ -109,11 +113,14 @@ const GlobalStyles = createGlobalStyle`
     will-change: transform;
   }
   .wave-up,
-  .wave-up-bis {
+  .wave-up-bis,
+  .wave-reverse-up,
+  .wave-reverse-up-bis {
     bottom: auto;
     top: 0;
   }
 
+  
   .wave-down {
     animation: waves 20s linear infinite;
   }
@@ -121,10 +128,16 @@ const GlobalStyles = createGlobalStyle`
     animation: wavesbis 20s linear infinite;
   }
   .wave-up {
-    animation: wavesup 20s linear infinite;
+    animation: wavesUp 20s linear infinite;
   }
   .wave-up-bis {
-    animation: wavesupbis 20s linear infinite;
+    animation: wavesUpBis 20s linear infinite;
+  }
+  .wave-reverse-up {
+    animation: wavesReverseUp 20s linear infinite;
+  }
+  .wave-reverse-up-bis {
+    animation: wavesReverseUpBis 20s linear infinite;
   }
 
   @keyframes waves {
@@ -152,7 +165,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  @keyframes wavesup {
+  @keyframes wavesReverseUp {
     0% {
       transform: translate(0, -100%) scale(1, -1);
     }
@@ -165,7 +178,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  @keyframes wavesupbis {
+  @keyframes wavesReverseUpBis {
     0% {
       transform: translate(-100%, -100%) scale(-1, -1);
     }
@@ -177,6 +190,29 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  @keyframes wavesUp {
+    0% {
+      transform: translate(0, -100%);
+    }
+    50% {
+      transform: translate(1366px, -100%);
+    }
+    100% {
+      transform: translate(0, -100%);
+    }
+  }
+
+  @keyframes wavesUpBis {
+    0% {
+      transform: translate(-1366px, -100%);
+    }
+    50% {
+      transform: translate(0, -100%);
+    }
+    100% {
+      transform: translate(-1366px, -100%);
+    }
+  }
 
   /* Custom styles */
   .button {
@@ -188,6 +224,7 @@ const GlobalStyles = createGlobalStyle`
     display: inline-flex;
     font-size: ${remCalc(16)};
     padding: ${remCalc(8)} ${remCalc(30)};
+    text-align: center;
     white-space: nowrap;
 
     &--brown {

@@ -27,6 +27,10 @@ const HeroStyles = styled.section`
   .button {
     margin-top: 1.875rem;
   }
+
+  .logo-only {
+    width: 14.5rem;
+  }
 `;
 
 export default function Hero({ hero, title, context }) {
