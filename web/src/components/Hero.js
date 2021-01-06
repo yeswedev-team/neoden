@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
+import WaveBg from '../assets/images/wave-hero-bt.svg';
 
 const handleLocation = (location) => {
   switch (location) {
@@ -18,14 +19,16 @@ const handleLocation = (location) => {
 
 const HeroStyles = styled.section`
   max-height: 95vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   .container {
     position: relative;
   }
 
   .hero__illustr--boxed {
+    bottom: 0;
     position: absolute;
+    transform: translateY(5.625rem);
     width: 100%;
     img {
       border-radius: var(--radius);
@@ -42,12 +45,25 @@ const HeroStyles = styled.section`
     margin-top: 2em;
   }
 
+  .hero__content {
+    z-index: 3;
+  }
+
   .button {
     margin-top: 1.875rem;
   }
 
   .logo-only {
     width: 14.5rem;
+  }
+
+  .wave-down,
+  .wave-down-bis {
+    background: url(${WaveBg}) 0 0 repeat;
+    /*height from the svg file*/
+    height: 44px;
+    transform: translateY(100%);
+    z-index: 2;
   }
 `;
 
@@ -99,6 +115,8 @@ export default function Hero({ hero, title, context }) {
           )}
         </div>
       </div>
+      <div className="wave-down" />
+      <div className="wave-down-bis" />
     </HeroStyles>
   );
 }

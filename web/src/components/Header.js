@@ -10,7 +10,7 @@ const HeaderStyles = styled.header`
   padding-top: ${pxtoem(25)};
   position: fixed;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
 
   .container {
     align-items: center;

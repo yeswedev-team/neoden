@@ -23,6 +23,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
+            overtitle: data.overtitle,
             title: data.title,
             text: data._rawText,
             hasWave: data.hasWave,
@@ -88,6 +89,7 @@ export const query = graphql`
           ... on SanityIntro {
             _key
             _type
+            overtitle
             title
             _rawText(resolveReferences: { maxDepth: 10 })
             hasWave

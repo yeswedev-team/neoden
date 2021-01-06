@@ -27,9 +27,11 @@ const IntroTextStyles = styled.section`
   }
 `;
 
-const Intro = ({ title, text, hasWave }) => (
+const Intro = ({ overtitle, title, text, hasWave }) => (
   <IntroTextStyles
-    className={`section intro-text${hasWave ? ' has-wave-bt has-wave-up' : ''}`}
+    className={`section section__intro${
+      hasWave ? ' has-wave-bt has-wave-up' : ''
+    }`}
   >
     {hasWave && (
       <>
@@ -38,6 +40,7 @@ const Intro = ({ title, text, hasWave }) => (
       </>
     )}
     <div className="container container--md">
+      {overtitle && <p>{overtitle}</p>}
       {title && <h2 className="section-title">{title}</h2>}
       {text && <PortableText blocks={text} />}
     </div>

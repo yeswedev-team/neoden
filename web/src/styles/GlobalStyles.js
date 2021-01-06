@@ -75,6 +75,14 @@ const GlobalStyles = createGlobalStyle`
   .section {
     position: relative;
 
+    &__intro {
+      background: var(--white);
+
+      &.has-wave-bt {
+        background: var(--grey);
+      }
+    }
+
     &__columns {
       .container {
         display: flex;
@@ -90,6 +98,7 @@ const GlobalStyles = createGlobalStyle`
 
     &__hero {
       padding: 0;
+      z-index: 2;
 
       .hero__content {
         left: 50%;
@@ -101,7 +110,6 @@ const GlobalStyles = createGlobalStyle`
       &--boxed {
         background-color: rgba(145, 109, 91, 0.59);
         color: var(--white);
-        padding-bottom: 17.5rem;
         padding-top: 7.625rem;
 
         .hero__content {
@@ -109,6 +117,10 @@ const GlobalStyles = createGlobalStyle`
           position: relative;
           top: auto;
           transform: none;
+
+          > .container {
+            padding-bottom: 280px;
+          }
         }        
       }
     }
