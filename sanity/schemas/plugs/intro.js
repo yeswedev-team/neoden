@@ -10,8 +10,14 @@ export default {
   fields: [
     {
       type: 'string',
+      name: 'overtitle',
+      title: 'Surtitre',
+    },
+    {
+      type: 'string',
       name: 'title',
       title: 'Titre',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'text',
