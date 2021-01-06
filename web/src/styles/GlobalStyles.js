@@ -101,6 +101,7 @@ const GlobalStyles = createGlobalStyle`
       &--boxed {
         background-color: rgba(145, 109, 91, 0.59);
         color: var(--white);
+        padding-bottom: 17.5rem;
         padding-top: 7.625rem;
 
         .hero__content {
