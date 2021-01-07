@@ -5,8 +5,10 @@ import PortableText from '../PortableText';
 import Wave from '../Wave';
 
 const TwoColumnsStyles = styled.section`
-  padding-bottom: 0;
-  padding-top: var(--section-top-padding);
+  padding-bottom: ${(props) =>
+    props.hasWaveDown ? '0' : 'calc(var(--section-bot-padding) / 2)'};
+  padding-top: ${(props) =>
+    props.hasWaveUp ? '0' : 'calc(var(--section-top-padding) / 2)'};
   position: relative;
   z-index: 3;
 
@@ -44,6 +46,8 @@ export default function TwoColumns({
 }) {
   return (
     <TwoColumnsStyles
+      hasWaveDown={hasWaveDown}
+      hasWaveUp={hasWaveUp}
       className={`section section__columns section__columns--two--withimg${
         rightImage === true ? ' img-at-right' : ''
       }`}

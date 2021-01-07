@@ -1,37 +1,26 @@
-import { HiOutlineDocumentDuplicate as icon } from 'react-icons/hi';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FiLink } from 'react-icons/fi';
-import { supportedLanguages } from '../objects/localeString';
-
-const baseLanguage = supportedLanguages.find((l) => l.isDefault);
+import { MdSlideshow as icon } from 'react-icons/md';
 
 export default {
-  name: 'page',
-  title: 'Pages',
-  type: 'document',
+  type: 'object',
+  name: 'slider',
+  title: 'Slider',
   icon,
   fields: [
     {
+      type: 'string',
+      name: 'overtitle',
+      title: 'Surtitre',
+    },
+    {
       name: 'title',
       title: 'Titre',
-      type: 'localeString',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'titleMenu',
-      title: 'Titre pour le menu (optionnel)',
-      type: 'localeString',
-    },
-    {
-      name: 'hero',
-      type: 'array',
-      title: 'Entête',
-      description: 'Ajouter une entête',
-      of: [{ type: 'hero' }],
-      validation: (Rule) => Rule.max(1).error('Une seule entête possible'),
-    },
-    {
-      name: 'text',
+      name: 'intro',
       title: 'Texte',
       type: 'array',
       of: [
@@ -59,6 +48,13 @@ export default {
             decorators: [
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
+              {
+                title: 'Exposant',
+                value: 'sup',
+                blockEditor: {
+                  icon: () => 'E',
+                },
+              },
             ],
             // Annotations can be any object structure – e.g. a link or a footnote.
             annotations: [
@@ -114,23 +110,21 @@ export default {
       ],
     },
     {
-      name: 'content',
+      name: 'slides',
       type: 'array',
-      title: 'Sections',
-      description: 'Ajouter, modifier et ordonner les sections',
-      of: [
-        { type: 'intro' },
-        { type: 'ctaColumns' },
-        { type: 'twoColumns' },
-        { type: 'slider' },
-        { type: 'ctaPlug' },
-        { type: 'reference', to: [{ type: 'blocks' }] },
-      ],
+      title: 'Slides',
+      description: 'Ajouter, modifier et ordonner les slides',
+      of: [{ type: 'slide' }],
+    },
+    {
+      type: 'boolean',
+      name: 'hasWaveUp',
+      title: 'Ajouter une vague animée en haut du bloc ?',
+    },
+    {
+      type: 'boolean',
+      name: 'hasWaveDown',
+      title: 'Ajouter une vague animée en bas du bloc ?',
     },
   ],
-  preview: {
-    select: {
-      title: `title.${baseLanguage.id}`,
-    },
-  },
 };

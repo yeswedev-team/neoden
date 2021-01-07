@@ -1,37 +1,25 @@
-import { HiOutlineDocumentDuplicate as icon } from 'react-icons/hi';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { FiLink } from 'react-icons/fi';
-import { supportedLanguages } from '../objects/localeString';
-
-const baseLanguage = supportedLanguages.find((l) => l.isDefault);
 
 export default {
-  name: 'page',
-  title: 'Pages',
-  type: 'document',
-  icon,
+  type: 'object',
+  name: 'slide',
+  title: 'Slider',
   fields: [
     {
       name: 'title',
       title: 'Titre',
-      type: 'localeString',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'titleMenu',
-      title: 'Titre pour le menu (optionnel)',
-      type: 'localeString',
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      validation: (Rule) => Rule.required(),
     },
     {
-      name: 'hero',
-      type: 'array',
-      title: 'Entête',
-      description: 'Ajouter une entête',
-      of: [{ type: 'hero' }],
-      validation: (Rule) => Rule.max(1).error('Une seule entête possible'),
-    },
-    {
-      name: 'text',
+      name: 'intro',
       title: 'Texte',
       type: 'array',
       of: [
@@ -59,6 +47,13 @@ export default {
             decorators: [
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
+              {
+                title: 'Exposant',
+                value: 'sup',
+                blockEditor: {
+                  icon: () => 'E',
+                },
+              },
             ],
             // Annotations can be any object structure – e.g. a link or a footnote.
             annotations: [
@@ -112,25 +107,7 @@ export default {
           },
         },
       ],
-    },
-    {
-      name: 'content',
-      type: 'array',
-      title: 'Sections',
-      description: 'Ajouter, modifier et ordonner les sections',
-      of: [
-        { type: 'intro' },
-        { type: 'ctaColumns' },
-        { type: 'twoColumns' },
-        { type: 'slider' },
-        { type: 'ctaPlug' },
-        { type: 'reference', to: [{ type: 'blocks' }] },
-      ],
+      validation: (Rule) => Rule.required(),
     },
   ],
-  preview: {
-    select: {
-      title: `title.${baseLanguage.id}`,
-    },
-  },
 };

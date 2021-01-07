@@ -6,6 +6,7 @@ import Blocks from '../components/sections/Block';
 import TwoColumnsWithOverlayedImages from '../components/sections/TwoColumnsWithOverlayedImages';
 import TwoColumns from '../components/sections/TwoColumns';
 import Intro from '../components/sections/Intro';
+import Slider from '../components/sections/Slider';
 import Hero from '../components/Hero';
 
 export default function SinglePage({ pageContext, data: { singlePage } }) {
@@ -22,6 +23,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
           blocks: Blocks,
           ctaColumns: TwoColumnsWithOverlayedImages,
           twoColumns: TwoColumns,
+          slider: Slider,
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
@@ -44,6 +46,14 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             image: data.image,
             rightImage: data.rightImage,
             text: data._rawText,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
+          }),
+          slider: ({ data }) => ({
+            title: data.title,
+            overtitle: data.overtitle,
+            text: data._rawIntro,
+            slides: data.slide,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
           }),
@@ -182,6 +192,26 @@ export const query = graphql`
               }
             }
             rightImage
+            hasWaveDown
+            hasWaveUp
+          }
+          ... on SanitySlider {
+            _key
+            _type
+            title
+            overtitle
+            _rawIntro(resolveReferences: { maxDepth: 10 })
+            slides {
+              title
+              _rawIntro(resolveReferences: { maxDepth: 10 })
+              image {
+                asset {
+                  fluid(maxWidth: 600) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+            }
             hasWaveDown
             hasWaveUp
           }

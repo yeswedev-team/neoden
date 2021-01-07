@@ -9,6 +9,10 @@ const IntroTextStyles = styled.section`
     location === 'home' ? 'var(--grey)' : 'var(--white)'};
   background-size: cover, cover;
   background-attachment: fixed, fixed;
+  padding-bottom: ${(props) =>
+    props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
+  padding-top: ${(props) =>
+    props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   text-align: center;
   z-index: 3;
 
@@ -35,9 +39,9 @@ const Intro = ({
 }) => (
   <IntroTextStyles
     location={context}
-    className={`section section__intro${hasWaveUp ? ' has-wave-up' : ''}${
-      hasWaveDown ? ' has-wave-bt' : ''
-    }`}
+    hasWaveDown={hasWaveDown}
+    hasWaveUp={hasWaveUp}
+    className="section section__intro"
   >
     {hasWaveUp && (
       <Wave bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`} />
