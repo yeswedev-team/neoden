@@ -3,11 +3,14 @@ import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import PortableText from '../PortableText';
+import Wave from '../Wave';
 import { pxtopc } from '../../styles/Mixins';
 
 const TwoColumnsWOIStyles = styled.section`
-  padding-bottom: var(--section-bot-padding);
+  padding-bottom: 0;
   padding-top: var(--section-top-padding);
+  position: relative;
+  z-index: 3;
 
   .col {
     position: relative;
@@ -72,6 +75,7 @@ export default function TwoColumnsWithOverlayedImages(data) {
           </Link>
         </div>
       </div>
+      <Wave bgcolor="white" reversed />
     </TwoColumnsWOIStyles>
   );
 }

@@ -1,54 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 import PortableText from '../PortableText';
-import WaveBg from '../../assets/images/wave-greylight.svg';
+import Wave from '../Wave';
 
 const IntroTextStyles = styled.section`
-  background: var(--grey);
+  background: ${({ location }) =>
+    location === 'home' ? 'var(--grey)' : 'var(--white)'};
   background-size: cover, cover;
   background-attachment: fixed, fixed;
-  padding-top: var(--section-top-padding);
+  /* padding-top: var(--section-top-padding); */
   text-align: center;
-
-  .wave-reverse-up,
-  .wave-reverse-up-bis {
-    background: url(${WaveBg}) 0 0 repeat;
-    /*height from the svg file*/
-    height: 70px;
-    transform: translateY(-100%);
-  }
-
-  .wave-down,
-  .wave-down-bis {
-    background: url(${WaveBg}) 0 0 repeat;
-    /*height from the svg file*/
-    height: 70px;
-    transform: translateY(100%);
-  }
+  z-index: 3;
 `;
 
-const Intro = ({ overtitle, title, text, hasWave }) => (
+const Intro = ({ context, overtitle, title, text, hasWave }) => (
   <IntroTextStyles
+    location={context}
     className={`section section__intro${
       hasWave ? ' has-wave-bt has-wave-up' : ''
     }`}
   >
-    {hasWave && (
-      <>
-        <div className="wave-reverse-up" />
-        <div className="wave-reverse-up-bis" />
-      </>
-    )}
+    {context === 'home' ? <Wave bgcolor="#F2F2F2" /> : <Wave bgcolor="white" />}
     <div className="container container--md">
       {overtitle && <p>{overtitle}</p>}
       {title && <h2 className="section-title">{title}</h2>}
       {text && <PortableText blocks={text} />}
     </div>
-    {hasWave && (
-      <>
-        <div className="wave-down" />
-        <div className="wave-down-bis" />
-      </>
+    {context === 'home' ? (
+      <Wave bgcolor="#F2F2F2" reversed />
+    ) : (
+      <Wave bgcolor="white" reversed />
     )}
   </IntroTextStyles>
 );

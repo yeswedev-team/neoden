@@ -56,15 +56,6 @@ const HeroStyles = styled.section`
   .logo-only {
     width: 14.5rem;
   }
-
-  .wave-down,
-  .wave-down-bis {
-    background: url(${WaveBg}) 0 0 repeat;
-    /*height from the svg file*/
-    height: 44px;
-    transform: translateY(100%);
-    z-index: 2;
-  }
 `;
 
 export default function Hero({ hero, title, context }) {
@@ -115,8 +106,6 @@ export default function Hero({ hero, title, context }) {
           )}
         </div>
       </div>
-      <div className="wave-down" />
-      <div className="wave-down-bis" />
     </HeroStyles>
   );
 }

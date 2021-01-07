@@ -79,7 +79,7 @@ const GlobalStyles = createGlobalStyle`
       background: var(--white);
 
       &.has-wave-bt {
-        background: var(--grey);
+        z-index: 3;
       }
     }
 
@@ -134,121 +134,7 @@ const GlobalStyles = createGlobalStyle`
       }
     }
     &.has-wave-up {
-      padding-top: 1.25rem;
-    }
-  }
-
-  .wave-up,
-  .wave-up-bis,
-  .wave-reverse-up,
-  .wave-reverse-up-bis,
-  .wave-down,
-  .wave-down-bis {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    will-change: transform;
-  }
-  .wave-up,
-  .wave-up-bis,
-  .wave-reverse-up,
-  .wave-reverse-up-bis {
-    bottom: auto;
-    top: 0;
-  }
-
-  
-  .wave-down {
-    animation: waves 20s linear infinite;
-  }
-  .wave-down-bis {
-    animation: wavesbis 20s linear infinite;
-  }
-  .wave-up {
-    animation: wavesUp 20s linear infinite;
-  }
-  .wave-up-bis {
-    animation: wavesUpBis 20s linear infinite;
-  }
-  .wave-reverse-up {
-    animation: wavesReverseUp 20s linear infinite;
-  }
-  .wave-reverse-up-bis {
-    animation: wavesReverseUpBis 20s linear infinite;
-  }
-
-  @keyframes waves {
-    0% {
-      transform: translate(0, 100%);
-    }
-    50% {
-      transform: translate(100%, 100%);
-    }
-    100% {
-      /* from width of the svg file */
-      transform: translate(0, 100%);
-    }
-  }
-
-  @keyframes wavesbis {
-    0% {
-      transform: translate(-100%, 100%) scaleX(-1);
-    }
-    50% {
-      transform: translate(0, 100%) scaleX(-1);
-    }
-    100% {
-      transform: translate(-100%, 100%) scaleX(-1);
-    }
-  }
-
-  @keyframes wavesReverseUp {
-    0% {
-      transform: translate(0, -100%) scale(1, -1);
-    }
-    50% {
-      transform: translate(100%, -100%) scale(1, -1);
-    }
-    100% {
-      /* from width of the svg file */
-      transform: translate(0, -100%) scale(1, -1);
-    }
-  }
-
-  @keyframes wavesReverseUpBis {
-    0% {
-      transform: translate(-100%, -100%) scale(-1, -1);
-    }
-    50% {
-      transform: translate(0, -100%) scale(-1, -1);
-    }
-    100% {
-      transform: translate(-100%, -100%) scale(-1, -1);
-    }
-  }
-
-  @keyframes wavesUp {
-    0% {
-      transform: translate(0, -100%);
-    }
-    50% {
-      transform: translate(1366px, -100%);
-    }
-    100% {
-      transform: translate(0, -100%);
-    }
-  }
-
-  @keyframes wavesUpBis {
-    0% {
-      transform: translate(-1366px, -100%);
-    }
-    50% {
-      transform: translate(0, -100%);
-    }
-    100% {
-      transform: translate(-1366px, -100%);
+      padding-top: 0;
     }
   }
 

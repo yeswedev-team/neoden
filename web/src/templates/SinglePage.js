@@ -17,7 +17,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
         getType={(section) => section._type}
         list={content}
         map={{
-          intro: Intro,
+          intro: (props) => <Intro context={pageContext.slug} {...props} />,
           blocks: Blocks,
           ctaColumns: TwoColumnsWithOverlayedImages,
         }}
