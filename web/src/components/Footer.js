@@ -82,7 +82,6 @@ const FooterStyles = styled.footer`
 `;
 
 const Footer = ({ footerItems }) => {
-  console.log(footerItems);
   const {
     tel,
     facebook,
