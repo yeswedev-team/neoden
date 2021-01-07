@@ -1,27 +1,21 @@
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import { FiLink } from 'react-icons/fi';
-import { BsCardText as icon } from 'react-icons/bs';
+import { FiLink, FiColumns as icon } from 'react-icons/fi';
 
 export default {
   type: 'object',
-  name: 'intro',
-  title: 'Introduction',
+  name: 'twoColumns',
+  title: 'Deux colonnes',
   icon,
   fields: [
     {
-      type: 'string',
-      name: 'overtitle',
-      title: 'Surtitre',
+      type: 'image',
+      name: 'image',
+      title: 'Image (à gauche par défaut)',
     },
     {
-      type: 'string',
-      name: 'title',
-      title: 'Titre',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'frontimage',
-      type: 'frontimage',
+      type: 'boolean',
+      name: 'rightImage',
+      title: 'Image à droite ?',
     },
     {
       name: 'text',
@@ -124,15 +118,4 @@ export default {
       title: 'Ajouter une vague animée en bas du bloc ?',
     },
   ],
-  preview: {
-    select: {
-      title: 'title',
-      text: 'text',
-    },
-    prepare({ title, text }) {
-      return {
-        title: `Intro : "${title || text}"`,
-      };
-    },
-  },
 };

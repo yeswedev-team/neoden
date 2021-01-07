@@ -19,28 +19,37 @@ const IntroTextStyles = styled.section`
     border-radius: var(--radius);
   }
   .overtitle {
+    margin-bottom: 0;
     margin-top: 3.75rem;
   }
 `;
 
-const Intro = ({ context, frontImage, overtitle, title, text, hasWave }) => (
+const Intro = ({
+  context,
+  frontImage,
+  overtitle,
+  title,
+  text,
+  hasWaveDown,
+  hasWaveUp,
+}) => (
   <IntroTextStyles
     location={context}
-    className={`section section__intro${
-      hasWave ? ' has-wave-bt has-wave-up' : ''
+    className={`section section__intro${hasWaveUp ? ' has-wave-up' : ''}${
+      hasWaveDown ? ' has-wave-bt' : ''
     }`}
   >
-    {context === 'home' ? <Wave bgcolor="#F2F2F2" /> : <Wave bgcolor="white" />}
+    {hasWaveUp && (
+      <Wave bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`} />
+    )}
     <div className="container container--md">
       {frontImage && <Img fluid={frontImage?.image.asset.fluid} alt={title} />}
-      {overtitle && <p>{overtitle}</p>}
+      {overtitle && <p className="overtitle">{overtitle}</p>}
       {title && <h2 className="section-title">{title}</h2>}
       {text && <PortableText blocks={text} />}
     </div>
-    {context === 'home' ? (
-      <Wave bgcolor="#F2F2F2" reversed />
-    ) : (
-      <Wave bgcolor="white" reversed />
+    {hasWaveDown && (
+      <Wave bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`} reversed />
     )}
   </IntroTextStyles>
 );

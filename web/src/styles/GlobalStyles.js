@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { pxtoem, remCalc } from './Mixins';
+import { pxtoem, pxtopc, remCalc } from './Mixins';
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
     --brownlighter: #E1E0DC;
     --brownlight: #C2AFA5;
     --brown: #916D5B;
+    --beige: #CFC6C2;
     --font: 'Raleway', sans-serif;
     --font-titles: 'Crimson Text', serif;
     --gap: 2.5rem; /* 40px */
@@ -92,6 +93,22 @@ const GlobalStyles = createGlobalStyle`
       &--two {
         .col {
           width: 50%;
+        }
+      }
+      &--two--withimg {
+        .col:first-child {
+          width: ${pxtopc(485, 1115)};
+        }
+        .col:last-child {
+          width: ${pxtopc(630, 1115)};
+        }
+        &.img-at-right {
+          .col:first-child {
+            order: 2;
+          }
+          .col:last-child {
+            order: 1;
+          }
         }
       }
     }

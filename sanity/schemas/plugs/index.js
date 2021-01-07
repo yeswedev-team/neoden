@@ -1,5 +1,6 @@
 export { default as intro } from './intro';
 export { default as ctaColumns } from './ctaColumns';
+export { default as twoColumns } from './twoColumns';
 export { default as ctaPlug } from './ctaPlug';
 export { default as offers } from './offers';
 export { default as hero } from './hero';

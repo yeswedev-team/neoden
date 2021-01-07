@@ -121,6 +121,7 @@ export default {
       of: [
         { type: 'intro' },
         { type: 'ctaColumns' },
+        { type: 'twoColumns' },
         { type: 'ctaPlug' },
         { type: 'reference', to: [{ type: 'blocks' }] },
       ],

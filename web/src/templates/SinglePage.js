@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import { MapToComponents } from 'react-map-to-components';
 import Blocks from '../components/sections/Block';
 import TwoColumnsWithOverlayedImages from '../components/sections/TwoColumnsWithOverlayedImages';
+import TwoColumns from '../components/sections/TwoColumns';
 import Intro from '../components/sections/Intro';
 import Hero from '../components/Hero';
 
@@ -20,6 +21,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
           intro: (props) => <Intro context={pageContext.slug} {...props} />,
           blocks: Blocks,
           ctaColumns: TwoColumnsWithOverlayedImages,
+          twoColumns: TwoColumns,
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
@@ -27,7 +29,8 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             overtitle: data.overtitle,
             title: data.title,
             text: data._rawText,
-            hasWave: data.hasWave,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
           }),
           ctaColumns: ({ data }) => ({
             title: data.title,
@@ -36,6 +39,13 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             frontImage: data.frontImage,
             intro: data._rawIntro,
             ctas: data.ctas,
+          }),
+          twoColumns: ({ data }) => ({
+            image: data.image,
+            rightImage: data.rightImage,
+            text: data._rawText,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
           }),
           blocks: ({ data }) => ({
             block: data.block,
@@ -83,7 +93,8 @@ export const query = graphql`
             overtitle
             title
             _rawText(resolveReferences: { maxDepth: 10 })
-            hasWave
+            hasWaveDown
+            hasWaveUp
             frontimage {
               image {
                 asset {
@@ -158,6 +169,21 @@ export const query = graphql`
                 }
               }
             }
+          }
+          ... on SanityTwoColumns {
+            _key
+            _type
+            _rawText(resolveReferences: { maxDepth: 10 })
+            image {
+              asset {
+                fluid(maxWidth: 600) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            rightImage
+            hasWaveDown
+            hasWaveUp
           }
         }
       }
