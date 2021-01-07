@@ -11,6 +11,7 @@ const CanvasStyles = styled.canvas`
 `;
 
 const WaveUp = (props) => {
+  console.log(props);
   const canvasRef = useRef(null);
 
   const waveup = () => {
@@ -60,7 +61,15 @@ const WaveUp = (props) => {
     waveup();
   }, []);
 
-  return <CanvasStyles ref={canvasRef} {...props} data-paper-resize />;
+  return (
+    <CanvasStyles
+      width="100%"
+      height="50"
+      ref={canvasRef}
+      {...props}
+      data-paper-resize
+    />
+  );
 };
 
 export default WaveUp;

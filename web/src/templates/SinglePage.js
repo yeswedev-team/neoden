@@ -23,6 +23,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
+            frontImage: data.frontimage,
             overtitle: data.overtitle,
             title: data.title,
             text: data._rawText,
@@ -57,16 +58,6 @@ export const query = graphql`
         hero {
           _rawText(resolveReferences: { maxDepth: 10 })
           hasLogo
-          isBackground
-          frontimage {
-            image {
-              asset {
-                fluid(maxWidth: 1115, maxHeight: 346) {
-                  ...GatsbySanityImageFluid
-                }
-              }
-            }
-          }
           background {
             bgimage {
               asset {
@@ -93,6 +84,15 @@ export const query = graphql`
             title
             _rawText(resolveReferences: { maxDepth: 10 })
             hasWave
+            frontimage {
+              image {
+                asset {
+                  fluid(maxWidth: 1115, maxHeight: 346) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+            }
           }
           ... on SanityBlocks {
             id

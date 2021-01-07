@@ -20,6 +20,10 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'frontimage',
+      type: 'frontimage',
+    },
+    {
       name: 'text',
       title: 'Texte',
       type: 'array',

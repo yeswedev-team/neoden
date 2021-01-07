@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
-import WaveBg from '../assets/images/wave-hero-bt.svg';
 
 const handleLocation = (location) => {
   switch (location) {
@@ -23,16 +22,6 @@ const HeroStyles = styled.section`
 
   .container {
     position: relative;
-  }
-
-  .hero__illustr--boxed {
-    bottom: 0;
-    position: absolute;
-    transform: translateY(5.625rem);
-    width: 100%;
-    img {
-      border-radius: var(--radius);
-    }
   }
 
   .page-title {
@@ -64,7 +53,7 @@ export default function Hero({ hero, title, context }) {
   return (
     <HeroStyles
       className={`section section__hero${
-        heroData?.isBackground ? '' : ' section__hero--boxed'
+        heroData?.background ? '' : ' section__hero--boxed'
       }`}
       location={context}
     >
@@ -79,7 +68,7 @@ export default function Hero({ hero, title, context }) {
       <div className="hero__content">
         <div
           className={`container${
-            heroData?.isBackground ? ' container--sm' : ' container--lg'
+            heroData?.background ? ' container--sm' : ' container--lg'
           }`}
         >
           {heroData?.hasLogo && <Logo className="logo-only" />}
@@ -95,14 +84,6 @@ export default function Hero({ hero, title, context }) {
               styles="transparent"
               title={heroData?.cta?.title}
             />
-          )}
-          {!heroData?.isBackground && (
-            <div className="hero__illustr--boxed">
-              <Img
-                fluid={heroData?.frontimage?.image.asset.fluid}
-                alt={title.fr}
-              />
-            </div>
           )}
         </div>
       </div>

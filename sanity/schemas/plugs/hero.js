@@ -102,18 +102,8 @@ export default {
       ],
     },
     {
-      name: 'isBackground',
-      type: 'boolean',
-      title: 'Image de fond ?',
-      validation: (Rule) => Rule.required(),
-    },
-    {
       name: 'background',
       type: 'background',
-    },
-    {
-      name: 'frontimage',
-      type: 'frontimage',
     },
     {
       type: 'boolean',

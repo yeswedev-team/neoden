@@ -4,13 +4,12 @@ import styled from 'styled-components';
 import Logo from '../assets/images/logo-neoden.inline.svg';
 import LogoOnly from '../assets/images/logo-neoden-seul.inline.svg';
 import PortableText from './PortableText';
-import WaveBg from '../assets/images/wave-beige.svg';
 import { pxtopc } from '../styles/Mixins';
 
 const FooterStyles = styled.footer`
   background-color: var(--brownlight);
   color: var(--white);
-  padding-top: 3.4375rem;
+  padding-top: 6.25rem;
   position: relative;
 
   a {
@@ -37,12 +36,6 @@ const FooterStyles = styled.footer`
     color: var(--brown);
     display: block;
     margin-bottom: 0.9375rem;
-  }
-  .wave-up,
-  .wave-up-bis {
-    background: url(${WaveBg}) 0 0 repeat;
-    height: 45px;
-    transform: translateY(-100%);
   }
   .logos {
     padding-left: 15px;
@@ -103,8 +96,6 @@ const Footer = ({ footerItems }) => {
 
   return (
     <FooterStyles className="has-wave has-wave-up">
-      <div className="wave-up" />
-      <div className="wave-up-bis" />
       <div className="container container--xl">
         <div className="logos">
           <Link to="/">

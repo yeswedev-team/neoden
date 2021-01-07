@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { pxtopc } from '../../styles/Mixins';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
 
-console.log(tressageBg);
-
 const BlockOffersStyles = styled.section`
   background: #a5968f url(${tressageBg}) 0 0 repeat;
   background-blend-mode: multiply;

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { pxtoem, remCalc, pxtovw } from './Mixins';
+import { pxtoem, remCalc } from './Mixins';
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -119,7 +119,7 @@ const GlobalStyles = createGlobalStyle`
           transform: none;
 
           > .container {
-            padding-bottom: 280px;
+            padding-bottom: 220px;
           }
         }        
       }
@@ -159,6 +159,10 @@ const GlobalStyles = createGlobalStyle`
     &--transparent {
       background: rgba(242, 242, 242, 0.6);
     }
+  }
+
+  canvas[resize] {
+    width: 100%;
   }
 `;
 

@@ -1,10 +1,7 @@
-import ConditionalFields from '../objects/ConditionalFields.js';
-
 export default {
   type: 'object',
   name: 'frontimage',
-  title: 'Image simple',
-  inputComponent: ConditionalFields,
+  title: 'Image',
   fields: [
     {
       title: 'Image',
@@ -12,7 +9,4 @@ export default {
       type: 'image',
     },
   ],
-  options: {
-    condition: (document, context) => context().isBackground === false,
-  },
 };
