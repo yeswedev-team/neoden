@@ -6,6 +6,7 @@ export { default as offers } from './offers';
 export { default as hero } from './hero';
 export { default as sliders } from './slider';
 export { default as slide } from './slide';
+export { default as blockQuestions } from './blockQuestions';
 export { default as frontimage } from './frontimage';
 export { default as background } from './background';
 

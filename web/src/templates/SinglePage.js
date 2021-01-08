@@ -53,7 +53,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             title: data.title,
             overtitle: data.overtitle,
             text: data._rawIntro,
-            slides: data.slide,
+            slides: data.slides,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
           }),
@@ -149,6 +149,15 @@ export const query = graphql`
                   }
                 }
               }
+              ... on SanityBlockQuestions {
+                _key
+                _type
+                title
+                questionsList {
+                  title
+                  _rawReponse(resolveReferences: { maxDepth: 10 })
+                }
+              }
             }
           }
           ... on SanityCtaColumns {
@@ -202,6 +211,7 @@ export const query = graphql`
             overtitle
             _rawIntro(resolveReferences: { maxDepth: 10 })
             slides {
+              _key
               title
               _rawIntro(resolveReferences: { maxDepth: 10 })
               image {

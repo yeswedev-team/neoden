@@ -42,6 +42,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   img {
+    border-radius: var(--radius);
     max-width: 100%;
   }
 

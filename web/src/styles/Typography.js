@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { remCalc, calcClamp } from './Mixins';
 
 const Typography = createGlobalStyle`
 

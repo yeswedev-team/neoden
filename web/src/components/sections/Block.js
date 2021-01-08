@@ -3,6 +3,7 @@ import React from 'react';
 import { MapToComponents } from 'react-map-to-components';
 import BlockOffers from './BlockOffers';
 import BlockCta from './BlockCta';
+import BlockQuestions from './BlockQuestions';
 
 export default function Block({ block, title }) {
   return (
@@ -14,6 +15,7 @@ export default function Block({ block, title }) {
         map={{
           SanityOffers: BlockOffers,
           SanityCta: (props) => <BlockCta title={title} {...props} />,
+          SanityBlockQuestions: BlockQuestions,
         }}
         mapDataToProps={{
           SanityOffers: ({ data }) => ({
@@ -24,6 +26,10 @@ export default function Block({ block, title }) {
           SanityCta: ({ data }) => ({
             buttonTitle: data.title,
             link: data.ctaPageLink,
+          }),
+          SanityBlockQuestions: ({ data }) => ({
+            title: data.title,
+            questionsList: data.questionsList,
           }),
         }}
       />

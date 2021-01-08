@@ -6,7 +6,7 @@ export default {
   title: 'Site',
   type: 'document',
   icon,
-  // __experimental_actions: [/* 'create', */ 'update', /* 'delete', */ 'publish'],
+  __experimental_actions: [/* 'create', */ 'update', /* 'delete', */ 'publish'],
   fields: [
     {
       name: 'title',

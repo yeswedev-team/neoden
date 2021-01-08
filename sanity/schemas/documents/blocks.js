@@ -16,7 +16,7 @@ export default {
       type: 'array',
       name: 'block',
       title: 'Bloc',
-      of: [{ type: 'offers' }, { type: 'cta' }],
+      of: [{ type: 'offers' }, { type: 'cta' }, { type: 'blockQuestions' }],
       validation: (Rule) => Rule.required(),
     },
   ],

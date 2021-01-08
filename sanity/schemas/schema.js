@@ -11,6 +11,7 @@ import page from './documents/page';
 import route from './documents/route';
 import offre from './documents/offre';
 import service from './documents/service';
+import faq from './documents/faq';
 import blocks from './documents/blocks';
 
 import * as plugs from './plugs';
@@ -40,6 +41,7 @@ export default createSchema({
       offre,
       service,
       blocks,
+      faq,
       cta,
       logo,
     ])
