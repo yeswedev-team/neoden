@@ -67,6 +67,8 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             text: data.text,
             offerlink: data.offerlink,
             bookinglink: data.bookinglink,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
           }),
           blocks: ({ data }) => ({
             block: data.block,
@@ -144,6 +146,8 @@ export const query = graphql`
             period
             text
             title
+            hasWaveDown
+            hasWaveUp
           }
           ... on SanityBlocks {
             id

@@ -5,14 +5,19 @@ import { MdCardGiftcard } from 'react-icons/md';
 import { IoMdOpen } from 'react-icons/io';
 import { mq } from '../../styles/breakpoints';
 import { pxtoem, pxtopc } from '../../styles/Mixins';
+import Wave from '../Wave';
 
 const PromoStyles = styled.section`
-  margin-top: 1.75rem;
+  padding-bottom: ${(props) =>
+    props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
+  padding-top: ${(props) =>
+    props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
   z-index: 3;
 
   .container {
     display: flex;
+    position: relative;
   }
   .promo__content {
     background-color: var(--beigelight);
@@ -66,8 +71,15 @@ const Promo = ({
   text,
   offerlink,
   bookinglink,
+  hasWaveDown,
+  hasWaveUp,
 }) => (
-  <PromoStyles className="section section__promo">
+  <PromoStyles
+    hasWaveDown={hasWaveDown}
+    hasWaveUp={hasWaveUp}
+    className="section section__promo"
+  >
+    {hasWaveUp && <Wave bgcolor="white" />}
     <div className="container container--md">
       {image && <Img fluid={image?.asset.fluid} alt={title} />}
       <div className="promo__content">
@@ -93,6 +105,7 @@ const Promo = ({
         </div>
       </div>
     </div>
+    {hasWaveDown && <Wave bgcolor="white" reversed />}
   </PromoStyles>
 );
 
