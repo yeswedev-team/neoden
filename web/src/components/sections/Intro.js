@@ -22,9 +22,11 @@ const IntroTextStyles = styled.section`
   img {
     border-radius: var(--radius);
   }
+  .gatsby-image-wrapper {
+    margin-bottom: 3.75rem;
+  }
   .overtitle {
     margin-bottom: 0;
-    margin-top: 3.75rem;
   }
 `;
 

@@ -7,6 +7,7 @@ import TwoColumnsWithOverlayedImages from '../components/sections/TwoColumnsWith
 import TwoColumns from '../components/sections/TwoColumns';
 import Intro from '../components/sections/Intro';
 import Slider from '../components/sections/Slider';
+import Promo from '../components/sections/Promo';
 import Hero from '../components/Hero';
 
 export default function SinglePage({ pageContext, data: { singlePage } }) {
@@ -24,6 +25,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
           ctaColumns: TwoColumnsWithOverlayedImages,
           twoColumns: TwoColumns,
           slider: Slider,
+          promo: Promo,
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
@@ -57,9 +59,20 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
           }),
+          promo: ({ data }) => ({
+            title: data.title,
+            image: data.image,
+            period: data.period,
+            discount: data.discount,
+            text: data.text,
+            offerlink: data.offerlink,
+            bookinglink: data.bookinglink,
+          }),
           blocks: ({ data }) => ({
             block: data.block,
             title: data.title,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
           }),
         }}
       />
@@ -115,11 +128,30 @@ export const query = graphql`
               }
             }
           }
+          ... on SanityPromo {
+            _key
+            _type
+            bookinglink
+            discount
+            image {
+              asset {
+                fluid(maxWidth: 600, maxHeight: 345) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            offerlink
+            period
+            text
+            title
+          }
           ... on SanityBlocks {
             id
             _key
             _type
             title
+            hasWaveDown
+            hasWaveUp
             block {
               ... on SanityOffers {
                 _key
@@ -154,6 +186,7 @@ export const query = graphql`
                 _type
                 title
                 questionsList {
+                  id
                   title
                   _rawReponse(resolveReferences: { maxDepth: 10 })
                 }

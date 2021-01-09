@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
     --brownlighter: #E1E0DC;
     --brownlight: #C2AFA5;
     --brown: #916D5B;
+    --beigelight: #EBDEDD;
     --beige: #CFC6C2;
     --font: 'Raleway', sans-serif;
     --font-titles: 'Crimson Text', serif;

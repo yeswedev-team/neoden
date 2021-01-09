@@ -4,6 +4,7 @@ export { default as twoColumns } from './twoColumns';
 export { default as ctaPlug } from './ctaPlug';
 export { default as offers } from './offers';
 export { default as hero } from './hero';
+export { default as promo } from './promo';
 export { default as sliders } from './slider';
 export { default as slide } from './slide';
 export { default as blockQuestions } from './blockQuestions';

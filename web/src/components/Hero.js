@@ -11,6 +11,8 @@ const handleLocation = (location) => {
       return '0 2.5rem';
     case 'flottaison-isolation-sensorielle':
       return '0 16rem';
+    case 'bienfaits-flottaison':
+      return '0 22rem';
     default:
       return '0';
   }

@@ -39,6 +39,10 @@ const Typography = createGlobalStyle`
     font-weight: normal;
     line-height: 1;
   }
+  .small-title {
+    font-size: 1.5rem;
+    font-weight: normal;
+  }
   .text-content {
     font-size: 1rem;
     font-weight: 500;

@@ -5,7 +5,7 @@ import BlockOffers from './BlockOffers';
 import BlockCta from './BlockCta';
 import BlockQuestions from './BlockQuestions';
 
-export default function Block({ block, title }) {
+export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
   return (
     <>
       <MapToComponents
@@ -13,9 +13,28 @@ export default function Block({ block, title }) {
         getType={(section) => section.__typename}
         list={block}
         map={{
-          SanityOffers: BlockOffers,
-          SanityCta: (props) => <BlockCta title={title} {...props} />,
-          SanityBlockQuestions: BlockQuestions,
+          SanityOffers: (props) => (
+            <BlockOffers
+              hasWaveDown={hasWaveDown}
+              hasWaveUp={hasWaveUp}
+              {...props}
+            />
+          ),
+          SanityCta: (props) => (
+            <BlockCta
+              hasWaveDown={hasWaveDown}
+              hasWaveUp={hasWaveUp}
+              title={title}
+              {...props}
+            />
+          ),
+          SanityBlockQuestions: (props) => (
+            <BlockQuestions
+              hasWaveDown={hasWaveDown}
+              hasWaveUp={hasWaveUp}
+              {...props}
+            />
+          ),
         }}
         mapDataToProps={{
           SanityOffers: ({ data }) => ({

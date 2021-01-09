@@ -123,6 +123,7 @@ export default {
         { type: 'ctaColumns' },
         { type: 'twoColumns' },
         { type: 'slider' },
+        { type: 'promo' },
         { type: 'ctaPlug' },
         { type: 'reference', to: [{ type: 'blocks' }] },
       ],
