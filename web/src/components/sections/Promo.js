@@ -7,6 +7,10 @@ import { mq } from '../../styles/breakpoints';
 import { pxtoem, pxtopc } from '../../styles/Mixins';
 
 const PromoStyles = styled.section`
+  margin-top: 1.75rem;
+  position: relative;
+  z-index: 3;
+
   .container {
     display: flex;
   }

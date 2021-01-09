@@ -16,9 +16,6 @@ const IntroTextStyles = styled.section`
   text-align: center;
   z-index: 3;
 
-  .container {
-    margin-top: ${({ location }) => (location === 'home' ? '0' : '-13.75rem')};
-  }
   img {
     border-radius: var(--radius);
   }
