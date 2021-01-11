@@ -23,7 +23,13 @@ export default {
     },
     {
       name: 'image',
-      title: 'Image pour les onglets',
+      title: 'Image pour les onglets du bloc "Laissez-vous porter"',
+      type: 'image',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'imageTab',
+      title: 'Image pour les onglets du bloc "Offres" de la page Offres',
       type: 'image',
       validation: (Rule) => Rule.required(),
     },

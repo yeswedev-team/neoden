@@ -8,6 +8,7 @@ import TwoColumns from '../components/sections/TwoColumns';
 import Intro from '../components/sections/Intro';
 import Slider from '../components/sections/Slider';
 import Promo from '../components/sections/Promo';
+import Offers from '../components/sections/Offers';
 import Hero from '../components/Hero';
 
 export default function SinglePage({ pageContext, data: { singlePage } }) {
@@ -26,6 +27,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
           twoColumns: TwoColumns,
           slider: Slider,
           promo: Promo,
+          sectionOffers: Offers,
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
@@ -67,6 +69,11 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             text: data.text,
             offerlink: data.offerlink,
             bookinglink: data.bookinglink,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
+          }),
+          sectionOffers: ({ data }) => ({
+            offer: data.offer,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
           }),
@@ -146,6 +153,44 @@ export const query = graphql`
             period
             text
             title
+            hasWaveDown
+            hasWaveUp
+          }
+          ... on SanitySectionOffers {
+            _key
+            _type
+            offer {
+              id
+              title
+              imageTab {
+                asset {
+                  fluid(maxWidth: 600) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+              imageAlt {
+                asset {
+                  fluid(maxWidth: 600) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+              services {
+                id
+                title
+                _rawText(resolveReferences: { maxDepth: 10 })
+                image {
+                  asset {
+                    fluid(maxWidth: 600, maxHeight: 393) {
+                      ...GatsbySanityImageFluid
+                    }
+                  }
+                }
+                offerlink
+                bookinglink
+              }
+            }
             hasWaveDown
             hasWaveUp
           }

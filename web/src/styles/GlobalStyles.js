@@ -14,8 +14,8 @@ const GlobalStyles = createGlobalStyle`
     --font: 'Raleway', sans-serif;
     --font-titles: 'Crimson Text', serif;
     --gap: 2.5rem; /* 40px */
-    --section-bot-padding: 4.375rem;
-    --section-top-padding: 5.3125rem;
+    --section-bot-padding: 2.1875rem;
+    --section-top-padding: 2.625rem;
     --radius: 5px;
 
   }
@@ -173,6 +173,10 @@ const GlobalStyles = createGlobalStyle`
     &--brown {
       background: var(--brown);
       color: var(--white);
+    }
+
+    &--brownlight {
+      background: var(--brownlighter);
     }
 
     &--transparent {

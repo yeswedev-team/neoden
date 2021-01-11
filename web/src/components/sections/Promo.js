@@ -8,8 +8,7 @@ import { pxtoem, pxtopc } from '../../styles/Mixins';
 import Wave from '../Wave';
 
 const PromoStyles = styled.section`
-  padding-bottom: ${(props) =>
-    props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
+  padding-bottom: 0;
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;

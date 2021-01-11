@@ -11,7 +11,6 @@ const CanvasStyles = styled.canvas`
 `;
 
 const WaveUp = (props) => {
-  console.log(props);
   const canvasRef = useRef(null);
 
   const waveup = () => {

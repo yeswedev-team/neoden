@@ -104,5 +104,15 @@ export default {
       type: 'image',
       validation: (Rule) => Rule.required(),
     },
+    {
+      title: 'Lien offre',
+      name: 'offerlink',
+      type: 'url',
+    },
+    {
+      title: 'Lien réservation',
+      name: 'bookinglink',
+      type: 'url',
+    },
   ],
 };

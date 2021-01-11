@@ -20,7 +20,7 @@ const handleLocation = (location) => {
 
 const HeroStyles = styled.section`
   max-height: 95vh;
-  /* overflow: hidden; */
+  overflow: hidden;
 
   + section > .container {
     margin-top: ${({ location }) => (location === 'home' ? '0' : '-13.75rem')};

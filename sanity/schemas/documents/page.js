@@ -124,6 +124,7 @@ export default {
         { type: 'twoColumns' },
         { type: 'slider' },
         { type: 'promo' },
+        { type: 'sectionOffers' },
         { type: 'ctaPlug' },
         { type: 'reference', to: [{ type: 'blocks' }] },
       ],

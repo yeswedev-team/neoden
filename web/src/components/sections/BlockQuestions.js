@@ -26,8 +26,6 @@ export default function BlockQuestions({
   hasWaveDown,
   hasWaveUp,
 }) {
-  console.log(hasWaveDown);
-  console.log(hasWaveUp);
   return (
     <BlockFAQStyles
       hasWaveDown={hasWaveDown}
