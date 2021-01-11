@@ -240,6 +240,19 @@ export const query = graphql`
                   _rawReponse(resolveReferences: { maxDepth: 10 })
                 }
               }
+              ... on SanityMaps {
+                _key
+                _type
+                locations {
+                  gmap {
+                    lat
+                    lng
+                    alt
+                  }
+                  name
+                  _rawAddress(resolveReferences: { maxDepth: 10 })
+                }
+              }
             }
           }
           ... on SanityCtaColumns {
