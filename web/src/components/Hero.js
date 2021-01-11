@@ -13,6 +13,8 @@ const handleLocation = (location) => {
       return '0 16rem';
     case 'bienfaits-flottaison':
       return '0 22rem';
+    case 'nous-contacter':
+      return '0 16rem';
     default:
       return '0';
   }
@@ -24,6 +26,10 @@ const HeroStyles = styled.section`
 
   + section > .container {
     margin-top: ${({ location }) => (location === 'home' ? '0' : '-13.75rem')};
+  }
+
+  + form {
+    margin-top: -7.5rem;
   }
 
   .container {
@@ -38,6 +44,8 @@ const HeroStyles = styled.section`
 
   .hero__intro {
     margin-top: 2em;
+    font-size: ${({ location }) =>
+      location === 'nous-contacter' ? '1.25rem' : '1rem'};
   }
 
   .hero__content {

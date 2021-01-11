@@ -10,6 +10,7 @@ import Slider from '../components/sections/Slider';
 import Promo from '../components/sections/Promo';
 import Offers from '../components/sections/Offers';
 import Hero from '../components/Hero';
+import Form from '../components/Form';
 
 export default function SinglePage({ pageContext, data: { singlePage } }) {
   const { title, content, hero } = singlePage.page;
@@ -85,6 +86,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
           }),
         }}
       />
+      {pageContext.slug === 'nous-contacter' && <Form />}
     </>
   );
 }
