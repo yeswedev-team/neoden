@@ -8,12 +8,15 @@ import { IoMdOpen } from 'react-icons/io';
 import encoche from '../../assets/images/encoche.gif';
 import { pxtopc } from '../../styles/Mixins';
 import PortableText from '../PortableText';
+import Wave from '../Wave';
 
 const SectionOfferStyles = styled.section`
   padding-bottom: ${(props) =>
     props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
+  position: relative;
+  z-index: 3;
 
   .tabs-titles {
     display: flex;
@@ -205,6 +208,7 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
       hasWaveUp={hasWaveUp}
       className="section section__offers"
     >
+      {hasWaveUp && <Wave bgcolor="white" />}
       <div className="container container--md">
         <div className="tabs">
           <ul className="tabs-titles">{listTitles}</ul>
@@ -213,6 +217,7 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
           <ul className="tabs-titles-alt">{listTitlesAlt}</ul>
         </div>
       </div>
+      {hasWaveDown && <Wave bgcolor="white" reversed />}
     </SectionOfferStyles>
   );
 }

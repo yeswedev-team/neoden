@@ -20,6 +20,7 @@ export default {
         { type: 'offers' },
         { type: 'cta' },
         { type: 'blockQuestions' },
+        { type: 'members' },
         { type: 'maps' },
       ],
       validation: (Rule) => Rule.required(),

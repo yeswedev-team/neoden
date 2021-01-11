@@ -4,6 +4,7 @@ import { MapToComponents } from 'react-map-to-components';
 import BlockOffers from './BlockOffers';
 import BlockCta from './BlockCta';
 import BlockQuestions from './BlockQuestions';
+import BlockMembers from './BlockMembers';
 import BlockGmap from './BlockGmap';
 
 export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
@@ -36,6 +37,13 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
               {...props}
             />
           ),
+          SanityMembers: (props) => (
+            <BlockMembers
+              hasWaveDown={hasWaveDown}
+              hasWaveUp={hasWaveUp}
+              {...props}
+            />
+          ),
           SanityMaps: (props) => <BlockGmap {...props} />,
         }}
         mapDataToProps={{
@@ -51,6 +59,13 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
           SanityBlockQuestions: ({ data }) => ({
             title: data.title,
             questionsList: data.questionsList,
+          }),
+          SanityMembers: ({ data }) => ({
+            title: data.title,
+            subtitle: data.subtitle,
+            privilegeList: data.privilegeList,
+            buttonTitle: data.buttonTitle,
+            membersLink: data.membersLink,
           }),
           SanityMaps: ({ data }) => ({
             title: data.title,

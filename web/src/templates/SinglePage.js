@@ -221,6 +221,33 @@ export const query = graphql`
                   }
                 }
               }
+              ... on SanityMembers {
+                _key
+                _type
+                title
+                subtitle
+                membersLink
+                buttonTitle
+                privilegeList {
+                  _key
+                  bgicon {
+                    asset {
+                      fluid(maxWidth: 300) {
+                        ...GatsbySanityImageFluid
+                      }
+                    }
+                  }
+                  icon {
+                    asset {
+                      fluid(maxWidth: 300) {
+                        ...GatsbySanityImageFluid
+                      }
+                    }
+                  }
+                  _rawText(resolveReferences: { maxDepth: 10 })
+                  title
+                }
+              }
               ... on SanityCta {
                 _key
                 title
