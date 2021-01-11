@@ -16,7 +16,12 @@ export default {
       type: 'array',
       name: 'block',
       title: 'Bloc',
-      of: [{ type: 'offers' }, { type: 'cta' }, { type: 'blockQuestions' }],
+      of: [
+        { type: 'offers' },
+        { type: 'cta' },
+        { type: 'blockQuestions' },
+        { type: 'maps' },
+      ],
       validation: (Rule) => Rule.required(),
     },
     {
