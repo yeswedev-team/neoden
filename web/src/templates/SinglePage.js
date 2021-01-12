@@ -272,11 +272,12 @@ export const query = graphql`
               ... on SanityMaps {
                 _key
                 _type
+                title
+                defaultZoom
                 locations {
                   gmap {
                     lat
                     lng
-                    alt
                   }
                   name
                   _rawAddress(resolveReferences: { maxDepth: 10 })

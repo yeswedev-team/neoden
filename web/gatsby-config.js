@@ -6,6 +6,7 @@ export default {
   siteMetadata: {
     title: `Neoden`,
     description: 'espace de flottaison',
+    gmap_api_key: process.env.GOOGLE_MAPS_API_KEY,
   },
   plugins: [
     {

@@ -7,6 +7,16 @@ export default {
   icon,
   fields: [
     {
+      type: 'string',
+      name: 'title',
+      title: 'Titre',
+    },
+    {
+      type: 'number',
+      name: 'defaultZoom',
+      title: 'Zoom par défaut',
+    },
+    {
       type: 'array',
       name: 'locations',
       title: 'Locations',

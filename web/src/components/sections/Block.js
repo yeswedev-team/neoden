@@ -8,6 +8,7 @@ import BlockMembers from './BlockMembers';
 import BlockGmap from './BlockGmap';
 
 export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
+  console.log(block);
   return (
     <>
       <MapToComponents
@@ -44,7 +45,13 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
               {...props}
             />
           ),
-          SanityMaps: (props) => <BlockGmap {...props} />,
+          SanityMaps: (props) => (
+            <BlockGmap
+              hasWaveDown={hasWaveDown}
+              hasWaveUp={hasWaveUp}
+              {...props}
+            />
+          ),
         }}
         mapDataToProps={{
           SanityOffers: ({ data }) => ({
@@ -69,6 +76,8 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
           }),
           SanityMaps: ({ data }) => ({
             title: data.title,
+            defaultZoom: data.defaultZoom,
+            locations: data.locations,
           }),
         }}
       />
