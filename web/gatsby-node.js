@@ -1,4 +1,48 @@
 import path from 'path';
+import { isFuture, format, parseISO } from 'date-fns';
+
+async function createBlogPostPages({ graphql, actions }) {
+  // Get a template for this page
+  const postTemplate = path.resolve('./src/templates/blog-post.js');
+
+  // Query all posts
+  const { data } = await graphql(`
+    query {
+      posts: allSanityPost(
+        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      ) {
+        edges {
+          node {
+            id
+            publishedAt
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (data.errors) throw data.errors;
+  const postEdges = (data.posts || {}).edges || [];
+
+  postEdges
+    .filter((edge) => !isFuture(parseISO(edge.node.publishedAt)))
+    .forEach((edge, index) => {
+      console.log(edge);
+      const { id, slug = {}, publishedAt } = edge.node;
+      const dateSegment = format(parseISO(publishedAt), 'yyyy/MM');
+
+      console.log(`/le-mag/${dateSegment}/${slug.current}/`);
+
+      actions.createPage({
+        path: `/le-mag/${dateSegment}/${slug.current}/`,
+        component: postTemplate,
+        context: { id },
+      });
+    });
+}
 
 async function turnRoutesIntoPages({ graphql, actions }) {
   // Get a template for this page
@@ -22,7 +66,6 @@ async function turnRoutesIntoPages({ graphql, actions }) {
     if (page.slug.current === 'home') {
       uri = '';
     }
-    console.log(page.slug.current);
     actions.createPage({
       path: `/${uri}`,
       component: pageTemplate,
@@ -36,5 +79,5 @@ async function turnRoutesIntoPages({ graphql, actions }) {
 export async function createPages(params) {
   // Create pages dynamically
   // run promises concurrently (at the same time) || wait for all promises to be resolved before finishing this function
-  await Promise.all([turnRoutesIntoPages(params)]);
+  await Promise.all([turnRoutesIntoPages(params), createBlogPostPages(params)]);
 }
