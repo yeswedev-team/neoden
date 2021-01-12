@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import iconMarker from '../../assets/images/marker.svg';
 import { pxtoem } from '../../styles/Mixins';
 import Wave from '../Wave';
+import PortableText from '../PortableText';
 
 const BlockMapStyles = styled.section`
   background: var(--beigelight);
@@ -36,8 +37,26 @@ const BlockMapStyles = styled.section`
     padding-right: ${pxtoem(117)};
 
     &-block {
+      background: transparent;
+      border: none;
+      color: var(--brown);
+      cursor: pointer;
       margin: 1.875rem 0;
       opacity: 0.3;
+      padding: 0;
+      text-align: left;
+
+      &:active,
+      &:focus {
+        ${'' /* outline: var(--beige) auto 1px; */}
+        outline: 0;
+        border: none;
+        opacity: 1;
+      }
+
+      h3 {
+        text-transform: uppercase;
+      }
 
       h3,
       p {
@@ -47,17 +66,17 @@ const BlockMapStyles = styled.section`
       }
 
       &:before {
+        background: var(--brown);
         content: '';
         display: block;
-        width: 18.75rem;
         height: 1px;
-        background: var(--brown);
         position: absolute;
         transform: translate(-20.375rem, 2.1563rem);
+        width: 18.75rem;
       }
     }
 
-    .selected {
+    .active {
       opacity: 1;
     }
   }
@@ -66,6 +85,7 @@ const BlockMapStyles = styled.section`
 const MarkerStyles = styled.div`
   background: url(${iconMarker});
   background-repeat: no-repeat;
+  cursor: pointer;
   height: ${pxtoem(70)};
   transform: translate(0, -100%);
   width: ${pxtoem(70)};
@@ -78,7 +98,8 @@ const BlockGmap = ({
   hasWaveDown,
   hasWaveUp,
 }) => {
-  console.log({ defaultZoom });
+  console.log({ locations });
+
   const gmapKey = useStaticQuery(graphql`
     query {
       site {
@@ -88,6 +109,13 @@ const BlockGmap = ({
       }
     }
   `);
+
+  const [center, setCenter] = useState({
+    lat: locations[0].gmap.lat,
+    lng: locations[0].gmap.lng,
+  });
+
+  const [active, setActive] = useState(0);
 
   function createMapOptions(maps) {
     return {
@@ -273,6 +301,11 @@ const BlockGmap = ({
     };
   }
 
+  function handleClick(loc, key) {
+    setCenter(loc);
+    setActive(key);
+  }
+
   return (
     <BlockMapStyles
       hasWaveDown={hasWaveDown}
@@ -286,19 +319,21 @@ const BlockGmap = ({
           <div className="maps">
             <GoogleMapReact
               bootstrapURLKeys={{ key: gmapKey.site.siteMetadata.gmap_api_key }}
-              defaultCenter={{
-                lat: locations[0].gmap.lat,
-                lng: locations[0].gmap.lng,
+              center={{
+                lat: center.lat,
+                lng: center.lng,
               }}
               defaultZoom={defaultZoom}
               options={createMapOptions}
             >
-              {locations.map((marker, index) => (
+              {locations.map((marker) => (
                 <MarkerStyles
                   icon={iconMarker}
-                  key={`marker-${index}`}
+                  key={marker._key}
                   lat={marker.gmap.lat}
                   lng={marker.gmap.lng}
+                  onClick={() => handleClick(marker.gmap, marker._key)}
+                  className={active === marker._key ? 'active' : ''}
                 />
               ))}
               {hasWaveDown && <Wave bgcolor="white" reversed />}
@@ -306,27 +341,21 @@ const BlockGmap = ({
           </div>
 
           <div className="address">
-            <div className="address-block selected">
-              <h3>NEODEN NANTES</h3>
-              <p>
-                187 rue Copernic <br />
-                44 000 Nantes
-              </p>
-            </div>
-            <div className="address-block">
-              <h3>NEODEN NANTES</h3>
-              <p>
-                187 rue Copernic <br />
-                44 000 Nantes
-              </p>
-            </div>
-            <div className="address-block">
-              <h3>NEODEN PARIS</h3>
-              <p>
-                187 rue Copernic <br />
-                44 000 Nantes
-              </p>
-            </div>
+            {locations.map((location) => (
+              <button
+                type="button"
+                key={location._key}
+                onClick={() => handleClick(location.gmap, location._key)}
+                className={`address-block ${
+                  active === location._key ? 'active' : ''
+                }`}
+              >
+                <h3>{location.name}</h3>
+                {location._rawAddress && (
+                  <PortableText blocks={location._rawAddress} />
+                )}
+              </button>
+            ))}
           </div>
         </div>
       </div>

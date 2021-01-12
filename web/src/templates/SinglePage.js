@@ -275,6 +275,7 @@ export const query = graphql`
                 title
                 defaultZoom
                 locations {
+                  _key
                   gmap {
                     lat
                     lng
