@@ -13,6 +13,8 @@ import offre from './documents/offre';
 import service from './documents/service';
 import faq from './documents/faq';
 import blocks from './documents/blocks';
+import author from './documents/author';
+import post from './documents/post';
 
 import * as plugs from './plugs';
 import plugDefaultFields from './plugs/_plugDefaultFields';
@@ -20,6 +22,8 @@ import plugDefaultFields from './plugs/_plugDefaultFields';
 // Object types
 import cta from './objects/cta';
 import logo from './objects/logo';
+import mainImage from './objects/mainImage';
+import authorReference from './objects/authorReference';
 
 const allPlugs = Object.values(plugs).map((plug) => ({
   ...plug,
@@ -44,6 +48,10 @@ export default createSchema({
       faq,
       cta,
       logo,
+      post,
+      author,
+      mainImage,
+      authorReference,
     ])
     .concat(allPlugs),
 });
