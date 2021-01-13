@@ -191,6 +191,13 @@ export const query = graphql`
                 }
                 offerlink
                 bookinglink
+                places {
+                  _key
+                  id
+                  _rawText
+                  title
+                  bookingLink
+                }
               }
             }
             hasWaveDown
