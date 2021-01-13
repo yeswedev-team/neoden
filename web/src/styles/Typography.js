@@ -24,6 +24,12 @@ const Typography = createGlobalStyle`
     line-height: calc(50 / 55);
     text-align: center;
   }
+  .blogpost-title {
+    font-size: 4.0625rem;
+    font-weight: normal;
+    line-height: calc(60 / 65);
+    text-align: center;
+  }
   .overtitle {
     font-family: var(--font);
     font-size: 1.25rem;

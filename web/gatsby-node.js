@@ -30,7 +30,6 @@ async function createBlogPostPages({ graphql, actions }) {
   postEdges
     .filter((edge) => !isFuture(parseISO(edge.node.publishedAt)))
     .forEach((edge, index) => {
-      console.log(edge);
       const { id, slug = {}, publishedAt } = edge.node;
       const dateSegment = format(parseISO(publishedAt), 'yyyy/MM');
 
@@ -50,7 +49,7 @@ async function turnRoutesIntoPages({ graphql, actions }) {
   // Query all pages
   const { data } = await graphql(`
     query {
-      routes: allSanityRoute {
+      routes: allSanityRoute(filter: { slug: { current: { ne: "le-mag" } } }) {
         nodes {
           slug {
             current
@@ -63,6 +62,7 @@ async function turnRoutesIntoPages({ graphql, actions }) {
   // Loop over each page and create a page for that page
   data.routes.nodes.forEach((page) => {
     let uri = page.slug.current;
+    console.log(uri);
     if (page.slug.current === 'home') {
       uri = '';
     }

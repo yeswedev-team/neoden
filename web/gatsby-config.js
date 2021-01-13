@@ -2,6 +2,10 @@ import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
 
+const clientConfig = require('./client-config');
+
+console.log(clientConfig);
+
 export default {
   siteMetadata: {
     title: `Neoden`,
@@ -34,7 +38,7 @@ export default {
       options: {
         fonts: [
           `crimson text\: 400, 400i, 600, 700`,
-          `raleway\:300,400,400i, 500, 600, 700`, // you can also specify font weights and styles
+          `raleway\:300,400,400i, 500, 600, 700, 900`, // you can also specify font weights and styles
         ],
         display: 'swap',
       },
@@ -76,6 +80,7 @@ export default {
       // this is the name of the plugin you are adding
       resolve: 'gatsby-source-sanity',
       options: {
+        ...clientConfig.sanity,
         projectId: '1fcdf5t0',
         dataset: 'production',
         watchMode: true,

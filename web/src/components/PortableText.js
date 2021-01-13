@@ -18,7 +18,7 @@ const serializers = {
       }
 
       const customBlocks = {
-        blockquote: <blockquote>– {props.children}</blockquote>,
+        blockquote: <blockquote>{props.children}</blockquote>,
       };
 
       return (

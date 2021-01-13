@@ -212,6 +212,9 @@ export default {
             ],
           },
         },
+        {
+          type: 'image',
+        },
       ],
       validation: (Rule) => Rule.required(),
     },

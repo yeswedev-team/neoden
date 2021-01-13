@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import BlogPost from '../components/blog/BlogPost';
 
-export default function BlogPost({ data }) {
+export default function BlogPostTemplate({ data }) {
   const { post } = data;
-  console.log(post);
-  return <h1>This is a blog post</h1>;
+
+  return <>{post && <BlogPost {...post} />}</>;
 }
 
 export const query = graphql`

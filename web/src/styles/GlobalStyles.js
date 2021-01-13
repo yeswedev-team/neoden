@@ -33,6 +33,7 @@ const GlobalStyles = createGlobalStyle`
       font-family: var(--font);
       font-size: 16px;
       line-height: calc(85 / 60);
+      -webkit-font-smoothing: antialiased;
   }
 
   ul,
