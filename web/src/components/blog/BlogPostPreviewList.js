@@ -5,19 +5,34 @@ import { Link } from 'gatsby';
 import { getBlogUrl } from '../../utils/helpers';
 import BlogPostPreview from './BlogPostPreview';
 import PortableText from '../PortableText';
+import Wave from '../Wave';
+
+const WaveContainerStyles = styled.div`
+  background-color: rgba(145, 109, 91, 0.59);
+  padding-top: 20.625rem;
+
+  canvas {
+    display: block;
+    transform: none;
+  }
+`;
 
 const FirstNodeStyles = styled.div`
-  background-color: rgba(145, 109, 91, 0.59);
-  padding-top: 10.3125rem;
+  margin-top: -10.3125rem;
+  position: relative;
 
   .container {
     position: relative;
+    z-index: 3;
   }
   .firstPost__header {
     bottom: 0;
     color: var(--white);
     padding: 0 4.75rem 2.8125rem;
     position: absolute;
+  }
+  .firstNode__excerpt {
+    max-width: 38.4375rem;
   }
   .section-title {
   }
@@ -31,13 +46,12 @@ export default function BlogPostPreviewList({ nodes }) {
   const firstNode = nodes[0];
   const otherNodes = nodes.slice(1);
   console.log(otherNodes);
-  // everything before the item we want to remove
-  // ...order.slice(0, index),
-  // everything after the item we want to remove
-  // ...order.slice(index + 1),
 
   return (
     <>
+      <WaveContainerStyles className="wave-container">
+        <Wave bgcolor="white" />
+      </WaveContainerStyles>
       {firstNode && (
         <FirstNodeStyles className="firstPost">
           <div className="container container--xl">
@@ -63,14 +77,17 @@ export default function BlogPostPreviewList({ nodes }) {
           </div>
         </FirstNodeStyles>
       )}
-      <ul className="blog-posts-list">
-        {otherNodes &&
-          otherNodes.map((node) => (
-            <li key={node.id}>
-              <BlogPostPreview {...node} isInList />
-            </li>
-          ))}
-      </ul>
+      <div className="container container--lg">
+        <ul className="blog-posts-list">
+          {otherNodes &&
+            otherNodes.map((node) => (
+              <li key={node.id}>
+                <BlogPostPreview {...node} isInList />
+              </li>
+            ))}
+        </ul>
+      </div>
+      <Wave bgcolor="white" reversed />
     </>
   );
 }
