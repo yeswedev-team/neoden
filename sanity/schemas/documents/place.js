@@ -1,17 +1,17 @@
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt as icon, FaExternalLinkAlt } from 'react-icons/fa';
+
 import { FiLink } from 'react-icons/fi';
-import { ImGift as icon } from 'react-icons/im';
 
 export default {
   type: 'document',
-  name: 'service',
-  title: 'Service',
+  name: 'place',
+  title: 'Espace Neoden',
   icon,
   fields: [
     {
       type: 'string',
       name: 'title',
-      title: 'Titre du service',
+      title: "Nom de l'espace Neoden",
       validation: (Rule) => Rule.required(),
     },
     {
@@ -99,31 +99,10 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+      type: 'url',
+      name: 'bookingLink',
+      title: 'URL',
       validation: (Rule) => Rule.required(),
-    },
-    {
-      type: 'array',
-      name: 'places',
-      title: "Centre(s) où l'offre est disponible",
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'place' }],
-        },
-      ],
-    },
-    {
-      title: 'Lien offre',
-      name: 'offerlink',
-      type: 'url',
-    },
-    {
-      title: 'Lien réservation',
-      name: 'bookinglink',
-      type: 'url',
     },
   ],
 };

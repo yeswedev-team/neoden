@@ -11,6 +11,7 @@ import page from './documents/page';
 import route from './documents/route';
 import offre from './documents/offre';
 import service from './documents/service';
+import place from './documents/place';
 import faq from './documents/faq';
 import blocks from './documents/blocks';
 import author from './documents/author';
@@ -44,6 +45,7 @@ export default createSchema({
       route,
       offre,
       service,
+      place,
       blocks,
       faq,
       cta,
