@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import iconMarker from '../../assets/images/marker.svg';
+import iconMarkerBrown from '../../assets/images/markerBrown.svg';
 import { pxtoem } from '../../styles/Mixins';
 import Wave from '../Wave';
 import PortableText from '../PortableText';
@@ -48,7 +49,6 @@ const BlockMapStyles = styled.section`
 
       &:active,
       &:focus {
-        ${'' /* outline: var(--beige) auto 1px; */}
         outline: 0;
         border: none;
         opacity: 1;
@@ -83,12 +83,19 @@ const BlockMapStyles = styled.section`
 `;
 
 const MarkerStyles = styled.div`
-  background: url(${iconMarker});
   background-repeat: no-repeat;
   cursor: pointer;
   height: ${pxtoem(70)};
   transform: translate(0, -100%);
   width: ${pxtoem(70)};
+
+  &.active {
+    background: url(${iconMarkerBrown});
+  }
+
+  &.inactive {
+    background: url(${iconMarker});
+  }
 `;
 
 const BlockGmap = ({
@@ -115,7 +122,7 @@ const BlockGmap = ({
     lng: locations[0].gmap.lng,
   });
 
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(`${locations[0]._key}`);
 
   function createMapOptions(maps) {
     return {
@@ -328,12 +335,11 @@ const BlockGmap = ({
             >
               {locations.map((marker) => (
                 <MarkerStyles
-                  icon={iconMarker}
                   key={marker._key}
                   lat={marker.gmap.lat}
                   lng={marker.gmap.lng}
                   onClick={() => handleClick(marker.gmap, marker._key)}
-                  className={active === marker._key ? 'active' : ''}
+                  className={active === marker._key ? 'active' : 'inactive'}
                 />
               ))}
               {hasWaveDown && <Wave bgcolor="white" reversed />}
