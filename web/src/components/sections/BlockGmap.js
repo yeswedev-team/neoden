@@ -321,7 +321,7 @@ const BlockGmap = ({
       hasWaveUp={hasWaveUp}
       className="section section__map"
     >
-    {hasWaveUp && <Wave bgcolor="#EBDEDD" />}
+      {hasWaveUp && <Wave bgcolor="#EBDEDD" />}
       <div className="container container--lg">
         <h2 className="section-title">{title}</h2>
         <div className="block-maps">
