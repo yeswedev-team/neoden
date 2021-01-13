@@ -41,6 +41,22 @@ const FirstNodeStyles = styled.div`
   }
 `;
 
+const BlogPostsListStyles = styled.div`
+  margin-top: 2.75rem;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+
+    li {
+      flex-shrink: 0;
+      flex-grow: 1;
+      width: calc((100% - 80px) / 3);
+    }
+  }
+`;
+
 export default function BlogPostPreviewList({ nodes }) {
   console.log(nodes);
   const firstNode = nodes[0];
@@ -77,8 +93,8 @@ export default function BlogPostPreviewList({ nodes }) {
           </div>
         </FirstNodeStyles>
       )}
-      <div className="container container--lg">
-        <ul className="blog-posts-list">
+      <BlogPostsListStyles className="blog-posts-list container container--lg">
+        <ul>
           {otherNodes &&
             otherNodes.map((node) => (
               <li key={node.id}>
@@ -86,7 +102,7 @@ export default function BlogPostPreviewList({ nodes }) {
               </li>
             ))}
         </ul>
-      </div>
+      </BlogPostsListStyles>
       <Wave bgcolor="white" reversed />
     </>
   );
