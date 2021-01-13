@@ -14,6 +14,8 @@ const BlockMapStyles = styled.section`
     props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
+  position: relative;
+  z-index: 2;
 
   .section-title {
     margin-bottom: 1.75rem;
@@ -319,7 +321,6 @@ const BlockGmap = ({
       hasWaveUp={hasWaveUp}
       className="section section__map"
     >
-      {hasWaveUp && <Wave bgcolor="white" />}
       <div className="container container--lg">
         <h2 className="section-title">{title}</h2>
         <div className="block-maps">
@@ -342,7 +343,6 @@ const BlockGmap = ({
                   className={active === marker._key ? 'active' : 'inactive'}
                 />
               ))}
-              {hasWaveDown && <Wave bgcolor="white" reversed />}
             </GoogleMapReact>
           </div>
 
@@ -365,6 +365,7 @@ const BlockGmap = ({
           </div>
         </div>
       </div>
+      {hasWaveDown && <Wave bgcolor="#EBDEDD" reversed />}
     </BlockMapStyles>
   );
 };
