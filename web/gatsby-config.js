@@ -4,8 +4,6 @@ dotenv.config({ path: '.env' });
 
 const clientConfig = require('./client-config');
 
-console.log(clientConfig);
-
 export default {
   siteMetadata: {
     title: `Neoden`,
