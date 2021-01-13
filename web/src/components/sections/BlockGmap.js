@@ -15,7 +15,7 @@ const BlockMapStyles = styled.section`
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
-  z-index: 2;
+  z-index: 3;
 
   .section-title {
     margin-bottom: 1.75rem;
@@ -321,6 +321,7 @@ const BlockGmap = ({
       hasWaveUp={hasWaveUp}
       className="section section__map"
     >
+    {hasWaveUp && <Wave bgcolor="#EBDEDD" />}
       <div className="container container--lg">
         <h2 className="section-title">{title}</h2>
         <div className="block-maps">
