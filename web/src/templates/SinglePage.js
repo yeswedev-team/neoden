@@ -46,6 +46,8 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             frontImage: data.frontImage,
             intro: data._rawIntro,
             ctas: data.ctas,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
           }),
           twoColumns: ({ data }) => ({
             image: data.image,
@@ -53,6 +55,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             text: data._rawText,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
+            hasDoubleBotMargin: data.hasDoubleBotMargin,
           }),
           slider: ({ data }) => ({
             title: data.title,
@@ -83,6 +86,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             title: data.title,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
+            hasDoubleBotMargin: data.hasDoubleBotMargin,
           }),
         }}
       />
@@ -210,6 +214,7 @@ export const query = graphql`
             title
             hasWaveDown
             hasWaveUp
+            hasDoubleBotMargin
             block {
               ... on SanityOffers {
                 _key
@@ -321,6 +326,8 @@ export const query = graphql`
                 }
               }
             }
+            hasWaveDown
+            hasWaveUp
           }
           ... on SanityTwoColumns {
             _key
@@ -336,6 +343,7 @@ export const query = graphql`
             rightImage
             hasWaveDown
             hasWaveUp
+            hasDoubleBotMargin
           }
           ... on SanitySlider {
             _key

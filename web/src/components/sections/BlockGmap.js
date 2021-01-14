@@ -106,6 +106,7 @@ const BlockGmap = ({
   locations,
   hasWaveDown,
   hasWaveUp,
+  hasDoubleBotMargin,
 }) => {
   console.log({ locations });
 
@@ -319,7 +320,10 @@ const BlockGmap = ({
     <BlockMapStyles
       hasWaveDown={hasWaveDown}
       hasWaveUp={hasWaveUp}
-      className="section section__map"
+      hasDoubleBotMargin={hasDoubleBotMargin}
+      className={`section section__map${hasWaveDown ? ' has-wave-down' : ''}${
+        hasWaveUp ? ' has-wave-up' : ''
+      }`}
     >
       {hasWaveUp && <Wave bgcolor="#EBDEDD" />}
       <div className="container container--lg">

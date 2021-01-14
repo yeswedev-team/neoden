@@ -35,5 +35,10 @@ export default {
       name: 'hasWaveDown',
       title: 'Ajouter une vague animée en bas du bloc ?',
     },
+    {
+      type: 'boolean',
+      name: 'hasDoubleBotMargin',
+      title: 'Doubler la marge interne basse ?',
+    },
   ],
 };

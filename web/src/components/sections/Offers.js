@@ -206,7 +206,9 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
     <SectionOfferStyles
       hasWaveDown={hasWaveDown}
       hasWaveUp={hasWaveUp}
-      className="section section__offers"
+      className={`section section__offers${
+        hasWaveDown ? ' has-wave-down' : ''
+      }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
       {hasWaveUp && <Wave bgcolor="white" />}
       <div className="container container--md">

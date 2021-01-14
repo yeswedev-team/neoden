@@ -9,7 +9,10 @@ const BlockOffersStyles = styled.section`
   background: #a5968f url(${tressageBg}) 0 0 repeat;
   background-blend-mode: multiply;
   color: var(--white);
-  padding-bottom: var(--section-bot-padding);
+  padding-bottom: ${(props) =>
+    props.hasDoubleBotMargin
+      ? 'calc(var(--section-bot-padding) * 2)'
+      : 'var(--section-bot-padding)'};
   padding-top: var(--section-top-padding);
   text-align: center;
 
@@ -57,9 +60,17 @@ const BlockOffersStyles = styled.section`
   }
 `;
 
-export default function Offers({ title, overtitle, offerLink }) {
+export default function Offers({
+  title,
+  overtitle,
+  offerLink,
+  hasDoubleBotMargin,
+}) {
   return (
-    <BlockOffersStyles className="section section__block-offers">
+    <BlockOffersStyles
+      hasDoubleBotMargin={hasDoubleBotMargin}
+      className="section section__block-offers"
+    >
       <div className="container container--md">
         {overtitle && <p className="overtitle">{overtitle}</p>}
         {title && <h2 className="section-title">{title}</h2>}

@@ -7,8 +7,13 @@ import BlockQuestions from './BlockQuestions';
 import BlockMembers from './BlockMembers';
 import BlockGmap from './BlockGmap';
 
-export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
-  console.log(block);
+export default function Block({
+  block,
+  title,
+  hasWaveDown,
+  hasWaveUp,
+  hasDoubleBotMargin,
+}) {
   return (
     <>
       <MapToComponents
@@ -20,6 +25,7 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
             <BlockOffers
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
+              hasDoubleBotMargin={hasDoubleBotMargin}
               {...props}
             />
           ),
@@ -27,6 +33,7 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
             <BlockCta
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
+              hasDoubleBotMargin={hasDoubleBotMargin}
               title={title}
               {...props}
             />
@@ -35,6 +42,7 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
             <BlockQuestions
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
+              hasDoubleBotMargin={hasDoubleBotMargin}
               {...props}
             />
           ),
@@ -42,6 +50,7 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
             <BlockMembers
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
+              hasDoubleBotMargin={hasDoubleBotMargin}
               {...props}
             />
           ),
@@ -49,6 +58,7 @@ export default function Block({ block, title, hasWaveDown, hasWaveUp }) {
             <BlockGmap
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
+              hasDoubleBotMargin={hasDoubleBotMargin}
               {...props}
             />
           ),

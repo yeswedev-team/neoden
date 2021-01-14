@@ -20,7 +20,13 @@ export default function Slider({
   hasWaveDown,
 }) {
   return (
-    <SliderStyles hasWaveDown={hasWaveDown} hasWaveUp={hasWaveUp}>
+    <SliderStyles
+      hasWaveDown={hasWaveDown}
+      hasWaveUp={hasWaveUp}
+      className={`${hasWaveDown ? 'section has-wave-down' : ''}${
+        hasWaveUp ? ' section has-wave-up' : ''
+      }`}
+    >
       {hasWaveUp && <Wave bgcolor="#F2F2F2" />}
       <div className="container container--sm slider__intro">
         {overtitle && <p className="overtitle">{overtitle}</p>}

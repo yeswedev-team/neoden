@@ -4,9 +4,22 @@ import styled from 'styled-components';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 
+const handleLocation = (props) => {
+  console.log(props);
+  if (
+    (props.hasWaveDown && props.hasDoubleBotMargin) ||
+    (!props.hasWaveDown && props.hasDoubleBotMargin)
+  ) {
+    return 'calc(var(--section-bot-padding) * 2)';
+  }
+  if (props.hasWaveDown && !props.hasDoubleBotMargin) {
+    return '0';
+  }
+  return 'calc(var(--section-bot-padding) / 2)';
+};
+
 const TwoColumnsStyles = styled.section`
-  padding-bottom: ${(props) =>
-    props.hasWaveDown ? '0' : 'calc(var(--section-bot-padding) / 2)'};
+  padding-bottom: ${(props) => handleLocation(props)};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'calc(var(--section-top-padding) / 2)'};
   position: relative;
@@ -42,14 +55,18 @@ export default function TwoColumns({
   text,
   hasWaveUp,
   hasWaveDown,
+  hasDoubleBotMargin,
   rightImage,
 }) {
   return (
     <TwoColumnsStyles
       hasWaveDown={hasWaveDown}
       hasWaveUp={hasWaveUp}
+      hasDoubleBotMargin={hasDoubleBotMargin}
       className={`section section__columns section__columns--two--withimg${
         rightImage === true ? ' img-at-right' : ''
+      }${hasWaveDown ? ' has-wave-down' : ''}${
+        hasWaveUp ? ' has-wave-up' : ''
       }`}
     >
       {hasWaveUp && <Wave bgcolor="white" />}

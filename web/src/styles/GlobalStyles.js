@@ -79,10 +79,21 @@ const GlobalStyles = createGlobalStyle`
   .section {
     position: relative;
 
+    &.has-wave-up {
+      padding-top: 0;
+    }
+    &.has-wave-bt,
+    &.has-wave-down {
+      + .section {
+        padding-top: calc(var(--section-top-padding) * 2);
+      }
+    }
+
     &__intro {
       background: var(--white);
 
-      &.has-wave-bt {
+      &.has-wave-bt,
+      &.has-wave-down {
         z-index: 3;
       }
     }
@@ -143,18 +154,6 @@ const GlobalStyles = createGlobalStyle`
           }
         }        
       }
-    }
-
-    &.has-wave-bt {
-      /* overflow-x: hidden; */
-      padding-bottom: 0;
-
-      + .section {
-        padding-top: calc(var(--section-top-padding) * 1.5);
-      }
-    }
-    &.has-wave-up {
-      padding-top: 0;
     }
   }
 

@@ -8,7 +8,10 @@ import { pxtopc } from '../../styles/Mixins';
 
 const TwoColumnsWOIStyles = styled.section`
   padding-bottom: 0;
-  padding-top: var(--section-top-padding);
+  padding-bottom: ${(props) =>
+    props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
+  padding-top: ${(props) =>
+    props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
   z-index: 3;
 
@@ -47,9 +50,17 @@ const TwoColumnsWOIStyles = styled.section`
 `;
 
 export default function TwoColumnsWithOverlayedImages(data) {
+  console.log(data);
   const cta = data.ctas[0];
   return (
-    <TwoColumnsWOIStyles className="section section__columns section__columns--two">
+    <TwoColumnsWOIStyles
+      hasWaveDown={data.hasWaveDown}
+      hasWaveUp={data.hasWaveUp}
+      className={`section section__columns section__columns--two${
+        data.hasWaveDown ? ' has-wave-down' : ''
+      }${data.hasWaveUp ? ' has-wave-up' : ''}`}
+    >
+      {data.hasWaveUp && <Wave bgcolor="white" />}
       <div className="container container--lg">
         <div className="col">
           <Img
@@ -75,7 +86,7 @@ export default function TwoColumnsWithOverlayedImages(data) {
           </Link>
         </div>
       </div>
-      <Wave bgcolor="white" reversed />
+      {data.hasWaveDown && <Wave bgcolor="white" reversed />}
     </TwoColumnsWOIStyles>
   );
 }

@@ -4,12 +4,25 @@ import PortableText from '../PortableText';
 import Wave from '../Wave';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
 
+const handleLocation = (props) => {
+  console.log(props);
+  if (
+    (props.hasWaveDown && props.hasDoubleBotMargin) ||
+    (!props.hasWaveDown && props.hasDoubleBotMargin)
+  ) {
+    return 'calc(var(--section-bot-padding) * 2)';
+  }
+  if (props.hasWaveDown && !props.hasDoubleBotMargin) {
+    return '0';
+  }
+  return 'calc(var(--section-bot-padding) / 2)';
+};
+
 const BlockMembersStyles = styled.section`
   background: #a5968f url(${tressageBg}) 0 0 repeat;
   background-blend-mode: multiply;
   color: var(--white);
-  padding-bottom: ${(props) =>
-    props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
+  padding-bottom: ${(props) => handleLocation(props)};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   text-align: center;
@@ -37,9 +50,6 @@ const BlockMembersStyles = styled.section`
 
       &--icon {
         position: absolute;
-      }
-      &:first-child {
-        
       }
     }
 
@@ -78,12 +88,16 @@ export default function BlockMembers({
   membersLink,
   hasWaveDown,
   hasWaveUp,
+  hasDoubleBotMargin,
 }) {
   return (
     <BlockMembersStyles
       hasWaveDown={hasWaveDown}
       hasWaveUp={hasWaveUp}
-      className="section section__members"
+      hasDoubleBotMargin={hasDoubleBotMargin}
+      className={`section section__members${
+        hasWaveDown ? ' has-wave-down' : ''
+      }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
       {hasWaveUp && <Wave bgcolor="white" />}
       <div className="container container--xl">

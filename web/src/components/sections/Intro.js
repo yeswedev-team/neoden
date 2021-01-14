@@ -40,7 +40,9 @@ const Intro = ({
     location={context}
     hasWaveDown={hasWaveDown}
     hasWaveUp={hasWaveUp}
-    className="section section__intro"
+    className={`section section__intro${hasWaveDown ? ' has-wave-down' : ''}${
+      hasWaveUp ? ' has-wave-up' : ''
+    }`}
   >
     {hasWaveUp && (
       <Wave bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`} />

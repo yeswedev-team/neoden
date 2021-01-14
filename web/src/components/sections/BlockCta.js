@@ -6,6 +6,8 @@ import Wave from '../Wave';
 const BlockCtaStyles = styled.section`
   /* padding-bottom: calc(var(--section-bot-padding) * 1.2); */
   /* padding-top: var(--section-top-padding); */
+  padding-bottom: ${(props) =>
+    props.hasDoubleBotMargin ? 'calc(var(--section-bot-padding) * 2)' : '0'};
   position: relative;
   z-index: 3;
 
@@ -21,9 +23,9 @@ const BlockCtaStyles = styled.section`
   }
 `;
 
-export default function Cta({ title, buttonTitle, link }) {
+export default function Cta({ title, buttonTitle, link, hasDoubleBotMargin }) {
   return (
-    <BlockCtaStyles className="section">
+    <BlockCtaStyles hasDoubleBotMargin={hasDoubleBotMargin} className="section">
       <Wave bgcolor="white" />
       <div className="container container--xs">
         <h2 className="middle-title">{title}</h2>
