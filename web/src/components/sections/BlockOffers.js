@@ -78,7 +78,7 @@ export default function Offers({
           <div className="offersList">
             {offerLink.map((offer) => (
               <div key={offer.id} className="offer">
-                <Link to={`/offres/${offer.slug.current}`}>
+                <Link to="/offres-bien-etre">
                   <h3 className="offer__title">{offer.title}</h3>
                   <Img fluid={offer.imageAlt.asset.fluid} alt={offer.title} />
                 </Link>

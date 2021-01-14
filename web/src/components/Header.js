@@ -42,24 +42,24 @@ const HeaderStyles = styled.header`
 
 const Header = ({ navItems }) => {
   const headerRef = useRef(null);
-  const colorChange = gsap.timeline({
-    paused: true,
-    scrollTrigger: {
-      trigger: 'body',
-      start: 'top+=50px top',
-      end: 'top+=600px top',
-      scrub: 0.5,
-      toggleActions: 'play none none none',
-    },
-  });
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    const colorChange = gsap.timeline({
+      paused: true,
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top+=50px top',
+        end: 'top+=600px top',
+        scrub: 0.5,
+        toggleActions: 'play none none none',
+      },
+    });
     const svg = headerRef.current.querySelector('svg');
     colorChange.to(svg, { fill: '#A5968F' });
 
     return colorChange.kill();
-  }, [colorChange]);
+  }, []);
 
   return (
     <HeaderStyles>
