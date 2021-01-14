@@ -29,6 +29,7 @@ const SectionOfferStyles = styled.section`
 
   .tab-title,
   .tab-title-alt {
+    background-color: var(--brown);
     background-size: cover;
     border-radius: var(--radius);
     color: var(--white);
@@ -136,7 +137,6 @@ const SectionOfferStyles = styled.section`
 export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   const visibleTabValue =
     window.location.hash.split('#')[1] || offer[0].slug.current;
-  console.log(visibleTabValue);
   const [visibleTab, setVisibleTab] = useState(visibleTabValue);
 
   const listTitles = offer.map((item) => (
@@ -156,7 +156,6 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   ));
 
   const listTitlesAlt = offer.map((item) => {
-    console.log(item);
     if (item.slug.current !== visibleTab) {
       return (
         <li

@@ -14,7 +14,7 @@ const handleLocation = (location) => {
     case 'bienfaits-flottaison':
       return '0 22rem';
     case 'nous-contacter':
-      return '0 16rem';
+      return '0 22.6rem';
     default:
       return '0';
   }

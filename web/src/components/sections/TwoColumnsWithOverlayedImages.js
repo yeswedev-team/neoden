@@ -45,7 +45,7 @@ const TwoColumnsWOIStyles = styled.section`
     }
   }
   .button {
-    margin-top: calc(var(--gap) * 0.75);
+    margin-top: calc(var(--gap) * 0.4);
   }
 `;
 

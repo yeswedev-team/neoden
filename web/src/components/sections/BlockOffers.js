@@ -52,7 +52,8 @@ const BlockOffersStyles = styled.section`
       transform: translate(-50%, -50%);
     }
     img {
-      border-radius: 5px;
+      border-radius: var(--radius);
+      filter: brightness(0.8);
     }
     .button {
       transform: translateY(-50%);

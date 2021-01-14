@@ -24,7 +24,7 @@ const FormStyles = styled.form`
   .inputs-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    grid-column-gap: 1em;
 
     li {
       margin-bottom: 1em;
@@ -36,7 +36,7 @@ const FormStyles = styled.form`
     resize: none;
   }
   p {
-    margin-top: 2em;
+    margin-top: 1.5em;
 
     &.note {
       font-size: 0.8125rem;
