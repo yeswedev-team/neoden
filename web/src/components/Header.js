@@ -8,8 +8,6 @@ import { pxtoem } from '../styles/Mixins';
 import Nav from './Nav';
 import WavesMenu from '../assets/images/wavesMenu.inline.svg';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const HeaderStyles = styled.header`
   background-position: bottom center;
   background-size: cover;
@@ -56,6 +54,7 @@ const Header = ({ navItems }) => {
   });
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const svg = headerRef.current.querySelector('svg');
     colorChange.to(svg, { fill: '#A5968F' });
 
