@@ -10,7 +10,22 @@ const NavStyles = styled.nav`
   .menuItem {
     a {
       color: var(--white);
+      display: block;
       padding: ${remCalc(10)} ${remCalc(15)};
+
+      &[aria-current='page'] {
+        span {
+          position: relative;
+
+          &:after {
+            background-color: var(--white);
+            content: '';
+            display: block;
+            height: 1px;
+            width: 100%;
+          }
+        }
+      }
     }
     &:first-child {
       margin-left: ${remCalc(-15)};
