@@ -13,6 +13,22 @@ const NavStyles = styled.nav`
       display: block;
       padding: ${remCalc(10)} ${remCalc(15)};
 
+      span {
+        &:after {
+          background-color: var(--white);
+          content: '';
+          display: block;
+          height: 1px;
+          transform: scaleX(0);
+          transition: transform 200ms ease-in;
+          transform-origin: left top;
+          width: 100%;
+        }
+      }
+      &:hover span:after {
+        transform: scaleX(1);
+      }
+
       &[aria-current='page'] {
         span {
           position: relative;
@@ -22,6 +38,7 @@ const NavStyles = styled.nav`
             content: '';
             display: block;
             height: 1px;
+            transform: scaleX(1);
             width: 100%;
           }
         }
