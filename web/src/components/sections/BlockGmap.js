@@ -108,8 +108,6 @@ const BlockGmap = ({
   hasWaveUp,
   hasDoubleBotMargin,
 }) => {
-  console.log({ locations });
-
   const gmapKey = useStaticQuery(graphql`
     query {
       site {
