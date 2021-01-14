@@ -58,6 +58,8 @@ const Header = ({ navItems }) => {
   useEffect(() => {
     const svg = headerRef.current.querySelector('svg');
     colorChange.to(svg, { fill: '#A5968F' });
+
+    return colorChange.kill();
   }, [colorChange]);
 
   return (
