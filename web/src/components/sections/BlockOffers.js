@@ -82,10 +82,7 @@ export default function Offers({
                   <h3 className="offer__title">{offer.title}</h3>
                   <Img fluid={offer.imageAlt.asset.fluid} alt={offer.title} />
                 </Link>
-                <Link
-                  to={`/offres/${offer.slug.current}`}
-                  className="button button--brown"
-                >
+                <Link to="/offres-bien-etre" className="button button--brown">
                   En savoir plus
                 </Link>
               </div>
