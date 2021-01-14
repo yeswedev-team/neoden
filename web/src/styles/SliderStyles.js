@@ -11,6 +11,14 @@ const SliderStyles = styled.section`
   position: relative;
   z-index: 3;
 
+  .container--md {
+    display: flex;
+  }
+
+  .swiper-slide {
+    min-height: 100%;
+  }
+
   .slider__intro {
     padding-bottom: 1.875rem;
     text-align: center;
@@ -20,35 +28,41 @@ const SliderStyles = styled.section`
     margin: 0;
   }
 
+  .swiper-container {
+    width: 100%;
+
+    ${mq[2]} {
+      width: 50%;
+    }
+  }
+
   .swiper-slide {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--gap);
-
-    .gatsby-image-wrapper,
-    .slide__text {
-      width: 100%;
-
-      ${mq[2]} {
-        width: calc(50% - (var(--gap) / 2));
-      }
-    }
+    width: 100%;
 
     h3 {
       font-size: 1.5rem;
     }
   }
 
+  .gatsby-image-wrapper {
+    width: 100%;
+    img {
+      border-radius: var(--radius) 0 0 var(--radius);
+    }
+  }
+
   .slide__text {
-    padding-bottom: 2.25rem;
+    background-color: var(--white);
+    padding: 3.125rem 2.25rem 3.25rem 2.5rem;
   }
   .swiper-container-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
     ${mq[2]} {
-      bottom: 0;
-      left: 50%;
-      width: calc(50% - (var(--gap) / 2));
+      bottom: 1rem;
+      left: 0;
+      width: 100%;
     }
   }
   .swiper-pagination-bullet,
@@ -64,8 +78,9 @@ const SliderStyles = styled.section`
   }
   .swiper-button-next,
   .swiper-button-prev {
-    bottom: 0;
+    bottom: 1rem;
     height: 1.25rem;
+    margin: 0;
     top: auto;
     width: 2.625rem;
     z-index: 11;
@@ -73,12 +88,12 @@ const SliderStyles = styled.section`
   .swiper-button-prev,
   .swiper-container-rtl .swiper-button-next {
     ${mq[2]} {
-      left: calc(50% + (var(--gap) / 2) + 1.25rem);
+      left: 2.5rem;
     }
   }
   .swiper-button-next,
   .swiper-container-rtl .swiper-button-prev {
-    right: 1.25rem;
+    right: 2.5rem;
   }
 
   .swiper-button-prev:after,

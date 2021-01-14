@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Img from 'gatsby-image';
-import SwiperCore, { Navigation, Pagination } from 'swiper';
+import SwiperCore, {
+  Controller,
+  Navigation,
+  Pagination,
+  EffectFade,
+} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import 'swiper/components/pagination/pagination.min.css';
+import 'swiper/components/effect-fade/effect-fade.min.css';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 import SliderStyles from '../../styles/SliderStyles';
 
-SwiperCore.use([Navigation, Pagination]);
+SwiperCore.use([Controller, Navigation, Pagination, EffectFade]);
 
 export default function Slider({
   title,
@@ -19,6 +25,9 @@ export default function Slider({
   hasWaveUp,
   hasWaveDown,
 }) {
+  const [firstSwiper, setFirstSwiper] = useState(null);
+  const [secondSwiper, setSecondSwiper] = useState(null);
+
   return (
     <SliderStyles
       hasWaveDown={hasWaveDown}
@@ -37,16 +46,29 @@ export default function Slider({
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
-          autoHeight
           grabCursor
-          navigation
-          pagination={{ clickable: true }}
           onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
+          onSwiper={setFirstSwiper}
+          controller={{ control: secondSwiper }}
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide._key} className="slide">
               {slide.image && <Img fluid={slide.image.asset.fluid} alt="" />}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <Swiper
+          spaceBetween={0}
+          slidesPerView={1}
+          effect="fade"
+          grabCursor
+          navigation
+          pagination={{ clickable: true }}
+          onSwiper={setSecondSwiper}
+          controller={{ control: firstSwiper }}
+        >
+          {slides.map((slide) => (
+            <SwiperSlide key={`fade-${slide._key}`} className="slide">
               <div className="slide__text">
                 {slide.title && <h3>{slide.title}</h3>}
                 {slide._rawIntro && <PortableText blocks={slide._rawIntro} />}
