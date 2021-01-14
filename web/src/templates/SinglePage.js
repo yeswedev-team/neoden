@@ -168,6 +168,9 @@ export const query = graphql`
             offer {
               id
               title
+              slug {
+                current
+              }
               imageTab {
                 asset {
                   fluid(maxWidth: 600) {

@@ -134,14 +134,20 @@ const SectionOfferStyles = styled.section`
 `;
 
 export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
-  const [visibleTab, setVisibleTab] = useState(offer[0].id);
+  const visibleTabValue =
+    window.location.hash.split('#')[1] || offer[0].slug.current;
+  console.log(visibleTabValue);
+  const [visibleTab, setVisibleTab] = useState(visibleTabValue);
 
   const listTitles = offer.map((item) => (
     <li
       key={item.id}
-      onClick={() => setVisibleTab(item.id)}
+      id={item.slug.current}
+      onClick={() => setVisibleTab(item.slug.current)}
       className={
-        visibleTab === item.id ? 'tab-title tab-title--active' : 'tab-title'
+        visibleTab === item.slug.current
+          ? 'tab-title tab-title--active'
+          : 'tab-title'
       }
       style={{ backgroundImage: `url(${item.imageTab.asset.fluid.src})` }}
     >
@@ -151,13 +157,13 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
 
   const listTitlesAlt = offer.map((item) => {
     console.log(item);
-    if (item.id !== visibleTab) {
+    if (item.slug.current !== visibleTab) {
       return (
         <li
           key={item.id}
-          onClick={() => setVisibleTab(item.id)}
+          onClick={() => setVisibleTab(item.slug.current)}
           className={
-            visibleTab === item.id
+            visibleTab === item.slug.current
               ? 'tab-title-alt tab-title-alt--active'
               : 'tab-title-alt'
           }
@@ -172,8 +178,8 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
 
   const listContent = offer.map((item) => (
     <div
-      key={`item-${item.id}`}
-      style={visibleTab === item.id ? {} : { display: 'none' }}
+      key={`item-${item.slug.current}`}
+      style={visibleTab === item.slug.current ? {} : { display: 'none' }}
     >
       {item.services.map((service) => (
         <div key={service.id} className="service">
