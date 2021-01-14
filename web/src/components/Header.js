@@ -48,8 +48,8 @@ const Header = ({ navItems }) => {
     paused: true,
     scrollTrigger: {
       trigger: 'body',
-      start: 'top top',
-      end: 'top+=400px top',
+      start: 'top+=50px top',
+      end: 'top+=600px top',
       scrub: 0.5,
       toggleActions: 'play none none none',
     },
@@ -57,7 +57,6 @@ const Header = ({ navItems }) => {
 
   useEffect(() => {
     const svg = headerRef.current.querySelector('svg');
-    console.log(svg);
     colorChange.to(svg, { fill: '#A5968F' });
   }, [colorChange]);
 
