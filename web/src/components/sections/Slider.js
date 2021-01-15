@@ -47,7 +47,6 @@ export default function Slider({
           spaceBetween={0}
           slidesPerView={1}
           grabCursor
-          onSlideChange={() => console.log('slide change')}
           onSwiper={setFirstSwiper}
           controller={{ control: secondSwiper }}
         >

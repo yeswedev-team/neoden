@@ -51,6 +51,11 @@ const BlockOffersStyles = styled.section`
       top: 50%;
       transform: translate(-50%, -50%);
     }
+    .gatsby-image-wrapper:hover {
+      .offer__title {
+        pointer-events: none;
+      }
+    }
     img {
       border-radius: var(--radius);
       filter: brightness(0.8);
@@ -78,14 +83,10 @@ export default function Offers({
         {offerLink && (
           <div className="offersList">
             {offerLink.map((offer) => (
-              <div key={offer.id} className="offer">
+              <div key={offer.id} className="offer grow">
                 <Link to={`/offres-bien-etre/#${offer.slug.current}`}>
                   <h3 className="offer__title">{offer.title}</h3>
-                  <Img
-                    fluid={offer.image.asset.fluid}
-                    alt={offer.title}
-                    className="grow"
-                  />
+                  <Img fluid={offer.image.asset.fluid} alt={offer.title} />
                 </Link>
                 <Link
                   to={`/offres-bien-etre/#${offer.slug.current}`}
