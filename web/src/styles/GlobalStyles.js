@@ -166,6 +166,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--brown);
     display: inline-flex;
     font-size: ${remCalc(16)};
+    font-weight: 500;
     padding: ${remCalc(8)} ${remCalc(30)};
     text-align: center;
     transition: background 200ms linear;
@@ -189,7 +190,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     &--transparent {
-      background: rgba(242, 242, 242, 0.6);
+      background: rgba(242, 242, 242, 0.8);
     }
   }
 
