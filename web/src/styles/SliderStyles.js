@@ -81,6 +81,7 @@ const SliderStyles = styled.section`
     bottom: 1rem;
     height: 1.25rem;
     margin: 0;
+    position: absolute;
     top: auto;
     width: 2.625rem;
     z-index: 11;
