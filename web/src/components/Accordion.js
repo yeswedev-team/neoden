@@ -6,6 +6,7 @@ import Arrow from '../assets/images/arrow-accordion.svg';
 
 const AccordionStyles = styled.div`
   .accordion-item {
+    border-bottom: 1px solid var(--beige);
     overflow: hidden;
     transition: max-height 0.6s cubic-bezier(1, 0, 1, 0);
     height: auto;
@@ -19,7 +20,6 @@ const AccordionStyles = styled.div`
 
   .accordion-title {
     align-items: center;
-    border-bottom: 1px solid var(--beige);
     cursor: pointer;
     color: var(--brown);
     display: flex;
@@ -37,7 +37,7 @@ const AccordionStyles = styled.div`
 
     &:hover,
     &.open {
-      color: black;
+      color: var(--brownlight);
     }
 
     &.open {
@@ -49,6 +49,10 @@ const AccordionStyles = styled.div`
 
   .accordion-content {
     padding: 1em 0;
+
+    .block > *:first-child {
+      margin-top: 0;
+    }
   }
 `;
 

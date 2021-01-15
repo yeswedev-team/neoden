@@ -5,13 +5,13 @@ import Accordion from '../Accordion';
 import Wave from '../Wave';
 
 const handleLocation = (props) => {
-  if (
-    (props.hasWaveDown && props.hasDoubleBotMargin) ||
-    (!props.hasWaveDown && props.hasDoubleBotMargin)
-  ) {
+  if (!props.hasWaveDown && props.hasDoubleBotMargin) {
     return 'calc(var(--section-bot-padding) * 2)';
   }
-  if (props.hasWaveDown && !props.hasDoubleBotMargin) {
+  if (
+    (props.hasWaveDown && props.hasDoubleBotMargin) ||
+    (props.hasWaveDown && !props.hasDoubleBotMargin)
+  ) {
     return '0';
   }
   return 'var(--section-bot-padding)';
