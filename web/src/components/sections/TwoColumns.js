@@ -59,7 +59,6 @@ export default function TwoColumns({
   hasDoubleBotMargin,
   rightImage,
 }) {
-  console.log(ctas);
   const cta = ctas[0];
   return (
     <TwoColumnsStyles

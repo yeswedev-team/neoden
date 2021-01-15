@@ -71,7 +71,6 @@ export default function BlogPost(props) {
     mainImage,
     publishedAt,
   } = props;
-  console.log(authors);
   return (
     <BlogArticleStyles className="blog-article">
       {mainImage && (

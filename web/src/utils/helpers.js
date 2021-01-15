@@ -18,7 +18,6 @@ export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
 }
 
 export function getBlogUrl(publishedAt, slug) {
-  console.log(format(parseISO(publishedAt), 'yyyy/MM'));
   return `/le-mag/${format(parseISO(publishedAt), 'yyyy/MM')}/${
     slug.current || slug
   }/`;

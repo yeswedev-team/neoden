@@ -46,7 +46,6 @@ const WaveUp = (props) => {
     };
 
     Paper.view.onResize = function () {
-      console.log(wave);
       wave.remove();
       initiateWave();
     };

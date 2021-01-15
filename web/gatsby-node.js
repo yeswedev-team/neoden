@@ -41,8 +41,6 @@ async function createBlogPostPages({ graphql, actions }) {
       const { id, slug = {}, publishedAt } = edge.node;
       const dateSegment = format(parseISO(publishedAt), 'yyyy/MM');
 
-      console.log(`/le-mag/${dateSegment}/${slug.current}/`);
-
       actions.createPage({
         path: `/le-mag/${dateSegment}/${slug.current}/`,
         component: postTemplate,
@@ -70,7 +68,6 @@ async function turnRoutesIntoPages({ graphql, actions }) {
   // Loop over each page and create a page for that page
   data.routes.nodes.forEach((page) => {
     let uri = page.slug.current;
-    console.log(uri);
     if (page.slug.current === 'home') {
       uri = '';
     }

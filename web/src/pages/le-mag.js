@@ -8,7 +8,6 @@ import {
 import BlogPostPreviewList from '../components/blog/BlogPostPreviewList';
 
 export default function BlogIndex({ data }) {
-  // console.log(data);
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
         .filter(filterOutDocsWithoutSlugs)

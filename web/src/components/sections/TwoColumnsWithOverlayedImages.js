@@ -50,7 +50,6 @@ const TwoColumnsWOIStyles = styled.section`
 `;
 
 export default function TwoColumnsWithOverlayedImages(data) {
-  console.log(data);
   const cta = data.ctas[0];
   return (
     <TwoColumnsWOIStyles

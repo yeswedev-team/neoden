@@ -58,10 +58,8 @@ const BlogPostsListStyles = styled.div`
 `;
 
 export default function BlogPostPreviewList({ nodes }) {
-  console.log(nodes);
   const firstNode = nodes[0];
   const otherNodes = nodes.slice(1);
-  console.log(otherNodes);
 
   return (
     <>

@@ -5,7 +5,6 @@ import Wave from '../Wave';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
 
 const handleLocation = (props) => {
-  console.log(props);
   if (
     (props.hasWaveDown && props.hasDoubleBotMargin) ||
     (!props.hasWaveDown && props.hasDoubleBotMargin)
