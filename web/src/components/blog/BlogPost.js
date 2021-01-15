@@ -14,7 +14,7 @@ const BlogArticleStyles = styled.article`
 
   > .container {
     background-color: var(--white);
-    margin-top: -40vh;
+    margin-top: -60vh;
     padding: 3.125rem 7.3125rem 5rem;
     position: relative;
     z-index: 3;

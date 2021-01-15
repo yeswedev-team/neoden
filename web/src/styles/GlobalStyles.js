@@ -87,6 +87,9 @@ const GlobalStyles = createGlobalStyle`
       + .section {
         padding-top: calc(var(--section-top-padding) * 2);
       }
+      + .section.section__members {
+        padding-top: calc(var(--section-top-padding) * 2.5);
+      }
     }
 
     &__intro {

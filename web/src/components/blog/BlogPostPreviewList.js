@@ -22,6 +22,7 @@ const FirstNodeStyles = styled.div`
   position: relative;
 
   .container {
+    border-radius: var(--radius);
     position: relative;
     z-index: 3;
   }

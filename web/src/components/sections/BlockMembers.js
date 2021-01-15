@@ -5,13 +5,13 @@ import Wave from '../Wave';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
 
 const handleLocation = (props) => {
+  if (!props.hasWaveDown && props.hasDoubleBotMargin) {
+    return 'calc(var(--section-bot-padding) * 2.5)';
+  }
   if (
     (props.hasWaveDown && props.hasDoubleBotMargin) ||
-    (!props.hasWaveDown && props.hasDoubleBotMargin)
+    (props.hasWaveDown && !props.hasDoubleBotMargin)
   ) {
-    return 'calc(var(--section-bot-padding) * 2)';
-  }
-  if (props.hasWaveDown && !props.hasDoubleBotMargin) {
     return '0';
   }
   return 'calc(var(--section-bot-padding) / 2)';
