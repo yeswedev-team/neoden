@@ -29,6 +29,7 @@ const NavStyles = styled.nav`
         transform: scaleX(1);
       }
 
+      &.active,
       &[aria-current='page'] {
         span {
           position: relative;
@@ -58,7 +59,11 @@ export default function Nav({ navItems }) {
       <ul className="navList">
         {items.map((item, index) => (
           <li className="menuItem" key={`item-${index}`}>
-            <Link to={`/${item.slug.current}`}>
+            <Link
+              to={`/${item.slug.current}/`}
+              activeClassName="active"
+              partiallyActive
+            >
               {item.page.titleMenu ? (
                 <span className="text">{item.page.titleMenu.fr}</span>
               ) : (
