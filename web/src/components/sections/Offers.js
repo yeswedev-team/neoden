@@ -49,7 +49,31 @@ const SectionOfferStyles = styled.section`
     text-align: center;
   }
   .tab-title-alt {
-    padding: 28px 20px;
+    background: var(--brown);
+    filter: none;
+    height: 5.75rem;
+    padding: 0;
+
+    span {
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .filter {
+      background-size: cover;
+      border-radius: var(--radius);
+      display: block;
+      filter: grayscale(0.4) opacity(0.7);
+      height: 100%;
+      padding: 28px 20px;
+      transition: filter 400ms linear;
+    }
+    &:hover .filter {
+      filter: grayscale(0) opacity(0.1);
+    }
   }
 
   .tab-title--active,
@@ -169,9 +193,12 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
               ? 'tab-title-alt tab-title-alt--active'
               : 'tab-title-alt'
           }
-          style={{ backgroundImage: `url(${item.imageAlt.asset.fluid.src})` }}
         >
-          {item.title}
+          <div
+            className="filter"
+            style={{ backgroundImage: `url(${item.imageAlt.asset.fluid.src})` }}
+          />
+          <span>{item.title}</span>
         </li>
       );
     }
