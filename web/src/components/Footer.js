@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Logo from '../assets/images/logo-neoden.inline.svg';
 import LogoOnly from '../assets/images/logo-neoden-seul.inline.svg';
 import PortableText from './PortableText';
-import { pxtopc } from '../styles/Mixins';
+import { lsEm, pxtopc } from '../styles/Mixins';
 
 const FooterStyles = styled.footer`
   background-color: var(--brownlight);
@@ -18,12 +18,16 @@ const FooterStyles = styled.footer`
 
   .label {
     color: var(--brownlighter);
+    font-weight: 600;
+    letter-spacing: ${lsEm(40)};
     margin-top: 0;
   }
 
   li,
   .label {
     font-size: 0.875rem;
+  }
+  li {
     font-weight: 500;
   }
 
