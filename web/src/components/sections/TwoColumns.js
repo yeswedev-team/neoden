@@ -1,11 +1,11 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 
 const handleLocation = (props) => {
-  console.log(props);
   if (
     (props.hasWaveDown && props.hasDoubleBotMargin) ||
     (!props.hasWaveDown && props.hasDoubleBotMargin)
@@ -15,7 +15,7 @@ const handleLocation = (props) => {
   if (props.hasWaveDown && !props.hasDoubleBotMargin) {
     return '0';
   }
-  return 'calc(var(--section-bot-padding) / 2)';
+  return 'var(--section-bot-padding)';
 };
 
 const TwoColumnsStyles = styled.section`
@@ -53,11 +53,13 @@ const TwoColumnsStyles = styled.section`
 export default function TwoColumns({
   image,
   text,
+  ctas,
   hasWaveUp,
   hasWaveDown,
   hasDoubleBotMargin,
   rightImage,
 }) {
+  const cta = ctas[0];
   return (
     <TwoColumnsStyles
       hasWaveDown={hasWaveDown}
@@ -76,6 +78,12 @@ export default function TwoColumns({
         </div>
         <div className="col col__content">
           <PortableText blocks={text} id="text-content" />
+          <Link
+            className="button button--brown"
+            to={`/${cta.ctaPageLink[0].slug.current}`}
+          >
+            {cta.title}
+          </Link>
         </div>
       </div>
       {hasWaveDown && <Wave bgcolor="white" reversed />}

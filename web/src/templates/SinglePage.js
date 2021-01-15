@@ -53,6 +53,7 @@ export default function SinglePage({ pageContext, data: { singlePage } }) {
             image: data.image,
             rightImage: data.rightImage,
             text: data._rawText,
+            ctas: data.ctas,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
             hasDoubleBotMargin: data.hasDoubleBotMargin,
@@ -340,6 +341,14 @@ export const query = graphql`
               asset {
                 fluid(maxWidth: 600) {
                   ...GatsbySanityImageFluid
+                }
+              }
+            }
+            ctas {
+              title
+              ctaPageLink {
+                slug {
+                  current
                 }
               }
             }

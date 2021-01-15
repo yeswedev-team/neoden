@@ -108,6 +108,18 @@ export default {
       ],
     },
     {
+      name: 'ctas',
+      title: 'Lien CTA',
+      type: 'array',
+      of: [
+        {
+          name: 'cta',
+          type: 'cta',
+        },
+      ],
+      validation: (Rule) => [Rule.max(1).error('Un seul lien possible')],
+    },
+    {
       type: 'boolean',
       name: 'hasWaveUp',
       title: 'Ajouter une vague animée en haut du bloc ?',
