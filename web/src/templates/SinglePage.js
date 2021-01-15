@@ -226,7 +226,7 @@ export const query = graphql`
                 offerLink {
                   id
                   title
-                  imageAlt {
+                  image {
                     asset {
                       fluid(maxWidth: 600, maxHeight: 707) {
                         ...GatsbySanityImageFluid
