@@ -193,6 +193,24 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .grow { 
+    overflow: hidden;
+
+    img {
+      transition: transform .4s ease-in-out !important;
+      transform: scale(1.1);
+      will-change: transform;
+    }
+
+    &:focus,
+    &:hover {
+      img {
+        transform: scale(1); 
+      }
+    }
+  }
+
+
   canvas[resize] {
     width: 100%;
   }

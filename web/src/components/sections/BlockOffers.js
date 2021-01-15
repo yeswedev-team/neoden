@@ -81,7 +81,11 @@ export default function Offers({
               <div key={offer.id} className="offer">
                 <Link to={`/offres-bien-etre/#${offer.slug.current}`}>
                   <h3 className="offer__title">{offer.title}</h3>
-                  <Img fluid={offer.image.asset.fluid} alt={offer.title} />
+                  <Img
+                    fluid={offer.image.asset.fluid}
+                    alt={offer.title}
+                    className="grow"
+                  />
                 </Link>
                 <Link
                   to={`/offres-bien-etre/#${offer.slug.current}`}
