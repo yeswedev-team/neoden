@@ -68,7 +68,7 @@ export default function BlogPostPreviewList({ nodes }) {
       </WaveContainerStyles>
       {firstNode && (
         <FirstNodeStyles className="firstPost">
-          <div className="container container--xl">
+          <div className="container container--xl grow">
             <Link
               to={getBlogUrl(firstNode.publishedAt, firstNode.slug.current)}
             >

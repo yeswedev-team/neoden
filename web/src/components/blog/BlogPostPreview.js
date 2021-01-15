@@ -39,7 +39,7 @@ const BlogCardStyles = styled.div`
 
 export default function BlogPostPreview(node, isInList) {
   return (
-    <BlogCardStyles className="blog-card">
+    <BlogCardStyles className="blog-card grow grow-fast">
       <Link to={getBlogUrl(node.publishedAt, node.slug.current)}>
         {node.mainImage && node.mainImage.asset && (
           <Img fluid={node.mainImage.asset.fluid} alt={node.mainImage.alt} />

@@ -197,7 +197,7 @@ const GlobalStyles = createGlobalStyle`
     overflow: hidden;
 
     img {
-      transition: transform .4s ease-in-out !important;
+      transition: transform .4s linear !important;
       transform: scale(1.1);
       will-change: transform;
     }
@@ -206,6 +206,16 @@ const GlobalStyles = createGlobalStyle`
     &:hover {
       img {
         transform: scale(1); 
+        transition: transform 2s linear !important;
+      }
+    }
+  }
+  .grow-fast {
+    &:focus,
+    &:hover {
+      img {
+        transform: scale(1); 
+        transition: transform .4s linear !important;
       }
     }
   }

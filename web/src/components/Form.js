@@ -56,7 +56,7 @@ const FormStyles = styled.form`
   }
   .form-footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     padding-bottom: 4.5rem;
     padding-top: 2.125rem;
   }
