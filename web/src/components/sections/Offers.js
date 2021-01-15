@@ -135,8 +135,11 @@ const SectionOfferStyles = styled.section`
 `;
 
 export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
-  const visibleTabValue =
-    window.location.hash.split('#')[1] || offer[0].slug.current;
+  let visibleTabValue;
+  if (typeof window !== 'undefined') {
+    visibleTabValue =
+      window.location.hash.split('#')[1] || offer[0].slug.current;
+  }
   const [visibleTab, setVisibleTab] = useState(visibleTabValue);
 
   const listTitles = offer.map((item) => (
