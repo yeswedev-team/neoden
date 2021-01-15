@@ -4,9 +4,21 @@ import PortableText from '../PortableText';
 import Accordion from '../Accordion';
 import Wave from '../Wave';
 
+const handleLocation = (props) => {
+  if (
+    (props.hasWaveDown && props.hasDoubleBotMargin) ||
+    (!props.hasWaveDown && props.hasDoubleBotMargin)
+  ) {
+    return 'calc(var(--section-bot-padding) * 2)';
+  }
+  if (props.hasWaveDown && !props.hasDoubleBotMargin) {
+    return '0';
+  }
+  return 'var(--section-bot-padding)';
+};
+
 const BlockFAQStyles = styled.section`
-  padding-bottom: ${(props) =>
-    props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
+  padding-bottom: ${(props) => handleLocation(props)};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
@@ -23,11 +35,13 @@ const BlockFAQStyles = styled.section`
 export default function BlockQuestions({
   title,
   questionsList,
+  hasDoubleBotMargin,
   hasWaveDown,
   hasWaveUp,
 }) {
   return (
     <BlockFAQStyles
+      hasDoubleBotMargin={hasDoubleBotMargin}
       hasWaveDown={hasWaveDown}
       hasWaveUp={hasWaveUp}
       className="section section__faq"

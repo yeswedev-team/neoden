@@ -18,7 +18,7 @@ const BlockMapStyles = styled.section`
   z-index: 3;
 
   .section-title {
-    margin-bottom: 1.75rem;
+    margin-bottom: 2.5rem;
     text-align: center;
   }
 
@@ -36,7 +36,7 @@ const BlockMapStyles = styled.section`
   .address {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     padding-right: ${pxtoem(117)};
 
     &-block {
@@ -48,6 +48,13 @@ const BlockMapStyles = styled.section`
       opacity: 0.3;
       padding: 0;
       text-align: left;
+
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &:active,
       &:focus {
@@ -90,6 +97,10 @@ const MarkerStyles = styled.div`
   height: ${pxtoem(70)};
   transform: translate(0, -100%);
   width: ${pxtoem(70)};
+
+  .container {
+    padding-right: 6.5625rem;
+  }
 
   &.active {
     background: url(${iconMarkerBrown});
