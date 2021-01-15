@@ -59,6 +59,7 @@ export default function TwoColumns({
   hasDoubleBotMargin,
   rightImage,
 }) {
+  console.log(ctas);
   const cta = ctas[0];
   return (
     <TwoColumnsStyles
@@ -78,12 +79,14 @@ export default function TwoColumns({
         </div>
         <div className="col col__content">
           <PortableText blocks={text} id="text-content" />
-          <Link
-            className="button button--brown"
-            to={`/${cta.ctaPageLink[0].slug.current}`}
-          >
-            {cta.title}
-          </Link>
+          {cta && (
+            <Link
+              className="button button--brown"
+              to={`/${cta?.ctaPageLink[0].slug.current}`}
+            >
+              {cta.title}
+            </Link>
+          )}
         </div>
       </div>
       {hasWaveDown && <Wave bgcolor="white" reversed />}
