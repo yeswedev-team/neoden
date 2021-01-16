@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
+import Breadcrumb from './Breadcrumb';
 
 const handleLocation = (location) => {
   switch (location) {
@@ -61,8 +62,9 @@ const HeroStyles = styled.section`
   }
 `;
 
-export default function Hero({ hero, title, context }) {
+export default function Hero({ hero, title, titleMenu, context, location }) {
   const heroData = hero[0];
+  console.log(context);
 
   return (
     <HeroStyles
@@ -78,6 +80,9 @@ export default function Hero({ hero, title, context }) {
             alt={title.fr}
           />
         </div>
+      )}
+      {context !== 'home' && (
+        <Breadcrumb location={location} title={titleMenu.fr} />
       )}
       <div className="hero__content">
         <div

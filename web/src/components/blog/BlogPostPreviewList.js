@@ -6,10 +6,12 @@ import { getBlogUrl } from '../../utils/helpers';
 import BlogPostPreview from './BlogPostPreview';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
+import Breadcrumb from '../Breadcrumb';
 
 const WaveContainerStyles = styled.div`
   background-color: rgba(145, 109, 91, 0.59);
   padding-top: 20.625rem;
+  position: relative;
 
   canvas {
     display: block;
@@ -58,13 +60,14 @@ const BlogPostsListStyles = styled.div`
   }
 `;
 
-export default function BlogPostPreviewList({ nodes }) {
+export default function BlogPostPreviewList({ nodes, location }) {
   const firstNode = nodes[0];
   const otherNodes = nodes.slice(1);
 
   return (
     <>
       <WaveContainerStyles className="wave-container">
+        <Breadcrumb location={location} title="Le Mag" />
         <Wave bgcolor="white" />
       </WaveContainerStyles>
       {firstNode && (

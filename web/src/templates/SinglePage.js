@@ -12,11 +12,21 @@ import Offers from '../components/sections/Offers';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
 
-export default function SinglePage({ pageContext, data: { singlePage } }) {
-  const { title, content, hero } = singlePage.page;
+export default function SinglePage({
+  pageContext,
+  location,
+  data: { singlePage },
+}) {
+  const { title, titleMenu, content, hero } = singlePage.page;
   return (
     <>
-      <Hero hero={hero} title={title} context={pageContext.slug} />
+      <Hero
+        hero={hero}
+        title={title}
+        titleMenu={titleMenu}
+        location={location}
+        context={pageContext.slug}
+      />
       <MapToComponents
         getKey={(section) => section.id || section._key}
         getType={(section) => section._type}
@@ -101,6 +111,9 @@ export const query = graphql`
     singlePage: sanityRoute(slug: { current: { eq: $slug } }) {
       page {
         title {
+          fr
+        }
+        titleMenu {
           fr
         }
         _rawText(resolveReferences: { maxDepth: 10 })

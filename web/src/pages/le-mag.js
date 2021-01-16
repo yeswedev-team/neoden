@@ -7,14 +7,21 @@ import {
 } from '../utils/helpers';
 import BlogPostPreviewList from '../components/blog/BlogPostPreviewList';
 
-export default function BlogIndex({ data }) {
+export default function BlogIndex({ data, location }) {
+  console.log(location);
   const postNodes = (data || {}).posts
     ? mapEdgesToNodes(data.posts)
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
 
-  return <>{postNodes && <BlogPostPreviewList nodes={postNodes} />}</>;
+  return (
+    <>
+      {postNodes && (
+        <BlogPostPreviewList location={location} nodes={postNodes} />
+      )}
+    </>
+  );
 }
 
 export const query = graphql`

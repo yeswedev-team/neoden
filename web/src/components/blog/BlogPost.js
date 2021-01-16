@@ -5,11 +5,16 @@ import styled from 'styled-components';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 import AuthorList from './AuthorList';
+import Breadcrumb from '../Breadcrumb';
 
 const BlogArticleStyles = styled.article`
   .blog-article__illustr {
     max-height: 95vh;
     overflow: hidden;
+
+    img {
+      border-radius: 0;
+    }
   }
 
   > .container {
@@ -68,6 +73,7 @@ export default function BlogPost(props) {
     _rawText,
     authors,
     title,
+    location,
     mainImage,
     publishedAt,
   } = props;
@@ -75,6 +81,7 @@ export default function BlogPost(props) {
     <BlogArticleStyles className="blog-article">
       {mainImage && (
         <div className="blog-article__illustr">
+          <Breadcrumb location={location} title={title} origin="blog" />
           <Img fluid={mainImage.asset.fluid} alt={title.fr} />
         </div>
       )}

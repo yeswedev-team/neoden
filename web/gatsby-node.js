@@ -37,7 +37,7 @@ async function createBlogPostPages({ graphql, actions }) {
 
   postEdges
     .filter((edge) => !isFuture(parseISO(edge.node.publishedAt)))
-    .forEach((edge, index) => {
+    .forEach((edge) => {
       const { id, slug = {}, publishedAt } = edge.node;
       const dateSegment = format(parseISO(publishedAt), 'yyyy/MM');
 
