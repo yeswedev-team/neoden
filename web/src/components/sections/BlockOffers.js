@@ -84,12 +84,12 @@ export default function Offers({
           <div className="offersList">
             {offerLink.map((offer) => (
               <div key={offer.id} className="offer grow">
-                <Link to={`/offres-bien-etre/#${offer.slug.current}`}>
+                <Link to={`/offres-bien-etre/?offer=${offer.slug.current}`}>
                   <h3 className="offer__title">{offer.title}</h3>
                   <Img fluid={offer.image.asset.fluid} alt={offer.title} />
                 </Link>
                 <Link
-                  to={`/offres-bien-etre/#${offer.slug.current}`}
+                  to={`/offres-bien-etre/?offer=${offer.slug.current}`}
                   className="button button--brown"
                 >
                   En savoir plus

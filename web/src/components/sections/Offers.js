@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
+import { useLocation } from '@reach/router';
+import queryString from 'query-string';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { MdCardGiftcard } from 'react-icons/md';
@@ -162,12 +164,31 @@ const SectionOfferStyles = styled.section`
   }
 `;
 
-export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
-  let visibleTabValue;
-  if (typeof window !== 'undefined') {
-    visibleTabValue =
-      window.location.hash.split('#')[1] || offer[0].slug.current;
+const getSelectedOffer = (query) => {
+  const fallback = 'flottaison';
+
+  if (query) {
+    const queriedOffer = queryString.parse(query);
+    const { offer } = queriedOffer;
+
+    // Ensure a value is passed
+    if (offer) {
+      return offer;
+    }
+
+    return fallback;
   }
+
+  return fallback;
+};
+
+export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
+  const location = useLocation();
+  console.log(location);
+  const visibleTabValue =
+    (location.search && getSelectedOffer(location.search)) || 'flottaison';
+  console.log(visibleTabValue);
+
   const [visibleTab, setVisibleTab] = useState(visibleTabValue);
 
   const listTitles = offer.map((item) => (
