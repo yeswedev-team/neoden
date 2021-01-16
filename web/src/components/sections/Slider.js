@@ -43,6 +43,7 @@ export default function Slider({
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
+          speed={700}
           grabCursor
           onSwiper={setFirstSwiper}
           controller={{ control: secondSwiper }}
@@ -56,6 +57,7 @@ export default function Slider({
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
+          speed={700}
           effect="fade"
           grabCursor
           navigation
