@@ -5,6 +5,8 @@ import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { MdCardGiftcard } from 'react-icons/md';
 import { IoMdOpen } from 'react-icons/io';
 import encoche from '../../assets/images/encoche.gif';
@@ -183,11 +185,11 @@ const getSelectedOffer = (query) => {
 };
 
 export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
+  gsap.registerPlugin(ScrollToPlugin);
+
   const location = useLocation();
-  console.log(location);
   const visibleTabValue =
     (location.search && getSelectedOffer(location.search)) || 'flottaison';
-  console.log(visibleTabValue);
 
   const [visibleTab, setVisibleTab] = useState(visibleTabValue);
 
@@ -210,12 +212,20 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
     </li>
   ));
 
+  const handleAltTabClick = (event, item) => {
+    event.preventDefault();
+    setVisibleTab(item.slug.current);
+    if (typeof window !== 'undefined') {
+      gsap.to(window, { duration: 0.7, scrollTo: 0, ease: 'power2' });
+    }
+  };
+
   const listTitlesAlt = offer.map((item) => {
     if (item.slug.current !== visibleTab) {
       return (
         <li
           key={item.id}
-          onClick={() => setVisibleTab(item.slug.current)}
+          onClick={(event) => handleAltTabClick(event, item)}
           className={
             visibleTab === item.slug.current
               ? 'tab-title-alt tab-title-alt--active'
