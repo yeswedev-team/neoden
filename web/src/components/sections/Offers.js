@@ -35,32 +35,17 @@ const SectionOfferStyles = styled.section`
     color: var(--white);
     cursor: pointer;
     display: flex;
-    filter: sepia(0.5) grayscale(0.4) opacity(0.7);
     flex-direction: column;
     flex-basis: 30%;
     flex-grow: 1;
     flex-shrink: 0;
     font-family: var(--font-titles);
     font-size: 1.875rem;
+    height: 10.0625rem;
     justify-content: center;
     line-height: 1;
-    padding: 52px 20px;
     position: relative;
     text-align: center;
-  }
-  .tab-title-alt {
-    background: var(--brown);
-    filter: none;
-    height: 5.75rem;
-    padding: 0;
-
-    span {
-      display: block;
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
 
     .filter {
       background-size: cover;
@@ -68,19 +53,38 @@ const SectionOfferStyles = styled.section`
       display: block;
       filter: grayscale(0.4) opacity(0.7);
       height: 100%;
-      padding: 28px 20px;
       transition: filter 400ms linear;
     }
+    span {
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .tab-title-alt {
+    background: var(--brown);
+    filter: none;
+    height: 5.75rem;
+    padding: 0;
+
     &:hover .filter {
       filter: grayscale(0) opacity(0.1);
     }
   }
 
-  .tab-title--active,
-  .tab-title-alt--active {
-    background-color: var(--brown);
+  .tab-title-active {
     background-image: none !important;
+  }
+
+  .tab-title--active {
+    background-color: var(--brown);
     filter: none;
+
+    .filter {
+      background-image: none !important;
+    }
 
     &:after {
       border-left: 35px solid transparent;
@@ -176,9 +180,12 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
           ? 'tab-title tab-title--active'
           : 'tab-title'
       }
-      style={{ backgroundImage: `url(${item.imageTab.asset.fluid.src})` }}
     >
-      {item.title}
+      <div
+        className="filter"
+        style={{ backgroundImage: `url(${item.imageTab.asset.fluid.src})` }}
+      />
+      <span>{item.title}</span>
     </li>
   ));
 
