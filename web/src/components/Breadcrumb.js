@@ -26,7 +26,7 @@ const BreadcrumbsStyles = styled.div`
   }
 `;
 
-export default function Breadcrumb({ title, origin }) {
+export default function Breadcrumb({ title, titleMenu, origin }) {
   return (
     <BreadcrumbsStyles className="breadcrumb">
       <div
@@ -52,7 +52,7 @@ export default function Breadcrumb({ title, origin }) {
               |
             </>
           )}
-          <strong>{title}</strong>
+          <strong>{titleMenu || title}</strong>
         </span>
       </div>
     </BreadcrumbsStyles>

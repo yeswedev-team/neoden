@@ -82,7 +82,11 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
         </div>
       )}
       {context !== 'home' && (
-        <Breadcrumb location={location} title={titleMenu.fr} />
+        <Breadcrumb
+          location={location}
+          title={title.fr}
+          titleMenu={titleMenu ? titleMenu.fr : title.fr}
+        />
       )}
       <div className="hero__content">
         <div
