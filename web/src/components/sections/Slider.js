@@ -7,10 +7,7 @@ import SwiperCore, {
   EffectFade,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.min.css';
-import 'swiper/components/navigation/navigation.min.css';
-import 'swiper/components/pagination/pagination.min.css';
-import 'swiper/components/effect-fade/effect-fade.min.css';
+import 'swiper/swiper-bundle.css';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 import SliderStyles from '../../styles/SliderStyles';
