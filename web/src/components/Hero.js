@@ -53,6 +53,10 @@ const HeroStyles = styled.section`
     z-index: 3;
   }
 
+  .hero__illustr img {
+    border-radius: 0;
+  }
+
   .button {
     margin-top: 1.875rem;
   }
@@ -64,7 +68,6 @@ const HeroStyles = styled.section`
 
 export default function Hero({ hero, title, titleMenu, context, location }) {
   const heroData = hero[0];
-  console.log(context);
 
   return (
     <HeroStyles
