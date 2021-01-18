@@ -1,11 +1,13 @@
+import { FiPenTool as icon, FiLink } from 'react-icons/fi';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import { FiLink } from 'react-icons/fi';
+
 import { format } from 'date-fns';
 
 export default {
   name: 'post',
   type: 'document',
   title: 'Billet de blog',
+  icon,
   fields: [
     {
       name: 'title',
