@@ -1,4 +1,5 @@
 import { format, formatDistance, differenceInDays } from 'date-fns';
+import { fr } from 'date-fns/locale';
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
@@ -96,8 +97,12 @@ export default function BlogPost(props) {
               <>
                 le&nbsp;
                 {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? formatDistance(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'Do MMMM yyyy')}
+                  ? formatDistance(new Date(publishedAt), new Date(), {
+                      locale: fr,
+                    })
+                  : format(new Date(publishedAt), 'dd MMMM yyyy', {
+                      locale: fr,
+                    })}
               </>
             )}
           </p>

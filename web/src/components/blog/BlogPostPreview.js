@@ -1,5 +1,6 @@
 import React from 'react';
 import { format, parseISO } from 'date-fns';
+import { fr } from 'date-fns/locale';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
@@ -37,7 +38,7 @@ const BlogCardStyles = styled.div`
   }
 `;
 
-export default function BlogPostPreview(node, isInList) {
+export default function BlogPostPreview(node) {
   return (
     <BlogCardStyles className="blog-card grow grow-fast">
       <Link to={getBlogUrl(node.publishedAt, node.slug.current)}>
@@ -46,7 +47,7 @@ export default function BlogPostPreview(node, isInList) {
         )}
         <div className="blog-card__content">
           <p className="blog-card__date">
-            {format(parseISO(node.publishedAt), 'dd MMMM yyyy')}
+            {format(parseISO(node.publishedAt), 'dd MMMM yyyy', { locale: fr })}
           </p>
           <h2 className="small-title">{node.title}</h2>
           <PortableText blocks={node._rawExcerpt} id="excerpt" />

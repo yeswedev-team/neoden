@@ -100,7 +100,7 @@ export default function BlogPostPreviewList({ nodes, location }) {
           {otherNodes &&
             otherNodes.map((node) => (
               <li key={node.id}>
-                <BlogPostPreview {...node} isInList />
+                <BlogPostPreview {...node} />
               </li>
             ))}
         </ul>
