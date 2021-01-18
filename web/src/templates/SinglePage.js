@@ -11,15 +11,18 @@ import Promo from '../components/sections/Promo';
 import Offers from '../components/sections/Offers';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
+import Alert from '../components/Alert';
 
 export default function SinglePage({
   pageContext,
   location,
-  data: { singlePage },
+  data: { alert, singlePage },
 }) {
   const { title, titleMenu, content, hero } = singlePage.page;
+  const { alertDisplay } = alert;
   return (
     <>
+      {pageContext.slug === 'home' && alertDisplay && <Alert alert={alert} />}
       <Hero
         hero={hero}
         title={title}
@@ -108,6 +111,18 @@ export default function SinglePage({
 
 export const query = graphql`
   query($slug: String!) {
+    alert: sanitySingletonSite {
+      alertDisplay
+      _rawAlertText(resolveReferences: { maxDepth: 10 })
+      alertLink {
+        slug {
+          current
+        }
+        publishedAt
+      }
+      alertPosition
+      alertTitle
+    }
     singlePage: sanityRoute(slug: { current: { eq: $slug } }) {
       page {
         title {

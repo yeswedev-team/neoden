@@ -196,6 +196,31 @@ const GlobalStyles = createGlobalStyle`
       background: rgba(242, 242, 242, 0.8);
     }
   }
+  .invisible {
+    display: none;
+  }
+  &.visible {
+    display: block;
+  }
+
+  .warning {
+    &--left {
+      left: -1.25rem;
+      padding-left: 3.125rem;
+      padding-right: 2.3125rem;
+    }
+    &--center {
+      left: 50%;
+      padding-left: 2.3125rem;
+      padding-right: 2.3125rem;
+      transform: translateX(-50%);
+    }
+    &--right {
+      right: -1.25rem;
+      padding-left: 2.3125rem;
+      padding-right: 3.125rem;
+    }
+  }
 
   .grow { 
     overflow: hidden;
@@ -223,6 +248,29 @@ const GlobalStyles = createGlobalStyle`
       }
     }
   }
+
+  .sr-only { 
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+  }
+
+  .sr-only.focusable:active,
+  .sr-only.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+  }
+
 
 
   canvas[resize] {
