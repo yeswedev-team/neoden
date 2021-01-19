@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { pxtopc } from '../../styles/Mixins';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
+import Wave from '../Wave';
 
 const BlockOffersStyles = styled.section`
   background: #a5968f url(${tressageBg}) 0 0 repeat;
@@ -71,12 +72,17 @@ export default function Offers({
   overtitle,
   offerLink,
   hasDoubleBotMargin,
+  hasWaveDown,
+  hasWaveUp,
 }) {
   return (
     <BlockOffersStyles
       hasDoubleBotMargin={hasDoubleBotMargin}
+      hasWaveDown={hasWaveDown}
+      hasWaveUp={hasWaveUp}
       className="section section__block-offers"
     >
+      {hasWaveUp && <Wave bgcolor="#A5968F" />}
       <div className="container container--md">
         {overtitle && <p className="overtitle">{overtitle}</p>}
         {title && <h2 className="section-title">{title}</h2>}
@@ -99,6 +105,7 @@ export default function Offers({
           </div>
         )}
       </div>
+      {hasWaveDown && <Wave bgcolor="#A5968F" reversed />}
     </BlockOffersStyles>
   );
 }
