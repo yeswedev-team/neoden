@@ -51,6 +51,7 @@ export default {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-portal`,
     // {
     //   resolve: 'gatsby-plugin-transition-link',
     //   options: {

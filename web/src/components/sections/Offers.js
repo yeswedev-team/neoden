@@ -3,16 +3,13 @@
 import React, { useState } from 'react';
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
-import Img from 'gatsby-image';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { MdCardGiftcard } from 'react-icons/md';
-import { IoMdOpen } from 'react-icons/io';
 import encoche from '../../assets/images/encoche.gif';
 import { pxtopc } from '../../styles/Mixins';
-import PortableText from '../PortableText';
 import Wave from '../Wave';
+import Service from '../Service';
 
 const SectionOfferStyles = styled.section`
   padding-bottom: ${(props) =>
@@ -151,6 +148,7 @@ const SectionOfferStyles = styled.section`
   }
   .actions {
     > .button:last-child {
+      cursor: pointer;
       margin-left: 1.125rem;
     }
   }
@@ -249,28 +247,7 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
       style={visibleTab === item.slug.current ? {} : { display: 'none' }}
     >
       {item.services.map((service) => (
-        <div key={service.id} className="service">
-          <div className="service__content">
-            <h3 className="service__title">{service.title}</h3>
-            <PortableText blocks={service._rawText} />
-            <div className="actions">
-              {service.offerlink && (
-                <a
-                  href={service.offerlink}
-                  className="button button--brownlight"
-                >
-                  J'offre <MdCardGiftcard />
-                </a>
-              )}
-              {service.bookinglink && (
-                <a href={service.bookinglink} className="button button--brown">
-                  Je réserve <IoMdOpen />
-                </a>
-              )}
-            </div>
-          </div>
-          <Img fluid={service.image.asset.fluid} />
-        </div>
+        <Service key={service.id} service={service} />
       ))}
     </div>
   ));

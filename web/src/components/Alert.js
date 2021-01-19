@@ -25,19 +25,6 @@ const AlertStyles = styled.div`
     font-weight: 500;
     margin: 1.25rem 0;
   }
-  .close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.3125rem;
-    position: absolute;
-    right: 30px;
-    top: 13px;
-
-    strong {
-      font-weight: 500;
-    }
-  }
 `;
 
 export default function Alert({ alert }) {
