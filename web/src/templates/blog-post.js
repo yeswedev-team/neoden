@@ -3,9 +3,11 @@ import { graphql } from 'gatsby';
 import BlogPost from '../components/blog/BlogPost';
 
 export default function BlogPostTemplate({ data, location }) {
-  const { post } = data;
+  const { post, lastposts } = data;
 
-  return <>{post && <BlogPost location={location} {...post} />}</>;
+  return (
+    <>{post && <BlogPost location={location} {...post} {...lastposts} />}</>
+  );
 }
 
 export const query = graphql`
@@ -31,6 +33,35 @@ export const query = graphql`
         _key
         author {
           name
+        }
+      }
+    }
+    lastposts: allSanityPost(
+      limit: 3
+      sort: { fields: [publishedAt], order: DESC }
+      filter: {
+        slug: { current: { ne: null } }
+        publishedAt: { ne: null }
+        id: { ne: $id }
+      }
+    ) {
+      edges {
+        node {
+          id
+          publishedAt
+          mainImage {
+            asset {
+              fluid(maxWidth: 200, maxHeight: 200) {
+                ...GatsbySanityImageFluid
+              }
+            }
+            alt
+          }
+          title
+          _rawExcerpt
+          slug {
+            current
+          }
         }
       }
     }

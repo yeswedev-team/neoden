@@ -45,8 +45,6 @@ export default function Alert({ alert }) {
 
   const [isOpen, setIsOpen] = useState(true);
 
-  console.log(isOpen);
-
   const handleWarningPosition = (position) => {
     switch (position) {
       case 'left':

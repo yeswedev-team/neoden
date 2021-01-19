@@ -1,4 +1,4 @@
-import { format, formatDistance, differenceInDays } from 'date-fns';
+import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import React from 'react';
 import Img from 'gatsby-image';
@@ -7,6 +7,7 @@ import PortableText from '../PortableText';
 import Wave from '../Wave';
 import AuthorList from './AuthorList';
 import Breadcrumb from '../Breadcrumb';
+import LastPosts from './LastPosts';
 
 const BlogArticleStyles = styled.article`
   .blog-article__illustr {
@@ -70,6 +71,7 @@ const BlogArticleStyles = styled.article`
 
 export default function BlogPost(props) {
   const {
+    edges,
     _rawExcerpt,
     _rawText,
     authors,
@@ -96,18 +98,15 @@ export default function BlogPost(props) {
             {publishedAt && (
               <>
                 le&nbsp;
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? formatDistance(new Date(publishedAt), new Date(), {
-                      locale: fr,
-                    })
-                  : format(new Date(publishedAt), 'dd MMMM yyyy', {
-                      locale: fr,
-                    })}
+                {format(new Date(publishedAt), 'dd MMMM yyyy', {
+                  locale: fr,
+                })}
               </>
             )}
           </p>
           {_rawText && <PortableText blocks={_rawText} id="blogpost" />}
         </div>
+        {edges && <LastPosts posts={edges} />}
       </div>
       <Wave bgcolor="white" reversed />
     </BlogArticleStyles>
