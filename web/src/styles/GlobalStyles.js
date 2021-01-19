@@ -203,24 +203,19 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 
-  .navbar {
-    left: 0;
+  /* sticky component */
+  .sticky-outer-wrapper {
+    left: calc(((100% - 56.5rem) / 2) - 10.1875rem);
     opacity: 0;
     pointer-events: none;
-    position: absolute;
-    transition: opacity 200ms linear;
-    transform: translateX(-110%);
-    /* visibility: hidden; */
-  }
-  .scrolled {
-    left: calc(((100% - 56.5rem) / 2) - 10.1875rem);
-    opacity: 1;
-    pointer-events: auto;
-    position: fixed !important;
-    top: 12.5rem;
-    transition: opacity 200ms linear;
-    transform: translateX(0);
-    /* visibility: visible; */
+    position: relative;
+    transition: opacity 600ms linear;
+    z-index: 4;
+
+    &.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
   }
 
   .warning {

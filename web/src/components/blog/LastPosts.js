@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Sticky from 'react-stickynode';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
@@ -46,56 +47,48 @@ const LastPostsStyles = styled.div`
 `;
 
 export default function LastPosts({ posts }) {
-  const [scrolled, setScrolled] = useState(false);
-
-  const handleScroll = () => {
-    const offset = window.scrollY;
-    if (offset > 850) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
+  const handleStateChange = (status) => {
+    if (status.status === Sticky.STATUS_FIXED) {
+      console.log('the component is sticky');
     }
+    if (status.status === Sticky.STATUS_ORIGINAL) {
+      return 'the component in the original position';
+    }
+    return 'the component is released';
   };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, true);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll, true);
-    };
-  });
-
-  const navbarClasses = ['navbar'];
-
-  if (scrolled) {
-    navbarClasses.push('scrolled');
-  }
-
   return (
-    <LastPostsStyles className={navbarClasses.join(' ')}>
-      <h3 className="middle-title">Articles récents</h3>
-      <div className="posts-list">
-        {posts.map((post) => (
-          <div key={post.node.id} className="last-post">
-            <Link
-              to={getBlogUrl(post.node.publishedAt, post.node.slug.current)}
-            >
-              <Img
-                fluid={post.node.mainImage.asset.fluid}
-                alt={post.node.title}
-              />
-              <div className="last-post__content">
-                <h4>{post.node.title}</h4>
-                <p className="date">
-                  {format(new Date(post.node.publishedAt), 'dd MMMM yyyy', {
-                    locale: fr,
-                  })}
-                </p>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </LastPostsStyles>
+    <Sticky
+      enabled
+      top={200}
+      bottomBoundary="#content"
+      onStateChange={handleStateChange}
+    >
+      <LastPostsStyles>
+        <h3 className="middle-title">Articles récents</h3>
+        <div className="posts-list">
+          {posts.map((post) => (
+            <div key={post.node.id} className="last-post">
+              <Link
+                to={getBlogUrl(post.node.publishedAt, post.node.slug.current)}
+              >
+                <Img
+                  fluid={post.node.mainImage.asset.fluid}
+                  alt={post.node.title}
+                />
+                <div className="last-post__content">
+                  <h4>{post.node.title}</h4>
+                  <p className="date">
+                    {format(new Date(post.node.publishedAt), 'dd MMMM yyyy', {
+                      locale: fr,
+                    })}
+                  </p>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </LastPostsStyles>
+    </Sticky>
   );
 }
