@@ -40,6 +40,9 @@ const BlogArticleStyles = styled.article`
     margin-top: 32px;
     text-align: center;
   }
+  .blog-article__text {
+    position: relative;
+  }
   .blogpost {
     border-top: 1px solid var(--beige);
     font-size: 1.25rem;
@@ -92,6 +95,7 @@ export default function BlogPost(props) {
     mainImage,
     publishedAt,
   } = props;
+
   return (
     <BlogArticleStyles className="blog-article">
       <Overprint className="overprint" />
@@ -102,7 +106,8 @@ export default function BlogPost(props) {
         </div>
       )}
       <Wave bgcolor="white" />
-      <div className="container container--md">
+      {edges && <LastPosts posts={edges} />}
+      <div className="container container--md" id="content">
         <div className="blog-article__content">
           <h1 className="blogpost-title">{title}</h1>
           {_rawExcerpt && <PortableText blocks={_rawExcerpt} id="excerpt" />}
@@ -117,9 +122,10 @@ export default function BlogPost(props) {
               </>
             )}
           </p>
-          {_rawText && <PortableText blocks={_rawText} id="blogpost" />}
+          <div className="blog-article__text">
+            {_rawText && <PortableText blocks={_rawText} id="blogpost" />}
+          </div>
         </div>
-        {edges && <LastPosts posts={edges} />}
       </div>
       <Wave bgcolor="white" reversed />
     </BlogArticleStyles>

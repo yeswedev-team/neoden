@@ -62,7 +62,7 @@ const Header = ({ navItems }) => {
   }, []);
 
   return (
-    <HeaderStyles>
+    <HeaderStyles id="header">
       <div className="container container--xl">
         <Nav navItems={navItems} />
         <Link to="/">

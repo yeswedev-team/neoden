@@ -6,7 +6,11 @@ export default function BlogPostTemplate({ data, location }) {
   const { post, lastposts } = data;
 
   return (
-    <>{post && <BlogPost location={location} {...post} {...lastposts} />}</>
+    <>
+      {post && (
+        <BlogPost location={location} {...post} {...lastposts} id="content" />
+      )}
+    </>
   );
 }
 
