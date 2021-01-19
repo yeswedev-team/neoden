@@ -8,11 +8,13 @@ import Wave from '../Wave';
 import AuthorList from './AuthorList';
 import Breadcrumb from '../Breadcrumb';
 import LastPosts from './LastPosts';
+import Overprint from '../../assets/images/logo-neoden-grey.inline.svg';
 
 const BlogArticleStyles = styled.article`
   .blog-article__illustr {
     max-height: 95vh;
     overflow: hidden;
+    position: relative;
 
     img {
       border-radius: 0;
@@ -70,6 +72,16 @@ const BlogArticleStyles = styled.article`
       text-align: center;
     }
   }
+
+  .overprint {
+    top: 100vh;
+    height: 40%;
+    max-height: 80vh;
+    position: absolute;
+    right: 0;
+    transform: scaleX(-1) translateX(-50%);
+    z-index: -1;
+  }
 `;
 
 export default function BlogPost(props) {
@@ -86,6 +98,7 @@ export default function BlogPost(props) {
 
   return (
     <BlogArticleStyles className="blog-article">
+      <Overprint className="overprint" />
       {mainImage && (
         <div className="blog-article__illustr">
           <Breadcrumb location={location} title={title} origin="blog" />

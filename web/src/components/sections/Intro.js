@@ -3,10 +3,11 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
+import Overprint from '../../assets/images/ondes.inline.svg';
 
 const IntroTextStyles = styled.section`
   background: ${({ location }) =>
-    location === 'home' ? 'var(--grey)' : 'var(--white)'};
+    location === 'home' ? 'var(--grey)' : 'transparent'};
   background-size: cover, cover;
   background-attachment: fixed, fixed;
   padding-bottom: ${(props) =>
@@ -24,6 +25,18 @@ const IntroTextStyles = styled.section`
   }
   .overtitle {
     margin-bottom: 0;
+  }
+
+  .img-container {
+    position: relative;
+  }
+
+  .overprint {
+    bottom: 0;
+    height: 65%;
+    position: absolute;
+    right: 0;
+    z-index: 2;
   }
 `;
 
@@ -48,7 +61,12 @@ const Intro = ({
       <Wave bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`} />
     )}
     <div className="container container--md">
-      {frontImage && <Img fluid={frontImage?.image.asset.fluid} alt={title} />}
+      {frontImage && (
+        <div className="img-container">
+          <Img fluid={frontImage?.image.asset.fluid} alt={title} />
+          <Overprint className="overprint" />
+        </div>
+      )}
       {overtitle && <p className="overtitle">{overtitle}</p>}
       {title && <h2 className="section-title">{title}</h2>}
       {text && <PortableText blocks={text} />}
