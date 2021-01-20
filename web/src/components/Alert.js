@@ -14,7 +14,7 @@ const AlertStyles = styled.div`
   position: fixed;
   text-align: center;
   width: 20.625rem;
-  z-index: 999;
+  z-index: 5;
 
   h3 {
     font-size: 1.5rem;
@@ -24,6 +24,9 @@ const AlertStyles = styled.div`
     font-size: 0.875rem;
     font-weight: 500;
     margin: 1.25rem 0;
+  }
+  .close {
+    color: var(--brown);
   }
 `;
 

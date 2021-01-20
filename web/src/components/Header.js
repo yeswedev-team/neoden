@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,41 +7,77 @@ import Logo from '../assets/images/logo-neoden.inline.svg';
 import { pxtoem } from '../styles/Mixins';
 import Nav from './Nav';
 import WavesMenu from '../assets/images/wavesMenu.inline.svg';
+import { mq } from '../styles/breakpoints';
+import Burger from './Burger';
 
 const HeaderStyles = styled.header`
-  background-position: bottom center;
-  background-size: cover;
-  padding-top: ${pxtoem(25)};
-  padding-bottom: ${pxtoem(25)};
+  background-color: var(--brown);
+  padding-top: ${pxtoem(12)};
+  padding-bottom: ${pxtoem(12)};
   position: fixed;
   width: 100%;
-  z-index: 4;
+  z-index: 5;
 
   .container {
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    position: relative;
+    z-index: 4;
   }
   .logo {
     display: block;
-    left: 50%;
-    position: absolute;
-    top: ${pxtoem(15)};
-    transform: translateX(-50%);
-    width: ${pxtoem(160)};
+    width: ${pxtoem(147)};
     z-index: 2;
   }
 
-  svg {
+  .svg-container {
+    display: none;
+
+    ${mq[2]} {
+      display: block;
+    }
+  }
+
+  .bgwave {
     bottom: -0.625rem;
     fill: transparent;
     position: absolute;
     z-index: -1;
   }
+
+  .header__actions {
+    display: none;
+  }
+
+  ${mq[3]} {
+    background-color: transparent;
+    background-position: bottom center;
+    background-size: cover;
+    padding-top: ${pxtoem(25)};
+    padding-bottom: ${pxtoem(25)};
+
+    .container {
+      justify-content: space-between;
+      position: static;
+    }
+
+    .header__actions {
+      display: block;
+    }
+    .logo {
+      left: 50%;
+      position: absolute;
+      top: ${pxtoem(15)};
+      transform: translateX(-50%);
+      width: ${pxtoem(160)};
+    }
+  }
 `;
 
 const Header = ({ navItems }) => {
   const headerRef = useRef(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -64,7 +100,7 @@ const Header = ({ navItems }) => {
   return (
     <HeaderStyles id="header">
       <div className="container container--xl">
-        <Nav navItems={navItems} />
+        <Nav navItems={navItems} open={open} setOpen={setOpen} />
         <Link to="/">
           <Logo className="logo" />
         </Link>
@@ -79,8 +115,9 @@ const Header = ({ navItems }) => {
           </a>
         </div>
       </div>
+      <Burger open={open} setOpen={setOpen} />
       <div className="svg-container" ref={headerRef}>
-        <WavesMenu />
+        <WavesMenu className="bgwave" />
       </div>
     </HeaderStyles>
   );

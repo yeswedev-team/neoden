@@ -47,3 +47,9 @@ export function toPlainText(blocks) {
     })
     .join('\n\n');
 }
+
+export const addToRefs = (ref, el) => {
+  if (el && !ref.current.includes(el)) {
+    ref.current.push(el);
+  }
+};

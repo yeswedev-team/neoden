@@ -53,11 +53,14 @@ const GlobalStyles = createGlobalStyle`
 
   .content {
     overflow: hidden;
+    position: relative;
+    z-index: 4;
   }
 
   .container {
     margin: 0 auto;
     max-width: ${pxtoem(275)};
+    width: 90%;
 
     &--xs {
       max-width: ${pxtoem(485)};
