@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { pxtoem } from '../styles/Mixins';
 import Wave from './Wave';
-import Overprint from '../assets/images/logo-neoden-grey.inline.svg';
 
 const FormStyles = styled.form`
   background-color: var(--grey);
@@ -82,14 +81,6 @@ const FormStyles = styled.form`
     }
   }
 
-  .overprint {
-    height: 100vh;
-    mix-blend-mode: multiply;
-    position: absolute;
-    right: -40em;
-    top: 0;
-    transform: scaleX(-1);
-  }
 `;
 
 export default function Form(params) {
@@ -102,7 +93,6 @@ export default function Form(params) {
       data-netlify-honeypot="bot-field"
     >
       <Wave bgcolor="#F2F2F2" />
-      <Overprint className="overprint" />
       <div className="container container--sm">
         <div className="form-header">
           <p>Pour toute réservation de votre séance NEODEN</p>

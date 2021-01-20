@@ -34,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
       font-size: 16px;
       line-height: calc(85 / 60);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
   }
 
   ul,
@@ -491,6 +492,26 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .overprintLogo {
+      max-height: 850px;
+      position: absolute;
+      z-index: 5;    
+
+      &--right {
+        height: 50vw;
+        mix-blend-mode: multiply;
+        left: calc((100% - 1115px) / 2 + 1215px);
+        top: 52vh;
+        transform: scaleX(-1);
+      }
+
+      &--left {
+        height: 40vw;
+        mix-blend-mode: darken;
+        right: calc((100% - 1115px) / 2 + 1215px);
+        transform: scaleX(-1) translateY(-50%);
+      }
+  }
 `;
 
 export default GlobalStyles;

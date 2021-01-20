@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { MapToComponents } from 'react-map-to-components';
 import Blocks from '../components/sections/Block';
@@ -12,6 +12,7 @@ import Offers from '../components/sections/Offers';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
+import OverprintLogo from '../assets/images/logo-neoden-grey-seul.inline.svg';
 
 export default function SinglePage({
   pageContext,
@@ -23,6 +24,11 @@ export default function SinglePage({
   return (
     <>
       {pageContext.slug === 'home' && alertDisplay && <Alert alert={alert} />}
+
+      {pageContext.slug !== 'home' && (
+        <OverprintLogo className="overprintLogo overprintLogo--right overprintLogo--right--low" />
+      )}
+
       <Hero
         hero={hero}
         title={title}

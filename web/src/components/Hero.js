@@ -5,7 +5,6 @@ import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
 import Breadcrumb from './Breadcrumb';
-import Overprint from '../assets/images/logo-neoden-grey.inline.svg';
 
 const handleLocation = (location) => {
   switch (location) {
@@ -24,7 +23,7 @@ const handleLocation = (location) => {
 
 const HeroStyles = styled.section`
   max-height: 95vh;
-  /* overflow: hidden; */
+  overflow: hidden;
 
   + section > .container {
     margin-top: ${({ location }) => (location === 'home' ? '0' : '-13.75rem')};
@@ -64,14 +63,6 @@ const HeroStyles = styled.section`
 
   .logo-only {
     width: 14.5rem;
-  }
-
-  .overprint {
-    bottom: -160%;
-    height: 100vh;
-    position: absolute;
-    right: -40em;
-    transform: scaleX(-1);
   }
 `;
 
@@ -122,7 +113,6 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
           )}
         </div>
       </div>
-      <Overprint className="overprint" />
     </HeroStyles>
   );
 }
