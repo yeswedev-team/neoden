@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import styled from 'styled-components';
@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import encoche from '../../assets/images/encoche.gif';
 import { pxtopc } from '../../styles/Mixins';
+import { mq } from '../../styles/breakpoints';
 import Wave from '../Wave';
 import Service from '../Service';
 
@@ -20,12 +21,22 @@ const SectionOfferStyles = styled.section`
   z-index: 3;
 
   .tabs-titles {
-    display: flex;
+    display: none;
     gap: 2.5rem;
     justify-content: space-between;
     list-style: none;
     padding: 0px;
     margin: 0;
+
+    ${mq[1]} {
+      display: flex;
+    }
+  }
+
+  .options-titles {
+    ${mq[1]} {
+      display: none;
+    }
   }
 
   .tab-title,
@@ -67,11 +78,16 @@ const SectionOfferStyles = styled.section`
   .tab-title-alt {
     background: var(--brown);
     filter: none;
+    flex-basis: 100%;
     height: 5.75rem;
     padding: 0;
 
     &:hover .filter {
       filter: grayscale(0) opacity(0.1);
+    }
+
+    ${mq[1]} {
+      flex-basis: 30%;
     }
   }
 
@@ -112,31 +128,45 @@ const SectionOfferStyles = styled.section`
   }
 
   .tab-content {
-    border-top: 1px solid var(--brownlighter);
-    margin: 21px 0 0 0;
+    ${mq[1]} {
+      border-top: 1px solid var(--brownlighter);
+      margin: 21px 0 0 0;
+    }
   }
+
   .service {
-    border: 1px solid var(--brownlighter);
-    border-top: none;
+    border-bottom: 1px solid var(--brownlighter);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    padding: 1.875rem;
+    padding: 1.875rem 0;
 
-    &:nth-child(even) {
-      .gatsby-image-wrapper {
-        order: 1;
-      }
-      .service__content {
-        order: 2;
-      }
-    }
-
+    &__content,
     .gatsby-image-wrapper {
-      width: ${pxtopc(351, 820)};
+      width: 100%;
     }
-    &__content {
-      width: ${pxtopc(398, 821)};
+
+    ${mq[1]} {
+      border: 1px solid var(--brownlighter);
+      border-top: none;
+      padding: 1.875rem;
+
+      &:nth-child(even) {
+        .gatsby-image-wrapper {
+          order: 1;
+        }
+        .service__content {
+          order: 2;
+        }
+      }
+      .gatsby-image-wrapper {
+        width: ${pxtopc(351, 820)};
+      }
+      &__content {
+        width: ${pxtopc(398, 821)};
+      }
     }
+
     &__title {
       font-size: 1.25rem;
       font-weight: normal;
@@ -147,9 +177,15 @@ const SectionOfferStyles = styled.section`
     }
   }
   .actions {
+    margin-bottom: 1rem;
+
     > .button:last-child {
       cursor: pointer;
       margin-left: 1.125rem;
+    }
+
+    ${mq[1]} {
+      margin-bottom: 0;
     }
   }
   .middle-title {
@@ -158,9 +194,22 @@ const SectionOfferStyles = styled.section`
   }
   .tabs-titles-alt {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.875rem;
     margin: 1.3125rem auto;
     max-width: 36.25rem;
+
+    li {
+      width: 100%;
+    }
+
+    ${mq[1]} {
+      flex-wrap: nowrap;
+
+      li {
+        width: auto;
+      }
+    }
   }
 `;
 
@@ -189,7 +238,20 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   const visibleTabValue =
     (location.search && getSelectedOffer(location.search)) || 'flottaison';
 
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const breakpoint = 768;
   const [visibleTab, setVisibleTab] = useState(visibleTabValue);
+  const [dropdown, setDropdown] = useState(visibleTabValue);
+
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
 
   const listTitles = offer.map((item) => (
     <li
@@ -208,6 +270,12 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
       />
       <span>{item.title}</span>
     </li>
+  ));
+
+  const listOptions = offer.map((item) => (
+    <option key={item.id} value={item.slug.current}>
+      {item.title}
+    </option>
   ));
 
   const handleAltTabClick = (event, item) => {
@@ -241,16 +309,30 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
     return null;
   });
 
-  const listContent = offer.map((item) => (
-    <div
-      key={`item-${item.slug.current}`}
-      style={visibleTab === item.slug.current ? {} : { display: 'none' }}
-    >
-      {item.services.map((service) => (
-        <Service key={service.id} service={service} />
-      ))}
-    </div>
-  ));
+  const listContent = offer.map((item) => {
+    if (width > breakpoint) {
+      return (
+        <div
+          key={`item-${item.slug.current}`}
+          style={visibleTab === item.slug.current ? {} : { display: 'none' }}
+        >
+          {item.services.map((service) => (
+            <Service key={service.id} service={service} />
+          ))}
+        </div>
+      );
+    }
+    return (
+      <div
+        key={`item-${item.slug.current}`}
+        style={dropdown === item.slug.current ? {} : { display: 'none' }}
+      >
+        {item.services.map((service) => (
+          <Service key={service.id} service={service} />
+        ))}
+      </div>
+    );
+  });
 
   return (
     <SectionOfferStyles
@@ -264,6 +346,13 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
       <div className="container container--md">
         <div className="tabs">
           <ul className="tabs-titles">{listTitles}</ul>
+          <select
+            value={dropdown}
+            className="options-titles select-css"
+            onChange={(e) => setDropdown(e.target.value)}
+          >
+            {listOptions}
+          </select>
           <div className="tab-content">{listContent}</div>
           <h4 className="middle-title">Découvrir aussi&nbsp;:</h4>
           <ul className="tabs-titles-alt">{listTitlesAlt}</ul>

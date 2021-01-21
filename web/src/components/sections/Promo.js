@@ -16,28 +16,42 @@ const PromoStyles = styled.section`
 
   .container {
     display: flex;
+    flex-wrap: wrap;
     position: relative;
+
+    ${mq[2]} {
+      flex-wrap: nowrap;
+    }
   }
   .promo__content {
     background-color: var(--beigelight);
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 0 var(--radius) var(--radius);
     padding: 1.625rem 2.5rem 1.75rem;
     text-align: center;
+    width: 100%;
 
     p {
       margin: 0;
     }
 
     ${mq[2]} {
+      border-radius: 0 var(--radius) var(--radius) 0;
       width: ${pxtopc(380, 905)};
     }
   }
   .gatsby-image-wrapper {
+    width: 100%;
+
+    img {
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
     ${mq[2]} {
       width: ${pxtopc(525, 905)};
-    }
-    img {
-      border-radius: 5px 0 0 5px;
+
+      img {
+        border-radius: var(--radius) 0 0 var(--radius);
+      }
     }
   }
   .discount {
@@ -54,8 +68,28 @@ const PromoStyles = styled.section`
     }
   }
   .actions {
+    align-items: center;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .button:first-child {
+      margin-bottom: 1rem;
+    }
+
+    ${mq[1]} {
+      flex-wrap: nowrap;
+      flex-direction: row;
+      grid-column-gap: 1.25rem;
+      justify-content: center;
+
+      .button:first-child {
+        margin-bottom: 0;
+      }
+    }
+    ${mq[2]} {
+      justify-content: space-between;
+    }
   }
   svg {
     margin-left: 0.4375rem;

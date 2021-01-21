@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mq } from '../../styles/breakpoints';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
@@ -39,6 +40,7 @@ const BlockMembersStyles = styled.section`
   .privilege {
     display: flex;
     margin-bottom: 1.5625rem;
+    width: 100%;
 
     &__illustr {
       align-items: center;
@@ -56,6 +58,14 @@ const BlockMembersStyles = styled.section`
       max-width: 13.3125rem;
       padding-left: 13px;
       text-align: left;
+    }
+
+    ${mq[0]} {
+      width: 50%;
+    }
+
+    ${mq[2]} {
+      width: auto;
     }
   }
   .privilege__content {
