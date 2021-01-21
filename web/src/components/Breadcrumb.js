@@ -1,14 +1,19 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { mq } from '../styles/breakpoints';
 
 const BreadcrumbsStyles = styled.div`
   color: var(--brownlighter);
   left: 0;
-  padding-left: calc((100% - 79.875rem) / 2);
+  padding-left: 5%;
   position: absolute;
   top: 6.25rem;
   z-index: 2;
+
+  @media screen and (min-width: 1440px) {
+    padding-left: calc((100% - 79.875rem) / 2);
+  }
 
   a {
     color: var(--brownlighter);
@@ -30,7 +35,6 @@ export default function Breadcrumb({ title, titleMenu, origin }) {
   return (
     <BreadcrumbsStyles className="breadcrumb">
       <div
-        className="container container--xl"
         id="breadcrumbs"
         itemScope
         itemType="http://data-vocabulary.org/Breadcrumb"
