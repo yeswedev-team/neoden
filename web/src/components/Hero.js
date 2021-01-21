@@ -30,7 +30,10 @@ const HeroStyles = styled.section`
   }
 
   + section > .container {
-    margin-top: ${({ location }) => (location === 'home' ? '0' : '-13.75rem')};
+    ${mq[1]} {
+      margin-top: ${({ location }) =>
+        location === 'home' ? '0' : '-13.75rem'};
+    }
   }
 
   + form {
@@ -44,7 +47,10 @@ const HeroStyles = styled.section`
   .page-title {
     color: var(--white);
     margin-top: 1.25rem;
-    padding: ${({ location }) => handleLocation(location)};
+
+    ${mq[2]} {
+      padding: ${({ location }) => handleLocation(location)};
+    }
   }
 
   .hero__intro {

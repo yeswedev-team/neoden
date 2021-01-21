@@ -129,14 +129,23 @@ const GlobalStyles = createGlobalStyle`
       .container {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--gap);
+
+        ${mq[1]} {
+          flex-wrap: nowrap;
+          gap: var(--gap);
+        }
       }
       .col {
+        margin-bottom: 1rem;
         width: 100%;
+
+        ${mq[1]} {
+          margin-bottom: 0;
+        }
       }
 
       &--two {
-        ${mq[2]} {          
+        ${mq[1]} {          
           .container {
             flex-wrap: nowrap;
           }
@@ -146,7 +155,7 @@ const GlobalStyles = createGlobalStyle`
         }
       }
       &--two--withimg {
-        ${mq[2]} {          
+        ${mq[1]} {          
           .col:first-child {
             width: ${pxtopc(485, 1115)};
           }
@@ -190,18 +199,24 @@ const GlobalStyles = createGlobalStyle`
       &--boxed {
         background-color: rgba(145, 109, 91, 0.59);
         color: var(--white);
-        padding-top: 7.625rem;
+        padding-top: 1rem;
 
         .hero__content {
+          background-color: transparent;
           left: auto;
           position: relative;
           top: auto;
           transform: none;
 
           > .container {
-            padding-bottom: 220px;
+            ${mq[1]} {
+              padding-bottom: 220px;              
+            }
           }
-        }        
+        }
+        ${mq[2]} {
+          padding-top: 7.625rem;          
+        }
       }
     }
   }
@@ -542,9 +557,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .overprintLogo {
+      display: none;
       max-height: 850px;
       position: absolute;
-      z-index: 5;    
+      z-index: 5; 
 
       &--right {
         height: 50vw;
@@ -559,6 +575,10 @@ const GlobalStyles = createGlobalStyle`
         mix-blend-mode: darken;
         right: calc((100% - 1115px) / 2 + 1215px);
         transform: scaleX(-1) translateY(-50%);
+      }
+
+      ${mq[4]} {
+        display: block;
       }
   }
 `;

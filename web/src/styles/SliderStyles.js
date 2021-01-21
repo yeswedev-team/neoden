@@ -13,6 +13,7 @@ const SliderStyles = styled.section`
 
   .container--md {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .swiper-slide {
@@ -31,7 +32,7 @@ const SliderStyles = styled.section`
   .swiper-container {
     width: 100%;
 
-    ${mq[2]} {
+    ${mq[1]} {
       width: 50%;
     }
   }
@@ -48,18 +49,30 @@ const SliderStyles = styled.section`
   .gatsby-image-wrapper {
     width: 100%;
     img {
-      border-radius: var(--radius) 0 0 var(--radius);
+      border-radius: var(--radius) var(--radius) 0 0;
+
+      ${mq[1]} {
+        border-radius: var(--radius) 0 0 var(--radius);
+      }
     }
   }
 
   .slide__text {
     background-color: var(--white);
-    padding: 3.125rem 2.25rem 3.25rem 2.5rem;
+    border-radius: 0 0 var(--radius) var(--radius);
+    font-size: 0.875rem;
+    padding: 1.25rem 1.25rem 3.25rem;
+
+    ${mq[1]} {
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 1rem;
+      padding: 3.125rem 2.25rem 3.25rem 2.5rem;
+    }
   }
   .swiper-container-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
-    ${mq[2]} {
+    ${mq[1]} {
       bottom: 1rem;
       left: 0;
       width: 100%;
@@ -88,13 +101,19 @@ const SliderStyles = styled.section`
   }
   .swiper-button-prev,
   .swiper-container-rtl .swiper-button-next {
-    ${mq[2]} {
+    left: 1.25rem;
+
+    ${mq[1]} {
       left: 2.5rem;
     }
   }
   .swiper-button-next,
   .swiper-container-rtl .swiper-button-prev {
-    right: 2.5rem;
+    right: 1.25rem;
+
+    ${mq[1]} {
+      right: 2.5rem;
+    }
   }
 
   .swiper-button-prev:after,

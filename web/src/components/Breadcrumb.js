@@ -8,8 +8,12 @@ const BreadcrumbsStyles = styled.div`
   left: 0;
   padding-left: 5%;
   position: absolute;
-  top: 6.25rem;
+  top: 1.25rem;
   z-index: 2;
+
+  ${mq[2]} {
+    top: 1.25rem;
+  }
 
   @media screen and (min-width: 1440px) {
     padding-left: calc((100% - 79.875rem) / 2);

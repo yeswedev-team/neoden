@@ -25,12 +25,15 @@ const AccordionStyles = styled.div`
     display: flex;
     font-weight: 600;
     justify-content: space-between;
-    padding: 1em 0;
+    padding: 1em 2rem 1em 0;
+    position: relative;
 
     &:after {
       background: url(${Arrow}) 0 0 no-repeat;
       content: '';
       height: 7px;
+      position: absolute;
+      right: 0;
       transition: transform 600ms linear;
       width: 16px;
     }
