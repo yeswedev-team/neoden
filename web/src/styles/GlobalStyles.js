@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --brownlighter: #E1E0DC;
     --brownlight: #C2AFA5;
     --brown: #916D5B;
+    --beigedark: #A5968F;
     --beigelight: #EBDEDD;
     --beige: #CFC6C2;
     --font: 'Raleway', sans-serif;
@@ -84,9 +85,17 @@ const GlobalStyles = createGlobalStyle`
       max-width: ${pxtoem(1278)};
     }
   }
+  ${mq[1]} {
+    .container--sm-after-sm {
+      max-width: ${pxtoem(695)} !important;
+    }
+  }
   ${mq[2]} {
     .container--sm-after-md {
       max-width: ${pxtoem(695)} !important;
+    }
+    .container--xl-after-md {
+      max-width: ${pxtoem(1278)} !important;
     }
   }
 
@@ -205,12 +214,16 @@ const GlobalStyles = createGlobalStyle`
     border-radius: ${pxtoem(18)};
     color: var(--brown);
     display: inline-flex;
-    font-size: ${remCalc(16)};
+    font-size: ${remCalc(13)};
     font-weight: 500;
     padding: ${remCalc(8)} ${remCalc(30)};
     text-align: center;
     transition: background 200ms linear;
     white-space: nowrap;
+
+    ${mq[1]} {
+      font-size: 1rem;
+    }
 
     &:hover {
         background-color: var(--brownlighter);

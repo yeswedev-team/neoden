@@ -5,6 +5,7 @@ import Logo from '../assets/images/logo-neoden.inline.svg';
 import LogoOnly from '../assets/images/logo-neoden-seul.inline.svg';
 import PortableText from './PortableText';
 import { lsEm, pxtopc } from '../styles/Mixins';
+import { mq } from '../styles/breakpoints';
 
 const FooterStyles = styled.footer`
   background-color: var(--brownlight);
@@ -17,10 +18,14 @@ const FooterStyles = styled.footer`
   }
 
   .label {
-    color: var(--brownlighter);
+    color: var(--beigedark);
     font-weight: 600;
     letter-spacing: ${lsEm(40)};
     margin-top: 0;
+
+    ${mq[2]} {
+      color: var(--brownlighter);
+    }
   }
 
   li,
@@ -33,17 +38,57 @@ const FooterStyles = styled.footer`
 
   .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: 4.5625rem;
+    max-width: 10.4375rem;
+
+    ${mq[0]} {
+      max-width: 20rem;
+    }
+    ${mq[1]} {
+      max-width: 90%;
+    }
   }
   .button {
     color: var(--brown);
     display: block;
     margin-bottom: 0.9375rem;
   }
+  .logos,
+  nav,
+  .footer__address,
+  .footer__contact,
+  .footer__networks,
+  .footer__actions {
+    margin-top: 2.1875rem;
+    width: 100%;
+
+    ${mq[0]} {
+      width: 50%;
+    }
+    ${mq[1]} {
+      margin-top: 0;
+      width: 30%;
+    }
+  }
+
   .logos {
-    padding-left: 15px;
-    width: ${pxtopc(250, 1278)};
+    margin-bottom: 0.5625rem;
+    margin-top: 0;
+
+    ${mq[0]} {
+      width: 100%;
+    }
+    ${mq[1]} {
+      margin-bottom: 2rem;
+      width: 30%;
+    }
+    ${mq[2]} {
+      margin-bottom: 0;
+      padding-left: 15px;
+      width: ${pxtopc(250, 1278)};
+    }
   }
   .logo-footer-only {
     display: block;
@@ -54,8 +99,11 @@ const FooterStyles = styled.footer`
     margin-top: 0.9375rem;
     width: 8.4375rem;
   }
+
   nav {
-    width: ${pxtopc(112, 1278)};
+    ${mq[2]} {
+      width: ${pxtopc(112, 1278)};
+    }
   }
   .footer__address,
   .footer__contact,
@@ -63,16 +111,35 @@ const FooterStyles = styled.footer`
     font-size: 0.875rem;
   }
   .footer__address {
-    width: ${pxtopc(196, 1278)};
+    ${mq[1]} {
+      width: 30%;
+    }
+    ${mq[2]} {
+      width: ${pxtopc(196, 1278)};
+    }
   }
   .footer__contact {
-    width: ${pxtopc(167, 1278)};
+    ${mq[2]} {
+      width: ${pxtopc(167, 1278)};
+    }
   }
   .footer__networks {
-    width: ${pxtopc(202, 1278)};
+    ${mq[2]} {
+      width: ${pxtopc(202, 1278)};
+    }
   }
   .footer__actions {
     padding-right: 15px;
+
+    ${mq[0]} {
+      width: 100%;
+    }
+    ${mq[1]} {
+      width: 30%;
+    }
+    ${mq[2]} {
+      width: auto;
+    }
   }
   .copyright {
     border-top: 1px solid var(--white);
@@ -99,7 +166,7 @@ const Footer = ({ footerItems }) => {
 
   return (
     <FooterStyles className="has-wave has-wave-up">
-      <div className="container container--xl">
+      <div className="container container--xl-after-md">
         <div className="logos">
           <Link to="/">
             <LogoOnly className="logo-footer-only" />
