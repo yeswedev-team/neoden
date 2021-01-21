@@ -17,8 +17,8 @@ export function pxtovw(target) {
 export function calcClamp(
   minFontSize,
   maxFontSize,
-  minWidthPx = 1200,
-  maxWidthPx = 2000,
+  minWidthPx = 512,
+  maxWidthPx = 1280,
   pixelsPerRem = 16
 ) {
   const minWidth = minWidthPx / pixelsPerRem;

@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { pxtoem, pxtopc, remCalc } from './Mixins';
+import { mq } from './breakpoints';
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -53,8 +54,13 @@ const GlobalStyles = createGlobalStyle`
 
   .content {
     overflow: hidden;
+    padding-top: 73px;
     position: relative;
     z-index: 4;
+
+    ${mq[3]} {
+      padding-top: 0;
+    }
   }
 
   .container {
@@ -76,6 +82,11 @@ const GlobalStyles = createGlobalStyle`
     }
     &--xl {
       max-width: ${pxtoem(1278)};
+    }
+  }
+  ${mq[2]} {
+    .container--sm-after-md {
+      max-width: ${pxtoem(695)} !important;
     }
   }
 
@@ -108,27 +119,38 @@ const GlobalStyles = createGlobalStyle`
     &__columns {
       .container {
         display: flex;
+        flex-wrap: wrap;
         gap: var(--gap);
+      }
+      .col {
+        width: 100%;
       }
 
       &--two {
-        .col {
-          width: 50%;
+        ${mq[2]} {          
+          .container {
+            flex-wrap: nowrap;
+          }
+          .col {
+            width: 50%;
+          }
         }
       }
       &--two--withimg {
-        .col:first-child {
-          width: ${pxtopc(485, 1115)};
-        }
-        .col:last-child {
-          width: ${pxtopc(630, 1115)};
-        }
-        &.img-at-right {
+        ${mq[2]} {          
           .col:first-child {
-            order: 2;
+            width: ${pxtopc(485, 1115)};
           }
           .col:last-child {
-            order: 1;
+            width: ${pxtopc(630, 1115)};
+          }
+          &.img-at-right {
+            .col:first-child {
+              order: 2;
+            }
+            .col:last-child {
+              order: 1;
+            }
           }
         }
       }
@@ -139,11 +161,22 @@ const GlobalStyles = createGlobalStyle`
       z-index: 2;
 
       .hero__content {
-        left: 50%;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        background-color: rgba(145, 109, 91, 0.59);
+        padding: 2.5rem 0;
+
+        .container {
+          text-align: center;
+        }
+
+        ${mq[1]} {
+          background-color: transparent;
+          left: 50%;
+          padding: 0;
+          position: absolute;
+          text-align: center;
+          top: 50%;
+          transform: translate(-50%, -50%);          
+        }
       }
       &--boxed {
         background-color: rgba(145, 109, 91, 0.59);

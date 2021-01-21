@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 import { pxtopc } from '../../styles/Mixins';
+import { mq } from '../../styles/breakpoints';
 
 const TwoColumnsWOIStyles = styled.section`
   padding-bottom: 0;
@@ -19,8 +20,11 @@ const TwoColumnsWOIStyles = styled.section`
     position: relative;
 
     &__content {
-      padding-left: 2.8125rem;
       padding-top: calc(var(--gap) / 4);
+
+      ${mq[2]} {
+        padding-left: 2.8125rem;
+      }
     }
   }
   img {
@@ -34,7 +38,17 @@ const TwoColumnsWOIStyles = styled.section`
     width: ${pxtopc(260, 485)};
     position: absolute !important;
     right: 0;
-    transform: translate(3.75rem, 1.25rem);
+    transform: translate(0, 1.25rem);
+
+    ${mq[2]} {
+      bottom: auto;
+      transform: translate(3.75rem, 1.25rem);
+      top: 12.75rem;
+    }
+    ${mq[3]} {
+      bottom: 0;
+      top: auto;
+    }
   }
   .section-title {
     margin-top: 0.3125rem;

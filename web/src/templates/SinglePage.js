@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import { MapToComponents } from 'react-map-to-components';
 import Blocks from '../components/sections/Block';

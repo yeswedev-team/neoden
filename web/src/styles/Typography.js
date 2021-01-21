@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { calcClamp } from './Mixins';
 
 const Typography = createGlobalStyle`
 
@@ -19,7 +20,7 @@ const Typography = createGlobalStyle`
 
   /* Custom */
   .page-title {
-    font-size: 4.4375rem;
+    font-size: ${calcClamp(3.4375, 4.4375)};
     font-weight: normal;
     line-height: calc(50 / 55);
     text-align: center;

@@ -5,6 +5,7 @@ import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
 import Breadcrumb from './Breadcrumb';
+import { mq } from '../styles/breakpoints';
 
 const handleLocation = (location) => {
   switch (location) {
@@ -22,8 +23,11 @@ const handleLocation = (location) => {
 };
 
 const HeroStyles = styled.section`
-  max-height: 95vh;
   overflow: hidden;
+
+  ${mq[3]} {
+    max-height: 95vh;
+  }
 
   + section > .container {
     margin-top: ${({ location }) => (location === 'home' ? '0' : '-13.75rem')};
@@ -51,6 +55,11 @@ const HeroStyles = styled.section`
 
   .hero__content {
     z-index: 3;
+    width: 100%;
+
+    ${mq[2]} {
+      width: auto;
+    }
   }
 
   .hero__illustr img {
@@ -94,7 +103,9 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
       <div className="hero__content">
         <div
           className={`container${
-            heroData?.background ? ' container--sm' : ' container--lg'
+            heroData?.background
+              ? ' container--lg container--sm-after-md'
+              : ' container--lg'
           }`}
         >
           {heroData?.hasLogo && <Logo className="logo-only" />}

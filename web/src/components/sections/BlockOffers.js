@@ -3,6 +3,7 @@ import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { pxtopc } from '../../styles/Mixins';
+import { mq } from '../../styles/breakpoints';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
 import Wave from '../Wave';
 
@@ -26,11 +27,16 @@ const BlockOffersStyles = styled.section`
   }
   .offersList {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   .offer {
-    width: ${pxtopc(275, 904)};
     position: relative;
+    width: 100%;
+
+    ${mq[1]} {
+      width: ${pxtopc(275, 904)};
+    }
 
     &__title {
       color: var(--white);
@@ -57,8 +63,11 @@ const BlockOffersStyles = styled.section`
         pointer-events: none;
       }
     }
+    .gatsby-image-wrapper,
     img {
       border-radius: var(--radius);
+    }
+    img {
       filter: brightness(0.8);
     }
     .button {
