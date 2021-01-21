@@ -11,8 +11,8 @@ const BreadcrumbsStyles = styled.div`
   top: 1.25rem;
   z-index: 2;
 
-  ${mq[2]} {
-    top: 1.25rem;
+  ${mq[3]} {
+    top: 6.25rem;
   }
 
   @media screen and (min-width: 1440px) {

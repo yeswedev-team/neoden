@@ -210,11 +210,14 @@ const GlobalStyles = createGlobalStyle`
 
           > .container {
             ${mq[1]} {
-              padding-bottom: 220px;              
+              padding-bottom: 220px;
             }
           }
         }
-        ${mq[2]} {
+        ${mq[1]} {
+          padding-top: 3.625rem;
+        }
+        ${mq[3]} {
           padding-top: 7.625rem;          
         }
       }
