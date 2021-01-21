@@ -54,6 +54,7 @@
     "query-string": "^6.13.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-flickity-component": "^3.6.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.1.0",
     "react-map-to-components": "^1.2.1",
