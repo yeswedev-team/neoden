@@ -238,7 +238,13 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   const visibleTabValue =
     (location.search && getSelectedOffer(location.search)) || 'flottaison';
 
-  const [width, setWidth] = React.useState(window.innerWidth);
+  let windowWidth = 0;
+
+  if (typeof window !== 'undefined') {
+    windowWidth = window.innerWidth;
+  }
+
+  const [width, setWidth] = React.useState(windowWidth);
   const breakpoint = 768;
   const [visibleTab, setVisibleTab] = useState(visibleTabValue);
   const [dropdown, setDropdown] = useState(visibleTabValue);
