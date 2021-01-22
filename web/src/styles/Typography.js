@@ -26,7 +26,7 @@ const Typography = createGlobalStyle`
     text-align: center;
   }
   .blogpost-title {
-    font-size: 4.0625rem;
+    font-size: ${calcClamp(3.147, 4.0625)};
     font-weight: normal;
     line-height: calc(60 / 65);
     text-align: center;
@@ -37,7 +37,7 @@ const Typography = createGlobalStyle`
     font-weight: 300;
   }
   .section-title {
-    font-size: 3.4375rem;
+    font-size: ${calcClamp(2.6628, 3.4375)};
     font-weight: normal;
     line-height: calc(50 / 55);
   }

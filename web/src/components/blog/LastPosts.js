@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Sticky from 'react-stickynode';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
@@ -47,6 +47,25 @@ const LastPostsStyles = styled.div`
 `;
 
 export default function LastPosts({ posts }) {
+  let windowWidth = 0;
+
+  if (typeof window !== 'undefined') {
+    windowWidth = window.innerWidth;
+  }
+
+  const [width, setWidth] = React.useState(windowWidth);
+  const breakpoint = 1520;
+
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
+
   const handleStateChange = (status) => {
     if (status.status === Sticky.STATUS_FIXED) {
       console.log('the component is sticky');
@@ -59,7 +78,7 @@ export default function LastPosts({ posts }) {
 
   return (
     <Sticky
-      enabled
+      enabled={width > breakpoint}
       top={200}
       bottomBoundary="#content"
       onStateChange={handleStateChange}

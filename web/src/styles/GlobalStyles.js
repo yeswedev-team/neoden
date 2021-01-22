@@ -287,16 +287,23 @@ const GlobalStyles = createGlobalStyle`
 
   /* sticky component */
   .sticky-outer-wrapper {
-    left: calc(((100% - 56.5rem) / 2) - 10.1875rem);
-    opacity: 0;
-    pointer-events: none;
-    position: relative;
-    transition: opacity 600ms linear;
-    z-index: 4;
+    display: none;
 
-    &.active {
-      opacity: 1;
-      pointer-events: auto;
+    ${mq[4]} {
+      display: block;
+      left: calc(((100% - 56.5rem) / 2) - 10.1875rem);
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transition: opacity 600ms linear;
+      width: 16.8125rem;
+      z-index: 4;      
+
+      &.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 

@@ -10,24 +10,32 @@ import Breadcrumb from '../Breadcrumb';
 import LastPosts from './LastPosts';
 import Overprint from '../../assets/images/logo-neoden-grey.inline.svg';
 import { mq } from '../../styles/breakpoints';
+import { calcClamp } from '../../styles/Mixins';
 
 const BlogArticleStyles = styled.article`
   .blog-article__illustr {
-    max-height: 95vh;
+    max-height: calc(95vh - 73px);
     overflow: hidden;
     position: relative;
 
     img {
       border-radius: 0;
     }
+    ${mq[3]} {
+      max-height: 95vh;
+    }
   }
 
   > .container {
     background-color: var(--white);
-    margin-top: -60vh;
-    padding: 3.125rem 7.3125rem 5rem;
+    padding: 1.125rem 5% 5rem;
     position: relative;
     z-index: 3;
+
+    ${mq[2]} {
+      margin-top: -60vh;
+      padding: 3.125rem 7.3125rem 5rem;
+    }
   }
 
   .excerpt {
@@ -67,10 +75,15 @@ const BlogArticleStyles = styled.article`
     }
     blockquote {
       font-family: var(--font-titles);
-      font-size: 3.4375rem;
+      font-size: ${calcClamp(2.6628, 3.4375)};
       font-weight: normal;
       line-height: 1;
+      margin: 1rem 0;
       text-align: center;
+
+      ${mq[0]} {
+        margin: 1rem 2.5rem;
+      }
     }
   }
 
