@@ -1,16 +1,16 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import { pxtoem } from '../styles/Mixins';
+import { mq } from '../styles/breakpoints';
 import Wave from './Wave';
 
 const FormStyles = styled.form`
   background-color: var(--grey);
-  /* padding-top: ${pxtoem(45)}; */
   position: relative;
   z-index: 3;
 
   .rgpd label {
+    display: block;
     font-size: 0.8125rem;
   }
   input[type='text'],
@@ -28,7 +28,11 @@ const FormStyles = styled.form`
 
     li {
       margin-bottom: 1em;
-      width: calc(50% - 0.5em);
+      width: 100%;
+
+      ${mq[0]} {
+        width: calc(50% - 0.5em);
+      }
     }
   }
   textarea {
@@ -46,12 +50,24 @@ const FormStyles = styled.form`
   .form-header {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     p {
       margin: 0;
+      text-align: center;
     }
     .button {
-      margin-left: 1.25rem;
+      margin: 0.5rem auto 0;
+    }
+
+    ${mq[0]} {
+      flex-wrap: nowrap;
+      p {
+        text-align: left;
+      }
+      .button {
+        margin: 0 0 0 1.25rem;
+      }
     }
   }
   .form-footer {
@@ -80,10 +96,9 @@ const FormStyles = styled.form`
       margin-top: 1.625rem;
     }
   }
-
 `;
 
-export default function Form(params) {
+export default function Form() {
   return (
     <FormStyles
       action="/merci"

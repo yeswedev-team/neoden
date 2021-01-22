@@ -26,11 +26,6 @@ export default function BlogIndex({ data, location }) {
 
 export const query = graphql`
   query BlogIndexQuery {
-    # site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
-    #   title
-    #   description
-    #   keywords
-    # }
     posts: allSanityPost(
       limit: 10
       sort: { fields: [publishedAt], order: DESC }

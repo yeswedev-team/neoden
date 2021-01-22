@@ -5,6 +5,7 @@ import { Link } from 'gatsby';
 import { getBlogUrl } from '../../utils/helpers';
 import BlogPostPreview from './BlogPostPreview';
 import PortableText from '../PortableText';
+import { mq } from '../../styles/breakpoints';
 import Wave from '../Wave';
 import Breadcrumb from '../Breadcrumb';
 
@@ -13,6 +14,9 @@ const WaveContainerStyles = styled.div`
   padding-top: 20.625rem;
   position: relative;
 
+  ${mq[1]} {
+  }
+
   canvas {
     display: block;
     transform: none;
@@ -20,7 +24,7 @@ const WaveContainerStyles = styled.div`
 `;
 
 const FirstNodeStyles = styled.div`
-  margin-top: -10.3125rem;
+  margin-top: -18.3125rem;
   position: relative;
 
   .container {
@@ -29,10 +33,20 @@ const FirstNodeStyles = styled.div`
     z-index: 3;
   }
   .firstPost__header {
-    bottom: 0;
-    color: var(--white);
-    padding: 0 4.75rem 2.8125rem;
-    position: absolute;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    color: var(--brown);
+    margin-top: 0.5rem;
+    padding: 1.5625rem;
+
+    ${mq[1]} {
+      background-color: transparent;
+      border-radius: 0;
+      bottom: 0;
+      color: var(--white);
+      padding: 0 4.75rem 2.8125rem;
+      position: absolute;
+    }
   }
   .firstNode__excerpt {
     max-width: 38.4375rem;
@@ -41,6 +55,10 @@ const FirstNodeStyles = styled.div`
   }
   .firstNode__excerpt {
     font-weight: 500;
+  }
+
+  ${mq[1]} {
+    margin-top: -10.3125rem;
   }
 `;
 
@@ -53,9 +71,17 @@ const BlogPostsListStyles = styled.div`
     gap: 2.5rem;
 
     li {
-      flex-shrink: 0;
-      flex-grow: 1;
-      width: calc((100% - 80px) / 3);
+      width: 100%;
+
+      @media screen and (min-width: 650px) {
+        width: calc((100% - 2.5rem) / 2);
+      }
+
+      ${mq[2]} {
+        flex-shrink: 0;
+        flex-grow: 1;
+        width: calc((100% - 80px) / 3);
+      }
     }
   }
 `;

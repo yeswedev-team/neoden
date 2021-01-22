@@ -9,6 +9,7 @@ import AuthorList from './AuthorList';
 import Breadcrumb from '../Breadcrumb';
 import LastPosts from './LastPosts';
 import Overprint from '../../assets/images/logo-neoden-grey.inline.svg';
+import { mq } from '../../styles/breakpoints';
 
 const BlogArticleStyles = styled.article`
   .blog-article__illustr {

@@ -37,7 +37,9 @@ const HeroStyles = styled.section`
   }
 
   + form {
-    margin-top: -7.5rem;
+    ${mq[2]} {
+      margin-top: -7.5rem;
+    }
   }
 
   .container {
@@ -48,7 +50,7 @@ const HeroStyles = styled.section`
     color: var(--white);
     margin-top: 1.25rem;
 
-    ${mq[2]} {
+    ${mq[3]} {
       padding: ${({ location }) => handleLocation(location)};
     }
   }
