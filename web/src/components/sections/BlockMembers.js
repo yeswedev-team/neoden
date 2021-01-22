@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Flickity from 'react-flickity-component';
 import { mq } from '../../styles/breakpoints';
+import '../../styles/flickity.css';
 import PortableText from '../PortableText';
 import Wave from '../Wave';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
@@ -27,27 +29,35 @@ const BlockMembersStyles = styled.section`
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   text-align: center;
 
+  > .container:first-child {
+    max-width: none;
+    width: 100%;
+  }
+
   .privileges__header {
     text-align: center;
   }
   .list-privileges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.875rem;
-    justify-content: center;
     margin-top: 3.125rem;
   }
+
   .privilege {
     display: flex;
+    flex-direction: column;
+    margin-right: 2.5rem;
     margin-bottom: 1.5625rem;
-    width: 100%;
+    width: 50%;
 
     &__illustr {
       align-items: center;
       display: flex;
       justify-content: center;
       position: relative;
-      width: 7.75rem;
+      width: 100%;
+
+      ${mq[0]} {
+        width: 7.75rem;
+      }
 
       &--icon {
         position: absolute;
@@ -55,31 +65,38 @@ const BlockMembersStyles = styled.section`
     }
 
     &__content {
-      max-width: 13.3125rem;
-      padding-left: 13px;
-      text-align: left;
+      text-align: center;
+      padding-top: 1em;
+
+      h3 {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      .block > *:first-child {
+        margin: 0.25em 0 0;
+      }
+
+      ${mq[0]} {
+        max-width: 13.3125rem;
+        padding-left: 13px;
+        text-align: left;
+      }
     }
 
     ${mq[0]} {
+      flex-direction: row;
       width: 50%;
+    }
+    ${mq[1]} {
+      width: 45%;
     }
 
     ${mq[2]} {
-      width: auto;
+      width: 21.25rem;
     }
   }
-  .privilege__content {
-    padding-top: 1em;
 
-    h3 {
-      font-size: 1.5rem;
-      margin: 0;
-    }
-
-    .block > *:first-child {
-      margin: 0.25em 0 0;
-    }
-  }
   .block {
     font-size: 0.9375rem;
   }
@@ -99,6 +116,12 @@ export default function BlockMembers({
   hasWaveUp,
   hasDoubleBotMargin,
 }) {
+  const flickityOptions = {
+    initialIndex: 1,
+    prevNextButtons: false,
+    pageDots: false,
+  };
+
   return (
     <BlockMembersStyles
       hasWaveDown={hasWaveDown}
@@ -109,7 +132,7 @@ export default function BlockMembers({
       }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
       {hasWaveUp && <Wave bgcolor="white" />}
-      <div className="container container--xl">
+      <div className="container">
         <div className="privileges__header container container--sm">
           {title && <h2 className="section-title">{title}</h2>}
           {subtitle && (
@@ -118,7 +141,10 @@ export default function BlockMembers({
             </p>
           )}
         </div>
-        <div className="list-privileges">
+        <Flickity
+          className="list-privileges"
+          options={flickityOptions} // takes flickity options {}
+        >
           {privilegeList.map((privilege) => (
             <div key={privilege._key} className="privilege">
               <div className="privilege__illustr">
@@ -137,7 +163,7 @@ export default function BlockMembers({
               </div>
             </div>
           ))}
-        </div>
+        </Flickity>
         <a href={membersLink} className="button">
           {buttonTitle || 'Découvrir'}
         </a>

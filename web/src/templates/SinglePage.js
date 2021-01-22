@@ -325,13 +325,14 @@ export const query = graphql`
                 title
                 defaultZoom
                 locations {
-                  _key
+                  _id
+                  id
                   gmap {
                     lat
                     lng
                   }
-                  name
-                  _rawAddress(resolveReferences: { maxDepth: 10 })
+                  title
+                  _rawText(resolveReferences: { maxDepth: 10 })
                 }
               }
             }

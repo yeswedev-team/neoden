@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
+import SwiperCore, { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 import iconMarker from '../../assets/images/marker.svg';
 import iconMarkerBrown from '../../assets/images/markerBrown.svg';
-import { pxtoem } from '../../styles/Mixins';
+import { pxtoem, pxtopc } from '../../styles/Mixins';
+import { mq } from '../../styles/breakpoints';
 import Wave from '../Wave';
 import PortableText from '../PortableText';
+import arrow from '../../assets/images/arrow.svg';
 
 const BlockMapStyles = styled.section`
   background: var(--beigelight);
@@ -18,43 +23,105 @@ const BlockMapStyles = styled.section`
   z-index: 3;
 
   .section-title {
-    margin-bottom: 2.5rem;
+    margin-bottom: 4.5rem;
     text-align: center;
-  }
-
-  .maps {
-    height: 23.875rem;
-    width: clamp(21.6875rem, 62.33%, 43.4375rem);
-    z-index: 1;
   }
 
   .block-maps {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 2.5rem;
+
+    ${mq[1]} {
+      flex-wrap: nowrap;
+      height: 23.875rem;
+    }
+  }
+
+  .swiper-slide {
+    ${mq[1]} {
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    height: 1.25rem;
+    margin: 0;
+    position: absolute;
+    transform: translateY(-50%);
+    width: 2.625rem;
+    z-index: 11;
+
+    ${mq[1]} {
+      bottom: 0%;
+      top: auto;
+      transform: none;
+    }
+  }
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+    left: 0;
+
+    ${mq[1]} {
+      left: 7.3125em;
+    }
+  }
+  .swiper-button-next,
+  .swiper-container-rtl .swiper-button-prev {
+    right: 1.25rem;
+
+    ${mq[1]} {
+      right: 0;
+    }
+  }
+
+  .swiper-button-prev:after,
+  .swiper-container-rtl .swiper-button-next:after,
+  .swiper-button-next:after,
+  .swiper-container-rtl .swiper-button-prev:after {
+    background: url(${arrow}) 0 0 no-repeat;
+    content: '';
+    height: 1.25rem;
+    transform: scaleX(-1);
+    width: 2.625rem;
+  }
+  .swiper-button-prev:after,
+  .swiper-container-rtl .swiper-button-next:after {
+    transform: none;
+  }
+
+  .maps {
+    height: 23.875rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    z-index: 1;
+
+    ${mq[1]} {
+      margin-bottom: 0;
+      width: ${pxtopc(695, 1001)};
+    }
   }
 
   .address {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-right: ${pxtoem(117)};
+    text-align: center;
 
-    &-block {
+    ${mq[1]} {
+      padding-left: ${pxtoem(117)};
+      text-align: left;
+    }
+
+    &__block {
       background: transparent;
       border: none;
       color: var(--brown);
       cursor: pointer;
-      margin: 1.875rem 0;
       opacity: 0.3;
       padding: 0;
       text-align: left;
-
-      &:first-child {
-        margin-top: 0;
-      }
-      &:last-child {
-        margin-bottom: 0;
-      }
 
       &:active,
       &:focus {
@@ -63,30 +130,30 @@ const BlockMapStyles = styled.section`
         opacity: 1;
       }
 
-      h3 {
-        text-transform: uppercase;
-      }
-
-      h3,
-      p {
-        font-weight: normal;
-        line-height: 1.4375;
-        margin: 0;
-      }
-
-      &:before {
-        background: var(--brown);
-        content: '';
-        display: block;
-        height: 1px;
-        position: absolute;
-        transform: translate(-20.375rem, 2.1563rem);
-        width: 18.75rem;
+      ${mq[1]} {
+        &:before {
+          background: var(--brown);
+          content: '';
+          display: block;
+          height: 1px;
+          position: absolute;
+          transform: translate(-20.375rem, 2.1563rem);
+          width: 18.75rem;
+        }
       }
     }
-
     .active {
       opacity: 1;
+    }
+    h3 {
+      text-transform: uppercase;
+    }
+
+    h3,
+    p {
+      font-weight: normal;
+      line-height: 1.4375;
+      margin: 0;
     }
   }
 `;
@@ -134,7 +201,7 @@ const BlockGmap = ({
     lng: locations[0].gmap.lng,
   });
 
-  const [active, setActive] = useState(`${locations[0]._key}`);
+  const [active, setActive] = useState(`${locations[0].id}`);
 
   function createMapOptions(maps) {
     return {
@@ -320,9 +387,9 @@ const BlockGmap = ({
     };
   }
 
-  function handleClick(loc, key) {
+  function handleClick(loc, id) {
     setCenter(loc);
-    setActive(key);
+    setActive(id);
   }
 
   return (
@@ -350,33 +417,48 @@ const BlockGmap = ({
             >
               {locations.map((marker) => (
                 <MarkerStyles
-                  key={marker._key}
+                  key={marker._id}
                   lat={marker.gmap.lat}
                   lng={marker.gmap.lng}
-                  onClick={() => handleClick(marker.gmap, marker._key)}
-                  className={active === marker._key ? 'active' : 'inactive'}
+                  onClick={() => handleClick(marker.gmap, marker.id)}
+                  className={active === marker.id ? 'active' : 'inactive'}
                 />
               ))}
             </GoogleMapReact>
           </div>
 
-          <div className="address">
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            speed={700}
+            navigation
+            grabCursor
+            className="address"
+            breakpoints={{
+              // when window width is >= 768px
+              768: {
+                direction: 'vertical',
+                slidesPerView: 3,
+              },
+            }}
+          >
             {locations.map((location) => (
-              <button
-                type="button"
-                key={location._key}
-                onClick={() => handleClick(location.gmap, location._key)}
-                className={`address-block ${
-                  active === location._key ? 'active' : ''
-                }`}
-              >
-                <h3>{location.name}</h3>
-                {location._rawAddress && (
-                  <PortableText blocks={location._rawAddress} />
-                )}
-              </button>
+              <SwiperSlide key={location.id} className="slide">
+                <button
+                  type="button"
+                  onClick={() => handleClick(location.gmap, location.id)}
+                  className={`address__block ${
+                    active === location.id ? 'active' : ''
+                  }`}
+                >
+                  <h3>{location.title}</h3>
+                  {location._rawText && (
+                    <PortableText blocks={location._rawText} />
+                  )}
+                </button>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </div>
       {hasWaveDown && <Wave bgcolor="#EBDEDD" reversed />}

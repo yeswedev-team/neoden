@@ -104,5 +104,11 @@ export default {
       title: 'URL',
       validation: (Rule) => Rule.required(),
     },
+    {
+      type: 'geopoint',
+      name: 'gmap',
+      title: 'Coordonnées géographiques',
+      validation: (Rule) => Rule.required(),
+    },
   ],
 };

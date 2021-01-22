@@ -20,7 +20,12 @@ export default {
       type: 'array',
       name: 'locations',
       title: 'Locations',
-      of: [{ type: 'location' }],
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'place' }],
+        },
+      ],
     },
   ],
 };

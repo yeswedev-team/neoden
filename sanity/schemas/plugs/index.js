@@ -13,7 +13,6 @@ export { default as slide } from './slide';
 export { default as blockQuestions } from './blockQuestions';
 export { default as frontimage } from './frontimage';
 export { default as background } from './background';
-export { default as location } from './location';
 export { default as maps } from './maps';
 
 /*
