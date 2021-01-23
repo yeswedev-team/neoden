@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { Link } from 'gatsby';
@@ -50,6 +50,8 @@ const BurgerStyles = styled.button`
 `;
 
 export default function Burger({ open, setOpen }) {
+  const [isClicked, setIsClicked] = useState(false);
+
   const burgerRef = useRef();
   const waveTopRef = useRef();
   const waveMidRef = useRef();
@@ -58,7 +60,7 @@ export default function Burger({ open, setOpen }) {
   const flatMidRef = useRef();
   const flatBotRef = useRef();
 
-  const tlHover = gsap.timeline({
+  const tlBurger = gsap.timeline({
     paused: true,
     reversed: true,
     defaults: {
@@ -68,34 +70,11 @@ export default function Burger({ open, setOpen }) {
   });
 
   useEffect(() => {
-    gsap.set(flatMidRef.current, { autoAlpha: 0 });
-
-    tlHover
+    tlBurger
       .to(waveTopRef.current, { morphSVG: flatTopRef.current }, '<')
       .to(waveMidRef.current, { morphSVG: flatMidRef.current }, '<')
-      .to(waveBotRef.current, { morphSVG: flatBotRef.current }, '<');
-  }, [
-    tlHover,
-    waveTopRef,
-    waveMidRef,
-    waveBotRef,
-    flatTopRef,
-    flatMidRef,
-    flatBotRef,
-  ]);
-
-  const tlToggle = gsap.timeline({
-    paused: true,
-    reversed: true,
-    defaults: {
-      duration: 0.5,
-      ease: 'power2',
-    },
-    onReverseComplete: () => tlHover.reverse(),
-  });
-
-  useEffect(() => {
-    tlToggle
+      .to(waveBotRef.current, { morphSVG: flatBotRef.current }, '<')
+      .addLabel('hover')
       .to(waveMidRef.current, {
         duration: 0.3,
         scaleX: 0,
@@ -113,29 +92,37 @@ export default function Burger({ open, setOpen }) {
         { rotation: -45, transformOrigin: 'center center' },
         '<'
       );
-  }, [tlToggle, waveTopRef, waveMidRef, waveBotRef]);
+  }, [
+    tlBurger,
+    waveTopRef,
+    waveMidRef,
+    waveBotRef,
+    flatTopRef,
+    flatMidRef,
+    flatBotRef,
+  ]);
 
   const onMouseEnterHandler = () => {
-    if (!tlToggle.isActive()) {
-      tlHover.play();
+    if (!isClicked) {
+      tlBurger.tweenTo('hover');
     }
   };
 
   const onMouseLeaveHandler = () => {
-    if (!tlToggle.isActive() && tlToggle.progress() === 0) {
-      tlHover.reverse();
+    if (!isClicked) {
+      tlBurger.reverse();
     }
   };
+
   const handleClick = (e) => {
     e.preventDefault();
     setOpen(!open);
-    const isReversed = tlToggle.reversed();
-    console.log(isReversed);
-    if (isReversed) {
-      tlToggle.play();
+    if (!isClicked) {
+      tlBurger.play();
     } else {
-      tlToggle.reverse();
+      tlBurger.tweenTo('hover');
     }
+    setIsClicked(!isClicked);
   };
 
   return (
