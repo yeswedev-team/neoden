@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Logo from '../assets/images/logo-neoden.inline.svg';
 import { pxtoem } from '../styles/Mixins';

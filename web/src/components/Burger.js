@@ -1,9 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
-import { Link } from '@reach/router';
+import { Link } from 'gatsby';
+import MorphSVGPlugin from 'gsap/MorphSVGPlugin';
 import { mq } from '../styles/breakpoints';
-import { addToRefs } from '../utils/helpers';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(MorphSVGPlugin);
+}
 
 const BurgerStyles = styled.button`
   -webkit-appearance: none !important;
@@ -22,51 +26,22 @@ const BurgerStyles = styled.button`
 
   a {
     display: block;
-    height: 29px;
-    width: 2.125rem;
+    height: 1.9375rem;
+    width: 2.3125rem;
+  }
+  #flatty-top,
+  #flatty-mid,
+  #flatty-bot,
+  #wavy-top,
+  #wavy-mid,
+  #wavy-bot {
+    stroke: #fff;
   }
 
-  .burger {
-    display: block;
-    width: auto;
-    height: 100%;
-  }
-  .burger--wave {
-    /* stroke: currentColor;
-      fill: transparent;
-      stroke-width: 4px; */
-  }
-
-  span {
-    display: block;
-    height: 29px;
-    overflow: hidden;
-    width: 2.125rem;
-  }
-
-  .menu-toggle--hamburger {
-    transition: opacity 0.15s 0.25s linear;
-  }
-
-  .nav-open .menu-toggle--hamburger {
-    -webkit-transition-delay: 0s;
-    transition-delay: 0s;
-    opacity: 0;
-  }
-  .menu-toggle--close {
-    position: absolute;
-    top: 1rem;
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(0.65);
-    color: #efefef;
-    transition: opacity 0.15s linear, transform 0.25s ease-out;
-  }
-  .nav-open .menu-toggle--close {
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-    transition-delay: 0.15s;
+  #flatty-top,
+  #flatty-mid,
+  #flatty-bot {
+    visibility: hidden;
   }
 
   ${mq[3]} {
@@ -76,25 +51,91 @@ const BurgerStyles = styled.button`
 
 export default function Burger({ open, setOpen }) {
   const burgerRef = useRef();
-  const waveRefs = useRef([]);
+  const waveTopRef = useRef();
+  const waveMidRef = useRef();
+  const waveBotRef = useRef();
+  const flatTopRef = useRef();
+  const flatMidRef = useRef();
+  const flatBotRef = useRef();
 
-  const tl = gsap.timeline({ paused: true });
+  const tlHover = gsap.timeline({
+    paused: true,
+    reversed: true,
+    defaults: {
+      duration: 0.5,
+      ease: 'Back.inOut.config(2.3)',
+    },
+  });
 
   useEffect(() => {
-    tl.to(waveRefs.current, {
-      xPercent: -50,
+    gsap.set(flatMidRef.current, { autoAlpha: 0 });
+
+    tlHover
+      .to(waveTopRef.current, { morphSVG: flatTopRef.current }, '<')
+      .to(waveMidRef.current, { morphSVG: flatMidRef.current }, '<')
+      .to(waveBotRef.current, { morphSVG: flatBotRef.current }, '<');
+  }, [
+    tlHover,
+    waveTopRef,
+    waveMidRef,
+    waveBotRef,
+    flatTopRef,
+    flatMidRef,
+    flatBotRef,
+  ]);
+
+  const tlToggle = gsap.timeline({
+    paused: true,
+    reversed: true,
+    defaults: {
       duration: 0.5,
-      repeat: -1,
-      ease: 'none',
-    });
-    return () => tl && tl.kill();
-  }, [tl]);
+      ease: 'power2',
+    },
+    onReverseComplete: () => tlHover.reverse(),
+  });
+
+  useEffect(() => {
+    tlToggle
+      .to(waveMidRef.current, {
+        duration: 0.3,
+        scaleX: 0,
+        transformOrigin: 'right center',
+        ease: 'none',
+      })
+      .to(waveTopRef.current, { y: 10 }, '-=0.1')
+      .to(waveBotRef.current, { y: -10 }, '<')
+      .to(waveTopRef.current, {
+        rotation: 45,
+        transformOrigin: 'center center',
+      })
+      .to(
+        waveBotRef.current,
+        { rotation: -45, transformOrigin: 'center center' },
+        '<'
+      );
+  }, [tlToggle, waveTopRef, waveMidRef, waveBotRef]);
 
   const onMouseEnterHandler = () => {
-    tl.play();
+    if (!tlToggle.isActive()) {
+      tlHover.play();
+    }
   };
+
   const onMouseLeaveHandler = () => {
-    tl.pause().seek(0);
+    if (!tlToggle.isActive() && tlToggle.progress() === 0) {
+      tlHover.reverse();
+    }
+  };
+  const handleClick = (e) => {
+    e.preventDefault();
+    setOpen(!open);
+    const isReversed = tlToggle.reversed();
+    console.log(isReversed);
+    if (isReversed) {
+      tlToggle.play();
+    } else {
+      tlToggle.reverse();
+    }
   };
 
   return (
@@ -103,63 +144,67 @@ export default function Burger({ open, setOpen }) {
         to="#"
         ref={burgerRef}
         open={open}
-        onClick={(e) => {
-          e.preventDefault();
-          setOpen(!open);
-        }}
+        onClick={handleClick}
+        onMouseEnter={onMouseEnterHandler}
+        onMouseLeave={onMouseLeaveHandler}
       >
-        <span
-          className="menu-toggle--hamburger"
-          ref={burgerRef}
-          onMouseEnter={onMouseEnterHandler}
-          onMouseLeave={onMouseLeaveHandler}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="70.8"
-            height="29"
-            viewBox="0 0 70.8 29"
-            xmlSpace="preserve"
-          >
-            <path
-              ref={(el) => addToRefs(waveRefs, el)}
-              className="burger--wave"
-              fill="none"
-              stroke="#fff"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              strokeWidth="3"
-              d="M1.5,1.5c5.6,0,5.6,6,11.3,6s5.6-6,11.3-6s5.6,6,11.3,6s5.6-6,11.3-6s5.7,6,11.3,6s5.6-6,11.3-6"
-            />
-            <path
-              ref={(el) => addToRefs(waveRefs, el)}
-              className="burger--wave"
-              fill="none"
-              stroke="#fff"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              strokeWidth="3"
-              d="M1.5,11.5c5.6,0,5.6,6,11.3,6s5.6-6,11.3-6s5.6,6,11.3,6s5.6-6,11.3-6s5.7,6,11.3,6s5.6-6,11.3-6"
-            />
-            <path
-              ref={(el) => addToRefs(waveRefs, el)}
-              className="burger--wave"
-              fill="none"
-              stroke="#fff"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              strokeWidth="3"
-              d="M1.5,21.5c5.6,0,5.6,6,11.3,6s5.6-6,11.3-6s5.6,6,11.3,6s5.6-6,11.3-6s5.7,6,11.3,6s5.6-6,11.3-6"
-            />
-          </svg>
-        </span>
-      </Link>
-      <span className="menu-toggle--close">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-          <title>Fermer le menu</title>
-          <polygon points="48.53 3.591 46.409 1.47 25 22.879 3.591 1.47 1.47 3.591 22.879 25 1.471 46.409 3.592 48.53 25 27.121 46.408 48.529 48.529 46.408 27.121 25 48.53 3.591" />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 31">
+          <path
+            id="flatty-top"
+            ref={flatTopRef}
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            d="M1.6,3.5c5.6,0,5.6,0,11.3,0s5.6,0,11.3,0s5.6,0,11.3,0"
+          />
+          <path
+            id="flatty-mid"
+            ref={flatMidRef}
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            d="M1.6,13.5c5.6,0,5.6,0,11.3,0s5.6,0,11.3,0s5.6,0,11.3,0"
+          />
+          <path
+            id="flatty-bot"
+            ref={flatBotRef}
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            d="M1.6,23.5c5.6,0,5.6,0,11.3,0s5.6,0,11.3,0s5.6,0,11.3,0"
+          />
+          <path
+            id="wavy-top"
+            ref={waveTopRef}
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            d="M1.5,3.5c5.6,0,5.6,6,11.3,6s5.6-6,11.3-6s5.6,6,11.3,6"
+          />
+          <path
+            id="wavy-mid"
+            ref={waveMidRef}
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            d="M1.5,13.5c5.6,0,5.6,6,11.3,6s5.6-6,11.3-6s5.6,6,11.3,6"
+          />
+          <path
+            id="wavy-bot"
+            ref={waveBotRef}
+            fill="none"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeMiterlimit="10"
+            d="M1.5,23.5c5.6,0,5.6,6,11.3,6s5.6-6,11.3-6s5.6,6,11.3,6"
+          />
         </svg>
-      </span>
+      </Link>
     </BurgerStyles>
   );
 }
