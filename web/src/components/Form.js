@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import Wavify from './Wave';
 import { mq } from '../styles/breakpoints';
-import Wave from './Wave';
 
 const FormStyles = styled.form`
   background-color: var(--grey);
@@ -107,7 +107,7 @@ export default function Form() {
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
-      <Wave bgcolor="#F2F2F2" />
+      <Wavify direction="up" bgcolor="#F2F2F2" />
       <div className="container container--sm">
         <div className="form-header">
           <p>Pour toute réservation de votre séance NEODEN</p>
@@ -193,7 +193,8 @@ export default function Form() {
           </Link>
         </div>
       </div>
-      <Wave bgcolor="#F2F2F2" reversed />
+
+      <Wavify direction="down" bgcolor="#F2F2F2" />
     </FormStyles>
   );
 }

@@ -2,10 +2,10 @@ import React from 'react';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Wavify from '../Wave';
 import { pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
-import Wave from '../Wave';
 
 const BlockOffersStyles = styled.section`
   background: #a5968f url(${tressageBg}) 0 0 repeat;
@@ -91,7 +91,7 @@ export default function Offers({
       hasWaveUp={hasWaveUp}
       className="section section__block-offers"
     >
-      {hasWaveUp && <Wave bgcolor="#A5968F" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#A5968F" />}
       <div className="container container--md">
         {overtitle && <p className="overtitle">{overtitle}</p>}
         {title && <h2 className="section-title">{title}</h2>}
@@ -114,7 +114,7 @@ export default function Offers({
           </div>
         )}
       </div>
-      {hasWaveDown && <Wave bgcolor="#A5968F" reversed />}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#A5968F" />}
     </BlockOffersStyles>
   );
 }

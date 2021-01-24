@@ -2,11 +2,11 @@ import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import Wavify from '../Wave';
 import { getBlogUrl } from '../../utils/helpers';
 import BlogPostPreview from './BlogPostPreview';
 import PortableText from '../PortableText';
 import { mq } from '../../styles/breakpoints';
-import Wave from '../Wave';
 import Breadcrumb from '../Breadcrumb';
 
 const WaveContainerStyles = styled.div`
@@ -14,11 +14,9 @@ const WaveContainerStyles = styled.div`
   padding-top: 20.625rem;
   position: relative;
 
-  ${mq[1]} {
-  }
-
-  canvas {
-    display: block;
+  .wave-up {
+    bottom: 0;
+    position: absolute;
     transform: none;
   }
 `;
@@ -94,7 +92,7 @@ export default function BlogPostPreviewList({ nodes, location }) {
     <>
       <WaveContainerStyles className="wave-container">
         <Breadcrumb location={location} title="Le Mag" />
-        <Wave bgcolor="white" />
+        <Wavify direction="up" bgcolor="#ffffff" />
       </WaveContainerStyles>
       {firstNode && (
         <FirstNodeStyles className="firstPost">
@@ -131,7 +129,7 @@ export default function BlogPostPreviewList({ nodes, location }) {
             ))}
         </ul>
       </BlogPostsListStyles>
-      <Wave bgcolor="white" reversed />
+      <Wavify direction="down" bgcolor="#ffffff" />
     </>
   );
 }

@@ -8,8 +8,8 @@ import SwiperCore, {
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
+import Wavify from '../Wave';
 import PortableText from '../PortableText';
-import Wave from '../Wave';
 import SliderStyles from '../../styles/SliderStyles';
 
 SwiperCore.use([Controller, Navigation, Pagination, EffectFade]);
@@ -33,7 +33,7 @@ export default function Slider({
         hasWaveUp ? ' section has-wave-up' : ''
       }`}
     >
-      {hasWaveUp && <Wave bgcolor="#F2F2F2" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#F2F2F2" />}
       <div className="container container--sm slider__intro">
         {overtitle && <p className="overtitle">{overtitle}</p>}
         {title && <h2 className="section-title">{title}</h2>}
@@ -75,7 +75,7 @@ export default function Slider({
           ))}
         </Swiper>
       </div>
-      {hasWaveDown && <Wave bgcolor="#F2F2F2" reversed />}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#F2F2F2" />}
     </SliderStyles>
   );
 }

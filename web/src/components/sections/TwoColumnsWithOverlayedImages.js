@@ -2,8 +2,8 @@ import React from 'react';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Wavify from '../Wave';
 import PortableText from '../PortableText';
-import Wave from '../Wave';
 import { pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
 
@@ -73,7 +73,7 @@ export default function TwoColumnsWithOverlayedImages(data) {
         data.hasWaveDown ? ' has-wave-down' : ''
       }${data.hasWaveUp ? ' has-wave-up' : ''}`}
     >
-      {data.hasWaveUp && <Wave bgcolor="white" />}
+      {data.hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
       <div className="container container--lg">
         <div className="col">
           <Img
@@ -99,7 +99,7 @@ export default function TwoColumnsWithOverlayedImages(data) {
           </Link>
         </div>
       </div>
-      {data.hasWaveDown && <Wave bgcolor="white" reversed />}
+      {data.hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
     </TwoColumnsWOIStyles>
   );
 }

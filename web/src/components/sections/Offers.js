@@ -6,10 +6,10 @@ import queryString from 'query-string';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import Wavify from '../Wave';
 import encoche from '../../assets/images/encoche.gif';
 import { pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
-import Wave from '../Wave';
 import Service from '../Service';
 
 const SectionOfferStyles = styled.section`
@@ -348,7 +348,7 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
         hasWaveDown ? ' has-wave-down' : ''
       }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
-      {hasWaveUp && <Wave bgcolor="white" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
       <div className="container container--md">
         <div className="tabs">
           <ul className="tabs-titles">{listTitles}</ul>
@@ -364,7 +364,7 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
           <ul className="tabs-titles-alt">{listTitlesAlt}</ul>
         </div>
       </div>
-      {hasWaveDown && <Wave bgcolor="white" reversed />}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
     </SectionOfferStyles>
   );
 }

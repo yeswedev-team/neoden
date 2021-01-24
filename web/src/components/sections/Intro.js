@@ -1,8 +1,8 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import Wavify from '../Wave';
 import PortableText from '../PortableText';
-import Wave from '../Wave';
 import Overprint from '../../assets/images/ondes.inline.svg';
 
 const IntroTextStyles = styled.section`
@@ -58,7 +58,10 @@ const Intro = ({
     }`}
   >
     {hasWaveUp && (
-      <Wave bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`} />
+      <Wavify
+        direction="up"
+        bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`}
+      />
     )}
     <div className="container container--md">
       {frontImage && (
@@ -72,7 +75,10 @@ const Intro = ({
       {text && <PortableText blocks={text} />}
     </div>
     {hasWaveDown && (
-      <Wave bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`} reversed />
+      <Wavify
+        direction="down"
+        bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`}
+      />
     )}
   </IntroTextStyles>
 );

@@ -51,7 +51,6 @@
     "netlify-cli": "^2.62.0",
     "netlify-lambda": "^2.0.1",
     "normalize.css": "^8.0.1",
-    "paper": "^0.12.11",
     "query-string": "^6.13.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -60,6 +59,7 @@
     "react-icons": "^4.1.0",
     "react-map-to-components": "^1.2.1",
     "react-stickynode": "^3.0.4",
+    "react-wavify": "^1.5.2",
     "styled-components": "^5.2.0",
     "swiper": "^6.4.5"
   },

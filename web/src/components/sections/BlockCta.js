@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Wavify from '../Wave';
 import Button from '../Button';
-import Wave from '../Wave';
 
 const BlockCtaStyles = styled.section`
   /* padding-bottom: calc(var(--section-bot-padding) * 1.2); */
@@ -26,7 +26,7 @@ const BlockCtaStyles = styled.section`
 export default function Cta({ title, buttonTitle, link, hasDoubleBotMargin }) {
   return (
     <BlockCtaStyles hasDoubleBotMargin={hasDoubleBotMargin} className="section">
-      <Wave bgcolor="white" />
+      <Wavify direction="up" bgcolor="#ffffff" />
       <div className="container container--xs">
         <h2 className="middle-title">{title}</h2>
         <Button
@@ -35,7 +35,7 @@ export default function Cta({ title, buttonTitle, link, hasDoubleBotMargin }) {
           target={link[0].slug.current}
         />
       </div>
-      <Wave bgcolor="white" reversed />
+      <Wavify direction="down" bgcolor="#ffffff" />
     </BlockCtaStyles>
   );
 }

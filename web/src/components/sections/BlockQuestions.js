@@ -1,9 +1,9 @@
 /* eslint-disable react/display-name */
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
+import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import Accordion from '../Accordion';
-import Wave from '../Wave';
 import Overprint from '../../assets/images/logo-neoden-grey-seul.inline.svg';
 
 const handleLocation = (props) => {
@@ -44,7 +44,7 @@ const BlockQuestions = forwardRef(
         hasWaveUp={hasWaveUp}
         className="section section__faq"
       >
-        {hasWaveUp && <Wave bgcolor="white" />}
+        {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
         <div className="container container--md">
           <h2 className="section-title">{title}</h2>
           <div className="accordion-container">
@@ -55,7 +55,7 @@ const BlockQuestions = forwardRef(
             ))}
           </div>
         </div>
-        {hasWaveDown && <Wave bgcolor="white" reversed />}
+        {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
       </BlockFAQStyles>
     </>
   )

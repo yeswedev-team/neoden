@@ -3,8 +3,8 @@ import { fr } from 'date-fns/locale';
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import Wavify from '../Wave';
 import PortableText from '../PortableText';
-import Wave from '../Wave';
 import AuthorList from './AuthorList';
 import Breadcrumb from '../Breadcrumb';
 import LastPosts from './LastPosts';
@@ -13,6 +13,9 @@ import { mq } from '../../styles/breakpoints';
 import { calcClamp } from '../../styles/Mixins';
 
 const BlogArticleStyles = styled.article`
+  position: relative;
+  z-index: 3;
+
   .blog-article__illustr {
     max-height: calc(95vh - 73px);
     overflow: hidden;
@@ -119,7 +122,7 @@ export default function BlogPost(props) {
           <Img fluid={mainImage.asset.fluid} alt={title.fr} />
         </div>
       )}
-      <Wave bgcolor="white" />
+      <Wavify direction="up" bgcolor="#ffffff" />
       {edges && <LastPosts posts={edges} />}
       <div className="container container--md" id="content">
         <div className="blog-article__content">
@@ -141,7 +144,7 @@ export default function BlogPost(props) {
           </div>
         </div>
       </div>
-      <Wave bgcolor="white" reversed />
+      <Wavify direction="down" bgcolor="#ffffff" />
     </BlogArticleStyles>
   );
 }

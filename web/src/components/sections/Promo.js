@@ -3,9 +3,9 @@ import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { MdCardGiftcard } from 'react-icons/md';
 import { IoMdOpen } from 'react-icons/io';
+import Wavify from '../Wave';
 import { mq } from '../../styles/breakpoints';
 import { pxtoem, pxtopc } from '../../styles/Mixins';
-import Wave from '../Wave';
 
 const PromoStyles = styled.section`
   padding-bottom: 0;
@@ -90,9 +90,10 @@ const PromoStyles = styled.section`
     ${mq[2]} {
       justify-content: space-between;
     }
-  }
-  svg {
-    margin-left: 0.4375rem;
+
+    svg {
+      margin-left: 0.4375rem;
+    }
   }
 `;
 
@@ -112,7 +113,7 @@ const Promo = ({
     hasWaveUp={hasWaveUp}
     className="section section__promo"
   >
-    {hasWaveUp && <Wave bgcolor="white" />}
+    {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
     <div className="container container--md">
       {image && <Img fluid={image?.asset.fluid} alt={title} />}
       <div className="promo__content">
@@ -138,7 +139,7 @@ const Promo = ({
         </div>
       </div>
     </div>
-    {hasWaveDown && <Wave bgcolor="white" reversed />}
+    {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
   </PromoStyles>
 );
 

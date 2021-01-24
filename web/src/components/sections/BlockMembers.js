@@ -4,7 +4,7 @@ import Flickity from 'react-flickity-component';
 import { mq } from '../../styles/breakpoints';
 import '../../styles/flickity.css';
 import PortableText from '../PortableText';
-import Wave from '../Wave';
+import Wavify from '../Wave';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
 
 const handleLocation = (props) => {
@@ -131,7 +131,7 @@ export default function BlockMembers({
         hasWaveDown ? ' has-wave-down' : ''
       }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
-      {hasWaveUp && <Wave bgcolor="white" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
       <div className="container">
         <div className="privileges__header container container--sm">
           {title && <h2 className="section-title">{title}</h2>}
@@ -168,7 +168,7 @@ export default function BlockMembers({
           {buttonTitle || 'Découvrir'}
         </a>
       </div>
-      {}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
     </BlockMembersStyles>
   );
 }

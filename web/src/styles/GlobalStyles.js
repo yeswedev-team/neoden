@@ -377,9 +377,22 @@ const GlobalStyles = createGlobalStyle`
   }
 
 
-
-  canvas[resize] {
+  .wave-up {
+    transform: translateY(-100%);
+  }
+  .wave-down {
+    transform: translateY(100%) rotate(180deg);
+  }
+  .wave-up,
+  .wave-down {
+    height: 3.125rem;
+    /* left: 0;
+    position: absolute; */
     width: 100%;
+
+    svg {
+      display: block;
+    }
   }
 
   /* Base for label styling */

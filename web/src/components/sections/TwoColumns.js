@@ -2,8 +2,8 @@ import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import Wavify from '../Wave';
 import PortableText from '../PortableText';
-import Wave from '../Wave';
 
 const handleLocation = (props) => {
   if (
@@ -71,7 +71,7 @@ export default function TwoColumns({
         hasWaveUp ? ' has-wave-up' : ''
       }`}
     >
-      {hasWaveUp && <Wave bgcolor="white" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
       <div className="container container--lg">
         <div className="col">
           <Img className="back-img" fluid={image.asset.fluid} alt="" />
@@ -88,7 +88,7 @@ export default function TwoColumns({
           )}
         </div>
       </div>
-      {hasWaveDown && <Wave bgcolor="white" reversed />}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
     </TwoColumnsStyles>
   );
 }

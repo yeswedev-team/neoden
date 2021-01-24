@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
+import Wavify from '../Wave';
 import iconMarker from '../../assets/images/marker.svg';
 import iconMarkerBrown from '../../assets/images/markerBrown.svg';
 import { pxtoem, pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
-import Wave from '../Wave';
 import PortableText from '../PortableText';
 import arrow from '../../assets/images/arrow.svg';
 
@@ -401,7 +401,7 @@ const BlockGmap = ({
         hasWaveUp ? ' has-wave-up' : ''
       }`}
     >
-      {hasWaveUp && <Wave bgcolor="#EBDEDD" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#EBDEDD" />}
       <div className="container container--lg">
         <h2 className="section-title">{title}</h2>
         <div className="block-maps">
@@ -461,7 +461,7 @@ const BlockGmap = ({
           </Swiper>
         </div>
       </div>
-      {hasWaveDown && <Wave bgcolor="#EBDEDD" reversed />}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#EBDEDD" />}
     </BlockMapStyles>
   );
 };
