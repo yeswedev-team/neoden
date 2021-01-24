@@ -34,31 +34,35 @@ const BlockFAQStyles = styled.section`
   }
 `;
 
-const BlockQuestions = forwardRef(
-  ({ title, questionsList, hasDoubleBotMargin, hasWaveDown, hasWaveUp }) => (
-    <>
-      <Overprint className="overprintLogo overprintLogo--left" />
-      <BlockFAQStyles
-        hasDoubleBotMargin={hasDoubleBotMargin}
-        hasWaveDown={hasWaveDown}
-        hasWaveUp={hasWaveUp}
-        className="section section__faq"
-      >
-        {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
-        <div className="container container--md">
-          <h2 className="section-title">{title}</h2>
-          <div className="accordion-container">
-            {questionsList.map((question) => (
-              <Accordion key={question.id} title={question.title}>
-                <PortableText blocks={question._rawReponse} />
-              </Accordion>
-            ))}
-          </div>
+const BlockQuestions = ({
+  title,
+  questionsList,
+  hasDoubleBotMargin,
+  hasWaveDown,
+  hasWaveUp,
+}) => (
+  <>
+    <Overprint className="overprintLogo overprintLogo--left" />
+    <BlockFAQStyles
+      hasDoubleBotMargin={hasDoubleBotMargin}
+      hasWaveDown={hasWaveDown}
+      hasWaveUp={hasWaveUp}
+      className="section section__faq"
+    >
+      {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
+      <div className="container container--md">
+        <h2 className="section-title">{title}</h2>
+        <div className="accordion-container">
+          {questionsList.map((question) => (
+            <Accordion key={question.id} title={question.title}>
+              <PortableText blocks={question._rawReponse} />
+            </Accordion>
+          ))}
         </div>
-        {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
-      </BlockFAQStyles>
-    </>
-  )
+      </div>
+      {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
+    </BlockFAQStyles>
+  </>
 );
 
 export default BlockQuestions;
