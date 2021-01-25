@@ -11,6 +11,7 @@ import Promo from '../components/sections/Promo';
 import Offers from '../components/sections/Offers';
 import Questions from '../components/sections/BlockQuestions';
 import Upload from '../components/sections/Upload';
+import Text from '../components/sections/Text';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
@@ -55,6 +56,7 @@ export default function SinglePage({
           promo: Promo,
           sectionOffers: Offers,
           upload: Upload,
+          richtext: Text,
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
@@ -77,6 +79,13 @@ export default function SinglePage({
             title: data.title,
             text: data._rawText,
             pdf: data.pdf,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
+            hasDoubleBotMargin: data.hasDoubleBotMargin,
+          }),
+          richtext: ({ data }) => ({
+            title: data.title,
+            text: data._rawText,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
             hasDoubleBotMargin: data.hasDoubleBotMargin,
@@ -199,6 +208,14 @@ export const query = graphql`
                 }
               }
             }
+          }
+          ... on SanityRichtext {
+            _key
+            _type
+            _rawText(resolveReferences: { maxDepth: 10 })
+            hasDoubleBotMargin
+            hasWaveDown
+            hasWaveUp
           }
           ... on SanityPromo {
             _key
