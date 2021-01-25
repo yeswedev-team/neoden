@@ -1,7 +1,10 @@
+import { FaQuestion as icon } from 'react-icons/fa';
+
 export default {
   type: 'object',
   name: 'blockQuestions',
   title: 'Bloc des questions',
+  icon,
   fields: [
     {
       type: 'string',

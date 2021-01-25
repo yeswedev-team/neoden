@@ -14,6 +14,7 @@ export { default as blockQuestions } from './blockQuestions';
 export { default as frontimage } from './frontimage';
 export { default as background } from './background';
 export { default as maps } from './maps';
+export { default as upload } from './upload';
 
 /*
 export { default as infoRows } from './infoRows'

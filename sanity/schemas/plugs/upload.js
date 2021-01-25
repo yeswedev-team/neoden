@@ -1,34 +1,16 @@
-import { HiOutlineDocumentDuplicate as icon } from 'react-icons/hi';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import { FiLink } from 'react-icons/fi';
-import { supportedLanguages } from '../objects/localeString';
-
-const baseLanguage = supportedLanguages.find((l) => l.isDefault);
+import { FiLink, FiUpload as icon } from 'react-icons/fi';
 
 export default {
-  name: 'page',
-  title: 'Pages',
-  type: 'document',
+  type: 'object',
+  name: 'upload',
+  title: 'Texte et bouton de téléchargement',
   icon,
   fields: [
     {
       name: 'title',
+      type: 'string',
       title: 'Titre',
-      type: 'localeString',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'titleMenu',
-      title: 'Titre pour le menu (optionnel)',
-      type: 'localeString',
-    },
-    {
-      name: 'hero',
-      type: 'array',
-      title: 'Entête',
-      description: 'Ajouter une entête',
-      of: [{ type: 'hero' }],
-      validation: (Rule) => Rule.max(1).error('Une seule entête possible'),
     },
     {
       name: 'text',
@@ -59,6 +41,13 @@ export default {
             decorators: [
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
+              {
+                title: 'Exposant',
+                value: 'sup',
+                blockEditor: {
+                  icon: () => 'E',
+                },
+              },
             ],
             // Annotations can be any object structure – e.g. a link or a footnote.
             annotations: [
@@ -114,27 +103,28 @@ export default {
       ],
     },
     {
-      name: 'content',
-      type: 'array',
-      title: 'Sections',
-      description: 'Ajouter, modifier et ordonner les sections',
-      of: [
-        { type: 'intro' },
-        { type: 'ctaColumns' },
-        { type: 'twoColumns' },
-        { type: 'slider' },
-        { type: 'promo' },
-        { type: 'sectionOffers' },
-        { type: 'ctaPlug' },
-        { type: 'blockQuestions' },
-        { type: 'upload' },
-        { type: 'reference', to: [{ type: 'blocks' }] },
-      ],
+      type: 'file',
+      name: 'pdf',
+      title: 'Fichier au format PDF',
+      options: {
+        accept: '.pdf',
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      type: 'boolean',
+      name: 'hasWaveUp',
+      title: 'Ajouter une vague animée en haut du bloc ?',
+    },
+    {
+      type: 'boolean',
+      name: 'hasWaveDown',
+      title: 'Ajouter une vague animée en bas du bloc ?',
+    },
+    {
+      type: 'boolean',
+      name: 'hasDoubleBotMargin',
+      title: 'Doubler la marge interne basse ?',
     },
   ],
-  preview: {
-    select: {
-      title: `title.${baseLanguage.id}`,
-    },
-  },
 };
