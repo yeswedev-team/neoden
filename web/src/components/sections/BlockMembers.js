@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Flickity from 'react-flickity-component';
 import { mq } from '../../styles/breakpoints';
@@ -30,7 +30,7 @@ const BlockMembersStyles = styled.section`
   text-align: center;
 
   > .container:first-child {
-    max-width: none;
+    /* max-width: none; */
     width: 100%;
   }
 
@@ -39,6 +39,21 @@ const BlockMembersStyles = styled.section`
   }
   .list-privileges {
     margin-top: 3.125rem;
+
+    &:after {
+      content: 'flickity';
+      display: none;
+
+      ${mq[3]} {
+        content: '';
+      }
+    }
+    ${mq[3]} {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.875rem;
+      justify-content: center;
+    }
   }
 
   .privilege {
@@ -116,11 +131,31 @@ export default function BlockMembers({
   hasWaveUp,
   hasDoubleBotMargin,
 }) {
+  let windowWidth = 0;
+
+  if (typeof window !== 'undefined') {
+    windowWidth = window.innerWidth;
+  }
+
+  const [width, setWidth] = React.useState(windowWidth);
+  const breakpoint = 1280;
+
   const flickityOptions = {
     initialIndex: 1,
     prevNextButtons: false,
     pageDots: false,
+    watchCSS: true,
   };
+
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
 
   return (
     <BlockMembersStyles
@@ -132,7 +167,7 @@ export default function BlockMembers({
       }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
       {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
-      <div className="container">
+      <div className="container container--xl">
         <div className="privileges__header container container--sm">
           {title && <h2 className="section-title">{title}</h2>}
           {subtitle && (
@@ -141,29 +176,52 @@ export default function BlockMembers({
             </p>
           )}
         </div>
-        <Flickity
-          className="list-privileges"
-          options={flickityOptions} // takes flickity options {}
-        >
-          {privilegeList.map((privilege) => (
-            <div key={privilege._key} className="privilege">
-              <div className="privilege__illustr">
-                <img src={privilege.bgicon.asset.fluid.src} alt="" />
-                <img
-                  src={privilege.icon.asset.fluid.src}
-                  alt={privilege.title}
-                  className="privilege__illustr--icon"
-                />
+        {width < breakpoint ? (
+          <Flickity
+            className="list-privileges"
+            options={flickityOptions} // takes flickity options {}
+          >
+            {privilegeList.map((privilege) => (
+              <div key={privilege._key} className="privilege">
+                <div className="privilege__illustr">
+                  <img src={privilege.bgicon.asset.fluid.src} alt="" />
+                  <img
+                    src={privilege.icon.asset.fluid.src}
+                    alt={privilege.title}
+                    className="privilege__illustr--icon"
+                  />
+                </div>
+                <div className="privilege__content">
+                  <h3>{privilege.title}</h3>
+                  {privilege._rawText && (
+                    <PortableText blocks={privilege._rawText} />
+                  )}
+                </div>
               </div>
-              <div className="privilege__content">
-                <h3>{privilege.title}</h3>
-                {privilege._rawText && (
-                  <PortableText blocks={privilege._rawText} />
-                )}
+            ))}
+          </Flickity>
+        ) : (
+          <div className="list-privileges">
+            {privilegeList.map((privilege) => (
+              <div key={privilege._key} className="privilege">
+                <div className="privilege__illustr">
+                  <img src={privilege.bgicon.asset.fluid.src} alt="" />
+                  <img
+                    src={privilege.icon.asset.fluid.src}
+                    alt={privilege.title}
+                    className="privilege__illustr--icon"
+                  />
+                </div>
+                <div className="privilege__content">
+                  <h3>{privilege.title}</h3>
+                  {privilege._rawText && (
+                    <PortableText blocks={privilege._rawText} />
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-        </Flickity>
+            ))}
+          </div>
+        )}
         <a href={membersLink} className="button">
           {buttonTitle || 'Découvrir'}
         </a>
