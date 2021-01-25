@@ -87,15 +87,6 @@ const FormStyles = styled.form`
       background-color: var(--brownlight);
     }
   }
-  .infos-pratiques {
-    border-top: 1px solid var(--beige);
-    padding-bottom: 110px;
-    padding-top: 4.0625rem;
-    text-align: center;
-    .button {
-      margin-top: 1.625rem;
-    }
-  }
 `;
 
 export default function Form() {
@@ -179,22 +170,7 @@ export default function Form() {
             <span>Envoyer mon message</span>
           </button>
         </div>
-        <div className="infos-pratiques">
-          <h2 className="middle-title">
-            Pour retrouver
-            <br />
-            toutes les informations pratiques
-          </h2>
-          <Link
-            to="/flottaison-isolation-sensorielle"
-            className="button button--brown"
-          >
-            cliquez ici
-          </Link>
-        </div>
       </div>
-
-      <Wavify direction="down" bgcolor="#F2F2F2" />
     </FormStyles>
   );
 }

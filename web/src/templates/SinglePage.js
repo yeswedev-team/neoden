@@ -10,6 +10,7 @@ import Slider from '../components/sections/Slider';
 import Promo from '../components/sections/Promo';
 import Offers from '../components/sections/Offers';
 import Questions from '../components/sections/BlockQuestions';
+import Upload from '../components/sections/Upload';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
@@ -37,6 +38,9 @@ export default function SinglePage({
         location={location}
         context={pageContext.slug}
       />
+
+      {pageContext.slug === 'nous-contacter' && <Form />}
+
       <MapToComponents
         getKey={(section) => section.id || section._key}
         getType={(section) => section._type}
@@ -50,6 +54,7 @@ export default function SinglePage({
           slider: Slider,
           promo: Promo,
           sectionOffers: Offers,
+          upload: Upload,
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
@@ -63,6 +68,14 @@ export default function SinglePage({
           blockQuestions: ({ data }) => ({
             title: data.title,
             questions: data.questionsList,
+            pdf: data.pdf,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
+            hasDoubleBotMargin: data.hasDoubleBotMargin,
+          }),
+          upload: ({ data }) => ({
+            title: data.title,
+            text: data._rawText,
             pdf: data.pdf,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
@@ -120,7 +133,6 @@ export default function SinglePage({
           }),
         }}
       />
-      {pageContext.slug === 'nous-contacter' && <Form />}
     </>
   );
 }
@@ -206,6 +218,21 @@ export const query = graphql`
             title
             hasWaveDown
             hasWaveUp
+          }
+          ... on SanityUpload {
+            _key
+            _type
+            hasDoubleBotMargin
+            hasWaveDown
+            hasWaveUp
+            title
+            _rawText(resolveReferences: { maxDepth: 10 })
+            pdf {
+              asset {
+                id
+                url
+              }
+            }
           }
           ... on SanitySectionOffers {
             _key
