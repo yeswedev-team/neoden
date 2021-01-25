@@ -168,7 +168,6 @@ export const query = graphql`
         titleMenu {
           fr
         }
-        _rawText(resolveReferences: { maxDepth: 10 })
         hero {
           _rawText(resolveReferences: { maxDepth: 10 })
           hasLogo
