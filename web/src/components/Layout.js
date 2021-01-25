@@ -48,6 +48,20 @@ export default function Layout({ children }) {
               }
             }
           }
+          copyNavigation {
+            id
+            slug {
+              current
+            }
+            page {
+              title {
+                fr
+              }
+              titleMenu {
+                fr
+              }
+            }
+          }
           _rawAddress(resolveReferences: { maxDepth: 10 })
           _rawContact(resolveReferences: { maxDepth: 10 })
         }

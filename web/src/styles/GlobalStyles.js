@@ -395,6 +395,13 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .block {
+    ul {
+      list-style: disc;
+      margin: 1em;
+    }
+  }
+
   /* Base for label styling */
   [type="checkbox"]:not(:checked),
   [type="checkbox"]:checked {

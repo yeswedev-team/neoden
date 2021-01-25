@@ -71,6 +71,22 @@ export default {
       ],
     },
     {
+      title: 'Liens à côté du copyright',
+      name: 'copyNavigation',
+      description: 'Sélectionnez les pages',
+      validation: (Rule) => [
+        Rule.max(5).warning('Êtes-vous certain de vouloir plus de 5 items ?'),
+        Rule.unique().error('Des items du menu sont dupliqués'),
+      ],
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'route' }],
+        },
+      ],
+    },
+    {
       title: "Titre de l'alerte en homepage",
       name: 'alertTitle',
       description: 'Ajouter une alerte en homepage',

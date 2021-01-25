@@ -142,12 +142,30 @@ const FooterStyles = styled.footer`
     }
   }
   .copyright {
+    align-items: center;
     border-top: 1px solid var(--white);
+    display: flex;
+    justify-content: center;
     padding: 18px 0;
 
     p {
-      margin: 0;
+      margin: 0 0.5rem 0 0;
       text-align: center;
+    }
+    ul {
+      display: flex;
+    }
+    li {
+      font-size: 1rem;
+      margin: 0;
+
+      &:before {
+        content: ' - ';
+        display: inline-block;
+      }
+      a {
+        padding: 0 8px;
+      }
     }
   }
 `;
@@ -160,6 +178,7 @@ const Footer = ({ footerItems }) => {
     instagram,
     twitter,
     footerNavigation,
+    copyNavigation,
     _rawAddress,
     _rawContact,
   } = footerItems;
@@ -257,6 +276,19 @@ const Footer = ({ footerItems }) => {
       </div>
       <div className="copyright">
         <p>&copy; 2020 - Neoden</p>
+        <ul>
+          {copyNavigation.map((item) => (
+            <li key={item.id}>
+              <Link to={`/${item.slug.current}`}>
+                {item.page.titleMenu ? (
+                  <span className="text">{item.page.titleMenu.fr}</span>
+                ) : (
+                  <span className="text">{item.page.title.fr}</span>
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </FooterStyles>
   );
