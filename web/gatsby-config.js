@@ -83,7 +83,7 @@ export default {
         projectId: '1fcdf5t0',
         dataset: 'production',
         watchMode: true,
-        useCdn: true,
+        useCdn: false,
         token: process.env.SANITY_TOKEN,
       },
     },
