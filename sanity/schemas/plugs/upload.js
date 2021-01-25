@@ -91,7 +91,7 @@ export default {
                     type: 'reference',
                     title: 'Reference',
                     to: [
-                      { type: 'menuItem' },
+                      { type: 'route' },
                       // other types you may want to link to
                     ],
                   },
