@@ -18,7 +18,7 @@ const BlockMapStyles = styled.section`
   padding-bottom: ${(props) =>
     props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
   padding-top: ${(props) =>
-    props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
+    props.hasWaveUp ? '0 !important' : 'var(--section-top-padding)'};
   position: relative;
   z-index: 3;
 
