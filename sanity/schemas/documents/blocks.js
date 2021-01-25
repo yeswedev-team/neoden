@@ -19,7 +19,6 @@ export default {
       of: [
         { type: 'offers' },
         { type: 'cta' },
-        { type: 'blockQuestions' },
         { type: 'members' },
         { type: 'maps' },
       ],

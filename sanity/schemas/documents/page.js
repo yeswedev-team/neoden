@@ -126,6 +126,7 @@ export default {
         { type: 'promo' },
         { type: 'sectionOffers' },
         { type: 'ctaPlug' },
+        { type: 'blockQuestions' },
         { type: 'reference', to: [{ type: 'blocks' }] },
       ],
     },

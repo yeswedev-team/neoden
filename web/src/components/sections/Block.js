@@ -38,14 +38,6 @@ export default function Block({
               {...props}
             />
           ),
-          SanityBlockQuestions: (props) => (
-            <BlockQuestions
-              hasWaveDown={hasWaveDown}
-              hasWaveUp={hasWaveUp}
-              hasDoubleBotMargin={hasDoubleBotMargin}
-              {...props}
-            />
-          ),
           SanityMembers: (props) => (
             <BlockMembers
               hasWaveDown={hasWaveDown}

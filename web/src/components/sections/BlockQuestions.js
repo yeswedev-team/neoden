@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
-import React, { forwardRef } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { Link } from '@reach/router';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import Accordion from '../Accordion';
@@ -32,37 +33,61 @@ const BlockFAQStyles = styled.section`
   .accordion-container {
     border-top: 1px solid var(--beige);
   }
+  .faq__footer {
+    padding-top: 2.125rem;
+    text-align: center;
+  }
+  .button {
+    display: inline-block;
+    margin: 0 auto;
+  }
 `;
 
 const BlockQuestions = ({
   title,
-  questionsList,
+  questions,
+  pdf,
   hasDoubleBotMargin,
   hasWaveDown,
   hasWaveUp,
-}) => (
-  <>
-    <Overprint className="overprintLogo overprintLogo--left" />
-    <BlockFAQStyles
-      hasDoubleBotMargin={hasDoubleBotMargin}
-      hasWaveDown={hasWaveDown}
-      hasWaveUp={hasWaveUp}
-      className="section section__faq"
-    >
-      {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
-      <div className="container container--md">
-        <h2 className="section-title">{title}</h2>
-        <div className="accordion-container">
-          {questionsList.map((question) => (
-            <Accordion key={question.id} title={question.title}>
-              <PortableText blocks={question._rawReponse} />
-            </Accordion>
-          ))}
+}) => {
+  console.log(pdf);
+  return (
+    <>
+      <Overprint className="overprintLogo overprintLogo--left" />
+      <BlockFAQStyles
+        hasDoubleBotMargin={hasDoubleBotMargin}
+        hasWaveDown={hasWaveDown}
+        hasWaveUp={hasWaveUp}
+        className="section section__faq"
+      >
+        {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
+        <div className="container container--md">
+          <h2 className="section-title">{title}</h2>
+          <div className="accordion-container">
+            {questions.map((question) => (
+              <Accordion key={question.id} title={question.title}>
+                <PortableText blocks={question._rawReponse} />
+              </Accordion>
+            ))}
+          </div>
+          {pdf && (
+            <div className="faq__footer">
+              <a
+                href={pdf.asset.url}
+                target="_blank"
+                className="button button--brown"
+                rel="noreferrer"
+              >
+                Accéder à la FAQ
+              </a>
+            </div>
+          )}
         </div>
-      </div>
-      {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
-    </BlockFAQStyles>
-  </>
-);
+        {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
+      </BlockFAQStyles>
+    </>
+  );
+};
 
 export default BlockQuestions;

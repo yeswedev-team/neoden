@@ -9,6 +9,7 @@ import Intro from '../components/sections/Intro';
 import Slider from '../components/sections/Slider';
 import Promo from '../components/sections/Promo';
 import Offers from '../components/sections/Offers';
+import Questions from '../components/sections/BlockQuestions';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
@@ -42,6 +43,7 @@ export default function SinglePage({
         list={content}
         map={{
           intro: (props) => <Intro context={pageContext.slug} {...props} />,
+          blockQuestions: Questions,
           blocks: Blocks,
           ctaColumns: TwoColumnsWithOverlayedImages,
           twoColumns: TwoColumns,
@@ -57,6 +59,14 @@ export default function SinglePage({
             text: data._rawText,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
+          }),
+          blockQuestions: ({ data }) => ({
+            title: data.title,
+            questions: data.questionsList,
+            pdf: data.pdf,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
+            hasDoubleBotMargin: data.hasDoubleBotMargin,
           }),
           ctaColumns: ({ data }) => ({
             title: data.title,
@@ -245,6 +255,25 @@ export const query = graphql`
             hasWaveDown
             hasWaveUp
           }
+          ... on SanityBlockQuestions {
+            _key
+            _type
+            title
+            questionsList {
+              id
+              title
+              _rawReponse(resolveReferences: { maxDepth: 10 })
+            }
+            pdf {
+              asset {
+                url
+                id
+              }
+            }
+            hasWaveDown
+            hasWaveUp
+            hasDoubleBotMargin
+          }
           ... on SanityBlocks {
             id
             _key
@@ -307,16 +336,6 @@ export const query = graphql`
                   slug {
                     current
                   }
-                }
-              }
-              ... on SanityBlockQuestions {
-                _key
-                _type
-                title
-                questionsList {
-                  id
-                  title
-                  _rawReponse(resolveReferences: { maxDepth: 10 })
                 }
               }
               ... on SanityMaps {
