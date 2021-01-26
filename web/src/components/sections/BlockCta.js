@@ -25,7 +25,6 @@ const BlockCtaStyles = styled.section`
 `;
 
 export default function Cta({ title, buttonTitle, link, hasDoubleBotMargin }) {
-  console.log(link);
   let target;
 
   if (link[0]) {
