@@ -29,6 +29,7 @@ const TwoColumnsWOIStyles = styled.section`
       }
     }
   }
+  .gatsby-image-wrapper,
   img {
     border-radius: 8px;
   }
@@ -66,15 +67,12 @@ const TwoColumnsWOIStyles = styled.section`
 `;
 
 export default function TwoColumnsWithOverlayedImages(data) {
-  let cta;
   let link;
-  if (data.ctas[0]) {
-    cta = data.ctas[0].ctaPageLink[0];
-    if (cta._type === 'post') {
-      link = getBlogUrl(cta.publishedAt, cta.slug.current);
-    } else {
-      link = `/${cta.slug.current}`;
-    }
+  const cta = data.ctas[0].ctaPageLink[0];
+  if (cta._type === 'post') {
+    link = getBlogUrl(cta.publishedAt, cta.slug.current);
+  } else {
+    link = `/${cta.slug.current}`;
   }
 
   return (
@@ -88,26 +86,28 @@ export default function TwoColumnsWithOverlayedImages(data) {
       {data.hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
       <div className="container container--lg">
         <div className="col">
-          <Img
-            className="back-img"
-            fluid={data.backImage.asset.fluid}
-            alt={data.title}
-          />
-          <Img
-            className="front-img"
-            fluid={data.frontImage.asset.fluid}
-            alt={data.title}
-          />
+          <Link to={link} className="grow">
+            <Img
+              className="back-img"
+              fluid={data.backImage.asset.fluid}
+              alt={data.title}
+            />
+          </Link>
+          <Link to={link} className="grow">
+            <Img
+              className="front-img"
+              fluid={data.frontImage.asset.fluid}
+              alt={data.title}
+            />
+          </Link>
         </div>
         <div className="col col__content">
           <h3 className="overtitle">{data.overtitle}</h3>
           <h2 className="section-title">{data.title}</h2>
           <PortableText blocks={data.intro} id="text-content" />
-          {cta && (
-            <Link className="button button--brown" to={link}>
-              {data.ctas[0].title}
-            </Link>
-          )}
+          <Link className="button button--brown" to={link}>
+            {data.ctas[0].title}
+          </Link>
         </div>
       </div>
       {data.hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}

@@ -39,6 +39,7 @@ const TwoColumnsStyles = styled.section`
       }
     }
   }
+  .gatsby-image-wrapper,
   img {
     border-radius: 8px;
   }
@@ -86,7 +87,13 @@ export default function TwoColumns({
       {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
       <div className="container container--lg">
         <div className="col">
-          <Img className="back-img" fluid={image.asset.fluid} alt="" />
+          {link ? (
+            <Link className="grow" to={link}>
+              <Img className="back-img" fluid={image.asset.fluid} alt="" />
+            </Link>
+          ) : (
+            <Img className="back-img" fluid={image.asset.fluid} alt="" />
+          )}
         </div>
         <div className="col col__content">
           <PortableText blocks={text} id="text-content" />
