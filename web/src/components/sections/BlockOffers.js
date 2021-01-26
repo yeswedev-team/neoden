@@ -10,6 +10,7 @@ import tressageBg from '../../assets/images/tressage-pattern.jpg';
 const BlockOffersStyles = styled.section`
   background: #a5968f url(${tressageBg}) 0 0 repeat;
   background-blend-mode: multiply;
+  background-size: 12.5rem;
   color: var(--white);
   padding-bottom: ${(props) =>
     props.hasDoubleBotMargin
