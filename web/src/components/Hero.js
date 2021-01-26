@@ -90,7 +90,7 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
   let cta;
   let link;
 
-  if (heroData.cta) {
+  if (heroData?.cta) {
     cta = heroData.cta.ctaPageLink[0];
     if (cta._type === 'post') {
       link = getBlogUrl(cta.publishedAt, cta.slug.current);
