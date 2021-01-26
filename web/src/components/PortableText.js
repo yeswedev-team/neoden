@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import getYouTubeId from 'get-youtube-id';
 import YouTube from 'react-youtube';
@@ -61,6 +62,9 @@ const serializers = {
       const href = `/${slug.current}`;
       return <Link to={href}>{children}</Link>;
     },
+    anchor: ({ mark: { anchorId }, children }) => (
+      <span id={anchorId.current}>{children}</span>
+    ),
   },
 };
 

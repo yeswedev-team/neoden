@@ -52,6 +52,17 @@ const BlogArticleStyles = styled.article`
     margin-top: 32px;
     text-align: center;
   }
+  .summary {
+    margin-top: 3.875rem;
+
+    ol {
+      list-style: decimal;
+      margin: 1em;
+    }
+    li {
+      margin-bottom: 0.25em;
+    }
+  }
   .blog-article__text {
     position: relative;
   }
@@ -111,6 +122,7 @@ export default function BlogPost(props) {
     location,
     mainImage,
     publishedAt,
+    summary,
   } = props;
 
   return (
@@ -139,6 +151,18 @@ export default function BlogPost(props) {
               </>
             )}
           </p>
+          {summary && (
+            <div className="summary">
+              <h3 className="mini-title">Sommaire</h3>
+              <ol>
+                {summary.map((anchor, index) => (
+                  <li key={`anchor-${index}`}>
+                    <a href={`#${anchor.slug.current}`}>{anchor.title}</a>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
           <div className="blog-article__text">
             {_rawText && <PortableText blocks={_rawText} id="blogpost" />}
           </div>

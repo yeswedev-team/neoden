@@ -1,5 +1,5 @@
 import { FiPenTool as icon, FiLink } from 'react-icons/fi';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaAnchor } from 'react-icons/fa';
 
 import { format } from 'date-fns';
 
@@ -134,6 +134,12 @@ export default {
       ],
     },
     {
+      name: 'summary',
+      title: 'Sommaire',
+      type: 'array',
+      of: [{ type: 'anchor' }],
+    },
+    {
       name: 'text',
       title: 'Texte',
       type: 'array',
@@ -208,6 +214,21 @@ export default {
                       { type: 'route' },
                       // other types you may want to link to
                     ],
+                  },
+                ],
+              },
+              {
+                title: 'Ancre',
+                name: 'anchor',
+                type: 'object',
+                blockEditor: {
+                  icon: FaAnchor,
+                },
+                fields: [
+                  {
+                    name: 'anchorId',
+                    type: 'slug',
+                    title: 'Identifiant',
                   },
                 ],
               },

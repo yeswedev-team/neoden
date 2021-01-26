@@ -50,6 +50,12 @@ const Typography = createGlobalStyle`
     font-size: 1.5rem;
     font-weight: normal;
   }
+  .mini-title {
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
   .text-content {
     font-size: 1rem;
     font-weight: 500;

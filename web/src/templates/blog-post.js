@@ -39,6 +39,12 @@ export const query = graphql`
           name
         }
       }
+      summary {
+        title
+        slug {
+          current
+        }
+      }
     }
     lastposts: allSanityPost(
       limit: 3

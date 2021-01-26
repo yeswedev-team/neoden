@@ -17,6 +17,7 @@ export { default as maps } from './maps';
 export { default as upload } from './upload';
 export { default as richtext } from './richtext';
 export { default as youtube } from './youtube';
+export { default as anchor } from './anchor';
 
 /*
 export { default as infoRows } from './infoRows'
