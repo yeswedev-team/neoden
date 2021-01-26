@@ -110,6 +110,12 @@ const BlockMembersStyles = styled.section`
     ${mq[2]} {
       width: 21.25rem;
     }
+    ${mq[3]} {
+      &:nth-child(3n),
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   .block {
