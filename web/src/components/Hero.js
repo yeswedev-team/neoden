@@ -1,6 +1,8 @@
+/* eslint-disable prefer-destructuring */
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { getBlogUrl } from '../utils/helpers';
 import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
@@ -85,6 +87,17 @@ const HeroStyles = styled.section`
 
 export default function Hero({ hero, title, titleMenu, context, location }) {
   const heroData = hero[0];
+  let cta;
+  let link;
+
+  if (heroData.cta) {
+    cta = heroData.cta.ctaPageLink[0];
+    if (cta._type === 'post') {
+      link = getBlogUrl(cta.publishedAt, cta.slug.current);
+    } else {
+      link = `/${cta.slug.current}`;
+    }
+  }
 
   return (
     <HeroStyles
@@ -125,7 +138,7 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
           )}
           {heroData?.cta?.ctaPageLink && (
             <Button
-              target={heroData?.cta?.ctaPageLink[0]?.slug.current}
+              target={link}
               styles="transparent"
               title={heroData?.cta?.title}
             />

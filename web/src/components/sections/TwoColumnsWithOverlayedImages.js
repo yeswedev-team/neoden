@@ -1,7 +1,9 @@
+/* eslint-disable prefer-destructuring */
 import React from 'react';
 import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { getBlogUrl } from '../../utils/helpers';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import { pxtopc } from '../../styles/Mixins';
@@ -64,7 +66,17 @@ const TwoColumnsWOIStyles = styled.section`
 `;
 
 export default function TwoColumnsWithOverlayedImages(data) {
-  const cta = data.ctas[0];
+  let cta;
+  let link;
+  if (data.ctas[0]) {
+    cta = data.ctas[0].ctaPageLink[0];
+    if (cta._type === 'post') {
+      link = getBlogUrl(cta.publishedAt, cta.slug.current);
+    } else {
+      link = `/${cta.slug.current}`;
+    }
+  }
+
   return (
     <TwoColumnsWOIStyles
       hasWaveDown={data.hasWaveDown}
@@ -91,12 +103,11 @@ export default function TwoColumnsWithOverlayedImages(data) {
           <h3 className="overtitle">{data.overtitle}</h3>
           <h2 className="section-title">{data.title}</h2>
           <PortableText blocks={data.intro} id="text-content" />
-          <Link
-            className="button button--brown"
-            to={`/${cta.ctaPageLink[0].slug.current}`}
-          >
-            {cta.title}
-          </Link>
+          {cta && (
+            <Link className="button button--brown" to={link}>
+              {data.ctas[0].title}
+            </Link>
+          )}
         </div>
       </div>
       {data.hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}

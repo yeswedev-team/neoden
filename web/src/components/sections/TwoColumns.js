@@ -1,7 +1,9 @@
+/* eslint-disable prefer-destructuring */
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { getBlogUrl } from '../../utils/helpers';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 
@@ -59,7 +61,17 @@ export default function TwoColumns({
   hasDoubleBotMargin,
   rightImage,
 }) {
-  const cta = ctas[0];
+  let cta;
+  let link;
+  if (ctas[0]) {
+    cta = ctas[0].ctaPageLink[0];
+    if (cta._type === 'post') {
+      link = getBlogUrl(cta.publishedAt, cta.slug.current);
+    } else {
+      link = `/${cta.slug.current}`;
+    }
+  }
+
   return (
     <TwoColumnsStyles
       hasWaveDown={hasWaveDown}
@@ -78,12 +90,9 @@ export default function TwoColumns({
         </div>
         <div className="col col__content">
           <PortableText blocks={text} id="text-content" />
-          {cta && (
-            <Link
-              className="button button--brown"
-              to={`/${cta?.ctaPageLink[0].slug.current}`}
-            >
-              {cta.title}
+          {link && (
+            <Link className="button button--brown" to={link}>
+              {ctas[0].title}
             </Link>
           )}
         </div>

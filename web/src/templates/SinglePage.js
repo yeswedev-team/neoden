@@ -183,8 +183,18 @@ export const query = graphql`
           cta {
             title
             ctaPageLink {
-              slug {
-                current
+              ... on SanityPost {
+                publishedAt
+                slug {
+                  current
+                }
+                _type
+              }
+              ... on SanityRoute {
+                slug {
+                  current
+                }
+                _type
               }
             }
           }
@@ -376,8 +386,18 @@ export const query = graphql`
                 _key
                 title
                 ctaPageLink {
-                  slug {
-                    current
+                  ... on SanityPost {
+                    publishedAt
+                    slug {
+                      current
+                    }
+                    _type
+                  }
+                  ... on SanityRoute {
+                    slug {
+                      current
+                    }
+                    _type
                   }
                 }
               }
@@ -422,8 +442,18 @@ export const query = graphql`
             ctas {
               title
               ctaPageLink {
-                slug {
-                  current
+                ... on SanityPost {
+                  publishedAt
+                  slug {
+                    current
+                  }
+                  _type
+                }
+                ... on SanityRoute {
+                  slug {
+                    current
+                  }
+                  _type
                 }
               }
             }
@@ -444,8 +474,18 @@ export const query = graphql`
             ctas {
               title
               ctaPageLink {
-                slug {
-                  current
+                ... on SanityPost {
+                  publishedAt
+                  slug {
+                    current
+                  }
+                  _type
+                }
+                ... on SanityRoute {
+                  slug {
+                    current
+                  }
+                  _type
                 }
               }
             }

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { getBlogUrl } from '../../utils/helpers';
 import Wavify from '../Wave';
 import Button from '../Button';
 
@@ -24,16 +25,23 @@ const BlockCtaStyles = styled.section`
 `;
 
 export default function Cta({ title, buttonTitle, link, hasDoubleBotMargin }) {
+  console.log(link);
+  let target;
+
+  if (link[0]) {
+    if (link[0]._type === 'post') {
+      target = getBlogUrl(link[0].publishedAt, link[0].slug.current);
+    } else {
+      target = `/${link[0].slug.current}`;
+    }
+  }
+
   return (
     <BlockCtaStyles hasDoubleBotMargin={hasDoubleBotMargin} className="section">
       <Wavify direction="up" bgcolor="#ffffff" />
       <div className="container container--xs">
         <h2 className="middle-title">{title}</h2>
-        <Button
-          styles="brown"
-          title={buttonTitle}
-          target={link[0].slug.current}
-        />
+        <Button styles="brown" title={buttonTitle} target={target} />
       </div>
       <Wavify direction="down" bgcolor="#ffffff" />
     </BlockCtaStyles>
