@@ -84,7 +84,8 @@ const BlogPostsListStyles = styled.div`
   }
 `;
 
-export default function BlogPostPreviewList({ nodes, location }) {
+export default function BlogPostPreviewList({ nodes, location, total }) {
+  console.log(total);
   const firstNode = nodes[0];
   const otherNodes = nodes.slice(1);
 
@@ -129,7 +130,6 @@ export default function BlogPostPreviewList({ nodes, location }) {
             ))}
         </ul>
       </BlogPostsListStyles>
-      <Wavify direction="down" bgcolor="#ffffff" />
     </>
   );
 }

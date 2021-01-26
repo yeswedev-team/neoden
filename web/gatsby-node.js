@@ -49,6 +49,55 @@ async function createBlogPostPages({ graphql, actions }) {
     });
 }
 
+async function turnPostsIntoPages({ graphql, actions }) {
+  // Get a template for this page
+  const blogTemplate = path.resolve('./src/pages/le-mag.js');
+
+  // Query all posts
+  const { data } = await graphql(`
+    query {
+      posts: allSanityPost(
+        filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+      ) {
+        totalCount
+        edges {
+          node {
+            id
+            publishedAt
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (data.errors) throw data.errors;
+  const postEdges = (data.posts || {}).edges || [];
+
+  const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
+  const pageCount = Math.ceil(data.posts.totalCount / pageSize);
+
+  const postsList = postEdges.filter(
+    (edge) => !isFuture(parseISO(edge.node.publishedAt))
+  );
+
+  Array.from({ length: pageCount }).forEach((_, i) => {
+    console.log(`Creating page ${i}`);
+    actions.createPage({
+      path: `/le-mag/${i + 1}`,
+      component: blogTemplate,
+      // this data is passed to the template when we create it
+      context: {
+        skip: i * pageSize,
+        currentPage: i + 1,
+        pageSize,
+      },
+    });
+  });
+}
+
 async function turnRoutesIntoPages({ graphql, actions }) {
   // Get a template for this page
   const pageTemplate = path.resolve('./src/templates/SinglePage.js');
@@ -84,5 +133,9 @@ async function turnRoutesIntoPages({ graphql, actions }) {
 export async function createPages(params) {
   // Create pages dynamically
   // run promises concurrently (at the same time) || wait for all promises to be resolved before finishing this function
-  await Promise.all([turnRoutesIntoPages(params), createBlogPostPages(params)]);
+  await Promise.all([
+    turnRoutesIntoPages(params),
+    turnPostsIntoPages(params),
+    createBlogPostPages(params),
+  ]);
 }
