@@ -200,8 +200,9 @@ const BlockGmap = ({
     lat: locations[0].gmap.lat,
     lng: locations[0].gmap.lng,
   });
+  const [swiper, setSwiper] = useState(null);
 
-  const [active, setActive] = useState(`${locations[0].id}`);
+  const [active, setActive] = useState(0);
 
   function createMapOptions(maps) {
     return {
@@ -387,10 +388,13 @@ const BlockGmap = ({
     };
   }
 
-  function handleClick(loc, id) {
+  function handleClick(loc, index) {
+    swiper.slideTo(index);
     setCenter(loc);
-    setActive(id);
+    setActive(index);
   }
+
+  function getActiveSlideFromId(id) {}
 
   return (
     <BlockMapStyles
@@ -415,19 +419,20 @@ const BlockGmap = ({
               defaultZoom={defaultZoom}
               options={createMapOptions}
             >
-              {locations.map((marker) => (
+              {locations.map((marker, index) => (
                 <MarkerStyles
                   key={marker._id}
                   lat={marker.gmap.lat}
                   lng={marker.gmap.lng}
-                  onClick={() => handleClick(marker.gmap, marker.id)}
-                  className={active === marker.id ? 'active' : 'inactive'}
+                  onClick={() => handleClick(marker.gmap, index)}
+                  className={active === index ? 'active' : 'inactive'}
                 />
               ))}
             </GoogleMapReact>
           </div>
 
           <Swiper
+            onSwiper={setSwiper}
             spaceBetween={0}
             slidesPerView={1}
             speed={700}
@@ -442,13 +447,13 @@ const BlockGmap = ({
               },
             }}
           >
-            {locations.map((location) => (
+            {locations.map((location, index) => (
               <SwiperSlide key={location.id} className="slide">
                 <button
                   type="button"
-                  onClick={() => handleClick(location.gmap, location.id)}
+                  onClick={() => handleClick(location.gmap, index)}
                   className={`address__block ${
-                    active === location.id ? 'active' : ''
+                    active === index ? 'active' : ''
                   }`}
                 >
                   <h3>{location.title}</h3>
