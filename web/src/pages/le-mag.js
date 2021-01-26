@@ -47,7 +47,7 @@ export default function BlogIndex({ data, location, pageContext }) {
 }
 
 export const query = graphql`
-  query BlogIndexQuery($skip: Int = 0, $pageSize: Int = 3) {
+  query BlogIndexQuery($skip: Int = 0, $pageSize: Int = 10) {
     posts: allSanityPost(
       limit: $pageSize
       skip: $skip
