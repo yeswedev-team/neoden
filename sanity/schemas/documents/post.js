@@ -217,6 +217,7 @@ export default {
         {
           type: 'image',
         },
+        { type: 'youtube' },
       ],
       validation: (Rule) => Rule.required(),
     },
