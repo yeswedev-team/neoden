@@ -151,7 +151,7 @@ export default function BlogPost(props) {
               </>
             )}
           </p>
-          {summary && (
+          {summary[0] && (
             <div className="summary">
               <h3 className="mini-title">Sommaire</h3>
               <ol>
