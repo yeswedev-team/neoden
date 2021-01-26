@@ -45,6 +45,7 @@
     "gatsby-source-filesystem": "^2.8.1",
     "gatsby-source-sanity": "^6.0.4",
     "gatsby-transformer-sharp": "^2.9.0",
+    "get-youtube-id": "^1.0.1",
     "google-map-react": "^2.1.9",
     "gsap": "file:gsap-bonus.tgz",
     "isomorphic-fetch": "^2.2.1",
@@ -60,6 +61,7 @@
     "react-map-to-components": "^1.2.1",
     "react-stickynode": "^3.0.4",
     "react-wavify": "^1.5.2",
+    "react-youtube": "^7.13.1",
     "styled-components": "^5.2.0",
     "swiper": "^6.4.5"
   },

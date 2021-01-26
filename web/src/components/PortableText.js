@@ -1,7 +1,8 @@
 import React from 'react';
+import getYouTubeId from 'get-youtube-id';
+import YouTube from 'react-youtube';
 import BlockContent from '@sanity/block-content-to-react';
 import { Link } from 'gatsby';
-// import { serializers } from '@sanity/block-content-to-react/lib/targets/dom';
 
 const serializers = {
   types: {
@@ -25,6 +26,11 @@ const serializers = {
         customBlocks[style] ||
         BlockContent.defaultSerializers.types.block(props)
       );
+    },
+    youtube: ({ node }) => {
+      const { url } = node;
+      const id = getYouTubeId(url);
+      return <YouTube videoId={id} />;
     },
     separator: (props) => {
       const { style } = props.node;
