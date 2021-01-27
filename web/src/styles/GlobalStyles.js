@@ -289,9 +289,9 @@ const GlobalStyles = createGlobalStyle`
   .sticky-outer-wrapper {
     display: none;
 
-    ${mq[4]} {
+    ${mq[3]} {
       display: block;
-      left: calc(((100% - 56.5rem) / 2) - 10.1875rem);
+      left: calc((100% - 79.875em) / 2);
       margin: 0;
       opacity: 0;
       pointer-events: none;
@@ -627,6 +627,24 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 500;
         text-transform: uppercase;
       }
+    }
+  }
+
+  /* Arches */
+  .overprint {
+    bottom: 25rem;
+    display: none;
+    height: 40%;
+    max-height: 80vh;
+    mix-blend-mode: multiply;
+    position: absolute;
+    right: 0;
+    transform: scaleX(-1) translateX(-50%);
+    width: 50vw;
+    z-index: 4;
+
+    ${mq[4]} {
+      display: block;
     }
   }
 
