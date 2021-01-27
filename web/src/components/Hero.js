@@ -3,6 +3,7 @@ import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { getBlogUrl } from '../utils/helpers';
+import Wavify from './Wave';
 import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
@@ -64,8 +65,10 @@ const HeroStyles = styled.section`
   }
 
   .hero__content {
-    z-index: 3;
+    padding-bottom: 5rem;
+    padding-top: ${({ location }) => (location === 'home' ? '0' : '2.5rem')};
     width: 100%;
+    z-index: 3;
 
     ${mq[2]} {
       width: auto;
@@ -81,7 +84,12 @@ const HeroStyles = styled.section`
   }
 
   .logo-only {
+    margin-top: -100%;
     width: 14.5rem;
+
+    ${mq[1]} {
+      margin-top: 0;
+    }
   }
 `;
 
@@ -99,6 +107,14 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
     }
   }
 
+  const sources = [
+    heroData?.background.mobileImage.asset.fluid,
+    {
+      ...heroData?.background.desktopImage.asset.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ];
+
   return (
     <HeroStyles
       className={`section section__hero${
@@ -108,10 +124,7 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
     >
       {heroData?.background && (
         <div className="hero__illustr">
-          <Img
-            fluid={heroData?.background?.bgimage.asset.fluid}
-            alt={title.fr}
-          />
+          <Img fluid={sources} alt={title.fr} />
         </div>
       )}
       {context !== 'home' && (
@@ -122,6 +135,7 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
         />
       )}
       <div className="hero__content">
+        {context === 'home' && <Wavify direction="up" bgcolor="#C2AFA5" />}
         <div
           className={`container${
             heroData?.background

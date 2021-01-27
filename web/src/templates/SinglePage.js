@@ -172,7 +172,14 @@ export const query = graphql`
           _rawText(resolveReferences: { maxDepth: 10 })
           hasLogo
           background {
-            bgimage {
+            mobileImage: bgimage {
+              asset {
+                fluid(maxWidth: 768, maxHeight: 768) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            desktopImage: bgimage {
               asset {
                 fluid(maxWidth: 1600) {
                   ...GatsbySanityImageFluid

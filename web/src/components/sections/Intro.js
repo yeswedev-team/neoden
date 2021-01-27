@@ -49,7 +49,6 @@ const Intro = ({
   hasWaveDown,
   hasWaveUp,
 }) => {
-  console.log(frontImage);
   const sources = [
     frontImage?.mobileImage.asset.fluid,
     {

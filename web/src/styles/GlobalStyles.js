@@ -179,8 +179,7 @@ const GlobalStyles = createGlobalStyle`
       z-index: 2;
 
       .hero__content {
-        background-color: rgba(145, 109, 91, 0.59);
-        padding: 2.5rem 0 5rem;
+        background-color: var(--brownlight);
 
         .container {
           text-align: center;
