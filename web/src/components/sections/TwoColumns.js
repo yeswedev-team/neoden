@@ -7,6 +7,7 @@ import { getBlogUrl } from '../../utils/helpers';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import { mq } from '../../styles/breakpoints';
+import { calcClamp } from '../../styles/Mixins';
 
 const handleLocation = (props) => {
   if (
@@ -37,7 +38,7 @@ const TwoColumnsStyles = styled.section`
       h2,
       h3 {
         color: var(--beige);
-        font-size: 3.125rem;
+        font-size: ${calcClamp(1.7605, 3.125)};
         font-weight: normal;
       }
 
