@@ -24,6 +24,10 @@ const BreadcrumbsStyles = styled.div`
     font-size: 0.875rem;
     padding: 0 8px 0 0;
     text-decoration: underline;
+
+    &:hover {
+      color: var(--white);
+    }
   }
   .mag {
     padding-left: 9px;
@@ -34,18 +38,9 @@ const BreadcrumbsStyles = styled.div`
     padding-left: 9px;
   }
 
-  span:hover {
-    color: var(--white);
-  }
-
   #breadcrumbs {
     & > span {
       cursor: default;
-      text-decoration: underline;
-    }
-
-    a {
-      text-decoration: none;
     }
   }
 `;
