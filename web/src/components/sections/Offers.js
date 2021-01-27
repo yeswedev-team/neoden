@@ -74,6 +74,12 @@ const SectionOfferStyles = styled.section`
       top: 50%;
       transform: translate(-50%, -50%);
     }
+
+    &:hover {
+      .filter {
+        filter: grayscale(0) opacity(0.25);
+      }
+    }
   }
   .tab-title-alt {
     background: var(--brown);

@@ -564,6 +564,10 @@ const GlobalStyles = createGlobalStyle`
     }
     .button {
       margin: 0 auto;
+
+      svg {
+        margin-left: 0.4375rem;
+      }
     }
     .place {
       background: var(--white);
