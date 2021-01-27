@@ -158,6 +158,7 @@ const FooterStyles = styled.footer`
     align-items: center;
     border-top: 1px solid var(--white);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding: 18px 0;
 
@@ -167,17 +168,33 @@ const FooterStyles = styled.footer`
     }
     ul {
       display: flex;
+      flex-direction: column;
     }
     li {
       font-size: 1rem;
       margin: 0;
+      text-align: center;
 
       &:before {
         content: ' - ';
-        display: inline-block;
+        display: none;
       }
       a {
         padding: 0 8px;
+      }
+    }
+    ${mq[2]} {
+      flex-direction: row;
+
+      ul {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+      li {
+        text-align: left;
+      }
+      li:before {
+        display: inline-block;
       }
     }
   }
