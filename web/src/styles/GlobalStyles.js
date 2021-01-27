@@ -229,7 +229,7 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     background: var(--white);
     border: none;
-    border-radius: ${pxtoem(18)};
+    border-radius: ${pxtoem(19)};
     color: var(--brown);
     display: inline-flex;
     font-size: ${remCalc(16)};
