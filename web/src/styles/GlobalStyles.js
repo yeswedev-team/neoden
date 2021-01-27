@@ -555,7 +555,6 @@ const GlobalStyles = createGlobalStyle`
       text-align: center;
     }
     .places-list {
-      align-items: flex-end;
       display: flex;
       column-gap: 2.5rem;
       flex-wrap: wrap;
