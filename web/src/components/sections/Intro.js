@@ -48,39 +48,50 @@ const Intro = ({
   text,
   hasWaveDown,
   hasWaveUp,
-}) => (
-  <IntroTextStyles
-    location={context}
-    hasWaveDown={hasWaveDown}
-    hasWaveUp={hasWaveUp}
-    className={`section section__intro${hasWaveDown ? ' has-wave-down' : ''}${
-      hasWaveUp ? ' has-wave-up' : ''
-    }`}
-  >
-    {hasWaveUp && (
-      <Wavify
-        direction="up"
-        bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`}
-      />
-    )}
-    <div className="container container--md">
-      {frontImage && (
-        <div className="img-container">
-          <Img fluid={frontImage?.image.asset.fluid} alt={title} />
-          <Overprint className="overprint" />
-        </div>
+}) => {
+  console.log(frontImage);
+  const sources = [
+    frontImage?.mobileImage.asset.fluid,
+    {
+      ...frontImage?.desktopImage.asset.fluid,
+      media: `(min-width: 768px)`,
+    },
+  ];
+
+  return (
+    <IntroTextStyles
+      location={context}
+      hasWaveDown={hasWaveDown}
+      hasWaveUp={hasWaveUp}
+      className={`section section__intro${hasWaveDown ? ' has-wave-down' : ''}${
+        hasWaveUp ? ' has-wave-up' : ''
+      }`}
+    >
+      {hasWaveUp && (
+        <Wavify
+          direction="up"
+          bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`}
+        />
       )}
-      {overtitle && <p className="overtitle">{overtitle}</p>}
-      {title && <h2 className="section-title">{title}</h2>}
-      {text && <PortableText blocks={text} />}
-    </div>
-    {hasWaveDown && (
-      <Wavify
-        direction="down"
-        bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`}
-      />
-    )}
-  </IntroTextStyles>
-);
+      <div className="container container--md">
+        {frontImage && (
+          <div className="img-container">
+            <Img fluid={sources} alt={title} />
+            <Overprint className="overprint" />
+          </div>
+        )}
+        {overtitle && <p className="overtitle">{overtitle}</p>}
+        {title && <h2 className="section-title">{title}</h2>}
+        {text && <PortableText blocks={text} />}
+      </div>
+      {hasWaveDown && (
+        <Wavify
+          direction="down"
+          bgcolor={`${context === 'home' ? '#F2F2F2' : 'white'}`}
+        />
+      )}
+    </IntroTextStyles>
+  );
+};
 
 export default Intro;
