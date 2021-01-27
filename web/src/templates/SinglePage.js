@@ -29,7 +29,7 @@ export default function SinglePage({
       {pageContext.slug === 'home' && alertDisplay && <Alert alert={alert} />}
 
       {pageContext.slug !== 'home' && (
-        <OverprintLogo className="overprintLogo overprintLogo--right overprintLogo--right--low" />
+        <OverprintLogo className="overprintLogo overprintLogo--right" />
       )}
 
       <Hero
