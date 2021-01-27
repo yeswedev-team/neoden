@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import { getBlogUrl } from '../../utils/helpers';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
+import { mq } from '../../styles/breakpoints';
 
 const handleLocation = (props) => {
   if (
@@ -31,11 +32,17 @@ const TwoColumnsStyles = styled.section`
     position: relative;
 
     &__content {
+      text-align: center;
+
       h2,
       h3 {
         color: var(--beige);
         font-size: 3.125rem;
         font-weight: normal;
+      }
+
+      ${mq[1]} {
+        text-align: left;
       }
     }
   }
