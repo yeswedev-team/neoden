@@ -209,7 +209,14 @@ export const query = graphql`
             hasWaveDown
             hasWaveUp
             frontimage {
-              image {
+              mobileImage: image {
+                asset {
+                  fluid(maxWidth: 768, maxHeight: 768) {
+                    ...GatsbySanityImageFluid
+                  }
+                }
+              }
+              desktopImage: image {
                 asset {
                   fluid(maxWidth: 1115, maxHeight: 346) {
                     ...GatsbySanityImageFluid
