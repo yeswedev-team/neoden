@@ -22,7 +22,7 @@ const WaveContainerStyles = styled.div`
 `;
 
 const FirstNodeStyles = styled.div`
-  margin-top: -18.3125rem;
+  margin-top: -15.3125rem;
   position: relative;
 
   .container {
