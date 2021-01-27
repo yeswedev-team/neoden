@@ -87,6 +87,12 @@ const FormStyles = styled.form`
       background-color: var(--brownlight);
     }
   }
+  .notabene {
+    font-size: 0.875rem;
+    * {
+      margin: 0;
+    }
+  }
 `;
 
 export default function Form() {
@@ -169,6 +175,22 @@ export default function Form() {
           <button type="submit" className="button button--brown">
             <span>Envoyer mon message</span>
           </button>
+        </div>
+        <div className="notabene">
+          <p>
+            Conformément à la réglementation en vigueur sur les données
+            personnelles, vous bénéficiez à tout moment d’un droit d’accès,
+            d’interrogation, de portabilité, de rectification, d’effacement de
+            vos données personnelles, de limitation du traitement de celles-ci
+            ainsi que d'un droit de définir vos directives post-mortem. Vous
+            disposez également d'un droit d’opposition au traitement de vos
+            données personnelles pour des motifs légitimes et d'un droit de
+            saisir l’autorité de contrôle compétente afin d’y introduire une
+            réclamation.Pour exercer vos droits, vous pouvez adresser une
+            demande à la société NEODEN, par courrier à l’adresse suivante : 16
+            boulevard de Berlin 44000 Nantes, ou par e-mail envoyé à
+            <a href="mailto:contact@neoden.fr">contact@neoden.fr</a>.
+          </p>
         </div>
       </div>
     </FormStyles>
