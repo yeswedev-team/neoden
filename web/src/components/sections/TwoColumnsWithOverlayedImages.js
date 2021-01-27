@@ -22,10 +22,16 @@ const TwoColumnsWOIStyles = styled.section`
     position: relative;
 
     &__content {
-      padding-top: calc(var(--gap) / 4);
+      padding-top: var(--gap);
+      text-align: center;
+
+      ${mq[1]} {
+        text-align: left;
+      }
 
       ${mq[2]} {
         padding-left: 2.8125rem;
+        padding-top: calc(var(--gap) / 4);
       }
     }
   }
@@ -43,14 +49,18 @@ const TwoColumnsWOIStyles = styled.section`
     right: 0;
     transform: translate(0, 1.25rem);
 
-    ${mq[2]} {
+    ${mq[1]} {
       bottom: auto;
-      transform: translate(3.75rem, 1.25rem);
       top: 12.75rem;
+      transform: translate(0, -1.25rem);
+    }
+    ${mq[2]} {
+      transform: translate(3.75rem, 1.25rem);
     }
     ${mq[3]} {
       bottom: 0;
       top: auto;
+      transform: translate(3.75rem, 1.25rem);
     }
   }
   .section-title {
