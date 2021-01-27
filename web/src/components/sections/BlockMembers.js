@@ -21,13 +21,18 @@ const handleLocation = (props) => {
 };
 
 const BlockMembersStyles = styled.section`
-  background: #a5968f url(${tressageBg}) 0 0 repeat;
-  background-blend-mode: multiply;
+  background: #a5968f;
   color: var(--white);
   padding-bottom: ${(props) => handleLocation(props)};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   text-align: center;
+
+  ${mq[2]} {
+    background: #a5968f url(${tressageBg}) 0 0 repeat;
+    background-blend-mode: multiply;
+    background-size: 12.5rem;
+  }
 
   > .container:first-child {
     /* max-width: none; */
