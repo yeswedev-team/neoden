@@ -232,7 +232,7 @@ const GlobalStyles = createGlobalStyle`
     border-radius: ${pxtoem(18)};
     color: var(--brown);
     display: inline-flex;
-    font-size: ${remCalc(13)};
+    font-size: ${remCalc(14)};
     font-weight: 500;
     padding: ${remCalc(8)} ${remCalc(30)};
     text-align: center;
