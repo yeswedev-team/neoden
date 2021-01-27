@@ -33,6 +33,21 @@ const BreadcrumbsStyles = styled.div`
     font-weight: normal;
     padding-left: 9px;
   }
+
+  span:hover {
+    color: var(--white);
+  }
+
+  #breadcrumbs {
+    & > span {
+      cursor: default;
+      text-decoration: underline;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
 `;
 
 export default function Breadcrumb({ title, titleMenu, origin }) {
