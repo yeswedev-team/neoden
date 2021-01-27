@@ -232,16 +232,12 @@ const GlobalStyles = createGlobalStyle`
     border-radius: ${pxtoem(18)};
     color: var(--brown);
     display: inline-flex;
-    font-size: ${remCalc(14)};
+    font-size: ${remCalc(16)};
     font-weight: 500;
     padding: ${remCalc(8)} ${remCalc(30)};
     text-align: center;
     transition: background 200ms linear;
     white-space: nowrap;
-
-    ${mq[2]} {
-      font-size: 1rem;
-    }
 
     &:hover {
         background-color: var(--brownlighter);
