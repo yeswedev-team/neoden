@@ -24,7 +24,12 @@ export default function Service({ service }) {
         <PortableText blocks={service._rawText} />
         <div className="actions">
           {service.offerlink && (
-            <a href={service.offerlink} className="button button--brownlight">
+            <a
+              href={service.offerlink}
+              className="button button--brownlight"
+              target="_blank"
+              rel="noreferrer"
+            >
               J'offre <MdCardGiftcard />
             </a>
           )}

@@ -394,8 +394,6 @@ const BlockGmap = ({
     setActive(index);
   }
 
-  function getActiveSlideFromId(id) {}
-
   return (
     <BlockMapStyles
       hasWaveDown={hasWaveDown}

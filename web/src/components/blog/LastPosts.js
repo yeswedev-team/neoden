@@ -54,7 +54,7 @@ export default function LastPosts({ posts }) {
   }
 
   const [width, setWidth] = React.useState(windowWidth);
-  const breakpoint = 1520;
+  const breakpoint = 1280;
 
   useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);

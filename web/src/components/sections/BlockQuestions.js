@@ -22,7 +22,7 @@ const handleLocation = (props) => {
 const BlockFAQStyles = styled.section`
   padding-bottom: ${(props) => handleLocation(props)};
   padding-top: ${(props) =>
-    props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
+    props.hasWaveUp ? '0' : 'calc(var(--section-top-padding) * 2)'};
   position: relative;
   z-index: 3;
 

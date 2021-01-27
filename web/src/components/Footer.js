@@ -15,6 +15,10 @@ const FooterStyles = styled.footer`
 
   a {
     color: var(--white);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .label {
@@ -54,6 +58,11 @@ const FooterStyles = styled.footer`
     color: var(--brown);
     display: block;
     margin-bottom: 0.9375rem;
+    padding: 0.5rem;
+
+    ${mq[2]} {
+      padding: 0.5rem 1.875rem;
+    }
   }
   .logos,
   nav,
@@ -130,6 +139,10 @@ const FooterStyles = styled.footer`
   }
   .footer__actions {
     padding-right: 15px;
+
+    a:hover {
+      text-decoration: none;
+    }
 
     ${mq[0]} {
       width: 100%;
@@ -275,7 +288,7 @@ const Footer = ({ footerItems }) => {
         </div>
       </div>
       <div className="copyright">
-        <p>&copy; 2020 - Neoden</p>
+        <p>&copy; 2021 - Neoden</p>
         <ul>
           {copyNavigation.map((item) => (
             <li key={item.id}>

@@ -100,16 +100,6 @@ const BlogArticleStyles = styled.article`
       }
     }
   }
-
-  .overprint {
-    top: 100vh;
-    height: 40%;
-    max-height: 80vh;
-    position: absolute;
-    right: 0;
-    transform: scaleX(-1) translateX(-50%);
-    z-index: -1;
-  }
 `;
 
 export default function BlogPost(props) {
@@ -126,49 +116,51 @@ export default function BlogPost(props) {
   } = props;
 
   return (
-    <BlogArticleStyles className="blog-article">
+    <>
       <Overprint className="overprint" />
-      {mainImage && (
-        <div className="blog-article__illustr">
-          <Breadcrumb location={location} title={title} origin="blog" />
-          <Img fluid={mainImage.asset.fluid} alt={title.fr} />
-        </div>
-      )}
-      <Wavify direction="up" bgcolor="#ffffff" />
-      {edges && <LastPosts posts={edges} />}
-      <div className="container container--md" id="content">
-        <div className="blog-article__content">
-          <h1 className="blogpost-title">{title}</h1>
-          {_rawExcerpt && <PortableText blocks={_rawExcerpt} id="excerpt" />}
-          <p className="blog-article__meta">
-            {authors && <AuthorList items={authors} />}
-            {publishedAt && (
-              <>
-                le&nbsp;
-                {format(new Date(publishedAt), 'dd MMMM yyyy', {
-                  locale: fr,
-                })}
-              </>
+      <BlogArticleStyles className="blog-article">
+        {mainImage && (
+          <div className="blog-article__illustr">
+            <Breadcrumb location={location} title={title} origin="blog" />
+            <Img fluid={mainImage.asset.fluid} alt={title.fr} />
+          </div>
+        )}
+        <Wavify direction="up" bgcolor="#ffffff" />
+        {edges && <LastPosts posts={edges} />}
+        <div className="container container--md" id="content">
+          <div className="blog-article__content">
+            <h1 className="blogpost-title">{title}</h1>
+            {_rawExcerpt && <PortableText blocks={_rawExcerpt} id="excerpt" />}
+            <p className="blog-article__meta">
+              {authors && <AuthorList items={authors} />}
+              {publishedAt && (
+                <>
+                  le&nbsp;
+                  {format(new Date(publishedAt), 'dd MMMM yyyy', {
+                    locale: fr,
+                  })}
+                </>
+              )}
+            </p>
+            {summary[0] && (
+              <div className="summary">
+                <h3 className="mini-title">Sommaire</h3>
+                <ol>
+                  {summary.map((anchor, index) => (
+                    <li key={`anchor-${index}`}>
+                      <a href={`#${anchor.slug.current}`}>{anchor.title}</a>
+                    </li>
+                  ))}
+                </ol>
+              </div>
             )}
-          </p>
-          {summary[0] && (
-            <div className="summary">
-              <h3 className="mini-title">Sommaire</h3>
-              <ol>
-                {summary.map((anchor, index) => (
-                  <li key={`anchor-${index}`}>
-                    <a href={`#${anchor.slug.current}`}>{anchor.title}</a>
-                  </li>
-                ))}
-              </ol>
+            <div className="blog-article__text">
+              {_rawText && <PortableText blocks={_rawText} id="blogpost" />}
             </div>
-          )}
-          <div className="blog-article__text">
-            {_rawText && <PortableText blocks={_rawText} id="blogpost" />}
           </div>
         </div>
-      </div>
-      <Wavify direction="down" bgcolor="#ffffff" />
-    </BlogArticleStyles>
+        <Wavify direction="down" bgcolor="#ffffff" />
+      </BlogArticleStyles>
+    </>
   );
 }

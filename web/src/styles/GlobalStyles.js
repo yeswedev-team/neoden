@@ -229,19 +229,16 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     background: var(--white);
     border: none;
-    border-radius: ${pxtoem(18)};
+    border-radius: ${pxtoem(19)};
     color: var(--brown);
     display: inline-flex;
-    font-size: ${remCalc(13)};
+    font-size: ${remCalc(16)};
     font-weight: 500;
+    min-height: 2.375rem;
     padding: ${remCalc(8)} ${remCalc(30)};
     text-align: center;
     transition: background 200ms linear;
     white-space: nowrap;
-
-    ${mq[2]} {
-      font-size: 1rem;
-    }
 
     &:hover {
         background-color: var(--brownlighter);
@@ -289,9 +286,9 @@ const GlobalStyles = createGlobalStyle`
   .sticky-outer-wrapper {
     display: none;
 
-    ${mq[4]} {
+    ${mq[3]} {
       display: block;
-      left: calc(((100% - 56.5rem) / 2) - 10.1875rem);
+      left: calc((100% - 79.875em) / 2);
       margin: 0;
       opacity: 0;
       pointer-events: none;
@@ -555,7 +552,6 @@ const GlobalStyles = createGlobalStyle`
       text-align: center;
     }
     .places-list {
-      align-items: flex-end;
       display: flex;
       column-gap: 2.5rem;
       flex-wrap: wrap;
@@ -565,6 +561,10 @@ const GlobalStyles = createGlobalStyle`
     }
     .button {
       margin: 0 auto;
+
+      svg {
+        margin-left: 0.4375rem;
+      }
     }
     .place {
       background: var(--white);
@@ -627,6 +627,24 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 500;
         text-transform: uppercase;
       }
+    }
+  }
+
+  /* Arches */
+  .overprint {
+    bottom: 25rem;
+    display: none;
+    height: 40%;
+    max-height: 80vh;
+    mix-blend-mode: multiply;
+    position: absolute;
+    right: 0;
+    transform: scaleX(-1) translateX(-50%);
+    width: 50vw;
+    z-index: 4;
+
+    ${mq[4]} {
+      display: block;
     }
   }
 
