@@ -180,7 +180,7 @@ const GlobalStyles = createGlobalStyle`
 
       .hero__content {
         background-color: rgba(145, 109, 91, 0.59);
-        padding: 2.5rem 0;
+        padding: 2.5rem 0 5rem;
 
         .container {
           text-align: center;
