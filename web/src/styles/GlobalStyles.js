@@ -179,21 +179,18 @@ const GlobalStyles = createGlobalStyle`
       z-index: 2;
 
       .hero__content {
-        background-color: var(--brownlight);
+        background-color: transparent;
+        left: 50%;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(-50%, -50%);          
 
         .container {
           text-align: center;
         }
 
-        ${mq[1]} {
-          background-color: transparent;
-          left: 50%;
-          padding: 0;
-          position: absolute;
-          text-align: center;
-          top: 50%;
-          transform: translate(-50%, -50%);          
-        }
       }
       &--boxed {
         background-color: rgba(145, 109, 91, 0.59);

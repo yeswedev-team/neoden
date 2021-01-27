@@ -174,7 +174,7 @@ export const query = graphql`
           background {
             mobileImage: bgimage {
               asset {
-                fluid(maxWidth: 768, maxHeight: 768) {
+                fluid(maxWidth: 1000) {
                   ...GatsbySanityImageFluid
                 }
               }

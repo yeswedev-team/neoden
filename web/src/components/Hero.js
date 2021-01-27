@@ -3,7 +3,6 @@ import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { getBlogUrl } from '../utils/helpers';
-import Wavify from './Wave';
 import Logo from '../assets/images/logo-neoden-seul.inline.svg';
 import Button from './Button';
 import PortableText from './PortableText';
@@ -70,13 +69,32 @@ const HeroStyles = styled.section`
     width: 100%;
     z-index: 3;
 
+    ${mq[1]} {
+      .wave-up {
+        display: none !important;
+      }
+    }
     ${mq[2]} {
       width: auto;
     }
   }
 
-  .hero__illustr img {
-    border-radius: 0;
+  .hero__illustr {
+    .gatsby-image-wrapper {
+      > div {
+        @media screen and (max-width: 767px) {
+          padding-bottom: 120% !important;
+        }
+      }
+      img {
+        @media screen and (max-width: 767px) {
+          object-position: 10% center !important;
+        }
+      }
+    }
+    img {
+      border-radius: 0;
+    }
   }
 
   .button {
@@ -135,7 +153,6 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
         />
       )}
       <div className="hero__content">
-        {context === 'home' && <Wavify direction="up" bgcolor="#C2AFA5" />}
         <div
           className={`container${
             heroData?.background
