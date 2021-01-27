@@ -58,6 +58,7 @@ const FooterStyles = styled.footer`
     color: var(--brown);
     display: block;
     margin-bottom: 0.9375rem;
+    padding: 0.5rem;
   }
   .logos,
   nav,
