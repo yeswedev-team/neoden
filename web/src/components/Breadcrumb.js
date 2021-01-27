@@ -9,7 +9,7 @@ const BreadcrumbsStyles = styled.div`
   padding-left: 5%;
   position: absolute;
   top: 1.25rem;
-  z-index: 2;
+  z-index: 4;
 
   ${mq[3]} {
     top: 6.25rem;
