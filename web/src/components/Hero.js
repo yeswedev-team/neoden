@@ -102,11 +102,11 @@ const HeroStyles = styled.section`
   }
 
   .logo-only {
-    margin-top: -100%;
-    width: 14.5rem;
+    margin-top: 0;
+    width: 10.5rem;
 
-    ${mq[1]} {
-      margin-top: 0;
+    ${mq[0]} {
+      width: 14.5rem;
     }
   }
 `;
