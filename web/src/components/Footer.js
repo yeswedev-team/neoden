@@ -15,6 +15,10 @@ const FooterStyles = styled.footer`
 
   a {
     color: var(--white);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .label {
@@ -130,6 +134,10 @@ const FooterStyles = styled.footer`
   }
   .footer__actions {
     padding-right: 15px;
+
+    a:hover {
+      text-decoration: none;
+    }
 
     ${mq[0]} {
       width: 100%;
