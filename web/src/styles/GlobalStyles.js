@@ -234,6 +234,7 @@ const GlobalStyles = createGlobalStyle`
     display: inline-flex;
     font-size: ${remCalc(16)};
     font-weight: 500;
+    min-height: 2.375rem;
     padding: ${remCalc(8)} ${remCalc(30)};
     text-align: center;
     transition: background 200ms linear;

@@ -59,6 +59,10 @@ const FooterStyles = styled.footer`
     display: block;
     margin-bottom: 0.9375rem;
     padding: 0.5rem;
+
+    ${mq[2]} {
+      padding: 0.5rem 1.875rem;
+    }
   }
   .logos,
   nav,
