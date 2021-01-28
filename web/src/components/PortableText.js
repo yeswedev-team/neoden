@@ -31,7 +31,11 @@ const serializers = {
     youtube: ({ node }) => {
       const { url } = node;
       const id = getYouTubeId(url);
-      return <YouTube videoId={id} />;
+      return (
+        <div className="video-wrapper">
+          <YouTube videoId={id} />
+        </div>
+      );
     },
     separator: (props) => {
       const { style } = props.node;

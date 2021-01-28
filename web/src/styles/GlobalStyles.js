@@ -286,6 +286,21 @@ const GlobalStyles = createGlobalStyle`
     display: block;
   }
 
+  .video-wrapper {
+    margin: 2rem 0;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+  }
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+
   /* sticky component */
   .sticky-outer-wrapper {
     display: none;
