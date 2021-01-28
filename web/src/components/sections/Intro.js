@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import Overprint from '../../assets/images/ondes.inline.svg';
+import { mq } from '../../styles/breakpoints';
 
 const IntroTextStyles = styled.section`
   background: ${({ location }) =>
@@ -29,6 +30,11 @@ const IntroTextStyles = styled.section`
 
   .img-container {
     position: relative;
+    margin-top: -6.25rem;
+
+    ${mq[1]} {
+      margin-top: 0;
+    }
   }
 
   .overprint {
