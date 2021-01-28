@@ -26,15 +26,20 @@ const FirstNodeStyles = styled.div`
   position: relative;
 
   .container {
+    border: 1px solid var(--brownlighter);
     border-radius: var(--radius);
     position: relative;
+    transition: border 200ms linear;
     z-index: 3;
+
+    &:hover {
+      border: 1px solid var(--brown);
+    }
   }
   .firstPost__header {
     background-color: var(--white);
-    border-radius: var(--radius);
+    border-radius: 0 0 var(--radius) var(--radius);
     color: var(--brown);
-    margin-top: 0.5rem;
     padding: 1.5625rem;
 
     ${mq[1]} {
@@ -42,6 +47,7 @@ const FirstNodeStyles = styled.div`
       border-radius: 0;
       bottom: 0;
       color: var(--white);
+      margin-top: 0.5rem;
       padding: 0 4.75rem 2.8125rem;
       position: absolute;
     }
@@ -57,6 +63,11 @@ const FirstNodeStyles = styled.div`
 
   ${mq[1]} {
     margin-top: -10.3125rem;
+
+    .container,
+    .container:hover {
+      border: none;
+    }
   }
 `;
 
