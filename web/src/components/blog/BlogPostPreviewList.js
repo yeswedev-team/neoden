@@ -77,19 +77,33 @@ const BlogPostsListStyles = styled.div`
   ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 2.5rem;
 
     li {
+      margin-bottom: 2.5rem;
       width: 100%;
 
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       @media screen and (min-width: 650px) {
+        margin-left: 2.5rem;
         width: calc((100% - 2.5rem) / 2);
+
+        &:nth-child(2n + 1) {
+          margin-left: 0;
+        }
       }
 
       ${mq[2]} {
-        flex-shrink: 0;
-        flex-grow: 1;
-        width: calc((100% - 80px) / 3);
+        width: calc((100% - 5rem) / 3);
+
+        &:nth-child(2n + 1) {
+          margin-left: 2.5rem;
+        }
+        &:nth-child(3n + 1) {
+          margin-left: 0;
+        }
       }
     }
   }

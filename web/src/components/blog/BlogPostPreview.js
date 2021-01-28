@@ -34,7 +34,7 @@ const BlogCardStyles = styled.div`
   .small-title {
     margin-top: 0.75rem;
     font-weight: 600;
-    min-height: 2.625rem;
+    /* min-height: 2.625rem; */
   }
 `;
 
