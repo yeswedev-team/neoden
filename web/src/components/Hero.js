@@ -126,9 +126,9 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
   }
 
   const sources = [
-    heroData?.background.mobileImage.asset.fluid,
+    heroData?.background?.mobileImage.asset.fluid,
     {
-      ...heroData?.background.desktopImage.asset.fluid,
+      ...heroData?.background?.desktopImage.asset.fluid,
       media: `(min-width: 768px)`,
     },
   ];
