@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import styled from 'styled-components';
@@ -86,7 +86,12 @@ const SectionOfferStyles = styled.section`
     filter: none;
     flex-basis: 100%;
     height: 5.75rem;
+    margin-bottom: 1.25rem;
     padding: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &:hover .filter {
       filter: grayscale(0) opacity(0.1);
@@ -94,6 +99,7 @@ const SectionOfferStyles = styled.section`
 
     ${mq[1]} {
       flex-basis: 30%;
+      margin-bottom: 0;
     }
   }
 
@@ -240,6 +246,8 @@ const getSelectedOffer = (query) => {
 export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   gsap.registerPlugin(ScrollToPlugin);
 
+  const offersContainerRef = useRef(null);
+
   const location = useLocation();
   const visibleTabValue =
     (location.search && getSelectedOffer(location.search)) || 'flottaison';
@@ -294,7 +302,11 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
     event.preventDefault();
     setVisibleTab(item.slug.current);
     if (typeof window !== 'undefined') {
-      gsap.to(window, { duration: 0.7, scrollTo: 0, ease: 'power2' });
+      gsap.to(window, {
+        duration: 0.7,
+        scrollTo: { y: offersContainerRef.current, offsetY: 100 },
+        ease: 'power2',
+      });
     }
   };
 
@@ -355,7 +367,7 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
       }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
       {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
-      <div className="container container--md">
+      <div className="container container--md" ref={offersContainerRef}>
         <div className="tabs">
           <ul className="tabs-titles">{listTitles}</ul>
           <select
