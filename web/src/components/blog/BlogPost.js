@@ -31,12 +31,13 @@ const BlogArticleStyles = styled.article`
 
   > .container {
     background-color: var(--white);
-    padding: 1.125rem 5% 5rem;
+    margin-top: -2.5rem;
+    padding: 0 5% 5rem;
     position: relative;
     z-index: 3;
 
     ${mq[2]} {
-      margin-top: -60vh;
+      margin-top: -40vw;
       padding: 3.125rem 7.3125rem 5rem;
     }
   }
