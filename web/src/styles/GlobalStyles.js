@@ -123,6 +123,14 @@ const GlobalStyles = createGlobalStyle`
       &.has-wave-down {
         z-index: 3;
       }
+
+      + .section__columns {
+        padding-top: 0;
+
+        ${mq[1]} {
+          padding-top: calc(var(--section-top-padding) / 2);
+        }
+      }
     }
 
     &__columns {
