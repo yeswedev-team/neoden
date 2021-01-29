@@ -24,6 +24,17 @@ const handleLocation = (location) => {
   }
 };
 
+const handleLocationMargin = (location) => {
+  switch (location) {
+    case 'home':
+      return '0';
+    case 'offres-bien-etre':
+      return '-6.75rem';
+    default:
+      return '-3.75.rem';
+  }
+};
+
 const HeroStyles = styled.section`
   overflow: hidden;
 
@@ -32,6 +43,8 @@ const HeroStyles = styled.section`
   }
 
   + section > .container {
+    margin-top: ${({ location }) => handleLocationMargin(location)};
+
     ${mq[1]} {
       margin-top: ${({ location }) =>
         location === 'home' ? '0' : '-13.75rem'};
@@ -53,6 +66,7 @@ const HeroStyles = styled.section`
     margin-top: 1.25rem;
 
     ${mq[3]} {
+      margin-top: 0;
       padding: ${({ location }) => handleLocation(location)};
     }
   }
@@ -65,7 +79,7 @@ const HeroStyles = styled.section`
 
   .hero__content {
     padding-bottom: ${({ location }) => (location === 'home' ? '0' : '5rem')};
-    padding-top: ${({ location }) => (location === 'home' ? '0' : '2.5rem')};
+    padding-top: ${({ location }) => (location === 'home' ? '0' : '0.5rem')};
     width: 100%;
     z-index: 3;
 
