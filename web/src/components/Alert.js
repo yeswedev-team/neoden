@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { useLocalStorage } from '../utils/hooks';
 import { getBlogUrl } from '../utils/helpers';
 
 import PortableText from './PortableText';
@@ -34,6 +35,7 @@ export default function Alert({ alert }) {
   const { alertTitle, _rawAlertText, alertLink, alertPosition } = alert;
 
   const [isOpen, setIsOpen] = useState(true);
+  const [read, setRead] = useLocalStorage('read', 'false');
 
   const handleWarningPosition = (position) => {
     switch (position) {
@@ -45,14 +47,22 @@ export default function Alert({ alert }) {
         return 'warning warning--right';
     }
   };
+
+  const handleClick = () => {
+    setRead('true');
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    if (read === 'true') {
+      setIsOpen(false);
+    }
+  }, [read]);
+
   return (
     <div className={`${isOpen === true ? 'visible' : 'invisible'}`}>
       <AlertStyles className={handleWarningPosition(alertPosition[0])}>
-        <button
-          type="button"
-          className="close"
-          onClick={() => setIsOpen(false)}
-        >
+        <button type="button" className="close" onClick={(e) => handleClick(e)}>
           <strong>X</strong>
           <span className="sr-only">Fermer</span>
         </button>
