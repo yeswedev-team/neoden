@@ -55,6 +55,7 @@
     "normalize.css": "^8.0.1",
     "query-string": "^6.13.8",
     "react": "^16.13.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-flickity-component": "^3.6.0",
     "react-helmet": "^6.1.0",
