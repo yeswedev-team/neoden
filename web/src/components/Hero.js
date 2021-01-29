@@ -64,7 +64,7 @@ const HeroStyles = styled.section`
   }
 
   .hero__content {
-    padding-bottom: 5rem;
+    padding-bottom: ${({ location }) => (location === 'home' ? '0' : '5rem')};
     padding-top: ${({ location }) => (location === 'home' ? '0' : '2.5rem')};
     width: 100%;
     z-index: 3;
