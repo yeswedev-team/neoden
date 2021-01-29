@@ -64,6 +64,11 @@ const BlogArticleStyles = styled.article`
       margin-bottom: 0.25em;
     }
   }
+  .blog-article__content {
+    ${mq[2]} {
+      min-height: 100vh; // have sufficient space for the last posts sidebar to appear on scroll
+    }
+  }
   .blog-article__text {
     position: relative;
   }
