@@ -147,6 +147,7 @@ const SectionOfferStyles = styled.section`
   }
 
   .service {
+    background-color: var(--white);
     border-bottom: 1px solid var(--brownlighter);
     display: flex;
     flex-wrap: wrap;

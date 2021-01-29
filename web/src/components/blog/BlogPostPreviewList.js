@@ -26,6 +26,7 @@ const WaveContainerStyles = styled.div`
 const FirstNodeStyles = styled.div`
   margin-top: -15.3125rem;
   position: relative;
+  z-index: 3;
 
   .container {
     border: 1px solid var(--brownlighter);
@@ -82,6 +83,8 @@ const FirstNodeStyles = styled.div`
 
 const BlogPostsListStyles = styled.div`
   margin-top: 2.75rem;
+  position: relative;
+  z-index: 3;
 
   ul {
     display: flex;

@@ -9,9 +9,22 @@ import PortableText from '../PortableText';
 import AuthorList from './AuthorList';
 import Breadcrumb from '../Breadcrumb';
 import LastPosts from './LastPosts';
-import Overprint from '../../assets/images/logo-neoden-grey.inline.svg';
+import OverprintLogo from '../../assets/images/logo-neoden-grey-seul.inline.svg';
 import { mq } from '../../styles/breakpoints';
 import { calcClamp } from '../../styles/Mixins';
+
+const BlogPostStyles = styled.div`
+  .overprintLogo--right {
+    top: 100vh;
+  }
+  .overprintLogo--left {
+    bottom: 25rem;
+    height: 54.375rem;
+    left: 0;
+    top: auto;
+    transform: scaleX(-1) translateX(70%);
+  }
+`;
 
 const BlogArticleStyles = styled.article`
   position: relative;
@@ -127,8 +140,9 @@ export default function BlogPost(props) {
   console.log(location);
 
   return (
-    <>
-      <Overprint className="overprint" />
+    <BlogPostStyles>
+      <OverprintLogo className="overprintLogo overprintLogo--right" />
+      <OverprintLogo className="overprintLogo overprintLogo--left" />
       <BlogArticleStyles className="blog-article">
         {mainImage && (
           <div className="blog-article__illustr">
@@ -174,6 +188,6 @@ export default function BlogPost(props) {
         </div>
         <Wavify direction="down" bgcolor="#ffffff" />
       </BlogArticleStyles>
-    </>
+    </BlogPostStyles>
   );
 }

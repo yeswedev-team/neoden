@@ -8,6 +8,7 @@ import { getBlogUrl } from '../../utils/helpers';
 import PortableText from '../PortableText';
 
 const BlogCardStyles = styled.div`
+  background-color: var(--white);
   border: 1px solid var(--brownlighter);
   border-radius: var(--radius);
   height: 100%;

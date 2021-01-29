@@ -670,23 +670,23 @@ const GlobalStyles = createGlobalStyle`
     width: 50vw;
     z-index: 4;
 
-    ${mq[4]} {
+    ${mq[3]} {
       display: block;
     }
   }
 
   .overprintLogo {
       display: none;
-      max-height: 850px;
+      /* max-height: 850px; */
       position: absolute;
-      z-index: 5; 
+      z-index: 1; 
 
       &--right {
-        height: 50vw;
+        height: 62.125rem;
         mix-blend-mode: multiply;
-        left: calc((100% - 1115px) / 2 + 1215px);
-        top: 52vh;
-        transform: scaleX(-1);
+        right: 0;
+        top: 38vh;
+        transform: translateX(70%);
       }
 
       &--left {
@@ -696,7 +696,7 @@ const GlobalStyles = createGlobalStyle`
         transform: scaleX(-1) translateY(-50%);
       }
 
-      ${mq[4]} {
+      ${mq[3]} {
         display: block;
       }
   }

@@ -9,11 +9,19 @@ import {
 import BlogPostPreviewList from '../components/blog/BlogPostPreviewList';
 import Pagination from '../components/Pagination';
 import Wavify from '../components/Wave';
+import OverprintLogo from '../assets/images/logo-neoden-grey-seul.inline.svg';
 
 const PostListStyles = styled.div`
   .wave-down {
     position: relative;
     z-index: 3;
+  }
+  .overprintLogo--left {
+    bottom: 25rem;
+    height: 54.375rem;
+    left: 0;
+    top: auto;
+    transform: scaleX(-1) translateX(70%);
   }
 `;
 
@@ -28,6 +36,8 @@ export default function BlogIndex({ data, location, pageContext }) {
     <PostListStyles>
       {postNodes && (
         <>
+          <OverprintLogo className="overprintLogo overprintLogo--right" />
+          <OverprintLogo className="overprintLogo overprintLogo--left" />
           <BlogPostPreviewList
             location={location}
             nodes={postNodes}
