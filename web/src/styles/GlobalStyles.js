@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
     --brownlighter: #E1E0DC;
     --brownlight: #C2AFA5;
     --brown: #916D5B;
+    --browndark: #6F4E3D;
     --beigedark: #A5968F;
     --beigelight: #EBDEDD;
     --beige: #CFC6C2;
@@ -253,7 +254,7 @@ const GlobalStyles = createGlobalStyle`
       color: var(--white);
 
       &:hover {
-        background-color: var(--brownlight);
+        background-color: var(--browndark);
       }
     }
 
@@ -263,6 +264,12 @@ const GlobalStyles = createGlobalStyle`
 
     &--transparent {
       background: rgba(242, 242, 242, 0.8);
+      transition: background 300ms ease-out, color 300ms ease-in;
+
+      &:hover {
+        background: var(--brown);
+        color: var(--white);
+      }
     }
   }
   .close {
