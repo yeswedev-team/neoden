@@ -9,7 +9,7 @@ import Footer from './Footer';
 
 const LayoutStyles = styled.div``;
 
-export default function Layout({ children }) {
+export default function Layout({ pageContext, children }) {
   const { navItems, footerItems } = useStaticQuery(
     graphql`
       query {
@@ -70,7 +70,7 @@ export default function Layout({ children }) {
   );
 
   return (
-    <>
+    <div className={`app ${pageContext.slug}`}>
       <GlobalStyles />
       <Typography />
       <LayoutStyles>
@@ -80,6 +80,6 @@ export default function Layout({ children }) {
           <Footer footerItems={footerItems} />
         </div>
       </LayoutStyles>
-    </>
+    </div>
   );
 }
