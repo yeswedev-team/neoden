@@ -127,12 +127,22 @@ const Promo = ({
         )}
         <div className="actions">
           {offerlink && (
-            <a href={offerlink} className="button">
+            <a
+              href={offerlink}
+              className="button"
+              target="_blank"
+              rel="noreferrer"
+            >
               J'offre <MdCardGiftcard />
             </a>
           )}
           {bookinglink && (
-            <a href={bookinglink} className="button button--brown">
+            <a
+              href={bookinglink}
+              className="button button--brown"
+              target="_blank"
+              rel="noreferrer"
+            >
               Je réserve <IoMdOpen />
             </a>
           )}
