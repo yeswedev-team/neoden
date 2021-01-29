@@ -12,6 +12,9 @@ export default {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-react-helmet`,
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Neoden - espace de flottaison`,
