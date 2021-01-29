@@ -3,15 +3,18 @@ import { MdCardGiftcard } from 'react-icons/md';
 import { IoMdOpen } from 'react-icons/io';
 import Img from 'gatsby-image';
 import PortableText from './PortableText';
-import Modal from './Modal';
+// import Modal from './Modal';
 
 export default function Service({ service }) {
+  console.log(service);
   const [selectedOption, setSelectedOption] = useState(
     service.places[0].bookingLink
   );
+  /*
   const modalRef = useRef();
 
   const { places } = service;
+  */
 
   const onChangeValue = (e) => {
     setSelectedOption(e.target.value);
@@ -33,7 +36,18 @@ export default function Service({ service }) {
               J'offre <MdCardGiftcard />
             </a>
           )}
-          <Modal ref={modalRef}>
+          {service.bookinglink && (
+            <a
+              href={service.bookinglink}
+              className="button button--brown"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Je réserve <IoMdOpen />
+            </a>
+          )}
+          {/* 
+          <Modal ref={modalRef}> 
             <h3 className="middle-title">
               Choisissez votre espace Neoden
               <br />
@@ -73,6 +87,7 @@ export default function Service({ service }) {
           >
             Je réserve <IoMdOpen />
           </button>
+          */}
         </div>
       </div>
       <Img fluid={service.image.asset.fluid} />
