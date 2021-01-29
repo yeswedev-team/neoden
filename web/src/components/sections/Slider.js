@@ -39,8 +39,9 @@ export default function Slider({
         {title && <h2 className="section-title">{title}</h2>}
         {text && <PortableText blocks={text} />}
       </div>
-      <div className="container container--md">
+      <div className="container container--lg">
         <Swiper
+          className="slider-illustr"
           spaceBetween={0}
           slidesPerView={1}
           speed={700}
@@ -55,6 +56,7 @@ export default function Slider({
           ))}
         </Swiper>
         <Swiper
+          className="slider-content"
           spaceBetween={0}
           slidesPerView={1}
           speed={700}

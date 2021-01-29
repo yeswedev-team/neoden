@@ -11,7 +11,7 @@ const SliderStyles = styled.section`
   position: relative;
   z-index: 3;
 
-  .container--md {
+  .container--lg {
     display: flex;
     flex-wrap: wrap;
   }
@@ -33,7 +33,12 @@ const SliderStyles = styled.section`
     width: 100%;
 
     ${mq[1]} {
-      width: 50%;
+      &.slider-illustr {
+        width: 60%;
+      }
+      &.slider-content {
+        width: 40%;
+      }
     }
   }
 
