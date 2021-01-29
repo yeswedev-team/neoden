@@ -54,7 +54,9 @@ const BlogArticleStyles = styled.article`
     text-align: center;
   }
   .summary {
+    border-top: 1px solid var(--beige);
     margin-top: 3.875rem;
+    padding-top: 2.5rem;
 
     ol {
       list-style: decimal;
