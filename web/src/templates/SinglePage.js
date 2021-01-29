@@ -31,6 +31,9 @@ export default function SinglePage({
       {pageContext.slug !== 'home' && (
         <OverprintLogo className="overprintLogo overprintLogo--right" />
       )}
+      {pageContext.slug === 'nous-contacter' && (
+        <OverprintLogo className="overprintLogo overprintLogo--left" />
+      )}
 
       <Hero
         hero={hero}

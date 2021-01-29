@@ -679,13 +679,26 @@ const GlobalStyles = createGlobalStyle`
       display: none;
       /* max-height: 850px; */
       position: absolute;
-      z-index: 1; 
+      z-index: 1;
+
+      .nous-contacter & {
+        z-index: 5;
+
+        &--left {
+          bottom: 25rem;
+          height: 54.375rem;
+          left: 0;
+          right: auto;
+          top: auto;
+          transform: scaleX(-1) translateX(70%);
+        }
+      }
 
       &--right {
         height: 62.125rem;
         mix-blend-mode: multiply;
         right: 0;
-        top: 38vh;
+        top: 37.5rem;
         transform: translateX(70%);
       }
 
