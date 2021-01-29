@@ -113,6 +113,9 @@ const BlogPostsListStyles = styled.div`
         &:nth-child(3n + 1) {
           margin-left: 0;
         }
+        &:last-child {
+          margin-bottom: 2.5rem;
+        }
       }
     }
   }
