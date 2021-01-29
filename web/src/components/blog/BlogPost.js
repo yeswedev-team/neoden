@@ -3,6 +3,7 @@ import { fr } from 'date-fns/locale';
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import AuthorList from './AuthorList';
@@ -123,6 +124,8 @@ export default function BlogPost(props) {
     summary,
   } = props;
 
+  console.log(location);
+
   return (
     <>
       <Overprint className="overprint" />
@@ -156,7 +159,9 @@ export default function BlogPost(props) {
                 <ol>
                   {summary.map((anchor, index) => (
                     <li key={`anchor-${index}`}>
-                      <a href={`#${anchor.slug.current}`}>{anchor.title}</a>
+                      <Link to={`${location.pathname}#${anchor.slug.current}`}>
+                        {anchor.title}
+                      </Link>
                     </li>
                   ))}
                 </ol>

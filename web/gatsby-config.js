@@ -50,22 +50,15 @@ export default {
         path: `${__dirname}/src/assets/images/`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-anchor-links',
+      options: {
+        offset: -200,
+        duration: 1000,
+      },
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-portal`,
-    // {
-    //   resolve: 'gatsby-plugin-transition-link',
-    //   options: {
-    //     injectPageProps: false,
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-plugin-sanity-image',
-    //   options: {
-    //     // Sanity project info (required)
-    //     projectId: process.env.SANITY_PROJECT_ID,
-    //     dataset: 'production',
-    //   },
-    // },
     `gatsby-plugin-optimize-svgs`,
     {
       resolve: 'gatsby-plugin-react-svg',
