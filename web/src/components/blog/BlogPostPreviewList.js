@@ -1,3 +1,5 @@
+import { format, parseISO } from 'date-fns';
+import { fr } from 'date-fns/locale';
 import React from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
@@ -55,10 +57,17 @@ const FirstNodeStyles = styled.div`
   .firstNode__excerpt {
     max-width: 38.4375rem;
   }
-  .section-title {
+  .blog-card__date {
+    margin: 0;
+    text-transform: uppercase;
   }
   .firstNode__excerpt {
     font-weight: 500;
+  }
+  .blog-card__date,
+  .firstNode__excerpt,
+  .section-title {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
   }
 
   ${mq[1]} {
@@ -132,6 +141,11 @@ export default function BlogPostPreviewList({ nodes, location, total }) {
                 />
               )}
               <div className="firstPost__header">
+                <p className="blog-card__date">
+                  {format(parseISO(firstNode.publishedAt), 'dd MMMM yyyy', {
+                    locale: fr,
+                  })}
+                </p>
                 <h1 className="section-title">{firstNode.title}</h1>
                 {firstNode._rawExcerpt && (
                   <PortableText

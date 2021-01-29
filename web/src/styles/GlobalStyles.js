@@ -355,14 +355,14 @@ const GlobalStyles = createGlobalStyle`
 
     img {
       transition: transform .4s linear !important;
-      transform: scale(1.1);
+      transform: scale(1);
       will-change: transform;
     }
 
     &:focus,
     &:hover {
       img {
-        transform: scale(1); 
+        transform: scale(1.1); 
         transition: transform 2s linear !important;
       }
     }
@@ -371,7 +371,7 @@ const GlobalStyles = createGlobalStyle`
     &:focus,
     &:hover {
       img {
-        transform: scale(1); 
+        transform: scale(1.1); 
         transition: transform .4s linear !important;
       }
     }
