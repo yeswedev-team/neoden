@@ -242,11 +242,12 @@ const GlobalStyles = createGlobalStyle`
     min-height: 2.375rem;
     padding: ${remCalc(8)} ${remCalc(30)};
     text-align: center;
-    transition: background 200ms linear;
+    transition: background 300ms ease-out, color 300ms ease-in;
     white-space: nowrap;
 
     &:hover {
-        background-color: var(--brownlighter);
+        background-color: var(--brown);
+        color: var(--white);
     }
 
     &--brown {
