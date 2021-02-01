@@ -60,6 +60,10 @@ const FooterStyles = styled.footer`
     margin-bottom: 0.9375rem;
     padding: 0.5rem;
 
+    &:hover {
+      color: var(--white);
+    }
+
     ${mq[2]} {
       padding: 0.5rem 1.875rem;
     }
