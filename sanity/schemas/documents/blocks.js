@@ -21,6 +21,7 @@ export default {
         { type: 'cta' },
         { type: 'members' },
         { type: 'maps' },
+        { type: 'testimony' },
       ],
       validation: (Rule) => Rule.required(),
     },

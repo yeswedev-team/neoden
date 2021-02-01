@@ -1,6 +1,4 @@
 import { HiOutlineDocumentDuplicate as icon } from 'react-icons/hi';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import { FiLink } from 'react-icons/fi';
 import { supportedLanguages } from '../objects/localeString';
 
 const baseLanguage = supportedLanguages.find((l) => l.isDefault);
@@ -46,6 +44,7 @@ export default {
         { type: 'blockQuestions' },
         { type: 'upload' },
         { type: 'richtext' },
+        { type: 'video' },
         { type: 'reference', to: [{ type: 'blocks' }] },
       ],
     },

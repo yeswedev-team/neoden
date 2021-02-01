@@ -11,6 +11,7 @@ import page from './documents/page';
 import route from './documents/route';
 import offre from './documents/offre';
 import service from './documents/service';
+import testimonies from './documents/testimonies';
 import place from './documents/place';
 import faq from './documents/faq';
 import blocks from './documents/blocks';
@@ -54,6 +55,7 @@ export default createSchema({
       author,
       mainImage,
       authorReference,
+      testimonies,
     ])
     .concat(allPlugs),
 });
