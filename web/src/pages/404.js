@@ -1,14 +1,94 @@
+import { graphql } from 'gatsby';
 import React from 'react';
-// import BlogPostPreviewList from '../components/blog/BlogPostPreviewList';
+import Img from 'gatsby-image';
+import styled from 'styled-components';
+import Wavify from '../components/Wave';
+import { mq } from '../styles/breakpoints';
 
-export default function FourOhFourPage() {
+const FourOhFourStyles = styled.div`
+  position: relative;
+  z-index: 3;
+
+  .blog-article__illustr {
+    max-height: calc(95vh - 73px);
+    overflow: hidden;
+    position: relative;
+
+    img {
+      border-radius: 0;
+    }
+    ${mq[3]} {
+      max-height: 95vh;
+    }
+  }
+
+  > .container {
+    background-color: var(--white);
+    margin-top: -2.5rem;
+    padding: 0 5% 5rem;
+    position: relative;
+    z-index: 3;
+
+    ${mq[2]} {
+      margin-top: -40vw;
+      padding: 3.125rem 7.3125rem 5rem;
+    }
+
+    p {
+      text-align: center;
+    }
+  }
+
+  .blog-article__content {
+    ${mq[2]} {
+      min-height: 70vh; // have sufficient space for the last posts sidebar to appear on scroll
+    }
+  }
+`;
+
+export const query = graphql`
+  query {
+    allSanitySingletonSite {
+      nodes {
+        defaultImage {
+          asset {
+            fluid(maxWidth: 1600) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+    }
+    #     sanitySingletonSite {
+    #       defaultImage {
+    #         asset {
+    #           fluid(maxWidth: 1600) {
+    #             ...GatsbySanityImageFluid
+    #           }
+    #         }
+    #       }
+    #     }
+  }
+`;
+
+export default function FourOhFourPage({ data }) {
+  const defaultImage =
+    data.allSanitySingletonSite.nodes[0].defaultImage.asset.fluid;
+  console.log(defaultImage);
+
   return (
-    <>
-      {/* <BlogPostPreviewList /> */}
-      <h1 className="page__title">404</h1>
-      <div>
-        <p>Cette page n'existe pas...</p>
+    <FourOhFourStyles>
+      <div className="blog-article__illustr">
+        {defaultImage && <Img fluid={defaultImage} alt="Image" />}
       </div>
-    </>
+      <Wavify direction="up" bgcolor="#ffffff" />
+
+      <div className="container container--md" id="content">
+        <div className="blog-article__content">
+          <h1 className="blogpost-title">Erreur 404&nbsp;!</h1>
+          <p>Cette page n'existe pas...</p>
+        </div>
+      </div>
+    </FourOhFourStyles>
   );
 }
