@@ -51,8 +51,19 @@ const BlogArticleStyles = styled.article`
     z-index: 3;
 
     ${mq[2]} {
-      margin-top: -40vw;
       padding: 3.125rem 7.3125rem 5rem;
+    }
+    @media screen and (min-width: 1024px) and (max-height: 799px) {
+      margin-top: -50vh;
+    }
+    @media screen and (min-width: 1024px) and (min-height: 800px) {
+      margin-top: -60vh;
+    }
+    /* @media screen and (min-width: 1024px) and (min-height: 1000px) {
+      margin-top: -50vh;
+    } */
+    @media screen and (min-width: 1024px) and (min-height: 1200px) {
+      margin-top: -60vh;
     }
   }
 
