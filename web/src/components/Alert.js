@@ -34,7 +34,7 @@ const AlertStyles = styled.div`
 export default function Alert({ alert }) {
   const { alertTitle, _rawAlertText, alertLink, alertPosition } = alert;
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [cookies, setCookie] = useCookies(['read', 'false']);
 
   const handleWarningPosition = (position) => {
@@ -56,6 +56,8 @@ export default function Alert({ alert }) {
   useEffect(() => {
     if (cookies.read === 'true') {
       setIsOpen(false);
+    } else {
+      setIsOpen(true);
     }
   }, [cookies]);
 
