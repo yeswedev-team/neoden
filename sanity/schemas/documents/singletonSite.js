@@ -39,6 +39,11 @@ export default {
       type: 'logo',
     },
     {
+      name: 'defaultImage',
+      title: 'Image par défaut',
+      type: 'image',
+    },
+    {
       title: 'Navigation principale',
       name: 'mainNavigation',
       description: "Sélectionnez les pages pour le menu d'entête",
