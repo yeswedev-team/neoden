@@ -51,6 +51,16 @@ const BurgerStyles = styled.button`
 
 export default function Burger({ open, setOpen }) {
   const [isClicked, setIsClicked] = useState(false);
+  const [tlBurger] = useState(
+    gsap.timeline({
+      paused: true,
+      reversed: true,
+      defaults: {
+        duration: 0.5,
+        ease: 'Back.inOut.config(2.3)',
+      },
+    })
+  );
 
   const burgerRef = useRef();
   const waveTopRef = useRef();
@@ -59,15 +69,6 @@ export default function Burger({ open, setOpen }) {
   const flatTopRef = useRef();
   const flatMidRef = useRef();
   const flatBotRef = useRef();
-
-  const tlBurger = gsap.timeline({
-    paused: true,
-    reversed: true,
-    defaults: {
-      duration: 0.5,
-      ease: 'Back.inOut.config(2.3)',
-    },
-  });
 
   useEffect(() => {
     tlBurger
