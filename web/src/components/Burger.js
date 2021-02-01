@@ -57,7 +57,7 @@ export default function Burger({ open, setOpen }) {
       reversed: true,
       defaults: {
         duration: 0.5,
-        ease: 'Back.inOut.config(2.3)',
+        ease: 'back.inOut(2.3)',
       },
     })
   );
