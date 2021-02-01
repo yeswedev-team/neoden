@@ -684,10 +684,11 @@ const GlobalStyles = createGlobalStyle`
       .nous-contacter & {
         z-index: 5;
 
-        &--left {
+        &--contact-left {
           bottom: 25rem;
           height: 54.375rem;
           left: 0;
+          mix-blend-mode: multiply;
           right: auto;
           top: auto;
           transform: scaleX(-1) translateX(70%);
@@ -703,10 +704,11 @@ const GlobalStyles = createGlobalStyle`
       }
 
       &--left {
-        height: 40vw;
+        height: 49.25rem;
         mix-blend-mode: darken;
-        right: calc((100% - 1115px) / 2 + 1215px);
-        transform: scaleX(-1) translateY(-50%);
+        left: 0;
+        transform: scaleX(-1) translate(70%,-40%);
+        z-index: 5;
       }
 
       ${mq[3]} {

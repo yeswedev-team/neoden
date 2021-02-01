@@ -32,7 +32,7 @@ export default function SinglePage({
         <OverprintLogo className="overprintLogo overprintLogo--right" />
       )}
       {pageContext.slug === 'nous-contacter' && (
-        <OverprintLogo className="overprintLogo overprintLogo--left" />
+        <OverprintLogo className="overprintLogo overprintLogo--contact-left" />
       )}
 
       <Hero
