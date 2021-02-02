@@ -79,16 +79,20 @@ const BlogArticleStyles = styled.article`
     text-align: center;
   }
   .summary {
-    border-top: 1px solid var(--beige);
+    border: 1px solid var(--beige);
     margin-top: 3.875rem;
-    padding-top: 2.5rem;
+    padding: 2.5rem;
 
     ol {
       list-style: decimal;
-      margin: 1em;
+      margin: 1em 1em 0;
     }
     li {
       margin-bottom: 0.25em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
   .blog-article__content {
@@ -100,10 +104,8 @@ const BlogArticleStyles = styled.article`
     position: relative;
   }
   .blogpost {
-    border-top: 1px solid var(--beige);
     font-size: 1.25rem;
     margin-top: 2.5rem;
-    padding-top: 2.5rem;
 
     .heading-2 {
       font-size: 2.1875rem;
