@@ -11,8 +11,6 @@ import { mq } from '../styles/breakpoints';
 
 const handleLocation = (location) => {
   switch (location) {
-    case 'home':
-      return '0 2.5rem';
     case 'flottaison-isolation-sensorielle':
       return '0 16rem';
     case 'bienfaits-flottaison':
