@@ -46,13 +46,30 @@ const FirstNodeStyles = styled.div`
     padding: 1.5625rem;
 
     ${mq[1]} {
-      background-color: transparent;
+      background: -moz-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(81, 81, 81, 1) 100%
+      );
+      background: -webkit-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(81, 81, 81, 1) 100%
+      );
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(81, 81, 81, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#515151',GradientType=0 );
+
       border-radius: 0;
       bottom: 0;
       color: var(--white);
       margin-top: 0.5rem;
       padding: 0 4.75rem 2.8125rem;
       position: absolute;
+      width: 100%;
     }
   }
   .firstNode__excerpt {
