@@ -189,7 +189,7 @@ export default function Form() {
             réclamation.Pour exercer vos droits, vous pouvez adresser une
             demande à la société NEODEN, par courrier à l’adresse suivante : 16
             boulevard de Berlin 44000 Nantes, ou par e-mail envoyé à
-            <a href="mailto:contact@neoden.fr">contact@neoden.fr</a>.
+            <a href="mailto:bienvenue@neoden.fr">bienvenue@neoden.fr</a>.
           </p>
         </div>
       </div>
