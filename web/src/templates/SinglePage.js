@@ -10,6 +10,7 @@ import Slider from '../components/sections/Slider';
 import Promo from '../components/sections/Promo';
 import Offers from '../components/sections/Offers';
 import Questions from '../components/sections/BlockQuestions';
+import Video from '../components/sections/BlockVideo';
 import Upload from '../components/sections/Upload';
 import Text from '../components/sections/Text';
 import Hero from '../components/Hero';
@@ -57,6 +58,7 @@ export default function SinglePage({
           twoColumns: TwoColumns,
           slider: Slider,
           promo: Promo,
+          video: Video,
           sectionOffers: Offers,
           upload: Upload,
           richtext: Text,
@@ -77,6 +79,13 @@ export default function SinglePage({
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
             hasDoubleBotMargin: data.hasDoubleBotMargin,
+          }),
+          video: ({ data }) => ({
+            title: data.title,
+            image: data.image,
+            youtube: data.youtube,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
           }),
           upload: ({ data }) => ({
             title: data.title,
@@ -210,6 +219,23 @@ export const query = graphql`
           }
         }
         content {
+          ... on SanityVideo {
+            _key
+            _type
+            title
+            image {
+              asset {
+                fluid(maxWidth: 1600) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+            youtube {
+              url
+            }
+            hasWaveDown
+            hasWaveUp
+          }
           ... on SanityIntro {
             _key
             _type
@@ -353,6 +379,45 @@ export const query = graphql`
             hasWaveUp
             hasDoubleBotMargin
             block {
+              ... on SanityTestimony {
+                _key
+                _type
+                title
+                listTestimonies {
+                  title
+                  publishedAt
+                  externalLink
+                  image {
+                    asset {
+                      fluid(maxWidth: 600, maxHeight: 707) {
+                        ...GatsbySanityImageFluid
+                      }
+                    }
+                  }
+                  _rawText(resolveReferences: { maxDepth: 10 })
+                  authors {
+                    _key
+                    author {
+                      name
+                    }
+                  }
+                  pageLink {
+                    ... on SanityPost {
+                      publishedAt
+                      slug {
+                        current
+                      }
+                      _type
+                    }
+                    ... on SanityRoute {
+                      slug {
+                        current
+                      }
+                      _type
+                    }
+                  }
+                }
+              }
               ... on SanityOffers {
                 _key
                 title

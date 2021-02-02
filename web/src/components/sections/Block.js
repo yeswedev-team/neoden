@@ -3,7 +3,7 @@ import React from 'react';
 import { MapToComponents } from 'react-map-to-components';
 import BlockOffers from './BlockOffers';
 import BlockCta from './BlockCta';
-import BlockQuestions from './BlockQuestions';
+import BlockTestimonies from './BlockTestimonies';
 import BlockMembers from './BlockMembers';
 import BlockGmap from './BlockGmap';
 
@@ -54,6 +54,14 @@ export default function Block({
               {...props}
             />
           ),
+          SanityTestimony: (props) => (
+            <BlockTestimonies
+              hasWaveDown={hasWaveDown}
+              hasWaveUp={hasWaveUp}
+              hasDoubleBotMargin={hasDoubleBotMargin}
+              {...props}
+            />
+          ),
         }}
         mapDataToProps={{
           SanityOffers: ({ data }) => ({
@@ -80,6 +88,10 @@ export default function Block({
             title: data.title,
             defaultZoom: data.defaultZoom,
             locations: data.locations,
+          }),
+          SanityTestimony: ({ data }) => ({
+            list: data.listTestimonies,
+            title: data.title,
           }),
         }}
       />
