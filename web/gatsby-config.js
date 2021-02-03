@@ -76,7 +76,7 @@ export default {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
-        projectId: '5mks88u2',
+        projectId: 'qqvo71j5',
         dataset: 'production',
         watchMode: true,
         useCdn: false,
