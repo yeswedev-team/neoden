@@ -14,8 +14,10 @@ const BlockOffersStyles = styled.section`
     props.hasDoubleBotMargin
       ? 'calc(var(--section-bot-padding) * 2)'
       : 'var(--section-bot-padding)'};
-  padding-top: var(--section-top-padding);
+  padding-top: ${(props) =>
+    props.hasWaveUp ? '0' : 'calc(var(--section-top-padding) * 2)'};
   text-align: center;
+  z-index: 3;
 
   ${mq[2]} {
     background: #a5968f url(${tressageBg}) 0 0 repeat;
@@ -96,7 +98,7 @@ export default function Offers({
       hasWaveUp={hasWaveUp}
       className="section section__block-offers"
     >
-      {hasWaveUp && <Wavify direction="up" bgcolor="#A5968F" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#9f8b84" />}
       <div className="container container--md">
         {overtitle && <p className="overtitle">{overtitle}</p>}
         {title && <h2 className="section-title">{title}</h2>}
@@ -119,7 +121,7 @@ export default function Offers({
           </div>
         )}
       </div>
-      {hasWaveDown && <Wavify direction="down" bgcolor="#A5968F" />}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#9f8b84" />}
     </BlockOffersStyles>
   );
 }
