@@ -386,11 +386,12 @@ export const query = graphql`
                 listTestimonies {
                   id
                   title
+                  type
                   publishedAt
                   externalLink
                   image {
                     asset {
-                      fluid(maxWidth: 600, maxHeight: 707) {
+                      fluid(maxWidth: 600, maxHeight: 476) {
                         ...GatsbySanityImageFluid
                       }
                     }

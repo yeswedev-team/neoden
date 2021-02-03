@@ -197,14 +197,14 @@ export default {
     {
       title: "Position de l'alerte",
       name: 'alertPosition',
-      type: 'array',
-      of: [{ type: 'string' }],
+      type: 'string',
       options: {
         list: [
           { title: 'Droite (par défaut)', value: 'right' },
           { title: 'Centre', value: 'center' },
           { title: 'Gauche', value: 'left' },
         ],
+        layout: 'radio',
       },
     },
     {

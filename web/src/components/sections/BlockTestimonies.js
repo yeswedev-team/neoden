@@ -10,9 +10,11 @@ import SwiperCore, {
   EffectFade,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'gatsby';
+import { IoMdOpen } from 'react-icons/io';
+import { getBlogUrl } from '../../utils/helpers';
 import 'swiper/swiper-bundle.css';
 import Wavify from '../Wave';
-import AuthorList from '../blog/AuthorList';
 import PortableText from '../PortableText';
 import { mq } from '../../styles/breakpoints';
 import arrow from '../../assets/images/arrow.svg';
@@ -20,6 +22,7 @@ import arrow from '../../assets/images/arrow.svg';
 SwiperCore.use([Controller, Navigation, Pagination, EffectFade]);
 
 const TestimoniesStyles = styled.section`
+  background-color: var(--grey);
   position: relative;
   z-index: 3;
 
@@ -29,12 +32,64 @@ const TestimoniesStyles = styled.section`
   }
 
   .slide {
+    border-radius: var(--radius);
     box-sizing: border-box;
-    padding: 2.3125rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &.slide-testimony {
+      background-color: var(--beigelight);
+      padding: 2.3125rem;
+      text-align: center;
+    }
+    &.slide-online {
+      background-color: var(--white);
+
+      .slide__text {
+        padding: 2.3125rem;
+      }
+    }
+
+    img {
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .block {
+      *:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .slide__text {
+    margin-bottom: auto;
+  }
+
+  .meta {
+    font-family: var(--font-titles);
+    margin-bottom: 1.875rem;
+    margin-top: 0;
+  }
+
+  .button {
+    bottom: 2.3125rem;
+    left: 50%;
+    margin-top: 1.25rem;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .small-title {
+    font-weight: 500;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch;
   }
 
   .swiper-container {
-    padding-bottom: 50px;
+    padding-bottom: 4.375rem;
   }
   .swiper-container-horizontal > .swiper-pagination-bullets,
   .swiper-pagination-custom,
@@ -68,19 +123,11 @@ const TestimoniesStyles = styled.section`
   }
   .swiper-button-prev,
   .swiper-container-rtl .swiper-button-next {
-    left: 1.25rem;
-
-    ${mq[1]} {
-      left: 2.5rem;
-    }
+    left: calc(50% - 120px);
   }
   .swiper-button-next,
   .swiper-container-rtl .swiper-button-prev {
-    right: 1.25rem;
-
-    ${mq[1]} {
-      right: 2.5rem;
-    }
+    right: calc(50% - 120px);
   }
 
   .swiper-button-prev:after,
@@ -115,7 +162,7 @@ export default function BlockTestimonies({
         hasWaveDown ? ' has-wave-down' : ''
       }${hasWaveUp ? ' has-wave-up' : ''}`}
     >
-      {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
+      {hasWaveUp && <Wavify direction="up" bgcolor="#f2f2f2" />}
       <div className="container container--sm testimonies__header">
         <h2 className="section-title">{title}</h2>
       </div>
@@ -126,16 +173,33 @@ export default function BlockTestimonies({
           slidesPerView={3}
           slidesPerGroup={3}
           speed={700}
+          autoHeight
           grabCursor
           navigation
           pagination={{ clickable: true }}
         >
           {list.map((slide, index) => {
-            console.log(slide.publishedAt);
+            let link;
+            if (slide.pageLink[0]) {
+              const cta = slide.pageLink[0];
+              if (cta._type === 'post') {
+                link = getBlogUrl(cta.publishedAt, cta.slug.current);
+              } else {
+                link = `/${cta.slug.current}`;
+              }
+            }
+
             return (
-              <SwiperSlide key={`slide-testimony-${index}`} className="slide">
+              <SwiperSlide
+                key={`slide-testimony-${index}`}
+                className={`slide ${
+                  slide.type === 'testimony'
+                    ? 'slide-testimony'
+                    : 'slide-online'
+                }`}
+              >
                 {slide.publishedAt && (
-                  <p className="blog-article__meta">
+                  <p className="meta">
                     {slide.authors &&
                       slide.authors.map(({ author, _key }) => {
                         const authorName = author && author.name;
@@ -151,16 +215,33 @@ export default function BlockTestimonies({
                   <Img fluid={slide?.image?.asset?.fluid} alt={slide.title} />
                 )}
                 <div className="slide__text">
-                  {slide.title && <h3>{slide.title}</h3>}
+                  {slide.title && (
+                    <h3 className="small-title">{slide.title}</h3>
+                  )}
                   {slide._rawText && <PortableText blocks={slide._rawText} />}
                 </div>
+                {slide.pageLink[0] && (
+                  <Link className="button button--brown" to={link}>
+                    {slide.buttonText}
+                  </Link>
+                )}
+                {slide.externalLink && (
+                  <a
+                    href={slide.externalLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="button button--brown"
+                  >
+                    {slide.buttonText} <IoMdOpen />
+                  </a>
+                )}
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
 
-      {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
+      {hasWaveDown && <Wavify direction="down" bgcolor="#f2f2f2" />}
     </TestimoniesStyles>
   );
 }

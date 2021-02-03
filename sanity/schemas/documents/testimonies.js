@@ -15,6 +15,19 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      title: 'Type',
+      name: 'type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Témoignage', value: 'testimony' },
+          { title: 'Vu sur le net', value: 'online' },
+        ],
+        layout: 'radio',
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'publishedAt',
       type: 'datetime',
       title: 'Publié le',
