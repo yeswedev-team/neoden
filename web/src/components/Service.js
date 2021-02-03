@@ -6,7 +6,6 @@ import PortableText from './PortableText';
 // import Modal from './Modal';
 
 export default function Service({ service }) {
-  console.log(service);
   const [selectedOption, setSelectedOption] = useState(
     service.places[0].bookingLink
   );

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
-import Play from '../../assets/images/play.svg';
+import getYouTubeId from 'get-youtube-id';
+import YouTube from 'react-youtube';
+import Modal from '../Modal';
 
 const VideoStyles = styled.section`
   /* padding-bottom: calc(var(--section-bot-padding) * 2);
@@ -35,6 +37,11 @@ const VideoStyles = styled.section`
     text-align: center;
     width: 10.1875rem;
 
+    &:focus,
+    &:active {
+      outline: none;
+    }
+
     svg {
       display: block;
       left: 50%;
@@ -47,6 +54,9 @@ const VideoStyles = styled.section`
 `;
 
 export default function BlockVideo({ title, image, youtube }) {
+  const modalRef = useRef();
+  const id = getYouTubeId(youtube.url);
+
   return (
     <VideoStyles className="section section__video">
       {image && (
@@ -58,7 +68,11 @@ export default function BlockVideo({ title, image, youtube }) {
         <div className="video__content">
           <h2 className="section-title">{title}</h2>
 
-          <button type="button" className="button--play">
+          <button
+            type="button"
+            className="button--play"
+            onClick={() => modalRef.current.openModal()}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 95">
               <path
                 fill="#fff"
@@ -69,6 +83,11 @@ export default function BlockVideo({ title, image, youtube }) {
 
             <span className="sr-only">Play</span>
           </button>
+          <Modal ref={modalRef}>
+            <div className="video-wrapper">
+              <YouTube videoId={id} />
+            </div>
+          </Modal>
         </div>
       )}
     </VideoStyles>
