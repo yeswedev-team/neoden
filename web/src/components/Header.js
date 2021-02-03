@@ -9,13 +9,16 @@ import Nav from './Nav';
 import WavesMenu from '../assets/images/wavesMenu.inline.svg';
 import { mq } from '../styles/breakpoints';
 import Burger from './Burger';
+import { debounce } from '../utils/helpers';
 
 const HeaderStyles = styled.header`
   background-color: var(--brown);
   padding-top: ${pxtoem(12)};
   padding-bottom: ${pxtoem(12)};
   position: fixed;
+  transition: transform 200ms linear;
   width: 100%;
+  will-change: transform;
   z-index: 5;
 
   .container {
@@ -78,6 +81,27 @@ const HeaderStyles = styled.header`
 const Header = ({ navItems }) => {
   const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  let windowWidth = 0;
+
+  if (typeof window !== 'undefined') {
+    windowWidth = window.innerWidth;
+  }
+
+  const [width, setWidth] = React.useState(windowWidth);
+  const breakpoint = 1280;
+
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -102,8 +126,34 @@ const Header = ({ navItems }) => {
     });
   }, []);
 
+  const handleScroll = debounce(() => {
+    if (windowWidth < breakpoint) {
+      // find current scroll position
+      const currentScrollPos = window.pageYOffset;
+
+      // set state based on location info (explained in more detail below)
+      setVisible(
+        (prevScrollPos > currentScrollPos &&
+          prevScrollPos - currentScrollPos > 73) ||
+          currentScrollPos < 100
+      );
+
+      // set state to new scroll position
+      setPrevScrollPos(currentScrollPos);
+    }
+  }, 100);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
+
   return (
-    <HeaderStyles id="header">
+    <HeaderStyles
+      id="header"
+      style={{ transform: visible ? 'translateY(0)' : 'translateY(-100%)' }}
+    >
       <div className="container container--xl">
         <Nav navItems={navItems} open={open} setOpen={setOpen} />
         <Link to="/">
