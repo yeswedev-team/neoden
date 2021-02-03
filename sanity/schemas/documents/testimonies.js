@@ -123,6 +123,11 @@ export default {
       ],
     },
     {
+      name: 'buttonText',
+      title: 'Intitulé du bouton',
+      type: 'string',
+    },
+    {
       name: 'pageLink',
       title: 'Lien vers la page',
       type: 'array',
