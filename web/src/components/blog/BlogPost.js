@@ -150,8 +150,6 @@ export default function BlogPost(props) {
     summary,
   } = props;
 
-  console.log(location);
-
   return (
     <BlogPostStyles>
       <OverprintLogo className="overprintLogo overprintLogo--right" />
@@ -160,7 +158,7 @@ export default function BlogPost(props) {
         {mainImage && (
           <div className="blog-article__illustr">
             <Breadcrumb location={location} title={title} origin="blog" />
-            <Img fluid={mainImage.asset.fluid} alt={title.fr} />
+            <Img fluid={mainImage?.asset?.fluid} alt={title.fr} />
           </div>
         )}
         <Wavify direction="up" bgcolor="#ffffff" />

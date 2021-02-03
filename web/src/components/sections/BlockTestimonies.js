@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+import { fr } from 'date-fns/locale';
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
@@ -10,6 +12,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import Wavify from '../Wave';
+import AuthorList from '../blog/AuthorList';
 import PortableText from '../PortableText';
 import { mq } from '../../styles/breakpoints';
 import arrow from '../../assets/images/arrow.svg';
@@ -23,6 +26,11 @@ const TestimoniesStyles = styled.section`
   .testimonies__header {
     padding-bottom: 2.25rem;
     text-align: center;
+  }
+
+  .slide {
+    box-sizing: border-box;
+    padding: 2.3125rem;
   }
 
   .swiper-container {
@@ -98,7 +106,6 @@ export default function BlockTestimonies({
   hasWaveUp,
   hasDoubleBotMargin,
 }) {
-  console.log(title);
   return (
     <TestimoniesStyles
       hasWaveDown={hasWaveDown}
@@ -112,24 +119,44 @@ export default function BlockTestimonies({
       <div className="container container--sm testimonies__header">
         <h2 className="section-title">{title}</h2>
       </div>
-      <div className="container container--md">
+      <div className="container container--lg">
         <Swiper
           className="slider-content"
-          spaceBetween={0}
+          spaceBetween={40}
           slidesPerView={3}
+          slidesPerGroup={3}
           speed={700}
           grabCursor
           navigation
           pagination={{ clickable: true }}
         >
-          {list.map((slide) => (
-            <SwiperSlide key={`fade-${slide._key}`} className="slide">
-              <div className="slide__text">
-                {slide.title && <h3>{slide.title}</h3>}
-                {slide._rawText && <PortableText blocks={slide._rawText} />}
-              </div>
-            </SwiperSlide>
-          ))}
+          {list.map((slide, index) => {
+            console.log(slide.publishedAt);
+            return (
+              <SwiperSlide key={`slide-testimony-${index}`} className="slide">
+                {slide.publishedAt && (
+                  <p className="blog-article__meta">
+                    {slide.authors &&
+                      slide.authors.map(({ author, _key }) => {
+                        const authorName = author && author.name;
+                        return <span key={_key}>{authorName}</span>;
+                      })}
+                    {' - '}
+                    {format(new Date(slide.publishedAt), 'dd MMMM yyyy', {
+                      locale: fr,
+                    })}
+                  </p>
+                )}
+                {slide?.image && (
+                  <Img fluid={slide?.image?.asset?.fluid} alt={slide.title} />
+                )}
+                <div className="slide__text">
+                  {slide.title && <h3>{slide.title}</h3>}
+                  {slide._rawText && <PortableText blocks={slide._rawText} />}
+                </div>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
 

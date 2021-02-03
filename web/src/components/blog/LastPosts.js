@@ -86,13 +86,13 @@ export default function LastPosts({ posts }) {
       <LastPostsStyles>
         <h3 className="middle-title">Articles récents</h3>
         <div className="posts-list">
-          {posts.map((post) => (
+          {posts?.map((post) => (
             <div key={post.node.id} className="last-post">
               <Link
                 to={getBlogUrl(post.node.publishedAt, post.node.slug.current)}
               >
                 <Img
-                  fluid={post.node.mainImage.asset.fluid}
+                  fluid={post?.node?.mainImage?.asset?.fluid}
                   alt={post.node.title}
                 />
                 <div className="last-post__content">

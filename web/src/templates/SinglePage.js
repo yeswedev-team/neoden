@@ -384,6 +384,7 @@ export const query = graphql`
                 _type
                 title
                 listTestimonies {
+                  id
                   title
                   publishedAt
                   externalLink
@@ -401,6 +402,7 @@ export const query = graphql`
                       name
                     }
                   }
+                  buttonText
                   pageLink {
                     ... on SanityPost {
                       publishedAt

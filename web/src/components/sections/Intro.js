@@ -56,9 +56,9 @@ const Intro = ({
   hasWaveUp,
 }) => {
   const sources = [
-    frontImage?.mobileImage.asset.fluid,
+    frontImage?.mobileImage?.asset?.fluid,
     {
-      ...frontImage?.desktopImage.asset.fluid,
+      ...frontImage?.desktopImage?.asset?.fluid,
       media: `(min-width: 768px)`,
     },
   ];
