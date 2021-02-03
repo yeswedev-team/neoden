@@ -134,6 +134,12 @@ export default {
       ],
     },
     {
+      name: 'readingTime',
+      title: 'Temps de lecture',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'summary',
       title: 'Sommaire',
       type: 'array',

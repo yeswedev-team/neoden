@@ -94,6 +94,9 @@ const BlogArticleStyles = styled.article`
         margin-bottom: 0;
       }
     }
+    a:hover {
+      text-decoration: underline;
+    }
   }
   .blog-article__content {
     ${mq[2]} {
@@ -145,6 +148,7 @@ export default function BlogPost(props) {
     authors,
     title,
     location,
+    readingTime,
     mainImage,
     publishedAt,
     summary,
@@ -162,7 +166,7 @@ export default function BlogPost(props) {
           </div>
         )}
         <Wavify direction="up" bgcolor="#ffffff" />
-        {edges && <LastPosts posts={edges} />}
+        {edges.length > 0 && <LastPosts posts={edges} />}
         <div className="container container--md" id="content">
           <div className="blog-article__content">
             <h1 className="blogpost-title">{title}</h1>
@@ -177,6 +181,8 @@ export default function BlogPost(props) {
                   })}
                 </>
               )}
+              <br />
+              {readingTime && <span>Temps de lecture : {readingTime}</span>}
             </p>
             {summary[0] && (
               <div className="summary">
