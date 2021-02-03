@@ -30,6 +30,7 @@ const VideoStyles = styled.section`
     background-color: rgba(255, 255, 255, 0.3);
     border: none;
     border-radius: 100%;
+    cursor: pointer;
     height: 10.1875rem;
     margin: 1.5rem auto 0;
     padding: 0;
