@@ -14,6 +14,7 @@ const SliderStyles = styled.section`
   .container--lg {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 3.125rem;
   }
 
   .swiper-slide {
