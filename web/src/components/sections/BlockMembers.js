@@ -131,7 +131,7 @@ const BlockMembersStyles = styled.section`
   }
   .button {
     display: inline-block;
-    margin: 35px auto 0;
+    margin: 60px auto 0;
   }
 `;
 
@@ -157,7 +157,7 @@ export default function BlockMembers({
   const flickityOptions = {
     initialIndex: 1,
     prevNextButtons: false,
-    pageDots: false,
+    pageDots: true,
     watchCSS: true,
   };
 
