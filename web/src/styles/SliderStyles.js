@@ -33,7 +33,23 @@ const SliderStyles = styled.section`
   .swiper-container {
     width: 100%;
 
-    ${mq[1]} {
+    ${mq[2]} {
+      &.slider-illustr {
+        width: 50%;
+      }
+      &.slider-content {
+        width: 50%;
+      }
+    }
+    ${mq[3]} {
+      &.slider-illustr {
+        width: 65%;
+      }
+      &.slider-content {
+        width: 35%;
+      }
+    }
+    ${mq[4]} {
       &.slider-illustr {
         width: 70%;
       }
