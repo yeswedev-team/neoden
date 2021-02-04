@@ -256,6 +256,7 @@ const GlobalStyles = createGlobalStyle`
 
       &:hover {
         background-color: var(--white);
+        color: var(--browndark);
       }
     }
 
