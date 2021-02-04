@@ -255,7 +255,7 @@ const GlobalStyles = createGlobalStyle`
       color: var(--white);
 
       &:hover {
-        background-color: var(--brown);
+        background-color: var(--white);
       }
     }
 
@@ -659,16 +659,19 @@ const GlobalStyles = createGlobalStyle`
 
   /* Arches */
   .overprint {
-    bottom: 25rem;
+    bottom: 0;
     display: none;
-    height: 40%;
-    max-height: 80vh;
-    mix-blend-mode: multiply;
+    height: 14.0625rem;
     position: absolute;
     right: 0;
-    transform: scaleX(-1) translateX(-50%);
-    width: 50vw;
+    width: 17rem;
     z-index: 4;
+
+    &--left {
+      left: 0;
+      right: auto;
+      transform: scaleX(-1);
+    }
 
     ${mq[3]} {
       display: block;

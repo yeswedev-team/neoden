@@ -6,6 +6,7 @@ import { IoMdOpen } from 'react-icons/io';
 import Wavify from '../Wave';
 import { mq } from '../../styles/breakpoints';
 import { pxtoem, pxtopc } from '../../styles/Mixins';
+import Overprint from '../../assets/images/ondes.inline.svg';
 
 const PromoStyles = styled.section`
   padding-bottom: 0;
@@ -40,15 +41,11 @@ const PromoStyles = styled.section`
     }
   }
   .gatsby-image-wrapper {
-    width: 100%;
-
     img {
       border-radius: var(--radius) var(--radius) 0 0;
     }
 
     ${mq[2]} {
-      width: ${pxtopc(525, 905)};
-
       img {
         border-radius: var(--radius) 0 0 var(--radius);
       }
@@ -67,6 +64,15 @@ const PromoStyles = styled.section`
       font-size: ${pxtoem(65, 23)};
     }
   }
+  .img-container {
+    position: relative;
+    width: 100%;
+
+    ${mq[2]} {
+      width: ${pxtopc(525, 905)};
+    }
+  }
+
   .actions {
     align-items: center;
     display: flex;
@@ -115,7 +121,12 @@ const Promo = ({
   >
     {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
     <div className="container container--md">
-      {image && <Img fluid={image?.asset.fluid} alt={title} />}
+      {image && (
+        <div className="img-container">
+          <Overprint className="overprint overprint--left" />
+          <Img fluid={image?.asset.fluid} alt={title} />
+        </div>
+      )}
       <div className="promo__content">
         {title && <h2 className="promo__title">{title}</h2>}
         {period && <p>{period}</p>}
