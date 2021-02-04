@@ -233,7 +233,12 @@ export default function BlockMembers({
             ))}
           </div>
         )}
-        <a href={membersLink} className="button">
+        <a
+          href={membersLink}
+          className="button"
+          target="_blank"
+          rel="noreferrer"
+        >
           {buttonTitle || 'Découvrir'}
         </a>
       </div>
