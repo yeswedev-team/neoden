@@ -11,7 +11,7 @@ const SliderStyles = styled.section`
   position: relative;
   z-index: 3;
 
-  .container--lg {
+  .container--xl {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 3.125rem;
@@ -35,10 +35,10 @@ const SliderStyles = styled.section`
 
     ${mq[1]} {
       &.slider-illustr {
-        width: 60%;
+        width: 70%;
       }
       &.slider-content {
-        width: 40%;
+        width: 30%;
       }
     }
   }
