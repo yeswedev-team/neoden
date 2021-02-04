@@ -114,7 +114,8 @@ export default function Form() {
         </div>
         <p>
           Pour toute autre demande, nous sommes à votre écoute au
-          02&nbsp;57&nbsp;96&nbsp;72&nbsp;10 ou via le formulaire ci-dessous :
+          <a href="mailto:+33649494868">06&nbsp;49&nbsp;49&nbsp;48&nbsp;68</a>
+          ou via le formulaire ci-dessous :
         </p>
         <input type="hidden" name="bot-field" />
         <input type="hidden" name="form-name" value="contact" />
