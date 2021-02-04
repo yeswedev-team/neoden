@@ -89,7 +89,7 @@ export default function Service({ service }) {
           */}
         </div>
       </div>
-      <Img fluid={service.image.asset.fluid} />
+      <Img fluid={service?.image?.asset?.fluid} />
     </div>
   );
 }
