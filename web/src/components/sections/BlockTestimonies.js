@@ -37,6 +37,7 @@ const TestimoniesStyles = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-bottom: 4.375rem;
 
     &.slide-testimony {
       background-color: var(--beigelight);
