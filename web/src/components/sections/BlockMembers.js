@@ -37,6 +37,9 @@ const BlockMembersStyles = styled.section`
   > .container:first-child {
     /* max-width: none; */
     width: 100%;
+    ${mq[2]} {
+      margin-bottom: 3.125rem;
+    }
   }
 
   .privileges__header {
