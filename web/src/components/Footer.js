@@ -167,6 +167,7 @@ const FooterStyles = styled.footer`
     padding: 18px 0;
 
     p {
+      font-size: 0.875rem;
       margin: 0 0.5rem 0 0;
       text-align: center;
     }
@@ -175,7 +176,7 @@ const FooterStyles = styled.footer`
       flex-direction: column;
     }
     li {
-      font-size: 1rem;
+      font-size: 0.875rem;
       margin: 0;
       text-align: center;
 
