@@ -61,9 +61,15 @@ const GlobalStyles = createGlobalStyle`
     z-index: 4;
 
     ${mq[3]} {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      min-height: 100vh;
+      .le-mag &,
+      .plan-du-site & {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        min-height: 100vh;
+      }
+      .plan-du-site & {
+        grid-template-rows: auto 1fr auto;
+      }
       padding-top: 0;
     }
   }

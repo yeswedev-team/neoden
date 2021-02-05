@@ -43,7 +43,7 @@ const TextStyles = styled.section`
     z-index: 4;
 
     ${mq[2]} {
-      margin-top: -60vh;
+      margin-top: -10rem;
       padding: 3.125rem 7.3125rem 5rem;
     }
   }

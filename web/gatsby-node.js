@@ -44,7 +44,10 @@ async function createBlogPostPages({ graphql, actions }) {
       actions.createPage({
         path: `/le-mag/${dateSegment}/${slug.current}/`,
         component: postTemplate,
-        context: { id },
+        context: {
+          id,
+          slug: edge.node.slug.current,
+        },
       });
     });
 }
@@ -92,6 +95,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
         skip: i * pageSize,
         currentPage: i + 1,
         pageSize,
+        slug: 'le-mag',
       },
     });
   });

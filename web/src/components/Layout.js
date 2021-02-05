@@ -76,9 +76,11 @@ export default function Layout({ pageContext, children }) {
   );
   // console.log(getCookieConsentValue());
   const location = useLocation();
+  const slug = location.pathname.replace(/[\/\\]/g, '');
+  console.log(slug);
 
   return (
-    <div className={`app ${pageContext.slug}`}>
+    <div className={`app ${pageContext.slug || slug}`}>
       <GlobalStyles />
       <Typography />
       <LayoutStyles>
