@@ -84,7 +84,6 @@ async function turnPostsIntoPages({ graphql, actions }) {
   );
 
   Array.from({ length: pageCount }).forEach((_, i) => {
-    console.log(`Creating page ${i}`);
     actions.createPage({
       path: `/le-mag/${i + 1}`,
       component: blogTemplate,

@@ -289,7 +289,7 @@ const Footer = ({ footerItems }) => {
         </div>
         <div className="footer__actions">
           <a
-            href="https://www.nouvellevague.fr"
+            href="https://app.kiute.com/neoden/home"
             className="button"
             target="_blank"
             rel="noreferrer"

@@ -19,12 +19,22 @@ const handleLocation = (props) => {
   return 'var(--section-bot-padding)';
 };
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const BlockFAQStyles = styled.section`
   padding-bottom: ${(props) => handleLocation(props)};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'calc(var(--section-top-padding) * 2)'};
   position: relative;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   .section-title {
     margin-bottom: 1.75rem;

@@ -8,12 +8,22 @@ import { mq } from '../../styles/breakpoints';
 import { pxtoem, pxtopc } from '../../styles/Mixins';
 import Overprint from '../../assets/images/ondes.inline.svg';
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const PromoStyles = styled.section`
   padding-bottom: 0;
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   .container {
     display: flex;

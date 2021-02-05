@@ -21,10 +21,20 @@ import arrow from '../../assets/images/arrow.svg';
 
 SwiperCore.use([Controller, Navigation, Pagination, EffectFade]);
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const TestimoniesStyles = styled.section`
   background-color: var(--grey);
   position: relative;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   .testimonies__header {
     padding-bottom: 2.25rem;

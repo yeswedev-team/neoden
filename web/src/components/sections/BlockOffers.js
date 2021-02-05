@@ -7,6 +7,16 @@ import { pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
 import tressageBg from '../../assets/images/tressage-pattern.jpg';
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const BlockOffersStyles = styled.section`
   background: #a5968f;
   color: var(--white);
@@ -17,7 +27,7 @@ const BlockOffersStyles = styled.section`
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'calc(var(--section-top-padding) * 2)'};
   text-align: center;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   ${mq[2]} {
     background: #a5968f url(${tressageBg}) 0 0 repeat;

@@ -18,13 +18,23 @@ const handleLocation = (props) => {
   return '110px';
 };
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const TextStyles = styled.section`
   background-color: #f2f2f2;
   padding-bottom: ${(props) => handleLocation(props)};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
-  z-index: ${(props) => (props.hasWaveDown || props.hasWaveUp ? 3 : 1)};
+  z-index: ${(props) => handleZIndex(props)};
 
   .container {
     background: var(--white);

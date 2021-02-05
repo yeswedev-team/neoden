@@ -115,6 +115,9 @@ const GlobalStyles = createGlobalStyle`
       + .section.section__members {
         padding-top: calc(var(--section-top-padding) * 2.5);
       }
+      + .section.has-wave-down {
+        z-index: 3;
+      }
     }
 
     &__intro {

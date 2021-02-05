@@ -74,7 +74,7 @@ export const query = graphql`
 export default function FourOhFourPage({ data }) {
   const defaultImage =
     data.allSanitySingletonSite.nodes[0].defaultImage.asset.fluid;
-  console.log(defaultImage);
+  // console.log(defaultImage);
 
   return (
     <FourOhFourStyles>

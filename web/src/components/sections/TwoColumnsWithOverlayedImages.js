@@ -9,6 +9,16 @@ import PortableText from '../PortableText';
 import { pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const TwoColumnsWOIStyles = styled.section`
   padding-bottom: 0;
   padding-bottom: ${(props) =>
@@ -16,7 +26,7 @@ const TwoColumnsWOIStyles = styled.section`
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   .col {
     position: relative;

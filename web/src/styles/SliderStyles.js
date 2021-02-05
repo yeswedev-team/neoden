@@ -2,6 +2,16 @@ import styled from 'styled-components';
 import { mq } from './breakpoints';
 import arrow from '../assets/images/arrow.svg';
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const SliderStyles = styled.section`
   background-color: var(--grey);
   padding-bottom: ${(props) =>
@@ -9,7 +19,7 @@ const SliderStyles = styled.section`
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   .container--xl {
     display: flex;

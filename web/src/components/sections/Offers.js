@@ -12,13 +12,23 @@ import { pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
 import Service from '../Service';
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const SectionOfferStyles = styled.section`
   padding-bottom: ${(props) =>
     props.hasWaveDown ? '0' : 'var(--section-bot-padding)'};
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   position: relative;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   .tabs-titles {
     display: none;

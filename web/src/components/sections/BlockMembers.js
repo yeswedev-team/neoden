@@ -20,6 +20,16 @@ const handleLocation = (props) => {
   return 'calc(var(--section-bot-padding) / 2)';
 };
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const BlockMembersStyles = styled.section`
   background: #a5968f;
   color: var(--white);
@@ -27,6 +37,7 @@ const BlockMembersStyles = styled.section`
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   text-align: center;
+  z-index: ${(props) => handleZIndex(props)};
 
   ${mq[2]} {
     background: #a5968f url(${tressageBg}) 0 0 repeat;

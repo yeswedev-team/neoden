@@ -74,7 +74,7 @@ export default function Layout({ pageContext, children }) {
       }
     `
   );
-  console.log(getCookieConsentValue());
+  // console.log(getCookieConsentValue());
   const location = useLocation();
 
   return (

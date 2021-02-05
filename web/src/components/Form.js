@@ -113,7 +113,7 @@ export default function Form() {
           </Link>
         </div>
         <p>
-          Pour toute autre demande, nous sommes à votre écoute au
+          Pour toute autre demande, nous sommes à votre écoute au&nbsp;
           <a href="mailto:+33649494868">06&nbsp;49&nbsp;49&nbsp;48&nbsp;68</a>
           ou via le formulaire ci-dessous :
         </p>
@@ -189,7 +189,7 @@ export default function Form() {
             saisir l’autorité de contrôle compétente afin d’y introduire une
             réclamation.Pour exercer vos droits, vous pouvez adresser une
             demande à la société NEODEN, par courrier à l’adresse suivante : 16
-            boulevard de Berlin 44000 Nantes, ou par e-mail envoyé à
+            boulevard de Berlin 44000 Nantes, ou par e-mail envoyé à&nbsp;
             <a href="mailto:bienvenue@neoden.fr">bienvenue@neoden.fr</a>.
           </p>
         </div>

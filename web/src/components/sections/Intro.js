@@ -6,6 +6,16 @@ import PortableText from '../PortableText';
 import Overprint from '../../assets/images/ondes.inline.svg';
 import { mq } from '../../styles/breakpoints';
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const IntroTextStyles = styled.section`
   background: ${({ location }) =>
     location === 'home' ? 'var(--grey)' : 'transparent'};
@@ -16,7 +26,7 @@ const IntroTextStyles = styled.section`
   padding-top: ${(props) =>
     props.hasWaveUp ? '0' : 'var(--section-top-padding)'};
   text-align: center;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   img {
     border-radius: var(--radius);

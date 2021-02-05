@@ -13,6 +13,16 @@ import { mq } from '../../styles/breakpoints';
 import PortableText from '../PortableText';
 import arrow from '../../assets/images/arrow.svg';
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const BlockMapStyles = styled.section`
   background: var(--beigelight);
   padding-bottom: ${(props) =>
@@ -20,7 +30,7 @@ const BlockMapStyles = styled.section`
   padding-top: ${(props) =>
     props.hasWaveUp ? '0 !important' : 'var(--section-top-padding)'};
   position: relative;
-  z-index: 3;
+  z-index: ${(props) => handleZIndex(props)};
 
   .section-title {
     margin-bottom: 4.5rem;

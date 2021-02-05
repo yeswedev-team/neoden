@@ -16,6 +16,16 @@ const handleLocation = (props) => {
   return '110px';
 };
 
+const handleZIndex = (props) => {
+  if (props.hasWaveDown) {
+    return '4';
+  }
+  if (props.hasWaveUp && !props.hasWaveDown) {
+    return '3';
+  }
+  return '1';
+};
+
 const UploadStyles = styled.section`
   background-color: #f2f2f2;
   padding-bottom: ${(props) => handleLocation(props)};
@@ -25,7 +35,7 @@ const UploadStyles = styled.section`
   /* padding-bottom: 110px; */
   /* padding-top: 4.0625rem; */
   text-align: center;
-  z-index: ${(props) => (props.hasWaveDown || props.hasWaveUp ? 3 : 1)};
+  z-index: ${(props) => handleZIndex(props)};
 
   .container {
     border-top: 1px solid var(--beige);
