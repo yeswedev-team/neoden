@@ -80,16 +80,6 @@ export default {
     },
     {
       resolve: `gatsby-plugin-sitemap`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
-        }`,
-      },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
