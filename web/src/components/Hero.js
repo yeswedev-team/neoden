@@ -42,10 +42,18 @@ const HeroStyles = styled.section`
 
   + section > .container {
     margin-top: ${({ location }) => handleLocationMargin(location)};
+  }
 
+  + section.section__promo > .container {
     ${mq[1]} {
       margin-top: ${({ location }) =>
         location === 'home' ? '0' : '-13.75rem'};
+    }
+  }
+  + section.section__offers > .container {
+    ${mq[1]} {
+      margin-top: ${({ location }) =>
+        location === 'home' ? '0' : '-10.75rem'};
     }
   }
 
