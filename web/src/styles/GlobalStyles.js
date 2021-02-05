@@ -61,6 +61,9 @@ const GlobalStyles = createGlobalStyle`
     z-index: 4;
 
     ${mq[3]} {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 100vh;
       padding-top: 0;
     }
   }
@@ -710,6 +713,7 @@ const GlobalStyles = createGlobalStyle`
       }
 
       &--left {
+        bottom: 5rem;
         height: 49.25rem;
         mix-blend-mode: darken;
         left: 0;

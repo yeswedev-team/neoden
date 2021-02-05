@@ -12,12 +12,18 @@ import Wavify from '../components/Wave';
 import OverprintLogo from '../assets/images/logo-neoden-grey-seul.inline.svg';
 
 const PostListStyles = styled.div`
+  position: relative;
+
   .wave-down {
-    position: relative;
+    bottom: 0;
+    position: absolute;
     z-index: 3;
   }
+  .overprintLogo--right {
+    z-index: 5;
+  }
   .overprintLogo--left {
-    bottom: 25rem;
+    /* bottom: 25rem; */
     height: 54.375rem;
     left: 0;
     top: auto;
@@ -43,12 +49,14 @@ export default function BlogIndex({ data, location, pageContext }) {
             nodes={postNodes}
             total={data.posts.totalCount}
           />
-          <Pagination
-            pageSize={parseInt(process.env.GATSBY_PAGE_SIZE)}
-            totalCount={data.posts.totalCount}
-            currentPage={pageContext.currentPage || 1}
-            base="/le-mag"
-          />
+          {data.posts.totalCount > 10 && (
+            <Pagination
+              pageSize={parseInt(process.env.GATSBY_PAGE_SIZE)}
+              totalCount={data.posts.totalCount}
+              currentPage={pageContext.currentPage || 1}
+              base="/le-mag"
+            />
+          )}
           <Wavify direction="down" bgcolor="#ffffff" />
         </>
       )}

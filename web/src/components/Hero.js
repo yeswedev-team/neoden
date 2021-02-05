@@ -28,8 +28,12 @@ const handleLocationMargin = (location) => {
       return '0';
     case 'offres-bien-etre':
       return '-6.75rem';
+    case 'bienfaits-flottaison':
+      return '-13.75rem';
+    case 'flottaison-isolation-sensorielle':
+      return '-13.75rem';
     default:
-      return '-3.75.rem';
+      return '-13.75.rem';
   }
 };
 
@@ -40,17 +44,18 @@ const HeroStyles = styled.section`
     max-height: 95vh;
   }
 
-  + section > .container {
+  + .section > .container {
     margin-top: ${({ location }) => handleLocationMargin(location)};
   }
 
-  + section.section__promo > .container {
+  + .section.section__promo > .container {
     ${mq[1]} {
       margin-top: ${({ location }) =>
         location === 'home' ? '0' : '-13.75rem'};
     }
   }
-  + section.section__offers > .container {
+
+  + .section.section__offers > .container {
     ${mq[1]} {
       margin-top: ${({ location }) =>
         location === 'home' ? '0' : '-10.75rem'};
