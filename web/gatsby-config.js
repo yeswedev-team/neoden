@@ -134,7 +134,7 @@ export default {
         projectId: 'qqvo71j5',
         dataset: 'production',
         watchMode: true,
-        useCdn: false,
+        useCdn: true,
         token: process.env.SANITY_TOKEN,
       },
     },
