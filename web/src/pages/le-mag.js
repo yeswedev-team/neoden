@@ -10,6 +10,7 @@ import BlogPostPreviewList from '../components/blog/BlogPostPreviewList';
 import Pagination from '../components/Pagination';
 import Wavify from '../components/Wave';
 import OverprintLogo from '../assets/images/logo-neoden-grey-seul.inline.svg';
+import SEO from '../components/SEO';
 
 const PostListStyles = styled.div`
   position: relative;
@@ -38,34 +39,48 @@ export default function BlogIndex({ data, location, pageContext }) {
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
 
+  const { title, titleSeo, descriptionSeo } = data.leMagPage.page;
+
   return (
-    <PostListStyles>
-      {postNodes && (
-        <>
-          <OverprintLogo className="overprintLogo overprintLogo--right" />
-          <OverprintLogo className="overprintLogo overprintLogo--left" />
-          <BlogPostPreviewList
-            location={location}
-            nodes={postNodes}
-            total={data.posts.totalCount}
-          />
-          {data.posts.totalCount > 10 && (
-            <Pagination
-              pageSize={parseInt(process.env.GATSBY_PAGE_SIZE)}
-              totalCount={data.posts.totalCount}
-              currentPage={pageContext.currentPage || 1}
-              base="/le-mag"
+    <>
+      <SEO title={titleSeo || title.fr} description={descriptionSeo} />
+      <PostListStyles>
+        {postNodes && (
+          <>
+            <OverprintLogo className="overprintLogo overprintLogo--right" />
+            <OverprintLogo className="overprintLogo overprintLogo--left" />
+            <BlogPostPreviewList
+              location={location}
+              nodes={postNodes}
+              total={data.posts.totalCount}
             />
-          )}
-          <Wavify direction="down" bgcolor="#ffffff" />
-        </>
-      )}
-    </PostListStyles>
+            {data.posts.totalCount > 10 && (
+              <Pagination
+                pageSize={parseInt(process.env.GATSBY_PAGE_SIZE)}
+                totalCount={data.posts.totalCount}
+                currentPage={pageContext.currentPage || 1}
+                base="/le-mag"
+              />
+            )}
+            <Wavify direction="down" bgcolor="#ffffff" />
+          </>
+        )}
+      </PostListStyles>
+    </>
   );
 }
 
 export const query = graphql`
   query BlogIndexQuery($skip: Int = 0, $pageSize: Int = 10) {
+    leMagPage: sanityRoute(slug: { current: { eq: "le-mag" } }) {
+      page {
+        title {
+          fr
+        }
+        titleSeo
+        descriptionSeo
+      }
+    }
     posts: allSanityPost(
       limit: $pageSize
       skip: $skip

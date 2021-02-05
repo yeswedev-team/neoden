@@ -1,12 +1,18 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import BlogPost from '../components/blog/BlogPost';
+import SEO from '../components/SEO';
 
 export default function BlogPostTemplate({ data, location }) {
   const { post, lastposts } = data;
 
   return (
     <>
+      <SEO
+        title={post.titleSeo || post.title}
+        description={post.descriptionSeo}
+        image={post.mainImage?.asset.fluid.src}
+      />
       {post && (
         <BlogPost location={location} {...post} {...lastposts} id="content" />
       )}
@@ -31,6 +37,8 @@ export const query = graphql`
       slug {
         current
       }
+      titleSeo
+      descriptionSeo
       _rawExcerpt(resolveReferences: { maxDepth: 5 })
       _rawText(resolveReferences: { maxDepth: 5 })
       authors {

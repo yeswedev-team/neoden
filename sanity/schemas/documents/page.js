@@ -21,6 +21,20 @@ export default {
       type: 'localeString',
     },
     {
+      name: 'titleSeo',
+      title: 'SEO - Titre',
+      type: 'string',
+      description:
+        "Titre pour le SEO - N'apparaît pas sur la page - S'il n'est pas renseigné, c'est le titre de la page qui apparaît.",
+    },
+    {
+      name: 'descriptionSeo',
+      title: 'SEO - Description',
+      type: 'text',
+      description:
+        "Description pour le SEO - N'apparaît pas sur la page -  S'il n'est pas renseigné, c'est la description du site qui apparaît.",
+    },
+    {
       name: 'hero',
       type: 'array',
       title: 'Entête',

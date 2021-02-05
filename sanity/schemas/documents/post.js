@@ -26,6 +26,20 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'titleSeo',
+      title: 'SEO - Titre',
+      type: 'string',
+      description:
+        "Titre pour le SEO - N'apparaît pas sur la page - S'il n'est pas renseigné, c'est le titre de la page qui apparaît.",
+    },
+    {
+      name: 'descriptionSeo',
+      title: 'SEO - Description',
+      type: 'text',
+      description:
+        "Description pour le SEO - N'apparaît pas sur la page -  S'il n'est pas renseigné, c'est la description du site qui apparaît.",
+    },
+    {
       name: 'publishedAt',
       type: 'datetime',
       title: 'Publié le',

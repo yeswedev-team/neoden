@@ -17,16 +17,36 @@ import Hero from '../components/Hero';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
 import OverprintLogo from '../assets/images/logo-neoden-grey-seul.inline.svg';
+import SEO from '../components/SEO';
 
 export default function SinglePage({
   pageContext,
   location,
   data: { alert, singlePage },
 }) {
-  const { title, titleMenu, content, hero } = singlePage.page;
+  const {
+    title,
+    titleMenu,
+    titleSeo,
+    descriptionSeo,
+    content,
+    hero,
+  } = singlePage.page;
+
   const { alertDisplay } = alert;
+  const intro = content.filter((section) => section._type === 'intro');
+  console.log(singlePage);
+
   return (
     <>
+      <SEO
+        title={titleSeo || title.fr}
+        description={descriptionSeo}
+        image={
+          hero[0]?.background?.mobileImage.asset.fluid.src ||
+          intro[0]?.frontimage?.mobileImage?.asset.fluid.src
+        }
+      />
       {pageContext.slug === 'home' && alertDisplay && <Alert alert={alert} />}
 
       {pageContext.slug !== 'home' && (
@@ -180,6 +200,8 @@ export const query = graphql`
         titleMenu {
           fr
         }
+        titleSeo
+        descriptionSeo
         hero {
           _rawText(resolveReferences: { maxDepth: 10 })
           hasLogo
