@@ -133,7 +133,7 @@ export default {
         ...clientConfig.sanity,
         projectId: 'qqvo71j5',
         dataset: 'production',
-        watchMode: true,
+        watchMode: false,
         useCdn: true,
         token: process.env.SANITY_TOKEN,
       },
