@@ -254,11 +254,11 @@ const GlobalStyles = createGlobalStyle`
     }
 
     &--brown {
-      background-color: var(--browndark);
+      background-color: var(--brown);
       color: var(--white);
 
       &:hover {
-        background-color: var(--brown);
+        background-color: var(--beigedark);
       }
     }
 
