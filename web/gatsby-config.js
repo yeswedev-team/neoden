@@ -9,6 +9,7 @@ export default {
     title: `Neoden`,
     description: 'espace de flottaison',
     gmap_api_key: process.env.GOOGLE_MAPS_API_KEY,
+    siteUrl: `https://www.neoden.fr`,
   },
   plugins: [
     {
@@ -78,11 +79,24 @@ export default {
       },
     },
     {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+        }`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        sitemap: null,
-        host: null,
-        policy: [{ userAgent: '*', disallow: ['/'] }],
+        host: 'https://www.neoden.fr',
+        sitemap: 'https://www.neoden.fr/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
       },
     },
     {
