@@ -89,6 +89,10 @@ const TestimoniesStyles = styled.section`
     position: absolute;
     text-align: center;
     transform: translateX(-50%);
+
+    svg {
+      margin-left: 0.4375rem;
+    }
   }
 
   .small-title {
