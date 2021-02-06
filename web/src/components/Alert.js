@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import { useCookies } from 'react-cookie';
+// import { useCookies } from 'react-cookie';
 import { getBlogUrl } from '../utils/helpers';
 
 import PortableText from './PortableText';
@@ -34,8 +34,8 @@ const AlertStyles = styled.div`
 export default function Alert({ alert }) {
   const { alertTitle, _rawAlertText, alertLink, alertPosition } = alert;
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [cookies, setCookie] = useCookies(['read', 'false']);
+  const [isOpen, setIsOpen] = useState(true);
+  // const [cookies, setCookie] = useCookies(['read', 'false']);
 
   const handleWarningPosition = (position) => {
     switch (position) {
@@ -49,17 +49,17 @@ export default function Alert({ alert }) {
   };
 
   const handleClick = () => {
-    setCookie('read', 'true', { path: '/', maxAge: 86400 }); // durée de 14 jours (en secondes)
+    // setCookie('read', 'true', { path: '/', maxAge: 86400 }); // durée de 14 jours (en secondes)
     setIsOpen(false);
   };
 
-  useEffect(() => {
-    if (cookies.read === 'true') {
-      setIsOpen(false);
-    } else {
-      setIsOpen(true);
-    }
-  }, [cookies]);
+  // useEffect(() => {
+  //   if (cookies.read === 'true') {
+  //     setIsOpen(false);
+  //   } else {
+  //     setIsOpen(true);
+  //   }
+  // }, [cookies]);
 
   return (
     <div className={`${isOpen === true ? 'visible' : 'invisible'}`}>
