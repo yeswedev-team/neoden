@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { globalHistory } from '@reach/router';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { Link } from 'gatsby';
@@ -125,6 +126,20 @@ export default function Burger({ open, setOpen }) {
     }
     setIsClicked(!isClicked);
   };
+
+  useEffect(
+    () =>
+      globalHistory.listen(({ action }) => {
+        if (action === 'PUSH') {
+          tlBurger.reverse();
+          setIsClicked(false);
+          // setOpen(false);
+        }
+      }),
+    [tlBurger, setOpen]
+  );
+
+  console.log(open);
 
   return (
     <BurgerStyles type="button">
