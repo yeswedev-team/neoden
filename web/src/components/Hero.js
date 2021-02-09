@@ -44,19 +44,15 @@ const HeroStyles = styled.section`
     max-height: 95vh;
   }
 
-  + .section > .container {
-    margin-top: ${({ location }) => handleLocationMargin(location)};
-  }
-
-  + .section.section__promo > .container {
-    ${mq[1]} {
+  ${mq[1]} {
+    + .section > .container {
+      margin-top: ${({ location }) => handleLocationMargin(location)};
+    }
+    + .section.section__promo > .container {
       margin-top: ${({ location }) =>
         location === 'home' ? '0' : '-13.75rem'};
     }
-  }
-
-  + .section.section__offers > .container {
-    ${mq[1]} {
+    + .section.section__offers > .container {
       margin-top: ${({ location }) =>
         location === 'home' ? '0' : '-10.75rem'};
     }
