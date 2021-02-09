@@ -107,11 +107,6 @@ const HeroStyles = styled.section`
           padding-bottom: 120% !important;
         }
       }
-      img {
-        @media screen and (max-width: 767px) {
-          object-position: 10% center !important;
-        }
-      }
     }
     img {
       border-radius: 0;
