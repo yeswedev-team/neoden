@@ -70,7 +70,7 @@ const HeroStyles = styled.section`
 
   .page-title {
     color: var(--white);
-    margin-top: 1.25rem;
+    margin-top: 2.25rem;
 
     ${mq[3]} {
       margin-top: 0;
