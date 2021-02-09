@@ -3,18 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 // import { useCookies } from 'react-cookie';
 import { getBlogUrl } from '../utils/helpers';
+import { mq } from '../styles/breakpoints';
 
 import PortableText from './PortableText';
 
 const AlertStyles = styled.div`
   background-color: var(--beigelight);
   border-radius: var(--radius);
-  bottom: 15vh;
+  bottom: 0;
   padding-bottom: 2.6875rem;
   padding-top: 2.6875rem;
   position: fixed;
   text-align: center;
-  width: 20.625rem;
+  width: 100%;
   z-index: 5;
 
   h3 {
@@ -28,6 +29,11 @@ const AlertStyles = styled.div`
   }
   .close {
     color: var(--brown);
+  }
+
+  ${mq[1]} {
+    bottom: 15vh;
+    width: 20.625rem;
   }
 `;
 
