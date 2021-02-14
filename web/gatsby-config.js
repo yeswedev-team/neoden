@@ -1,10 +1,12 @@
-import dotenv from 'dotenv';
+const dotenv = require('dotenv');
 
-dotenv.config({ path: '.env' });
+dotenv.config({
+  path: `.env`,
+});
 
 const clientConfig = require('./client-config');
 
-export default {
+module.exports = {
   siteMetadata: {
     title: `Neoden`,
     description: 'espace de flottaison',
