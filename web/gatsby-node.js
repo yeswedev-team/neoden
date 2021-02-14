@@ -1,5 +1,5 @@
-import path from 'path';
-import { isFuture, format, parseISO } from 'date-fns';
+const path = require('path');
+const { isFuture, format, parseISO } = require('date-fns');
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html') {
@@ -133,7 +133,7 @@ async function turnRoutesIntoPages({ graphql, actions }) {
   });
 }
 
-export async function createPages(params) {
+async function createPages(params) {
   // Create pages dynamically
   // run promises concurrently (at the same time) || wait for all promises to be resolved before finishing this function
   await Promise.all([
@@ -142,3 +142,5 @@ export async function createPages(params) {
     createBlogPostPages(params),
   ]);
 }
+
+module.exports.createPages = createPages;
