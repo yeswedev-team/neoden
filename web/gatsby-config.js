@@ -1,8 +1,10 @@
 const dotenv = require('dotenv');
 
 dotenv.config({
-  path: `.env`,
+  path: `.env.${process.env.NODE_ENV}`,
 });
+
+const isProd = process.env.NODE_ENV === 'production';
 
 const clientConfig = require('./client-config');
 
@@ -135,8 +137,9 @@ module.exports = {
         ...clientConfig.sanity,
         projectId: 'qqvo71j5',
         dataset: 'production',
-        watchMode: false,
-        useCdn: true,
+        overlayDrafts: !isProd,
+        watchMode: !isProd,
+        useCdn: isProd,
         token: process.env.SANITY_TOKEN,
       },
     },
