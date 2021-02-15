@@ -6,6 +6,8 @@ dotenv.config({
 
 const isProd = process.env.NODE_ENV === 'production';
 
+const token = process.env.SANITY_TOKEN;
+
 const clientConfig = require('./client-config');
 
 module.exports = {
@@ -150,12 +152,10 @@ module.exports = {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
-        projectId: 'qqvo71j5',
-        dataset: 'production',
-        overlayDrafts: !isProd,
+        overlayDrafts: !isProd && token,
         watchMode: !isProd,
         useCdn: isProd,
-        token: process.env.SANITY_TOKEN,
+        token,
       },
     },
   ],
