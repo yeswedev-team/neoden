@@ -21,6 +21,16 @@ export default {
       type: 'localeString',
     },
     {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      options: {
+        source: 'title.fr',
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'titleSeo',
       title: 'SEO - Titre',
       type: 'string',

@@ -10,18 +10,18 @@
   "plugins": [
     "@sanity/base",
     "@sanity/components",
+    "@sanity/dashboard",
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/google-maps-input",
     "asset-source-unsplash",
-    "media"
+    "media",
+    "dashboard-widget-gatsby"
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
@@ -31,7 +31,11 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
+      "path": "./src/deskStructure/index.js"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./src/dashboardConfig.js"
     }
   ]
 }
