@@ -2,15 +2,19 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from '@reach/router';
+import Flickity from 'react-flickity-component';
 import queryString from 'query-string';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import Wavify from '../Wave';
+import '../../styles/flickity.css';
 import encoche from '../../assets/images/encoche.gif';
 import { pxtopc } from '../../styles/Mixins';
 import { mq } from '../../styles/breakpoints';
 import Service from '../Service';
+
+let flickity = null;
 
 const handleZIndex = (props) => {
   if (props.hasWaveDown) {
@@ -32,14 +36,11 @@ const SectionOfferStyles = styled.section`
 
   .tabs-titles {
     display: none;
-    gap: 2.5rem;
-    justify-content: space-between;
-    list-style: none;
-    padding: 0px;
+    padding: 0;
     margin: 0;
 
     ${mq[1]} {
-      display: flex;
+      display: block;
     }
   }
 
@@ -49,8 +50,11 @@ const SectionOfferStyles = styled.section`
     }
   }
 
-  .tab-title,
-  .tab-title-alt {
+  .flickity-viewport {
+    overflow: visible;
+  }
+
+  .tab-title {
     background-color: var(--brown);
     background-size: cover;
     border-radius: var(--radius);
@@ -61,6 +65,60 @@ const SectionOfferStyles = styled.section`
     flex-basis: 30%;
     flex-grow: 1;
     flex-shrink: 0;
+    font-family: var(--font-titles);
+    font-size: 1.875rem;
+    height: 10.0625rem;
+    justify-content: center;
+    line-height: 1;
+    margin-right: 2.5rem;
+    position: relative;
+    text-align: center;
+    width: 30%;
+
+    button {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: grab;
+      height: 100%;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .filter {
+      background-size: cover;
+      border-radius: var(--radius);
+      display: block;
+      filter: grayscale(0.4) opacity(0.7);
+      height: 100%;
+      transition: filter 400ms linear;
+    }
+    span {
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+      .filter {
+        filter: grayscale(0) opacity(0.25);
+      }
+    }
+  }
+
+  .tab-title-alt {
+    background-color: var(--brown);
+    background-size: cover;
+    border-radius: var(--radius);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 30%;
+    flex-grow: 1;
+    flex-shrink: 0; */
     font-family: var(--font-titles);
     font-size: 1.875rem;
     height: 10.0625rem;
@@ -91,10 +149,10 @@ const SectionOfferStyles = styled.section`
       }
     }
   }
+
   .tab-title-alt {
     background: var(--brown);
     filter: none;
-    flex-basis: 100%;
     height: 5.75rem;
     margin-bottom: 1.25rem;
     padding: 0;
@@ -108,7 +166,7 @@ const SectionOfferStyles = styled.section`
     }
 
     ${mq[1]} {
-      flex-basis: 30%;
+      width: 20%;
       margin-bottom: 0;
     }
   }
@@ -218,19 +276,20 @@ const SectionOfferStyles = styled.section`
   .tabs-titles-alt {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.875rem;
+    justify-content: space-between;
     margin: 1.3125rem auto;
     max-width: 36.25rem;
 
-    li {
-      width: 100%;
+    &.long {
+      max-width: none;
     }
 
-    ${mq[1]} {
-      flex-wrap: nowrap;
+    li {
+      width: 100%;
 
-      li {
-        width: auto;
+      ${mq[1]} {
+        margin-bottom: 1em;
+        width: 30%;
       }
     }
   }
@@ -254,6 +313,17 @@ const getSelectedOffer = (query) => {
   return fallback;
 };
 
+// trouver l'index de l'offre sélectionnée par la query dans l'url
+const getSelectedOfferIndex = (slug, array) => {
+  const fallback = 1;
+
+  if (slug) {
+    return array.indexOf(slug);
+  }
+
+  return fallback;
+};
+
 export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   gsap.registerPlugin(ScrollToPlugin);
 
@@ -262,6 +332,14 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   const location = useLocation();
   const visibleTabValue =
     (location.search && getSelectedOffer(location.search)) || 'flottaison';
+
+  // get the array of offers slugs
+  const offerSlugArray = offer.map((item) => item?.slug.current);
+
+  // get the index of the offer selected by the url if exists
+  const initialIndex =
+    getSelectedOfferIndex(getSelectedOffer(location.search), offerSlugArray) ||
+    1;
 
   let windowWidth = 0;
 
@@ -284,23 +362,38 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
     };
   }, []);
 
+  const flickityOptions = {
+    initialIndex,
+    prevNextButtons: false,
+    pageDots: false,
+    // watchCSS: true,
+  };
+
+  const handleTabClick = (event, item) => {
+    event.preventDefault();
+    setVisibleTab(item.slug.current);
+    const index = getSelectedOfferIndex(item.slug.current, offerSlugArray);
+    flickity.select(index);
+  };
+
   const listTitles = offer.map((item) => (
-    <li
-      key={item.id}
-      id={item.slug.current}
-      onClick={() => setVisibleTab(item.slug.current)}
+    <div
+      key={item?.id}
+      id={item?.slug.current}
       className={
         visibleTab === item.slug.current
           ? 'tab-title tab-title--active'
           : 'tab-title'
       }
     >
-      <div
-        className="filter"
-        style={{ backgroundImage: `url(${item.imageTab.asset.fluid.src})` }}
-      />
-      <span>{item.title}</span>
-    </li>
+      <button type="button" onClick={(event) => handleTabClick(event, item)}>
+        <div
+          className="filter"
+          style={{ backgroundImage: `url(${item.imageTab.asset.fluid.src})` }}
+        />
+        <span>{item.title}</span>
+      </button>
+    </div>
   ));
 
   const listOptions = offer.map((item) => (
@@ -312,6 +405,8 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
   const handleAltTabClick = (event, item) => {
     event.preventDefault();
     setVisibleTab(item.slug.current);
+    const index = getSelectedOfferIndex(item.slug.current, offerSlugArray);
+    flickity.select(index);
     if (typeof window !== 'undefined') {
       gsap.to(window, {
         duration: 0.7,
@@ -380,7 +475,15 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
       {hasWaveUp && <Wavify direction="up" bgcolor="#ffffff" />}
       <div className="container container--md" ref={offersContainerRef}>
         <div className="tabs">
-          <ul className="tabs-titles">{listTitles}</ul>
+          <Flickity
+            flickityRef={(ref) => (flickity = ref)}
+            className="tabs-titles"
+            options={flickityOptions} // takes flickity options {}
+          >
+            {listTitles}
+          </Flickity>
+
+          {/* <ul className="tabs-titles">{listTitles}</ul> */}
           <select
             value={dropdown}
             className="options-titles select-css"
@@ -390,7 +493,11 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
           </select>
           <div className="tab-content">{listContent}</div>
           <h4 className="middle-title">Découvrir aussi&nbsp;:</h4>
-          <ul className="tabs-titles-alt">{listTitlesAlt}</ul>
+          <ul
+            className={`tabs-titles-alt ${offer.length < 4 ? 'short' : 'long'}`}
+          >
+            {listTitlesAlt}
+          </ul>
         </div>
       </div>
       {hasWaveDown && <Wavify direction="down" bgcolor="#ffffff" />}
