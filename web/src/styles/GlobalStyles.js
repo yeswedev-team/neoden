@@ -554,6 +554,7 @@ const GlobalStyles = createGlobalStyle`
     z-index: 999;
 
     &.modal-video .modal-content {
+      max-width: 100rem;
       padding: 30px;
     }
     &.modal-services .modal-content {
