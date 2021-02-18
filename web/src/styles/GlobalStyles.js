@@ -557,6 +557,7 @@ const GlobalStyles = createGlobalStyle`
       padding: 30px;
     }
     &.modal-services .modal-content {
+      max-width: 69.6875rem;
       padding: 76px 105px 52px;
     }
   }
@@ -577,7 +578,6 @@ const GlobalStyles = createGlobalStyle`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     color: var(--white);
     left: 50%;
-    max-width: 69.6875rem;
     max-height: 90vh;
     position: relative;
     text-align: center;
