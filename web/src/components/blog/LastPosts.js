@@ -66,15 +66,15 @@ export default function LastPosts({ posts }) {
     };
   }, []);
 
-  const handleStateChange = (status) => {
-    if (status.status === Sticky.STATUS_FIXED) {
-      console.log('the component is sticky');
-    }
-    if (status.status === Sticky.STATUS_ORIGINAL) {
-      return 'the component in the original position';
-    }
-    return 'the component is released';
-  };
+  // const handleStateChange = (status) => {
+  //   if (status.status === Sticky.STATUS_FIXED) {
+  //     console.log('the component is sticky');
+  //   }
+  //   if (status.status === Sticky.STATUS_ORIGINAL) {
+  //     return 'the component in the original position';
+  //   }
+  //   return 'the component is released';
+  // };
 
   return (
     <Sticky

@@ -139,8 +139,6 @@ export default function Burger({ open, setOpen }) {
     [tlBurger, setOpen]
   );
 
-  console.log(open);
-
   return (
     <BurgerStyles type="button">
       <Link

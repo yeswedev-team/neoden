@@ -35,7 +35,6 @@ export default function SinglePage({
 
   const { alertDisplay } = alert;
   const intro = content.filter((section) => section._type === 'intro');
-  console.log(singlePage);
 
   return (
     <>
