@@ -46,7 +46,7 @@ export default function Service({ service }) {
             </a>
           )}
           {/* 
-          <Modal ref={modalRef}> 
+          <Modal ref={modalRef} id="modal-services"> 
             <h3 className="middle-title">
               Choisissez votre espace Neoden
               <br />

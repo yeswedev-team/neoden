@@ -84,7 +84,7 @@ export default function BlockVideo({ title, image, youtube }) {
 
             <span className="sr-only">Play</span>
           </button>
-          <Modal ref={modalRef}>
+          <Modal ref={modalRef} id="modal-video">
             <div className="video-wrapper">
               <YouTube videoId={id} />
             </div>

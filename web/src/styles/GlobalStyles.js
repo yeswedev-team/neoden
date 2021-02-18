@@ -552,6 +552,13 @@ const GlobalStyles = createGlobalStyle`
     right: 0;
     left: 0;
     z-index: 999;
+
+    &.modal-video .modal-content {
+      padding: 30px;
+    }
+    &.modal-services .modal-content {
+      padding: 76px 105px 52px;
+    }
   }
 
   .modal-backdrop {
@@ -571,9 +578,7 @@ const GlobalStyles = createGlobalStyle`
     color: var(--white);
     left: 50%;
     max-width: 69.6875rem;
-    min-height: 40%;
     max-height: 90vh;
-    padding: 76px 105px 52px;
     position: relative;
     text-align: center;
     top: 50%;
@@ -666,6 +671,10 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 500;
         text-transform: uppercase;
       }
+    }
+
+    ${mq[1]} {
+      min-height: 40%;
     }
   }
 

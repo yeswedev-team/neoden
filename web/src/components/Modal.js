@@ -9,6 +9,7 @@ import Portal from './Portal';
 
 const Modal = forwardRef((props, ref) => {
   const [display, setDisplay] = useState(false);
+  const { id } = props;
 
   const handleOpen = () => {
     setDisplay(true);
@@ -36,7 +37,7 @@ const Modal = forwardRef((props, ref) => {
   if (display) {
     return (
       <Portal>
-        <div className="modal-wrapper">
+        <div className={`modal-wrapper ${id}`}>
           <div className="modal-backdrop" />
           <div className="modal-content">
             {props.children}
