@@ -81,7 +81,7 @@ export default function LastPosts({ posts }) {
       enabled={width > breakpoint}
       top={200}
       bottomBoundary="#content"
-      onStateChange={handleStateChange}
+      // onStateChange={handleStateChange}
     >
       <LastPostsStyles>
         <h3 className="middle-title">Articles récents</h3>
