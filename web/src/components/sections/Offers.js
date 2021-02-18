@@ -281,7 +281,14 @@ const SectionOfferStyles = styled.section`
     max-width: 36.25rem;
 
     &.long {
+      justify-content: space-between;
       max-width: none;
+
+      li {
+        ${mq[1]} {
+          width: 30%;
+        }
+      }
     }
 
     li {
@@ -289,7 +296,7 @@ const SectionOfferStyles = styled.section`
 
       ${mq[1]} {
         margin-bottom: 1em;
-        width: 30%;
+        width: 48%;
       }
     }
   }
