@@ -270,15 +270,24 @@ const SectionOfferStyles = styled.section`
     }
   }
   .middle-title {
+    display: none;
     margin-top: 2.8125rem;
     text-align: center;
+
+    ${mq[1]} {
+      display: block;
+    }
   }
   .tabs-titles-alt {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: space-between;
     margin: 1.3125rem auto;
     max-width: 36.25rem;
+
+    ${mq[1]} {
+      display: flex;
+    }
 
     &.long {
       justify-content: space-between;
