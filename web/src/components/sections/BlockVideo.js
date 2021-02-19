@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import getYouTubeId from 'get-youtube-id';
 import YouTube from 'react-youtube';
 import Modal from '../Modal';
+import { mq } from '../../styles/breakpoints';
 
 const VideoStyles = styled.section`
   /* padding-bottom: calc(var(--section-bot-padding) * 2);
@@ -13,8 +14,11 @@ const VideoStyles = styled.section`
   z-index: 1;
 
   .video__illustr {
-    height: 24.375rem;
     overflow: hidden;
+
+    ${mq[1]} {
+      height: 24.375rem;
+    }
   }
   .video__content {
     left: 50%;
@@ -22,6 +26,7 @@ const VideoStyles = styled.section`
     text-align: center;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 90%;
   }
   .section-title {
     color: var(--white);
@@ -31,12 +36,18 @@ const VideoStyles = styled.section`
     border: none;
     border-radius: 100%;
     cursor: pointer;
-    height: 10.1875rem;
-    margin: 1.5rem auto 0;
+    height: 5rem;
+    margin: 0.5rem auto 0;
     padding: 0;
     position: relative;
     text-align: center;
-    width: 10.1875rem;
+    width: 5rem;
+
+    ${mq[0]} {
+      height: 10.1875rem;
+      margin: 1.5rem auto 0;
+      width: 10.1875rem;
+    }
 
     &:focus,
     &:active {
@@ -49,7 +60,11 @@ const VideoStyles = styled.section`
       position: absolute;
       top: 50%;
       transform: translate(-37%, -50%);
-      width: 5rem;
+      width: 2.5rem;
+
+      ${mq[0]} {
+        width: 5rem;
+      }
     }
   }
 `;
