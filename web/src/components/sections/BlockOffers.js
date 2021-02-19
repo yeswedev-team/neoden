@@ -18,7 +18,7 @@ const handleZIndex = (props) => {
 };
 
 const BlockOffersStyles = styled.section`
-  background: #a5968f;
+  background: #9f8b84;
   color: var(--white);
   padding-bottom: ${(props) =>
     props.hasDoubleBotMargin
