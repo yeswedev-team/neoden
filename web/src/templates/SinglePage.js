@@ -188,6 +188,7 @@ export const query = graphql`
           _type
           alertTitle
           _rawAlertText(resolveReferences: { maxDepth: 10 })
+          alertLinkText
           alertLink {
             publishedAt
             slug {

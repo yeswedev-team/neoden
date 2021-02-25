@@ -5,7 +5,8 @@ import { getBlogUrl } from '../utils/helpers';
 import PortableText from './PortableText';
 
 export default function AlertSimple({ content }) {
-  const { alertTitle, _rawAlertText, alertLink } = content;
+  const { alertTitle, _rawAlertText, alertLink, alertLinkText } = content;
+  const btnText = alertLinkText || 'En savoir plus';
   return (
     <>
       {alertTitle && <h3>{alertTitle}</h3>}
@@ -15,7 +16,7 @@ export default function AlertSimple({ content }) {
           to={getBlogUrl(alertLink[0].publishedAt, alertLink[0].slug.current)}
           className="button button--brown"
         >
-          En savoir plus
+          {btnText}
         </Link>
       )}
     </>
