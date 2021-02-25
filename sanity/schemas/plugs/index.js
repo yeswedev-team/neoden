@@ -20,6 +20,8 @@ export { default as youtube } from './youtube';
 export { default as anchor } from './anchor';
 export { default as testimony } from './testimony';
 export { default as video } from './video';
+export { default as alert } from './alert';
+export { default as form } from './form';
 
 /*
 export { default as infoRows } from './infoRows'

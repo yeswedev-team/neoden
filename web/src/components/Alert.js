@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
 // import { useCookies } from 'react-cookie';
-import { getBlogUrl } from '../utils/helpers';
 import { mq } from '../styles/breakpoints';
 
-import PortableText from './PortableText';
+import AlertSimple from './AlertSimple';
+import AlertForm from './AlertForm';
+import AlertPromo from './AlertPromo';
 
 const AlertStyles = styled.div`
   background-color: var(--beigelight);
@@ -18,6 +18,26 @@ const AlertStyles = styled.div`
   width: 100%;
   z-index: 5;
 
+  &.alert--form {
+    width: auto;
+  }
+
+  iframe {
+    border-radius: var(--radius);
+  }
+
+  &.alert--promo {
+    padding-top: 0;
+
+    img {
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+  }
+  &.alert--form {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
   h3 {
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -29,29 +49,56 @@ const AlertStyles = styled.div`
   }
   .close {
     color: var(--brown);
+    z-index: 2;
   }
 
   ${mq[1]} {
     bottom: 15vh;
     width: 20.625rem;
+
+    &.alert--promo {
+      width: 40rem;
+    }
+    &.alert--form {
+      width: auto;
+    }
   }
 `;
 
 export default function Alert({ alert }) {
-  const { alertTitle, _rawAlertText, alertLink, alertPosition } = alert;
+  const { alertDestiny, alertPosition } = alert;
+  let type;
+  if (alertDestiny[0] && alertDestiny[0]._type === 'alert') {
+    type = 'alert';
+  } else if (alertDestiny[0] && alertDestiny[0]._type === 'form') {
+    type = 'form';
+  } else if (alertDestiny[0] && alertDestiny[0]._type === 'promo') {
+    type = 'promo';
+  }
 
   const [isOpen, setIsOpen] = useState(true);
   // const [cookies, setCookie] = useCookies(['read', 'false']);
 
-  const handleWarningPosition = (position) => {
-    switch (position) {
-      case 'left':
-        return 'warning warning--left';
-      case 'center':
-        return 'warning warning--center';
-      default:
-        return 'warning warning--right';
+  const handleWarningPosition = (position, alertType) => {
+    const classesArr = [];
+
+    if (position === 'left') {
+      classesArr.push('warning', 'warning--left');
+    } else if (position === 'center') {
+      classesArr.push('warning', 'warning--center');
+    } else if (position === 'right') {
+      classesArr.push('warning', 'warning--right');
     }
+
+    if (alertType === 'alert') {
+      classesArr.push('alert--simple');
+    } else if (alertType === 'form') {
+      classesArr.push('alert--form');
+    } else if (alertType === 'promo') {
+      classesArr.push('alert--promo');
+    }
+
+    return classesArr.join(' ');
   };
 
   const handleClick = () => {
@@ -69,21 +116,14 @@ export default function Alert({ alert }) {
 
   return (
     <div className={`${isOpen === true ? 'visible' : 'invisible'}`}>
-      <AlertStyles className={handleWarningPosition(alertPosition[0])}>
+      <AlertStyles className={handleWarningPosition(alertPosition, type)}>
         <button type="button" className="close" onClick={(e) => handleClick(e)}>
           <strong>X</strong>
           <span className="sr-only">Fermer</span>
         </button>
-        {alertTitle && <h3>{alertTitle}</h3>}
-        {_rawAlertText && <PortableText blocks={_rawAlertText} />}
-        {alertLink && (
-          <Link
-            to={getBlogUrl(alertLink[0].publishedAt, alertLink[0].slug.current)}
-            className="button button--brown"
-          >
-            En savoir plus
-          </Link>
-        )}
+        {type && type === 'alert' && <AlertSimple content={alertDestiny[0]} />}
+        {type && type === 'form' && <AlertForm content={alertDestiny[0]} />}
+        {type && type === 'promo' && <AlertPromo content={alertDestiny[0]} />}
       </AlertStyles>
     </div>
   );

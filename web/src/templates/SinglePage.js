@@ -181,15 +181,45 @@ export const query = graphql`
   query($slug: String!) {
     alert: sanitySingletonSite {
       alertDisplay
-      _rawAlertText(resolveReferences: { maxDepth: 10 })
-      alertLink {
-        slug {
-          current
-        }
-        publishedAt
-      }
       alertPosition
-      alertTitle
+      alertDestiny {
+        ... on SanityAlert {
+          _key
+          _type
+          alertTitle
+          _rawAlertText(resolveReferences: { maxDepth: 10 })
+          alertLink {
+            publishedAt
+            slug {
+              current
+            }
+          }
+        }
+        ... on SanityForm {
+          _key
+          _type
+          iframeSrc
+          iframeWidth
+          iframeHeight
+        }
+        ... on SanityPromo {
+          _key
+          _type
+          bookinglink
+          discount
+          image {
+            asset {
+              fluid(maxWidth: 600, maxHeight: 345) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
+          offerlink
+          period
+          text
+          title
+        }
+      }
     }
     singlePage: sanityRoute(slug: { current: { eq: $slug } }) {
       page {

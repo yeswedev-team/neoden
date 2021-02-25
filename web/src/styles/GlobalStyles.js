@@ -349,17 +349,38 @@ const GlobalStyles = createGlobalStyle`
       left: -1.25rem;
       padding-left: 3.125rem;
       padding-right: 2.3125rem;
+
+      .promo__content {
+        padding-left: 3.125rem;
+        padding-right: 2.3125rem;
+      }
     }
     &--center {
       left: 50%;
       padding-left: 2.3125rem;
       padding-right: 2.3125rem;
       transform: translateX(-50%);
+
+      .promo__content {
+        padding-left: 2.3125rem;
+        padding-right: 2.3125rem;
+      }
     }
+
     &--right {
       right: -1.25rem;
       padding-left: 2.3125rem;
       padding-right: 3.125rem;
+
+      .promo__content {
+        padding-left: 2.3125rem;
+        padding-right: 3.125rem;
+      }
+    }
+    &.alert--promo,
+    &.alert--form {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
