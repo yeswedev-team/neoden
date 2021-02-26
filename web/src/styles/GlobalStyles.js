@@ -457,6 +457,27 @@ const GlobalStyles = createGlobalStyle`
       list-style: disc;
       margin: 1em;
     }
+    a {
+      color: var(----brown);
+      display: inline-block;
+      position: relative;
+
+      &:after {
+        background-image: linear-gradient(to right, var(--brown) 33%, rgba(255,255,255,0) 0%);
+        background-position: bottom;
+        background-size: 3px 1px;  /* Adjust values to change dot size and spacing */
+        background-repeat: repeat-x;
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        position: absolute;
+        width: 100%;
+      }
+      &:hover {
+        color: var(--browndark);
+      }
+    }
   }
 
   /* Base for label styling */
