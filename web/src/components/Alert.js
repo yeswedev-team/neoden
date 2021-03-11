@@ -19,7 +19,7 @@ const AlertStyles = styled.div`
   z-index: 5;
 
   &.alert--form {
-    width: auto;
+    width: 90%;
   }
 
   iframe {
