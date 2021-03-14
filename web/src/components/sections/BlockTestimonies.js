@@ -226,25 +226,28 @@ export default function BlockTestimonies({
                     : 'slide-online'
                 }`}
               >
-                {slide.publishedAt && (
-                  <p className="meta">
-                    {slide.authors &&
-                      slide.authors.map(({ author, _key }) => {
-                        const authorName = author && author.name;
-                        return <span key={_key}>{authorName}</span>;
-                      })}
-                    {' - '}
-                    {format(new Date(slide.publishedAt), 'dd MMMM yyyy', {
-                      locale: fr,
-                    })}
-                  </p>
-                )}
+                {slide.authors &&
+                  slide.authors.map(({ author, _key }) => {
+                    const authorName = author && author.name;
+                    return (
+                      <p className="meta">
+                        <span key={_key}>{authorName}</span>
+                      </p>
+                    );
+                  })}
                 {slide?.image && (
                   <Img fluid={slide?.image?.asset?.fluid} alt={slide.title} />
                 )}
                 <div className="slide__text">
                   {slide.title && (
                     <h3 className="small-title">{slide.title}</h3>
+                  )}
+                  {slide.publishedAt && (
+                    <p className="date">
+                      {format(new Date(slide.publishedAt), 'dd MMMM yyyy', {
+                        locale: fr,
+                      })}
+                    </p>
                   )}
                   {slide._rawText && <PortableText blocks={slide._rawText} />}
                 </div>
