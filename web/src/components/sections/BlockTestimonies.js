@@ -186,7 +186,7 @@ export default function BlockTestimonies({
           className="slider-content"
           spaceBetween={40}
           slidesPerView={1}
-          slidesPerGroup={3}
+          slidesPerGroup={1}
           speed={700}
           autoHeight
           grabCursor
@@ -197,10 +197,12 @@ export default function BlockTestimonies({
             // when window width is >= 768px
             768: {
               slidesPerView: 2,
+              slidesPerGroup: 2,
             },
             // when window width is >= 1280px
             1280: {
               slidesPerView: 3,
+              slidesPerGroup: 3,
             },
           }}
         >
