@@ -40,6 +40,7 @@ const BlogCardStyles = styled.div`
 `;
 
 export default function BlogPostPreview(node) {
+  console.log(node.mainImage);
   return (
     <BlogCardStyles className="blog-card grow grow-fast">
       <Link to={getBlogUrl(node.publishedAt, node.slug.current)}>
