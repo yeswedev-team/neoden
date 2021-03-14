@@ -185,7 +185,7 @@ export default function BlockTestimonies({
         <Swiper
           className="slider-content"
           spaceBetween={40}
-          slidesPerView={3}
+          slidesPerView={1}
           slidesPerGroup={3}
           speed={700}
           autoHeight
@@ -193,6 +193,16 @@ export default function BlockTestimonies({
           navigation
           pagination={{ clickable: true }}
           watchOverflow
+          breakpoints={{
+            // when window width is >= 768px
+            768: {
+              slidesPerView: 2,
+            },
+            // when window width is >= 1280px
+            1280: {
+              slidesPerView: 3,
+            },
+          }}
         >
           {list.map((slide, index) => {
             let link;
@@ -257,7 +267,7 @@ export default function BlockTestimonies({
         </Swiper>
       </div>
 
-      {hasWaveDown && <Wavify direction="down" bgcolor="#f2f2f2" />}
+      {}
     </TestimoniesStyles>
   );
 }
