@@ -100,7 +100,9 @@ export const query = graphql`
               y
             }
             asset {
-              fluid(maxWidth: 1115, maxHeight: 456) {
+              fluid(
+                maxWidth: 1115 #, maxHeight: 456
+              ) {
                 ...GatsbySanityImageFluid_noBase64
               }
             }

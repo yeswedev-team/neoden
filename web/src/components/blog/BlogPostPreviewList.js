@@ -39,6 +39,17 @@ const FirstNodeStyles = styled.div`
       border: 1px solid var(--brown);
     }
   }
+  .gatsby-image-wrapper {
+    --x: ${(props) => props.objectPosition.x};
+    --y: ${(props) => props.objectPosition.y};
+
+    div[aria-hidden='true'] {
+      padding-bottom: 40.8968609865471% !important;
+    }
+    img {
+      object-position: var(--x) var(--y) !important;
+    }
+  }
   .firstPost__header {
     background-color: var(--white);
     border-radius: 0 0 var(--radius) var(--radius);
@@ -144,6 +155,10 @@ const BlogPostsListStyles = styled.div`
 export default function BlogPostPreviewList({ nodes, location, total }) {
   const firstNode = nodes[0];
   const otherNodes = nodes.slice(1);
+  const objectPosition = {
+    x: `${firstNode.mainImage.hotspot.x * 100}%`,
+    y: `${firstNode.mainImage.hotspot.y * 100}%`,
+  };
 
   return (
     <>
@@ -152,7 +167,7 @@ export default function BlogPostPreviewList({ nodes, location, total }) {
         <Wavify direction="up" bgcolor="#ffffff" />
       </WaveContainerStyles>
       {firstNode && (
-        <FirstNodeStyles className="firstPost">
+        <FirstNodeStyles className="firstPost" objectPosition={objectPosition}>
           <div className="container container--xl grow">
             <Link
               to={getBlogUrl(firstNode.publishedAt, firstNode.slug.current)}

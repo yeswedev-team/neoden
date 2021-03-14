@@ -18,6 +18,17 @@ const BlogCardStyles = styled.div`
     border: 1px solid var(--brown);
   }
 
+  .gatsby-image-wrapper {
+    --x: ${(props) => props.objectPosition.x};
+    --y: ${(props) => props.objectPosition.y};
+
+    div[aria-hidden='true'] {
+      padding-bottom: 80% !important;
+    }
+    img {
+      object-position: var(--x) var(--y) !important;
+    }
+  }
   img {
     border-radius: 5px 5px 0 0;
   }
@@ -40,9 +51,15 @@ const BlogCardStyles = styled.div`
 `;
 
 export default function BlogPostPreview(node) {
-  console.log(node.mainImage);
+  const objectPosition = {
+    x: `${node.mainImage.hotspot.x * 100}%`,
+    y: `${node.mainImage.hotspot.y * 100}%`,
+  };
   return (
-    <BlogCardStyles className="blog-card grow grow-fast">
+    <BlogCardStyles
+      className="blog-card grow grow-fast"
+      objectPosition={objectPosition}
+    >
       <Link to={getBlogUrl(node.publishedAt, node.slug.current)}>
         {node.mainImage && node.mainImage.asset && (
           <Img fluid={node.mainImage.asset.fluid} alt={node.mainImage.alt} />
