@@ -192,6 +192,7 @@ export default function BlockTestimonies({
           grabCursor
           navigation
           pagination={{ clickable: true }}
+          watchOverflow
         >
           {list.map((slide, index) => {
             let link;
