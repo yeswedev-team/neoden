@@ -1,14 +1,6 @@
 const path = require('path');
 const { isFuture, format, parseISO } = require('date-fns');
 
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
-    actions.setWebpackConfig({
-      module: { rules: [{ test: /node_modules\/paper/, use: loaders.null() }] },
-    });
-  }
-};
-
 async function createBlogPostPages({ graphql, actions }) {
   // Get a template for this page
   const postTemplate = path.resolve('./src/templates/blog-post.js');
