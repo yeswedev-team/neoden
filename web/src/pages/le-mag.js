@@ -93,9 +93,15 @@ export const query = graphql`
           id
           publishedAt
           mainImage {
+            hotspot {
+              height
+              width
+              x
+              y
+            }
             asset {
               fluid(maxWidth: 1115, maxHeight: 456) {
-                ...GatsbySanityImageFluid
+                ...GatsbySanityImageFluid_noBase64
               }
             }
             alt
