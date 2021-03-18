@@ -33,6 +33,7 @@ const BlogCardStyles = styled.div`
     border-radius: 5px 5px 0 0;
   }
   .blog-card__content {
+    background: var(--white);
     padding: 1.5rem 1.875rem;
 
     *:last-child {

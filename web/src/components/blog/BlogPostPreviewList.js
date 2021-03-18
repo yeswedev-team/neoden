@@ -172,7 +172,7 @@ export default function BlogPostPreviewList({ nodes, location, total }) {
             <Link
               to={getBlogUrl(firstNode.publishedAt, firstNode.slug.current)}
             >
-              {firstNode.mainImage && firstNode.mainImage.asset && (
+              {firstNode?.mainImage?.asset && (
                 <Img
                   fluid={firstNode.mainImage.asset.fluid}
                   alt={firstNode.mainImage.alt}
