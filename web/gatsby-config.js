@@ -100,6 +100,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: '186328809700559',
+      },
+    },
+    {
       resolve: `gatsby-plugin-sitemap`,
     },
     {
