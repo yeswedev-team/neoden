@@ -69,6 +69,7 @@ export default {
         { type: 'upload' },
         { type: 'richtext' },
         { type: 'video' },
+        { type: 'form' },
         { type: 'reference', to: [{ type: 'blocks' }] },
       ],
     },

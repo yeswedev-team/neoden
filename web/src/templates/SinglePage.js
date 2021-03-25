@@ -13,6 +13,7 @@ import Questions from '../components/sections/BlockQuestions';
 import Video from '../components/sections/BlockVideo';
 import Upload from '../components/sections/Upload';
 import Text from '../components/sections/Text';
+import FormSendinblue from '../components/sections/FormSendinBlue';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
 import Alert from '../components/Alert';
@@ -80,6 +81,7 @@ export default function SinglePage({
           video: Video,
           sectionOffers: Offers,
           upload: Upload,
+          form: FormSendinblue,
           richtext: Text,
         }}
         mapDataToProps={{
@@ -110,6 +112,14 @@ export default function SinglePage({
             title: data.title,
             text: data._rawText,
             pdf: data.pdf,
+            hasWaveDown: data.hasWaveDown,
+            hasWaveUp: data.hasWaveUp,
+            hasDoubleBotMargin: data.hasDoubleBotMargin,
+          }),
+          form: ({ data }) => ({
+            src: data.iframeSrc,
+            width: data.iframeWidth,
+            height: data.iframeHeight,
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
             hasDoubleBotMargin: data.hasDoubleBotMargin,
@@ -317,6 +327,16 @@ export const query = graphql`
             _key
             _type
             _rawText(resolveReferences: { maxDepth: 10 })
+            hasDoubleBotMargin
+            hasWaveDown
+            hasWaveUp
+          }
+          ... on SanityForm {
+            _key
+            _type
+            iframeSrc
+            iframeWidth
+            iframeHeight
             hasDoubleBotMargin
             hasWaveDown
             hasWaveUp
