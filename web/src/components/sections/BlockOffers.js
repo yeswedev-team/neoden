@@ -46,13 +46,24 @@ const BlockOffersStyles = styled.section`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    ${mq[1]} {
+      gap: 4%;
+    }
+    ${mq[2]} {
+      flex-wrap: nowrap;
+      gap: 1.875rem;
+    }
   }
   .offer {
     position: relative;
     width: 100%;
 
     ${mq[1]} {
-      width: ${pxtopc(275, 904)};
+      width: 48%;
+    }
+    ${mq[2]} {
+      width: 100%;
     }
 
     &__title {
