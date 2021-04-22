@@ -32,7 +32,7 @@ export default function Service({ service }) {
               target="_blank"
               rel="noreferrer"
             >
-              J'offre <MdCardGiftcard />
+              {service.offerlinktitle || "J'offre"} <MdCardGiftcard />
             </a>
           )}
           {service.bookinglink && (
@@ -42,7 +42,7 @@ export default function Service({ service }) {
               target="_blank"
               rel="noreferrer"
             >
-              Je réserve <IoMdOpen />
+              {service.bookinglinktitle || 'Je réserve'} <IoMdOpen />
             </a>
           )}
           {/* 

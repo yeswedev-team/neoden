@@ -410,7 +410,9 @@ export const query = graphql`
                   }
                 }
                 offerlink
+                offerlinktitle
                 bookinglink
+                bookinglinktitle
                 places {
                   _key
                   id
