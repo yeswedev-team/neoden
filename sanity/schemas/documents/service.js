@@ -121,9 +121,21 @@ export default {
       type: 'url',
     },
     {
+      title: 'Intitulé du lien offre',
+      description: 'Par défaut: "J\'offre"',
+      name: 'offerlinktitle',
+      type: 'string',
+    },
+    {
       title: 'Lien réservation',
       name: 'bookinglink',
       type: 'url',
+    },
+    {
+      title: 'Intitulé du lien offre',
+      description: 'Par défaut: "Je réserve"',
+      name: 'bookinglinktitle',
+      type: 'string',
     },
   ],
 };
