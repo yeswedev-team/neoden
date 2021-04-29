@@ -27,6 +27,7 @@ export default function SEO({ children, location, description, title, image }) {
       <meta name="description" content={desc} />
       {/* Open Graph */}
       {location && <meta property="og:url" content={location.href} />}
+      <meta property="og:type" content="website" />
       <meta property="og:image" content={image || '/logo.svg'} />
       <meta property="og:title" content={title} key="ogtitle" />
       <meta
