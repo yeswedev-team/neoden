@@ -117,6 +117,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-verify-bing',
+      options: {
+        userIds: ['72EFEE97121B8660E2AF1B560C44E131'],
+        xmlFileName: 'BingSiteAuth.xml', // optional
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
