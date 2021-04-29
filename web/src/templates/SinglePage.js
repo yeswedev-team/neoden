@@ -41,6 +41,7 @@ export default function SinglePage({
     <>
       <SEO
         title={titleSeo || title.fr}
+        location={location}
         description={descriptionSeo}
         image={
           hero[0]?.background?.mobileImage.asset.fluid.src ||
