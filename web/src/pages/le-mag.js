@@ -43,7 +43,11 @@ export default function BlogIndex({ data, location, pageContext }) {
 
   return (
     <>
-      <SEO title={titleSeo || title.fr} description={descriptionSeo} />
+      <SEO
+        title={titleSeo || title.fr}
+        description={descriptionSeo}
+        location={location}
+      />
       <PostListStyles>
         {postNodes && (
           <>

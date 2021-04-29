@@ -11,6 +11,7 @@ export default function BlogPostTemplate({ data, location }) {
       <SEO
         title={post.titleSeo || post.title}
         description={post.descriptionSeo}
+        location={location}
         image={post.mainImage?.asset.fluid.src}
       />
       {post && (
