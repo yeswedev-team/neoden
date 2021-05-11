@@ -53,8 +53,8 @@ const BlogCardStyles = styled.div`
 
 export default function BlogPostPreview(node) {
   const objectPosition = {
-    x: `${node.mainImage.hotspot.x * 100}%`,
-    y: `${node.mainImage.hotspot.y * 100}%`,
+    x: `${node.mainImage?.hotspot?.x * 100}%`,
+    y: `${node.mainImage?.hotspot?.y * 100}%`,
   };
   return (
     <BlogCardStyles
