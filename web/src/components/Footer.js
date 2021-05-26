@@ -211,7 +211,7 @@ const Footer = ({ footerItems }) => {
     facebook,
     linkedin,
     instagram,
-    twitter,
+    youtube,
     footerNavigation,
     copyNavigation,
     _rawAddress,
@@ -279,10 +279,10 @@ const Footer = ({ footerItems }) => {
                 </a>
               </li>
             )}
-            {twitter && (
+            {youtube && (
               <li>
-                <a href={twitter} target="_blank" rel="noreferrer">
-                  Twitter
+                <a href={youtube} target="_blank" rel="noreferrer">
+                  Youtube
                 </a>
               </li>
             )}

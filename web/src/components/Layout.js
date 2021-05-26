@@ -39,7 +39,7 @@ export default function Layout({ pageContext, children }) {
           facebook
           linkedin
           instagram
-          twitter
+          youtube
           footerNavigation {
             id
             slug {
