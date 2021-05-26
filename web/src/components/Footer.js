@@ -132,6 +132,14 @@ const FooterStyles = styled.footer`
     }
   }
   .footer__contact {
+    a:after {
+      display: none;
+    }
+    a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
     ${mq[2]} {
       width: ${pxtopc(167, 1278)};
     }
