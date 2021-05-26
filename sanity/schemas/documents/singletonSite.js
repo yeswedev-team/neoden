@@ -338,8 +338,8 @@ export default {
       type: 'url',
     },
     {
-      title: 'Twitter',
-      name: 'twitter',
+      title: 'Youtube',
+      name: 'youtube',
       type: 'url',
     },
   ],
