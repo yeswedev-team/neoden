@@ -198,6 +198,13 @@ export const query = graphql`
           _key
           _type
           alertTitle
+          image {
+            asset {
+              fluid(maxWidth: 600, maxHeight: 345) {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
           _rawAlertText(resolveReferences: { maxDepth: 10 })
           alertLinkText
           alertLink {

@@ -347,9 +347,8 @@ const GlobalStyles = createGlobalStyle`
   .warning {
     &--left {
       left: -1.25rem;
-      padding-left: 3.125rem;
-      padding-right: 2.3125rem;
 
+      .alert__content,
       .promo__content {
         padding-left: 3.125rem;
         padding-right: 2.3125rem;
@@ -357,10 +356,9 @@ const GlobalStyles = createGlobalStyle`
     }
     &--center {
       left: 50%;
-      padding-left: 2.3125rem;
-      padding-right: 2.3125rem;
       transform: translateX(-50%);
 
+      .alert__content,
       .promo__content {
         padding-left: 2.3125rem;
         padding-right: 2.3125rem;
@@ -369,9 +367,8 @@ const GlobalStyles = createGlobalStyle`
 
     &--right {
       right: -1.25rem;
-      padding-left: 2.3125rem;
-      padding-right: 3.125rem;
 
+      .alert__content,
       .promo__content {
         padding-left: 2.3125rem;
         padding-right: 3.125rem;
