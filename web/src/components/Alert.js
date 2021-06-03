@@ -11,8 +11,6 @@ const AlertStyles = styled.div`
   background-color: var(--beigelight);
   border-radius: var(--radius);
   bottom: 0;
-  padding-bottom: 2.6875rem;
-  padding-top: 2.6875rem;
   position: fixed;
   text-align: center;
   width: 100%;
@@ -54,11 +52,8 @@ const AlertStyles = styled.div`
 
   ${mq[1]} {
     bottom: 15vh;
-    width: 20.625rem;
+    width: 40rem;
 
-    &.alert--promo {
-      width: 40rem;
-    }
     &.alert--form {
       width: auto;
     }

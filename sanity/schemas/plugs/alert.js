@@ -13,6 +13,11 @@ export default {
       type: 'string',
     },
     {
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+    },
+    {
       name: 'alertText',
       title: "Texte de l'alerte",
       type: 'array',
