@@ -74,10 +74,6 @@ async function turnPostsIntoPages({ graphql, actions }) {
   const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
   const pageCount = Math.ceil(data.posts.totalCount / pageSize);
 
-  const postsList = postEdges.filter(
-    (edge) => !isFuture(parseISO(edge.node.publishedAt))
-  );
-
   Array.from({ length: pageCount }).forEach((_, i) => {
     actions.createPage({
       path: `/le-mag/${i + 1}`,
