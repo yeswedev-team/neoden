@@ -51,26 +51,26 @@ export default function Breadcrumb({ title, titleMenu, origin }) {
       <div
         id="breadcrumbs"
         itemScope
-        itemType="http://data-vocabulary.org/Breadcrumb"
+        itemType="https://schema.org/BreadcrumbList"
       >
-        <Link rel="home" to="/" itemProp="url">
-          <span itemProp="title">Home</span>
+        <Link rel="home" to="/" itemProp="item">
+          <span itemProp="name">Home</span>
         </Link>
         |
         <span
-          itemProp="child"
+          itemProp="itemListElement"
           itemScope
-          itemType="http://data-vocabulary.org/Breadcrumb"
+          itemType="https://schema.org/BreadcrumbList"
         >
           {origin === 'blog' && (
             <>
-              <Link className="mag" rel="home" to="/le-mag/" itemProp="url">
-                <span itemProp="title">Le Mag</span>
+              <Link className="mag" rel="home" to="/le-mag/" itemProp="item">
+                <span itemProp="name">Le Mag</span>
               </Link>{' '}
               |
             </>
           )}
-          <strong>{titleMenu || title}</strong>
+          <strong itemProp="name">{titleMenu || title}</strong>
         </span>
       </div>
     </BreadcrumbsStyles>
