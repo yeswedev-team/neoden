@@ -291,7 +291,7 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     font-size: 1.3125rem;
     position: absolute;
-    right: 30px;
+    right: 13px;
     top: 13px;
 
     strong {
@@ -346,7 +346,7 @@ const GlobalStyles = createGlobalStyle`
   /* alert */
   .warning {
     &--left {
-      left: -1.25rem;
+      left: 1.25rem;
 
       .alert__content,
       .promo__content {
@@ -366,7 +366,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     &--right {
-      right: -1.25rem;
+      right: 1.25rem;
 
       .alert__content,
       .promo__content {

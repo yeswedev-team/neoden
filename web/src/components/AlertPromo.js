@@ -8,6 +8,7 @@ import { mq } from '../styles/breakpoints';
 
 const PromoStyles = styled.div`
   .promo__content {
+    padding-bottom: 2rem;
     padding-top: 2rem;
     text-align: center;
 
@@ -79,7 +80,7 @@ export default function AlertSimple({ content }) {
         {period && <p>{period}</p>}
         {discount && (
           <h3 className="discount">
-            <strong>-{discount}%</strong>
+            <strong>-{discount}</strong>
             {text && <span>{text}</span>}
           </h3>
         )}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 // import { useCookies } from 'react-cookie';
 import { mq } from '../styles/breakpoints';
-
+import Close from '../assets/images/close.inline.svg';
 import AlertSimple from './AlertSimple';
 import AlertForm from './AlertForm';
 import AlertPromo from './AlertPromo';
@@ -46,8 +46,21 @@ const AlertStyles = styled.div`
     margin: 1.25rem 0;
   }
   .close {
-    color: var(--brown);
+    align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    height: 1.875rem;
+    padding: 0;
+    width: 1.875rem;
     z-index: 2;
+
+    svg {
+      display: block;
+      height: 0.75rem;
+      width: 0.75rem;
+    }
   }
 
   ${mq[1]} {
@@ -113,7 +126,7 @@ export default function Alert({ alert }) {
     <div className={`${isOpen === true ? 'visible' : 'invisible'}`}>
       <AlertStyles className={handleWarningPosition(alertPosition, type)}>
         <button type="button" className="close" onClick={(e) => handleClick(e)}>
-          <strong>X</strong>
+          <Close />
           <span className="sr-only">Fermer</span>
         </button>
         {type && type === 'alert' && <AlertSimple content={alertDestiny[0]} />}

@@ -74,7 +74,7 @@ export default function Layout({ pageContext, children }) {
       }
     `
   );
-  console.log(footerItems);
+  console.log(navItems);
   // console.log(getCookieConsentValue());
   const location = useLocation();
   const slug = location.pathname.replace(/[\/\\]/g, '');
