@@ -15,6 +15,22 @@ const BreadcrumbsStyles = styled.div`
     top: 6.25rem;
   }
 
+  ol {
+    display: flex;
+
+    li {
+      position: relative;
+
+      &:after {
+        content: '|';
+        left: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
   @media screen and (min-width: 1440px) {
     padding-left: calc((100% - 79.875rem) / 2);
   }
@@ -48,31 +64,43 @@ const BreadcrumbsStyles = styled.div`
 export default function Breadcrumb({ title, titleMenu, origin }) {
   return (
     <BreadcrumbsStyles className="breadcrumb">
-      <div
-        id="breadcrumbs"
+      <ol
         itemScope
         itemType="https://schema.org/BreadcrumbList"
+        id="breadcrumbs"
       >
-        <Link rel="home" to="/" itemProp="item">
-          <span itemProp="name">Home</span>
-        </Link>
-        |
-        <span
+        <li
           itemProp="itemListElement"
           itemScope
-          itemType="https://schema.org/BreadcrumbList"
+          itemType="https://schema.org/ListItem"
         >
-          {origin === 'blog' && (
+          <Link rel="home" to="/" itemProp="item">
+            <span itemProp="name">Home</span>
+          </Link>
+        </li>
+        {origin === 'blog' && (
+          <li
+            itemProp="itemListElement"
+            itemScope
+            itemType="https://schema.org/ListItem"
+          >
             <>
               <Link className="mag" rel="home" to="/le-mag/" itemProp="item">
                 <span itemProp="name">Le Mag</span>
-              </Link>{' '}
-              |
+              </Link>
             </>
-          )}
-          <strong itemProp="name">{titleMenu || title}</strong>
-        </span>
-      </div>
+          </li>
+        )}
+        <li
+          itemProp="itemListElement"
+          itemScope
+          itemType="https://schema.org/ListItem"
+        >
+          <strong itemProp="item">
+            <span itemProp="name">{titleMenu || title}</span>
+          </strong>
+        </li>
+      </ol>
     </BreadcrumbsStyles>
   );
 }
