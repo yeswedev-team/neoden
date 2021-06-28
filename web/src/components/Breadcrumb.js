@@ -61,7 +61,9 @@ const BreadcrumbsStyles = styled.div`
   }
 `;
 
-export default function Breadcrumb({ title, titleMenu, origin }) {
+export default function Breadcrumb({ title, titleMenu, origin, location }) {
+  console.log(origin);
+  console.log(location);
   return (
     <BreadcrumbsStyles className="breadcrumb">
       <ol
@@ -96,9 +98,9 @@ export default function Breadcrumb({ title, titleMenu, origin }) {
           itemScope
           itemType="https://schema.org/ListItem"
         >
-          <strong itemProp="item">
+          <Link to={location.pathname} itemProp="item">
             <span itemProp="name">{titleMenu || title}</span>
-          </strong>
+          </Link>
           <meta itemProp="position" content={origin === 'blog' ? '3' : '2'} />
         </li>
       </ol>
