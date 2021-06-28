@@ -77,6 +77,7 @@ export default function Breadcrumb({ title, titleMenu, origin }) {
           <Link rel="home" to="/" itemProp="item">
             <span itemProp="name">Home</span>
           </Link>
+          <meta itemProp="position" content="1" />
         </li>
         {origin === 'blog' && (
           <li
@@ -84,11 +85,10 @@ export default function Breadcrumb({ title, titleMenu, origin }) {
             itemScope
             itemType="https://schema.org/ListItem"
           >
-            <>
-              <Link className="mag" rel="home" to="/le-mag/" itemProp="item">
-                <span itemProp="name">Le Mag</span>
-              </Link>
-            </>
+            <Link className="mag" rel="home" to="/le-mag/" itemProp="item">
+              <span itemProp="name">Le Mag</span>
+            </Link>
+            <meta itemProp="position" content="2" />
           </li>
         )}
         <li
@@ -99,6 +99,7 @@ export default function Breadcrumb({ title, titleMenu, origin }) {
           <strong itemProp="item">
             <span itemProp="name">{titleMenu || title}</span>
           </strong>
+          <meta itemProp="position" content={origin === 'blog' ? '3' : '2'} />
         </li>
       </ol>
     </BreadcrumbsStyles>
