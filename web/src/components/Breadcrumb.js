@@ -62,8 +62,8 @@ const BreadcrumbsStyles = styled.div`
 `;
 
 export default function Breadcrumb({ title, titleMenu, origin, location }) {
-  console.log(origin);
-  console.log(location);
+  // console.log(origin);
+  // console.log(location);
   return (
     <BreadcrumbsStyles className="breadcrumb">
       <ol

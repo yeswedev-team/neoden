@@ -67,7 +67,7 @@ export default function AlertSimple({ content }) {
     offerlink,
     bookinglink,
   } = content;
-  console.log(image);
+  // console.log(image);
   return (
     <PromoStyles>
       {image && (

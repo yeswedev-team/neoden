@@ -20,7 +20,7 @@ export default function AlertSimple({ content }) {
     alertLinkText,
     image,
   } = content;
-  console.log(image);
+  // console.log(image);
   const btnText = alertLinkText || 'En savoir plus';
   return (
     <AlertSimpleStyles>

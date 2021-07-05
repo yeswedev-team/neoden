@@ -6,6 +6,7 @@ import Close from '../assets/images/close.inline.svg';
 import AlertSimple from './AlertSimple';
 import AlertForm from './AlertForm';
 import AlertPromo from './AlertPromo';
+import Portal from './Portal';
 
 const AlertStyles = styled.div`
   background-color: var(--beigelight);
@@ -64,7 +65,7 @@ const AlertStyles = styled.div`
   }
 
   ${mq[1]} {
-    bottom: 15vh;
+    bottom: 1.25rem;
     width: 40rem;
 
     &.alert--form {
@@ -123,16 +124,24 @@ export default function Alert({ alert }) {
   // }, [cookies]);
 
   return (
-    <div className={`${isOpen === true ? 'visible' : 'invisible'}`}>
-      <AlertStyles className={handleWarningPosition(alertPosition, type)}>
-        <button type="button" className="close" onClick={(e) => handleClick(e)}>
-          <Close />
-          <span className="sr-only">Fermer</span>
-        </button>
-        {type && type === 'alert' && <AlertSimple content={alertDestiny[0]} />}
-        {type && type === 'form' && <AlertForm content={alertDestiny[0]} />}
-        {type && type === 'promo' && <AlertPromo content={alertDestiny[0]} />}
-      </AlertStyles>
-    </div>
+    <Portal>
+      <div className={`${isOpen === true ? 'visible' : 'invisible'}`}>
+        <AlertStyles className={handleWarningPosition(alertPosition, type)}>
+          <button
+            type="button"
+            className="close"
+            onClick={(e) => handleClick(e)}
+          >
+            <Close />
+            <span className="sr-only">Fermer</span>
+          </button>
+          {type && type === 'alert' && (
+            <AlertSimple content={alertDestiny[0]} />
+          )}
+          {type && type === 'form' && <AlertForm content={alertDestiny[0]} />}
+          {type && type === 'promo' && <AlertPromo content={alertDestiny[0]} />}
+        </AlertStyles>
+      </div>
+    </Portal>
   );
 }
