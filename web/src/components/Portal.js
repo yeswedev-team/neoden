@@ -14,8 +14,8 @@ export default class Portal extends Component {
     // Use a ternary operator to make sure that the document object is defined
     this.el =
       typeof document !== `undefined` ? document.createElement('div') : null;
-    this.el.setAttribute('role', 'dialog');
-    this.el.setAttribute('aria-modal', 'true');
+    this.el?.setAttribute('role', 'dialog');
+    this.el?.setAttribute('aria-modal', 'true');
   }
 
   componentDidMount = () => {
