@@ -14,7 +14,7 @@ const handleLocation = (location) => {
     case 'flottaison-isolation-sensorielle':
       return '0 16rem';
     case 'bienfaits-flottaison':
-      return '0 22rem';
+      return '0 10rem';
     case 'nous-contacter':
       return '0 22.6rem';
     default:
@@ -41,7 +41,9 @@ const HeroStyles = styled.section`
   overflow: hidden;
 
   ${mq[3]} {
-    max-height: 95vh;
+    &.has-bg {
+      max-height: 95vh;
+    }
   }
 
   ${mq[1]} {
@@ -152,7 +154,7 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
   return (
     <HeroStyles
       className={`section section__hero${
-        heroData?.background ? '' : ' section__hero--boxed'
+        heroData?.background ? ' has-bg' : ' section__hero--boxed'
       }`}
       location={context}
     >
