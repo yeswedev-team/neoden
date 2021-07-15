@@ -28,6 +28,13 @@ const BreadcrumbsStyles = styled.div`
         top: 50%;
         transform: translateY(-50%);
       }
+
+      &:first-child:after {
+        display: none;
+      }
+      &:first-child a {
+        padding-left: 0;
+      }
     }
   }
 
@@ -38,7 +45,7 @@ const BreadcrumbsStyles = styled.div`
   a {
     color: var(--brownlighter);
     font-size: 0.875rem;
-    padding: 0 8px 0 0;
+    padding: 0 8px;
     text-decoration: underline;
 
     &:hover {
