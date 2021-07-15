@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Wavify from '../Wave';
@@ -65,6 +65,16 @@ const Intro = ({
   hasWaveDown,
   hasWaveUp,
 }) => {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
   const sources = [
     {
       ...frontImage?.mobileImage?.asset?.fluid,
