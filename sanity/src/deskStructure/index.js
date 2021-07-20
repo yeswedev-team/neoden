@@ -4,8 +4,6 @@ import siteSettings from './siteSettings';
 import page from './page';
 import post from './post';
 
-import JSONpreview from '../components/previews/json/JSONpreview';
-
 // Hide document types that we already have a structure definition for
 const hiddenDocTypes = (listItem) =>
   !['singletonSite', 'page', 'post'].includes(listItem.getId());
@@ -29,7 +27,4 @@ export const getDefaultDocumentNode = (props) =>
    * https://www.sanity.io/docs/structure-builder-reference#getdefaultdocumentnode-97e44ce262c9
    */
   // const {schemaType} = props
-  S.document().views([
-    S.view.form(),
-    S.view.component(JSONpreview).title('JSON'),
-  ]);
+  S.document().views([S.view.form()]);
