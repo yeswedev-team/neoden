@@ -10,14 +10,13 @@
   "plugins": [
     "@sanity/base",
     "@sanity/components",
-    "@sanity/dashboard",
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/google-maps-input",
+    "@sanity/production-preview",
     "asset-source-unsplash",
-    "media",
-    "dashboard-widget-gatsby"
+    "media"
   ],
   "env": {
     "development": {
@@ -34,8 +33,8 @@
       "path": "./src/deskStructure/index.js"
     },
     {
-      "implements": "part:@sanity/dashboard/config",
-      "path": "./src/dashboardConfig.js"
+      "implements": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./resolveProductionUrl.js"
     }
   ]
 }
