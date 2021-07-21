@@ -33,11 +33,14 @@ module.exports = {
         icon: `src/assets/images/icon.png`,
       },
     },
+    `gatsby-plugin-remove-trailing-slashes`,
     {
-      resolve: `gatsby-plugin-canonical-urls`,
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
       options: {
         siteUrl: `https://www.neoden.fr`,
-        stripQueryString: true,
+        noTrailingSlash: true,
+        noQueryString: true,
+        noHash: true,
       },
     },
     {
