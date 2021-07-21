@@ -15,7 +15,7 @@ export default function resolveProductionUrl(document) {
 
   if (document._type === 'post') {
     const dateSegment = format(parseISO(document.publishedAt), 'yyyy/MM');
-    return `${previewURL}/actualites/${dateSegment}/${document.slug.current}`;
+    return `${previewURL}/le-mag/${dateSegment}/${document.slug.current}`;
   }
   if (document._type === 'page') {
     if (document.slug.current === 'home') {
