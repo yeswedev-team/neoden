@@ -36,6 +36,7 @@ export default function SEO({ children, location, description, title, image }) {
         key="ogsitename"
       />
       <meta property="og:description" content={desc} key="ogdesc" />
+      <link rel="alternate" hrefLang="fr-fr" href={location.href} />
       {children}
     </Helmet>
   );
