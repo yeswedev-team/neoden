@@ -20,7 +20,7 @@ export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
 export function getBlogUrl(publishedAt, slug) {
   return `/le-mag/${format(parseISO(publishedAt), 'yyyy/MM')}/${
     slug.current || slug
-  }/`;
+  }`;
 }
 
 export function buildImageObj(source = { asset: {} }) {
