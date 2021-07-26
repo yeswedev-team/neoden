@@ -14,10 +14,17 @@ export default function SEO({ children, location, description, title, image }) {
     }
   `);
   const desc = description || site.siteMetadata.description;
+
+  const isProd = process.env.NODE_ENV === 'production';
+
   return (
     <Helmet titleTemplate={`%s - ${site.siteMetadata.title}`}>
       <html lang="fr" />
       <title>{title}</title>
+
+      {/* Désindexation pour la preview */}
+      {!isProd && <meta name="robots" content="noindex" />}
+
       {/* Meta Tags */}
       <meta
         name="viewport"
@@ -36,6 +43,7 @@ export default function SEO({ children, location, description, title, image }) {
         key="ogsitename"
       />
       <meta property="og:description" content={desc} key="ogdesc" />
+
       <link rel="alternate" hrefLang="fr-fr" href={location.href} />
       {children}
     </Helmet>
