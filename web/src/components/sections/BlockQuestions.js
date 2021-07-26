@@ -6,7 +6,6 @@ import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import Accordion from '../Accordion';
 import Overprint from '../../assets/images/logo-neoden-grey-seul.inline.svg';
-import SEO from '../SEO';
 
 const handleLocation = (props) => {
   if (!props.hasWaveDown && props.hasDoubleBotMargin) {
