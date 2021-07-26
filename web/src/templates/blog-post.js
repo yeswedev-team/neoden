@@ -1,10 +1,12 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import { format, parseISO } from 'date-fns';
 import BlogPost from '../components/blog/BlogPost';
 import SEO from '../components/SEO';
 
 export default function BlogPostTemplate({ data, location }) {
-  const { post, lastposts } = data;
+  const { post, lastposts, logo } = data;
 
   return (
     <>
@@ -14,6 +16,36 @@ export default function BlogPostTemplate({ data, location }) {
         location={location}
         image={post.mainImage?.asset.fluid.src}
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {`
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.neoden.fr/"
+            },
+            "headline": "${post.title}",
+            "image": "${post.mainImage?.asset?.fluid?.src}",  
+            "author": {
+              "@type": "Person",
+              "name": "Neoden"
+            },  
+            "publisher": {
+              "@type": "Organization",
+              "name": "",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "${logo?.logo?.image?.asset?.url}"
+              }
+            },
+            "datePublished": "${format(
+              parseISO(post.publishedAt),
+              'yyyy-MM-dd'
+            )}"
+          `}
+        </script>
+      </Helmet>
       {post && (
         <BlogPost location={location} {...post} {...lastposts} id="content" />
       )}
@@ -23,6 +55,15 @@ export default function BlogPostTemplate({ data, location }) {
 
 export const query = graphql`
   query($id: String!) {
+    logo: sanitySingletonSite(_id: { eq: "singletonSite" }) {
+      logo {
+        image {
+          asset {
+            url
+          }
+        }
+      }
+    }
     post: sanityPost(id: { eq: $id }) {
       id
       publishedAt

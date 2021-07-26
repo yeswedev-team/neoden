@@ -115,6 +115,7 @@ async function turnRoutesIntoPages({ graphql, actions }) {
       path: `/${uri}`,
       component: pageTemplate,
       context: {
+        type: 'page',
         slug: page.slug.current,
       },
     });
