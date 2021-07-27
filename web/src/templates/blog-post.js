@@ -19,30 +19,32 @@ export default function BlogPostTemplate({ data, location }) {
       <Helmet>
         <script type="application/ld+json">
           {`
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": "https://www.neoden.fr/"
-            },
-            "headline": "${post.title}",
-            "image": "${post.mainImage?.asset?.fluid?.src}",  
-            "author": {
-              "@type": "Person",
-              "name": "Neoden"
-            },  
-            "publisher": {
-              "@type": "Organization",
-              "name": "",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "${logo?.logo?.image?.asset?.url}"
-              }
-            },
-            "datePublished": "${format(
-              parseISO(post.publishedAt),
-              'yyyy-MM-dd'
-            )}"
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://www.neoden.fr/"
+              },
+              "headline": "${post.title}",
+              "image": "${post.mainImage?.asset?.fluid?.src}",  
+              "author": {
+                "@type": "Person",
+                "name": "Neoden"
+              },  
+              "publisher": {
+                "@type": "Organization",
+                "name": "",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "${logo?.logo?.image?.asset?.url}"
+                }
+              },
+              "datePublished": "${format(
+                parseISO(post.publishedAt),
+                'yyyy-MM-dd'
+              )}"
+            }
           `}
         </script>
       </Helmet>

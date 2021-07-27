@@ -96,61 +96,65 @@ export default function Layout({ pageContext, children }) {
       <Helmet>
         <script type="application/ld+json">
           {`
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Neoden",
-            "image": "",
-            "@id": "",
-            "url": "https://www.neoden.fr/",
-            "telephone": "02 28 49 29 37",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "20 Boulevard de Berlin",
-              "addressLocality": "Nantes",
-              "postalCode": "44000",
-              "addressCountry": "FR"
-            },
-            "openingHoursSpecification": [{
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday",
-                "Saturday"
-              ],
-              "opens": "09:00",
-              "closes": "21:00"
-            },{
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Tuesday",
-                "Thursday"
-              ],
-              "opens": "07:30",
-              "closes": "21:00"
-            },{
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Wednesday",
-                "Friday"
-              ],
-              "opens": "09:00",
-              "closes": "23:00"
-            },{
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": "Sunday",
-              "opens": "09:00",
-              "closes": "13:00"
-            }]
+            {
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "Neoden",
+              "image": "",
+              "@id": "",
+              "url": "https://www.neoden.fr/",
+              "telephone": "02 28 49 29 37",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "20 Boulevard de Berlin",
+                "addressLocality": "Nantes",
+                "postalCode": "44000",
+                "addressCountry": "FR"
+              },
+              "openingHoursSpecification": [{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Saturday"
+                ],
+                "opens": "09:00",
+                "closes": "21:00"
+              },{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Tuesday",
+                  "Thursday"
+                ],
+                "opens": "07:30",
+                "closes": "21:00"
+              },{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Wednesday",
+                  "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "23:00"
+              },{
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "09:00",
+                "closes": "13:00"
+              }]
+            }
           `}
         </script>
         {pageContext.type === 'page' && (
           <script type="application/ld+json">
             {`
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Neoden",
-              "alternateName": "Neoden",
-              "url": "https://www.neoden.fr/",
-              "logo": "${logo?.logo?.image?.asset?.url}"
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Neoden",
+                "alternateName": "Neoden",
+                "url": "https://www.neoden.fr/",
+                "logo": "${logo?.logo?.image?.asset?.url}"
+              }
             `}
           </script>
         )}

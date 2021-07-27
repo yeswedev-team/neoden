@@ -80,9 +80,11 @@ export default function BlockQuestions({
       <Helmet>
         <script type="application/ld+json">
           {`
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": ${JSON.stringify(jsonArray)}
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": ${JSON.stringify(jsonArray)}
+            }
         `}
         </script>
       </Helmet>
