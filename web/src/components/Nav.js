@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { remCalc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
