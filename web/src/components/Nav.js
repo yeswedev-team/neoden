@@ -89,7 +89,7 @@ const NavStyles = styled.nav`
 `;
 
 export default function Nav({ navItems, open, setOpen }) {
-  const items = navItems.mainNavigation;
+  const items = navItems?.mainNavigation;
 
   return (
     <NavStyles open={open}>
