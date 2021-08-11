@@ -89,6 +89,16 @@ const NavStyles = styled.nav`
 `;
 
 export default function Nav({ navItems, open, setOpen }) {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
+
   const items = navItems?.mainNavigation;
 
   return (
