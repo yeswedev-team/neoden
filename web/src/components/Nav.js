@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { remCalc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
@@ -89,22 +89,12 @@ const NavStyles = styled.nav`
 `;
 
 export default function Nav({ navItems, open, setOpen }) {
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
-    return null;
-  }
-
   const items = navItems?.mainNavigation;
 
   return (
     <NavStyles open={open}>
       <ul className="navList">
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <li className="menuItem" key={`item-${index}`}>
             <Link
               to={`/${item.slug.current}`}
