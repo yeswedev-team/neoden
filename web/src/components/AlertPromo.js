@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import Img from 'gatsby-image';
-import { MdCardGiftcard } from 'react-icons/md';
-import { IoMdOpen } from 'react-icons/io';
-import { pxtoem } from '../styles/Mixins';
-import { mq } from '../styles/breakpoints';
+import React from "react";
+import styled from "styled-components";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { MdCardGiftcard } from "react-icons/md";
+import { IoMdOpen } from "react-icons/io";
+import { pxtoem } from "../styles/Mixins";
+import { mq } from "../styles/breakpoints";
 
 const PromoStyles = styled.div`
   .promo__content {
@@ -58,21 +58,14 @@ const PromoStyles = styled.div`
 `;
 
 export default function AlertSimple({ content }) {
-  const {
-    image,
-    title,
-    period,
-    discount,
-    text,
-    offerlink,
-    bookinglink,
-  } = content;
+  const { image, title, period, discount, text, offerlink, bookinglink } =
+    content;
   // console.log(image);
   return (
     <PromoStyles>
       {image && (
         <div className="img-container">
-          <Img fluid={image?.asset.fluid} alt={title} />
+          <GatsbyImage image={getImage(image?.asset)} alt={title} />
         </div>
       )}
       <div className="promo__content">

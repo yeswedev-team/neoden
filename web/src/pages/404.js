@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 import Wavify from '../components/Wave';
 import { mq } from '../styles/breakpoints';
@@ -52,9 +52,7 @@ export const query = graphql`
       nodes {
         defaultImage {
           asset {
-            fluid(maxWidth: 1600) {
-              ...GatsbySanityImageFluid
-            }
+            gatsbyImageData(width: 1600, layout: FULL_WIDTH)
           }
         }
       }
@@ -79,7 +77,7 @@ export default function FourOhFourPage({ data }) {
   return (
     <FourOhFourStyles>
       <div className="blog-article__illustr">
-        {defaultImage && <Img fluid={defaultImage} alt="Image" />}
+        {defaultImage && <GatsbyImage image={getImage(defaultImage?.asset)} alt="Image" />}
       </div>
       <Wavify direction="up" bgcolor="#ffffff" />
 

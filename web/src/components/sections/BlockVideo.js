@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import getYouTubeId from 'get-youtube-id';
 import YouTube from 'react-youtube';
@@ -77,7 +77,7 @@ export default function BlockVideo({ title, image, youtube }) {
     <VideoStyles className="section section__video">
       {image && (
         <div className="video__illustr">
-          <Img fluid={image.asset.fluid} alt={title} />
+          <GatsbyImage image={getImage(image?.asset)} alt={title} />
         </div>
       )}
       {title && (

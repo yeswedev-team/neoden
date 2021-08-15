@@ -18,10 +18,10 @@ export default function Block({
     <>
       <MapToComponents
         getKey={(section) => section._key}
-        getType={(section) => section.__typename}
+        getType={(section) => section._type}
         list={block}
         map={{
-          SanityOffers: (props) => (
+          offers: (props) => (
             <BlockOffers
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
@@ -29,7 +29,7 @@ export default function Block({
               {...props}
             />
           ),
-          SanityCta: (props) => (
+          cta: (props) => (
             <BlockCta
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
@@ -38,7 +38,7 @@ export default function Block({
               {...props}
             />
           ),
-          SanityMembers: (props) => (
+          members: (props) => (
             <BlockMembers
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
@@ -46,7 +46,7 @@ export default function Block({
               {...props}
             />
           ),
-          SanityMaps: (props) => (
+          maps: (props) => (
             <BlockGmap
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
@@ -54,7 +54,7 @@ export default function Block({
               {...props}
             />
           ),
-          SanityTestimony: (props) => (
+          testimony: (props) => (
             <BlockTestimonies
               hasWaveDown={hasWaveDown}
               hasWaveUp={hasWaveUp}
@@ -64,32 +64,28 @@ export default function Block({
           ),
         }}
         mapDataToProps={{
-          SanityOffers: ({ data }) => ({
+          offers: ({ data }) => ({
             title: data.title,
             overtitle: data.overtitle,
             offerLink: data.offerLink,
           }),
-          SanityCta: ({ data }) => ({
+          cta: ({ data }) => ({
             buttonTitle: data.title,
             link: data.ctaPageLink,
           }),
-          SanityBlockQuestions: ({ data }) => ({
-            title: data.title,
-            questionsList: data.questionsList,
-          }),
-          SanityMembers: ({ data }) => ({
+          members: ({ data }) => ({
             title: data.title,
             subtitle: data.subtitle,
             privilegeList: data.privilegeList,
             buttonTitle: data.buttonTitle,
             membersLink: data.membersLink,
           }),
-          SanityMaps: ({ data }) => ({
+          maps: ({ data }) => ({
             title: data.title,
             defaultZoom: data.defaultZoom,
             locations: data.locations,
           }),
-          SanityTestimony: ({ data }) => ({
+          testimony: ({ data }) => ({
             list: data.listTestimonies,
             title: data.title,
           }),

@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { getBlogUrl } from '../../utils/helpers';
@@ -107,18 +107,10 @@ export default function TwoColumnsWithOverlayedImages(data) {
       <div className="container container--lg">
         <div className="col">
           <Link to={link} className="grow">
-            <Img
-              className="back-img"
-              fluid={data.backImage.asset.fluid}
-              alt={data.title}
-            />
+            <GatsbyImage className="back-img" image={getImage(data.backImage.asset)} alt={data.title} />
           </Link>
           <Link to={link} className="grow">
-            <Img
-              className="front-img"
-              fluid={data.frontImage.asset.fluid}
-              alt={data.title}
-            />
+            <GatsbyImage className="front-img" image={getImage(data.frontImage.asset)} alt={data.title} />
           </Link>
         </div>
         <div className="col col__content">

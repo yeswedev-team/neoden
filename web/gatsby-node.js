@@ -34,7 +34,7 @@ async function createBlogPostPages({ graphql, actions }) {
       const dateSegment = format(parseISO(publishedAt), 'yyyy/MM');
 
       actions.createPage({
-        path: `/le-mag/${dateSegment}/${slug.current}/`,
+        path: `/le-mag/${dateSegment}/${slug.current}`,
         component: postTemplate,
         context: {
           id,
@@ -69,7 +69,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
   `);
 
   if (data.errors) throw data.errors;
-  const postEdges = (data.posts || {}).edges || [];
+  // const postEdges = (data.posts || {}).edges || [];
 
   const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
   const pageCount = Math.ceil(data.posts.totalCount / pageSize);

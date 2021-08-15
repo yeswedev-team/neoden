@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage, withArtDirection } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
@@ -75,16 +75,15 @@ const Intro = ({
     return null;
   }
 
-  const sources = [
-    {
-      ...frontImage?.mobileImage?.asset?.fluid,
-      media: `(max-width: 767px)`,
-    },
-    {
-      ...frontImage?.desktopImage?.asset?.fluid,
-      media: `(min-width: 768px)`,
-    },
-  ];
+  let images;
+  if (frontImage) {
+    images = withArtDirection(getImage(frontImage?.desktopImage?.asset), [
+      {
+        media: '(max-width: 767px)',
+        image: getImage(frontImage?.mobileImage?.asset),
+      },
+    ]);
+  }
 
   return (
     <IntroTextStyles
@@ -104,7 +103,7 @@ const Intro = ({
       <div className="container container--md">
         {frontImage && (
           <div className="img-container">
-            <Img fluid={sources} alt={title} />
+            <GatsbyImage image={images} alt={title} />
             <Overprint className="overprint" />
           </div>
         )}

@@ -14,7 +14,7 @@ export default function BlogPostTemplate({ data, location }) {
         title={post.titleSeo || post.title}
         description={post.descriptionSeo}
         location={location}
-        image={post.mainImage?.asset.fluid.src}
+        image={post.mainImage?.asset.gatsbyImageData.images.fallback.src}
       />
       <Helmet>
         <script type="application/ld+json">
@@ -27,7 +27,9 @@ export default function BlogPostTemplate({ data, location }) {
                 "@id": "https://www.neoden.fr/"
               },
               "headline": "${post.title}",
-              "image": "${post.mainImage?.asset?.fluid?.src}",  
+              "image": "${
+                post.mainImage?.asset?.gatsbyImageData.images.fallback.src
+              }",  
               "author": {
                 "@type": "Person",
                 "name": "Neoden"
@@ -56,7 +58,7 @@ export default function BlogPostTemplate({ data, location }) {
 }
 
 export const query = graphql`
-  query($id: String!) {
+  query ($id: String!) {
     logo: sanitySingletonSite(_id: { eq: "singletonSite" }) {
       logo {
         image {
@@ -71,9 +73,7 @@ export const query = graphql`
       publishedAt
       mainImage {
         asset {
-          fluid(maxWidth: 1600) {
-            ...GatsbySanityImageFluid
-          }
+          gatsbyImageData(width: 1600, layout: FULL_WIDTH)
         }
         alt
       }
@@ -114,9 +114,7 @@ export const query = graphql`
           publishedAt
           mainImage {
             asset {
-              fluid(maxWidth: 200, maxHeight: 200) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 200, height: 200, layout: FULL_WIDTH)
             }
             alt
           }

@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import React from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import SwiperCore, {
   Controller,
   Navigation,
@@ -236,7 +236,7 @@ export default function BlockTestimonies({
                     );
                   })}
                 {slide?.image && (
-                  <Img fluid={slide?.image?.asset?.fluid} alt={slide.title} />
+                  <GatsbyImage image={getImage(slide?.image?.asset)} alt={slide.title} />
                 )}
                 <div className="slide__text">
                   {slide.title && (

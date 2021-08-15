@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage, withArtDirection } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { getBlogUrl } from '../utils/helpers';
 import Logo from '../assets/images/logo-neoden-seul.inline.svg';
@@ -143,13 +143,18 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
     }
   }
 
-  const sources = [
-    heroData?.background?.mobileImage.asset.fluid,
-    {
-      ...heroData?.background?.desktopImage.asset.fluid,
-      media: `(min-width: 768px)`,
-    },
-  ];
+  let images;
+  if (heroData?.background) {
+    images = withArtDirection(
+      getImage(heroData?.background?.desktopImage?.asset),
+      [
+        {
+          media: '(max-width: 767px)',
+          image: getImage(heroData?.background?.mobileImage?.asset),
+        },
+      ]
+    );
+  }
 
   return (
     <HeroStyles
@@ -160,7 +165,7 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
     >
       {heroData?.background && (
         <div className="hero__illustr">
-          <Img fluid={sources} alt={title.fr} />
+          <GatsbyImage image={images} alt={title.fr} />
         </div>
       )}
       {context !== 'home' && (

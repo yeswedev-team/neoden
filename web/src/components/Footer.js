@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Logo from '../assets/images/logo-neoden.inline.svg';
 import LogoOnly from '../assets/images/logo-neoden-seul.inline.svg';
@@ -214,16 +214,6 @@ const FooterStyles = styled.footer`
 `;
 
 const Footer = ({ footerItems }) => {
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
-  if (!hasMounted) {
-    return null;
-  }
-
   const {
     tel,
     facebook,
@@ -248,7 +238,7 @@ const Footer = ({ footerItems }) => {
         <nav>
           <p className="label">Neoden</p>
           <ul>
-            {footerNavigation.map((item) => (
+            {footerNavigation?.map((item) => (
               <li key={item.id}>
                 <Link to={`/${item.slug.current}`}>
                   {item.page.titleMenu ? (

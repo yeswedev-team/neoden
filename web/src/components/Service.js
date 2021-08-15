@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { MdCardGiftcard } from 'react-icons/md';
 import { IoMdOpen } from 'react-icons/io';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import PortableText from './PortableText';
 // import Modal from './Modal';
 
@@ -89,7 +89,7 @@ export default function Service({ service }) {
           */}
         </div>
       </div>
-      <Img fluid={service?.image?.asset?.fluid} />
+      <GatsbyImage image={getImage(service?.image?.asset)} alt="" />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { format, parseISO } from 'date-fns';
 import { fr } from 'date-fns/locale';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { getBlogUrl } from '../../utils/helpers';
@@ -52,25 +52,29 @@ const BlogCardStyles = styled.div`
 `;
 
 export default function BlogPostPreview(node) {
+  const { otherImage, publishedAt, slug, title, _rawExcerpt } = node;
   const objectPosition = {
-    x: `${node.mainImage?.hotspot?.x * 100}%`,
-    y: `${node.mainImage?.hotspot?.y * 100}%`,
+    x: `${otherImage?.otherImage?.hotspot?.x * 100}%`,
+    y: `${otherImage?.otherImage?.hotspot?.y * 100}%`,
   };
   return (
     <BlogCardStyles
       className="blog-card grow grow-fast"
       objectPosition={objectPosition}
     >
-      <Link to={getBlogUrl(node.publishedAt, node.slug.current)}>
-        {node.mainImage && node.mainImage.asset && (
-          <Img fluid={node.mainImage.asset.fluid} alt={node.mainImage.alt} />
+      <Link to={getBlogUrl(publishedAt, slug.current)}>
+        {otherImage && otherImage?.asset && (
+          <GatsbyImage
+            image={getImage(otherImage?.asset)}
+            alt={otherImage?.alt}
+          />
         )}
         <div className="blog-card__content">
           <p className="blog-card__date">
-            {format(parseISO(node.publishedAt), 'dd MMMM yyyy', { locale: fr })}
+            {format(parseISO(publishedAt), 'dd MMMM yyyy', { locale: fr })}
           </p>
-          <h2 className="small-title">{node.title}</h2>
-          <PortableText blocks={node._rawExcerpt} id="excerpt" />
+          <h2 className="small-title">{title}</h2>
+          <PortableText blocks={_rawExcerpt} id="excerpt" />
         </div>
       </Link>
     </BlogCardStyles>

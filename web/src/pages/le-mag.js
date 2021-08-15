@@ -96,7 +96,8 @@ export const query = graphql`
         node {
           id
           publishedAt
-          mainImage {
+          firstImage: mainImage {
+            alt
             hotspot {
               height
               width
@@ -104,13 +105,20 @@ export const query = graphql`
               y
             }
             asset {
-              fluid(
-                maxWidth: 1115 #, maxHeight: 456
-              ) {
-                ...GatsbySanityImageFluid_noBase64
-              }
+              gatsbyImageData(width: 1280, height: 523)
             }
+          }
+          otherImage: mainImage {
             alt
+            hotspot {
+              height
+              width
+              x
+              y
+            }
+            asset {
+              gatsbyImageData(width: 600, height: 600)
+            }
           }
           title
           _rawExcerpt

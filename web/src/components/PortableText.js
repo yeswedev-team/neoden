@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import getYouTubeId from 'get-youtube-id';
@@ -67,7 +68,7 @@ const serializers = {
       return <Link to={href}>{children}</Link>;
     },
     anchor: ({ mark: { anchorId }, children }) => (
-      <span id={anchorId.current}>{children}</span>
+      <span id={anchorId?.current}>{children}</span>
     ),
   },
 };

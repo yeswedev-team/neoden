@@ -2,9 +2,9 @@ import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import React, { useEffect } from 'react';
 import Sticky from 'react-stickynode';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
-import { Link } from '@reach/router';
+import { Link } from '@gatsbyjs/reach-router';
 import { getBlogUrl } from '../../utils/helpers';
 
 const LastPostsStyles = styled.div`
@@ -91,8 +91,8 @@ export default function LastPosts({ posts }) {
               <Link
                 to={getBlogUrl(post.node.publishedAt, post.node.slug.current)}
               >
-                <Img
-                  fluid={post?.node?.mainImage?.asset?.fluid}
+                <GatsbyImage
+                  image={getImage(post?.node?.mainImage?.asset)}
                   alt={post.node.title}
                 />
                 <div className="last-post__content">

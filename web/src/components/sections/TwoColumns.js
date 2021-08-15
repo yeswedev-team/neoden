@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { getBlogUrl } from '../../utils/helpers';
@@ -107,10 +107,10 @@ export default function TwoColumns({
         <div className="col">
           {link ? (
             <Link className="grow" to={link}>
-              <Img className="back-img" fluid={image.asset.fluid} alt="" />
+              <GatsbyImage className="back-img" image={getImage(image?.asset)} alt="" />
             </Link>
           ) : (
-            <Img className="back-img" fluid={image.asset.fluid} alt="" />
+            <GatsbyImage className="back-img" image={getImage(image?.asset)} alt="" />
           )}
         </div>
         <div className="col col__content">

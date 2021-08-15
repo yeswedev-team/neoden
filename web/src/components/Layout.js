@@ -6,7 +6,7 @@ import CookieConsent, {
   Cookies,
   getCookieConsentValue,
 } from 'react-cookie-consent';
-import { useLocation } from '@reach/router'; // this helps tracking the location
+import { useLocation } from '@gatsbyjs/reach-router'; // this helps tracking the location
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 import { Helmet } from 'react-helmet';
 import GlobalStyles from '../styles/GlobalStyles';
@@ -84,8 +84,6 @@ export default function Layout({ pageContext, children }) {
       }
     `
   );
-  // console.log(navItems);
-  // console.log(getCookieConsentValue());
   const location = useLocation();
   const slug = location.pathname.replace(/[\/\\]/g, '');
 

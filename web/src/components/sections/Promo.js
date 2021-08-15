@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 import { MdCardGiftcard } from 'react-icons/md';
 import { IoMdOpen } from 'react-icons/io';
@@ -134,7 +134,7 @@ const Promo = ({
       {image && (
         <div className="img-container">
           <Overprint className="overprint overprint--left" />
-          <Img fluid={image?.asset.fluid} alt={title} />
+          <GatsbyImage image={getImage(image?.asset)} alt={title} />
         </div>
       )}
       <div className="promo__content">

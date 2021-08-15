@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from '@reach/router';
+import { useLocation } from '@gatsbyjs/reach-router';
 import Flickity from 'react-flickity-component';
 import queryString from 'query-string';
 import styled from 'styled-components';
@@ -311,9 +311,7 @@ const SectionOfferStyles = styled.section`
   }
 `;
 
-const getSelectedOffer = (query) => {
-  const fallback = 'flottaison';
-
+const getSelectedOffer = (query, fallback) => {
   if (query) {
     const queriedOffer = queryString.parse(query);
     const { offer } = queriedOffer;
@@ -341,13 +339,15 @@ const getSelectedOfferIndex = (slug, array) => {
 };
 
 export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
+  const fallback = offer[0].slug.current;
   gsap.registerPlugin(ScrollToPlugin);
 
   const offersContainerRef = useRef(null);
 
   const location = useLocation();
   const visibleTabValue =
-    (location.search && getSelectedOffer(location.search)) || 'flottaison';
+    (location.search && getSelectedOffer(location.search, fallback)) ||
+    fallback;
 
   // get the array of offers slugs
   const offerSlugArray = offer.map((item) => item?.slug.current);
@@ -405,7 +405,9 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
       <button type="button" onClick={(event) => handleTabClick(event, item)}>
         <div
           className="filter"
-          style={{ backgroundImage: `url(${item.imageTab.asset.fluid.src})` }}
+          style={{
+            backgroundImage: `url(${item.imageTab.asset.gatsbyImageData.images.fallback.src})`,
+          }}
         />
         <span>{item.title}</span>
       </button>
@@ -446,7 +448,9 @@ export default function Offers({ offer, hasWaveDown, hasWaveUp }) {
         >
           <div
             className="filter"
-            style={{ backgroundImage: `url(${item.imageAlt.asset.fluid.src})` }}
+            style={{
+              backgroundImage: `url(${item.imageAlt.asset.gatsbyImageData.images.fallback.src})`,
+            }}
           />
           <span>{item.title}</span>
         </li>

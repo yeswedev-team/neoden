@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Wavify from '../Wave';
@@ -152,12 +152,12 @@ const BlogPostsListStyles = styled.div`
   }
 `;
 
-export default function BlogPostPreviewList({ nodes, location, total }) {
+export default function BlogPostPreviewList({ nodes, location }) {
   const firstNode = nodes[0];
   const otherNodes = nodes.slice(1);
   const objectPosition = {
-    x: `${firstNode.mainImage.hotspot.x * 100}%`,
-    y: `${firstNode.mainImage.hotspot.y * 100}%`,
+    x: `${firstNode.firstImage.hotspot.x * 100}%`,
+    y: `${firstNode.firstImage.hotspot.y * 100}%`,
   };
 
   return (
@@ -172,10 +172,10 @@ export default function BlogPostPreviewList({ nodes, location, total }) {
             <Link
               to={getBlogUrl(firstNode.publishedAt, firstNode.slug.current)}
             >
-              {firstNode?.mainImage?.asset && (
-                <Img
-                  fluid={firstNode.mainImage.asset.fluid}
-                  alt={firstNode.mainImage.alt}
+              {firstNode?.firstImage?.asset && (
+                <GatsbyImage
+                  image={getImage(firstNode.firstImage.asset)}
+                  alt={firstNode.firstImage.alt}
                 />
               )}
               <div className="firstPost__header">

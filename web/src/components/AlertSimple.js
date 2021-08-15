@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { getBlogUrl } from '../utils/helpers';
 import PortableText from './PortableText';
 
@@ -26,7 +26,7 @@ export default function AlertSimple({ content }) {
     <AlertSimpleStyles>
       {image && (
         <div className="img-container">
-          <Img fluid={image?.asset.fluid} alt={alertTitle} />
+          <GatsbyImage image={getImage(image?.asset)} alt={alertTitle} />
         </div>
       )}
       <div className="alert__content">

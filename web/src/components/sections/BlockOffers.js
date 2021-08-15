@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Wavify from '../Wave';
@@ -129,7 +129,10 @@ export default function Offers({
               <div key={offer.id} className="offer grow">
                 <Link to={`/offres-bien-etre/?offer=${offer.slug.current}`}>
                   <h3 className="offer__title">{offer.title}</h3>
-                  <Img fluid={offer.image.asset.fluid} alt={offer.title} />
+                  <GatsbyImage
+                    image={getImage(offer.image.asset)}
+                    alt={offer.title}
+                  />
                 </Link>
                 <Link
                   to={`/offres-bien-etre/?offer=${offer.slug.current}`}

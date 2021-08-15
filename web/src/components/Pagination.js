@@ -1,4 +1,4 @@
-import { Link } from '@reach/router';
+import { Link } from '@gatsbyjs/reach-router';
 import React from 'react';
 import styled from 'styled-components';
 

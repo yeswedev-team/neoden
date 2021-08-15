@@ -209,9 +209,16 @@ export default function BlockMembers({
             {privilegeList.map((privilege) => (
               <div key={privilege._key} className="privilege">
                 <div className="privilege__illustr">
-                  <img src={privilege.bgicon.asset.fluid.src} alt="" />
                   <img
-                    src={privilege.icon.asset.fluid.src}
+                    src={
+                      privilege.bgicon.asset.gatsbyImageData.images.fallback.src
+                    }
+                    alt=""
+                  />
+                  <img
+                    src={
+                      privilege.icon.asset.gatsbyImageData.images.fallback.src
+                    }
                     alt={privilege.title}
                     className="privilege__illustr--icon"
                   />
@@ -230,9 +237,16 @@ export default function BlockMembers({
             {privilegeList.map((privilege) => (
               <div key={privilege._key} className="privilege">
                 <div className="privilege__illustr">
-                  <img src={privilege.bgicon.asset.fluid.src} alt="" />
                   <img
-                    src={privilege.icon.asset.fluid.src}
+                    src={
+                      privilege.bgicon.asset.gatsbyImageData.images.fallback.src
+                    }
+                    alt=""
+                  />
+                  <img
+                    src={
+                      privilege.icon.asset.gatsbyImageData.images.fallback.src
+                    }
                     alt={privilege.title}
                     className="privilege__illustr--icon"
                   />

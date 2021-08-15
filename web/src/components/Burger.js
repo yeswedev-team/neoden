@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { globalHistory } from '@reach/router';
+import { globalHistory } from '@gatsbyjs/reach-router';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { Link } from 'gatsby';

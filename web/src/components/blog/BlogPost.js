@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Wavify from '../Wave';
@@ -100,7 +100,7 @@ const BlogArticleStyles = styled.article`
   }
   .blog-article__content {
     ${mq[2]} {
-      min-height: 100vh; // have sufficient space for the last posts sidebar to appear on scroll
+      min-height: 100vh; /* have sufficient space for the last posts sidebar to appear on scroll */
     }
   }
   .blog-article__text {
@@ -162,7 +162,7 @@ export default function BlogPost(props) {
         {mainImage && (
           <div className="blog-article__illustr">
             <Breadcrumb location={location} title={title} origin="blog" />
-            <Img fluid={mainImage?.asset?.fluid} alt={title.fr} />
+            <GatsbyImage image={getImage(mainImage?.asset)} alt={title} />
           </div>
         )}
         <Wavify direction="up" bgcolor="#ffffff" />

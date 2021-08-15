@@ -154,8 +154,20 @@ module.exports = {
         display: 'swap',
       },
     },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`, `avif`],
+          placeholder: `blurred`,
+          quality: 75,
+          breakpoints: [512, 768, 1024, 1280, 1520],
+          layout: `fullWidth`,
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -187,6 +199,7 @@ module.exports = {
       options: {
         ...clientConfig.sanity,
         overlayDrafts: !isProd && token,
+        apiVersion: '2021-06-07', // use a UTC date string
         watchMode: !isProd,
         useCdn: isProd,
         token,

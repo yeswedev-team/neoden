@@ -25,14 +25,8 @@ export default function SinglePage({
   location,
   data: { alert, singlePage },
 }) {
-  const {
-    title,
-    titleMenu,
-    titleSeo,
-    descriptionSeo,
-    content,
-    hero,
-  } = singlePage.page;
+  const { title, titleMenu, titleSeo, descriptionSeo, content, hero } =
+    singlePage.page;
 
   const { alertDisplay } = alert;
   const intro = content.filter((section) => section._type === 'intro');
@@ -44,8 +38,10 @@ export default function SinglePage({
         location={location}
         description={descriptionSeo}
         image={
-          hero[0]?.background?.mobileImage.asset.fluid.src ||
-          intro[0]?.frontimage?.mobileImage?.asset.fluid.src
+          hero[0]?.background?.mobileImage?.asset.gatsbyImageData.images
+            .fallback.src ||
+          intro[0]?.frontimage?.mobileImage?.asset.gatsbyImageData.images
+            .fallback.src
         }
       />
       {pageContext.slug === 'home' && alertDisplay && <Alert alert={alert} />}
@@ -189,7 +185,7 @@ export default function SinglePage({
 }
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     alert: sanitySingletonSite {
       alertDisplay
       alertPosition
@@ -200,9 +196,7 @@ export const query = graphql`
           alertTitle
           image {
             asset {
-              fluid(maxWidth: 600, maxHeight: 345) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 600, height: 345, layout: FULL_WIDTH)
             }
           }
           _rawAlertText(resolveReferences: { maxDepth: 10 })
@@ -228,9 +222,7 @@ export const query = graphql`
           discount
           image {
             asset {
-              fluid(maxWidth: 600, maxHeight: 345) {
-                ...GatsbySanityImageFluid
-              }
+              gatsbyImageData(width: 600, height: 345, layout: FULL_WIDTH)
             }
           }
           offerlink
@@ -256,16 +248,12 @@ export const query = graphql`
           background {
             mobileImage: bgimage {
               asset {
-                fluid(maxWidth: 1000) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 1000, layout: FULL_WIDTH)
               }
             }
             desktopImage: bgimage {
               asset {
-                fluid(maxWidth: 1600) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 1600, layout: FULL_WIDTH)
               }
             }
           }
@@ -295,9 +283,7 @@ export const query = graphql`
             title
             image {
               asset {
-                fluid(maxWidth: 1600) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 1600, layout: FULL_WIDTH)
               }
             }
             youtube {
@@ -317,16 +303,12 @@ export const query = graphql`
             frontimage {
               mobileImage: image {
                 asset {
-                  fluid(maxWidth: 768, maxHeight: 768) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(width: 768, height: 768, layout: FULL_WIDTH)
                 }
               }
               desktopImage: image {
                 asset {
-                  fluid(maxWidth: 1115, maxHeight: 346) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(width: 1115, height: 346, layout: FULL_WIDTH)
                 }
               }
             }
@@ -356,9 +338,7 @@ export const query = graphql`
             discount
             image {
               asset {
-                fluid(maxWidth: 600, maxHeight: 345) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 600, height: 345, layout: FULL_WIDTH)
               }
             }
             offerlink
@@ -394,16 +374,12 @@ export const query = graphql`
               }
               imageTab {
                 asset {
-                  fluid(maxWidth: 600) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(width: 600, layout: FULL_WIDTH)
                 }
               }
               imageAlt {
                 asset {
-                  fluid(maxWidth: 600) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(width: 600, layout: FULL_WIDTH)
                 }
               }
               services {
@@ -412,9 +388,7 @@ export const query = graphql`
                 _rawText(resolveReferences: { maxDepth: 10 })
                 image {
                   asset {
-                    fluid(maxWidth: 600, maxHeight: 393) {
-                      ...GatsbySanityImageFluid
-                    }
+                    gatsbyImageData(width: 600, height: 393, layout: FULL_WIDTH)
                   }
                 }
                 offerlink
@@ -473,9 +447,11 @@ export const query = graphql`
                   externalLink
                   image {
                     asset {
-                      fluid(maxWidth: 600, maxHeight: 476) {
-                        ...GatsbySanityImageFluid
-                      }
+                      gatsbyImageData(
+                        width: 600
+                        height: 476
+                        layout: FULL_WIDTH
+                      )
                     }
                   }
                   _rawText(resolveReferences: { maxDepth: 10 })
@@ -505,6 +481,7 @@ export const query = graphql`
               }
               ... on SanityOffers {
                 _key
+                _type
                 title
                 overtitle
                 offerLink {
@@ -512,9 +489,11 @@ export const query = graphql`
                   title
                   image {
                     asset {
-                      fluid(maxWidth: 600, maxHeight: 707) {
-                        ...GatsbySanityImageFluid
-                      }
+                      gatsbyImageData(
+                        width: 600
+                        height: 707
+                        layout: FULL_WIDTH
+                      )
                     }
                   }
                   slug {
@@ -533,16 +512,12 @@ export const query = graphql`
                   _key
                   bgicon {
                     asset {
-                      fluid(maxWidth: 300) {
-                        ...GatsbySanityImageFluid
-                      }
+                      gatsbyImageData(width: 300, layout: FULL_WIDTH)
                     }
                   }
                   icon {
                     asset {
-                      fluid(maxWidth: 300) {
-                        ...GatsbySanityImageFluid
-                      }
+                      gatsbyImageData(width: 300, layout: FULL_WIDTH)
                     }
                   }
                   _rawText(resolveReferences: { maxDepth: 10 })
@@ -551,6 +526,7 @@ export const query = graphql`
               }
               ... on SanityCta {
                 _key
+                _type
                 title
                 ctaPageLink {
                   ... on SanityPost {
@@ -594,16 +570,12 @@ export const query = graphql`
             _rawIntro(resolveReferences: { maxDepth: 10 })
             backImage {
               asset {
-                fluid(maxWidth: 600) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 600, layout: FULL_WIDTH)
               }
             }
             frontImage {
               asset {
-                fluid(maxWidth: 600) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 600, layout: FULL_WIDTH)
               }
             }
             ctas {
@@ -633,9 +605,7 @@ export const query = graphql`
             _rawText(resolveReferences: { maxDepth: 10 })
             image {
               asset {
-                fluid(maxWidth: 600) {
-                  ...GatsbySanityImageFluid
-                }
+                gatsbyImageData(width: 600, layout: FULL_WIDTH)
               }
             }
             ctas {
@@ -673,9 +643,7 @@ export const query = graphql`
               _rawIntro(resolveReferences: { maxDepth: 10 })
               image {
                 asset {
-                  fluid(maxWidth: 600) {
-                    ...GatsbySanityImageFluid
-                  }
+                  gatsbyImageData(width: 600, layout: FULL_WIDTH)
                 }
               }
             }
