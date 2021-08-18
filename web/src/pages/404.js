@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 import React from 'react';
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import Wavify from '../components/Wave';
 import { mq } from '../styles/breakpoints';
@@ -57,27 +57,20 @@ export const query = graphql`
         }
       }
     }
-    #     sanitySingletonSite {
-    #       defaultImage {
-    #         asset {
-    #           fluid(maxWidth: 1600) {
-    #             ...GatsbySanityImageFluid
-    #           }
-    #         }
-    #       }
-    #     }
   }
 `;
 
 export default function FourOhFourPage({ data }) {
-  const defaultImage =
-    data.allSanitySingletonSite.nodes[0].defaultImage.asset.fluid;
-  // console.log(defaultImage);
+  console.log(data);
+  const { defaultImage } = data.allSanitySingletonSite.nodes[0];
+  console.log(defaultImage);
 
   return (
     <FourOhFourStyles>
       <div className="blog-article__illustr">
-        {defaultImage && <GatsbyImage image={getImage(defaultImage?.asset)} alt="Image" />}
+        {defaultImage && (
+          <GatsbyImage image={getImage(defaultImage?.asset)} alt="Image" />
+        )}
       </div>
       <Wavify direction="up" bgcolor="#ffffff" />
 
