@@ -29,8 +29,14 @@ const HeaderStyles = styled.header`
     z-index: 4;
   }
   .logo {
-    display: block;
-    width: ${pxtoem(147)};
+    align-items: center;
+    background: red;
+    color: var(--white);
+    display: flex;
+    min-height: 3.0625rem;
+    padding: 10px;
+    text-align: center;
+    width: auto;
     z-index: 2;
   }
 
@@ -156,8 +162,8 @@ const Header = ({ navItems }) => {
     >
       <div className="container container--xl">
         <Nav navItems={navItems} open={open} setOpen={setOpen} />
-        <Link to="/">
-          <Logo className="logo" />
+        <Link to="/" className="logo">
+          NEODEN PREPROD
         </Link>
         <div className="header__actions">
           <a
