@@ -23,6 +23,7 @@ const handleLocation = (location) => {
 };
 
 const handleLocationMargin = (location) => {
+  console.log(location);
   switch (location) {
     case 'home':
       return '0';
