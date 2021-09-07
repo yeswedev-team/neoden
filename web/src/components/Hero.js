@@ -43,6 +43,7 @@ const HeroStyles = styled.section`
 
   ${mq[1]} {
     + .section > .container {
+      margin-top: -13.75rem;
       margin-top: ${({ location }) => handleLocationMargin(location)};
     }
     + .section.section__promo > .container {
