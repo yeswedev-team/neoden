@@ -23,19 +23,13 @@ const handleLocation = (location) => {
 };
 
 const handleLocationMargin = (location) => {
-  console.log(location);
-  switch (location) {
-    case 'home':
-      return '0';
-    case 'offres-bien-etre':
-      return '-6.75rem';
-    case 'bienfaits-flottaison':
-      return '-13.75rem';
-    case 'flottaison-isolation-sensorielle':
-      return '-13.75rem';
-    default:
-      return '-13.75.rem';
+  if (location === 'home') {
+    return '0';
   }
+  if (location === 'offres-bien-etre') {
+    return '-6.75rem';
+  }
+  return '-13.75.rem';
 };
 
 const HeroStyles = styled.section`
