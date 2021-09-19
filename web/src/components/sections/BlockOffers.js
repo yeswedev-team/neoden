@@ -51,7 +51,8 @@ const BlockOffersStyles = styled.section`
       gap: 4%;
     }
     ${mq[2]} {
-      flex-wrap: nowrap;
+      /* flex-wrap: nowrap; */
+      justify-content: center;
       gap: 1.875rem;
     }
   }
@@ -63,7 +64,7 @@ const BlockOffersStyles = styled.section`
       width: 48%;
     }
     ${mq[2]} {
-      width: 100%;
+      width: 30%;
     }
 
     &__title {
@@ -125,23 +126,26 @@ export default function Offers({
         {title && <h2 className="section-title">{title}</h2>}
         {offerLink && (
           <div className="offersList">
-            {offerLink.map((offer) => (
-              <div key={offer.id} className="offer grow">
-                <Link to={`/offres-bien-etre/?offer=${offer.slug.current}`}>
-                  <h3 className="offer__title">{offer.title}</h3>
-                  <GatsbyImage
-                    image={getImage(offer.image.asset)}
-                    alt={offer.title}
-                  />
-                </Link>
-                <Link
-                  to={`/offres-bien-etre/?offer=${offer.slug.current}`}
-                  className="button button--brown"
-                >
-                  En savoir plus
-                </Link>
-              </div>
-            ))}
+            {offerLink.map((offer) => {
+              console.log(offer);
+              return (
+                <div key={offer.id} className="offer grow">
+                  <Link to={`/${offer.slug.current}`}>
+                    <h3 className="offer__title">{offer.title.fr}</h3>
+                    <GatsbyImage
+                      image={getImage(offer.image.asset)}
+                      alt={offer.title.fr}
+                    />
+                  </Link>
+                  <Link
+                    to={`/offres-bien-etre/?offer=${offer.slug.current}`}
+                    className="button button--brown"
+                  >
+                    En savoir plus
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         )}
       </div>

@@ -486,7 +486,12 @@ export const query = graphql`
                 overtitle
                 offerLink {
                   id
-                  title
+                  slug {
+                    current
+                  }
+                  title {
+                    fr
+                  }
                   image {
                     asset {
                       gatsbyImageData(
@@ -495,9 +500,6 @@ export const query = graphql`
                         layout: FULL_WIDTH
                       )
                     }
-                  }
-                  slug {
-                    current
                   }
                 }
               }

@@ -73,6 +73,11 @@ export default {
         { type: 'reference', to: [{ type: 'blocks' }] },
       ],
     },
+    {
+      name: 'image',
+      title: 'Image pour les onglets du bloc "Laissez-vous porter" (optionnel)',
+      type: 'image',
+    },
   ],
   preview: {
     select: {
