@@ -17,73 +17,104 @@ import Footer from './Footer';
 const LayoutStyles = styled.div``;
 
 export default function Layout({ pageContext, children }) {
-  const { navItems, footerItems, logo } = useStaticQuery(
-    graphql`
-      query {
-        logo: sanitySingletonSite(_id: { eq: "singletonSite" }) {
-          logo {
-            image {
-              asset {
-                url
+  const { navItems, navItemsRight, navOffersItems, footerItems, logo } =
+    useStaticQuery(
+      graphql`
+        query {
+          logo: sanitySingletonSite(_id: { eq: "singletonSite" }) {
+            logo {
+              image {
+                asset {
+                  url
+                }
               }
             }
+          }
+          navItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
+            mainNavigation {
+              slug {
+                current
+              }
+              page {
+                title {
+                  fr
+                }
+                titleMenu {
+                  fr
+                }
+              }
+            }
+          }
+          navItemsRight: sanitySingletonSite(_id: { eq: "singletonSite" }) {
+            mainRightNavigation {
+              slug {
+                current
+              }
+              page {
+                title {
+                  fr
+                }
+                titleMenu {
+                  fr
+                }
+              }
+            }
+          }
+          navOffersItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
+            offersAltNav {
+              slug {
+                current
+              }
+              page {
+                title {
+                  fr
+                }
+                titleMenu {
+                  fr
+                }
+              }
+            }
+          }
+          footerItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
+            tel
+            facebook
+            linkedin
+            instagram
+            youtube
+            footerNavigation {
+              id
+              slug {
+                current
+              }
+              page {
+                title {
+                  fr
+                }
+                titleMenu {
+                  fr
+                }
+              }
+            }
+            copyNavigation {
+              id
+              slug {
+                current
+              }
+              page {
+                title {
+                  fr
+                }
+                titleMenu {
+                  fr
+                }
+              }
+            }
+            _rawAddress(resolveReferences: { maxDepth: 10 })
+            _rawContact(resolveReferences: { maxDepth: 10 })
           }
         }
-        navItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
-          mainNavigation {
-            slug {
-              current
-            }
-            page {
-              title {
-                fr
-              }
-              titleMenu {
-                fr
-              }
-            }
-          }
-        }
-        footerItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
-          tel
-          facebook
-          linkedin
-          instagram
-          youtube
-          footerNavigation {
-            id
-            slug {
-              current
-            }
-            page {
-              title {
-                fr
-              }
-              titleMenu {
-                fr
-              }
-            }
-          }
-          copyNavigation {
-            id
-            slug {
-              current
-            }
-            page {
-              title {
-                fr
-              }
-              titleMenu {
-                fr
-              }
-            }
-          }
-          _rawAddress(resolveReferences: { maxDepth: 10 })
-          _rawContact(resolveReferences: { maxDepth: 10 })
-        }
-      }
-    `
-  );
+      `
+    );
   const location = useLocation();
   const slug = location.pathname.replace(/[\/\\]/g, '');
 
@@ -158,7 +189,11 @@ export default function Layout({ pageContext, children }) {
         )}
       </Helmet>
       <LayoutStyles>
-        <Header navItems={navItems} />
+        <Header
+          navItems={navItems}
+          navItemsRight={navItemsRight}
+          offersItems={navOffersItems}
+        />
         <div className="content">
           {children}
           <Footer footerItems={footerItems} />

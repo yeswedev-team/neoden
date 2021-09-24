@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Logo from '../assets/images/logo-neoden.inline.svg';
 import { pxtoem } from '../styles/Mixins';
 import Nav from './Nav';
+import NavRight from './NavRight';
 import WavesMenu from '../assets/images/wavesMenu.inline.svg';
 import { mq } from '../styles/breakpoints';
 import Burger from './Burger';
@@ -84,7 +85,8 @@ const HeaderStyles = styled.header`
   }
 `;
 
-const Header = ({ navItems }) => {
+const Header = ({ navItems, navItemsRight, offersItems }) => {
+  console.log(navItemsRight);
   const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -161,10 +163,16 @@ const Header = ({ navItems }) => {
       style={{ transform: visible ? 'translateY(0)' : 'translateY(-100%)' }}
     >
       <div className="container container--xl">
-        <Nav navItems={navItems} open={open} setOpen={setOpen} />
+        <Nav
+          navItems={navItems}
+          offersItems={offersItems}
+          open={open}
+          setOpen={setOpen}
+        />
         <Link to="/" className="logo">
           NEODEN PREPROD
         </Link>
+        <NavRight navItemsRight={navItemsRight} open={open} setOpen={setOpen} />
         <div className="header__actions">
           <a
             href="https://app.flexybeauty.com/neoden/home"

@@ -44,9 +44,42 @@ export default {
       type: 'image',
     },
     {
-      title: 'Navigation principale',
+      title: 'Navigation principale gauche',
       name: 'mainNavigation',
       description: "Sélectionnez les pages pour le menu d'entête",
+      validation: (Rule) => [
+        Rule.max(3).error('Vous ne pouvez pas sélectionner plus de 3 items'),
+        Rule.unique().error('Des items du menu sont dupliqués'),
+      ],
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'route' }],
+        },
+      ],
+    },
+    {
+      title: 'Navigation principale droite',
+      name: 'mainRightNavigation',
+      description: "Sélectionnez les pages pour le menu d'entête",
+      validation: (Rule) => [
+        Rule.max(3).error('Vous ne pouvez pas sélectionner plus de 3 items'),
+        Rule.unique().error('Des items du menu sont dupliqués'),
+      ],
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'route' }],
+        },
+      ],
+    },
+    {
+      title: 'Navigation des offres alternatives',
+      name: 'offersAltNav',
+      description:
+        'Sélectionnez les pages pour le menu des offres alternatives',
       validation: (Rule) => [
         Rule.max(5).warning('Êtes-vous certain de vouloir plus de 5 items ?'),
         Rule.unique().error('Des items du menu sont dupliqués'),

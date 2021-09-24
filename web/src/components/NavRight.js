@@ -1,15 +1,15 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import { pxtoem, remCalc } from '../styles/Mixins';
+import { remCalc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
 
 const NavStyles = styled.nav`
   background-color: var(--brown);
-  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-200%)')};
   position: fixed;
   height: 50vh;
-  top: 0;
+  top: calc(50vh - 1px);
   transition: transform 600ms ease-out;
   width: 100%;
   will-change: transform;
@@ -20,18 +20,10 @@ const NavStyles = styled.nav`
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   .menuItem {
     font-size: 1.25rem;
-    position: relative;
-
-    > span {
-      color: var(--white);
-      cursor: pointer;
-      display: none;
-      padding: ${remCalc(10)} ${remCalc(15)};
-    }
 
     a {
       color: var(--white);
@@ -72,20 +64,13 @@ const NavStyles = styled.nav`
     }
   }
 
-  .sub-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px 0;
-  }
-  .sub-menu-item {
-    text-align: center;
-  }
-
   ${mq[3]} {
     background-color: transparent;
     height: auto;
+    margin-left: auto;
+    margin-right: 1.25rem;
     position: relative;
+    top: auto;
     transform: none;
     transition: none;
     width: auto;
@@ -99,52 +84,22 @@ const NavStyles = styled.nav`
     .menuItem {
       font-size: 1rem;
 
-      > span {
-        display: block;
-      }
-
-      &:hover {
-        .sub-menu {
-          opacity: 1;
-          transform: translate(-50%, -1px);
-          pointer-events: auto;
-        }
-      }
-
       &:first-child {
         margin-left: ${remCalc(-15)};
-      }
-    }
-    .sub-menu {
-      background: var(--white);
-      border: 1px solid var(--brown);
-      border-radius: 0.375rem;
-      left: 50%;
-      min-width: ${pxtoem(275)};
-      opacity: 0;
-      pointer-events: none;
-      position: absolute;
-      transform: translate(-50%, -10px);
-      transition: opacity 300ms linear, transform 300ms ease-out;
-    }
-    .sub-menu-item {
-      a {
-        color: var(--brown);
-        padding: ${remCalc(5)} ${remCalc(15)};
       }
     }
   }
 `;
 
-export default function Nav({ navItems, offersItems, open, setOpen }) {
-  const items = navItems?.mainNavigation;
-  const subItems = offersItems?.offersAltNav;
+export default function Nav({ navItemsRight, open, setOpen }) {
+  const items = navItemsRight?.mainRightNavigation;
+  console.log(items);
 
   return (
     <NavStyles open={open}>
       <ul className="navList">
         {items?.map((item, index) => (
-          <li className="menuItem" key={`item-${index}`}>
+          <li className="menuItem" key={`item-right-${index}`}>
             <Link
               to={`/${item.slug.current}`}
               activeClassName="active"
@@ -161,29 +116,6 @@ export default function Nav({ navItems, offersItems, open, setOpen }) {
             </Link>
           </li>
         ))}
-        <li className="menuItem">
-          <span>Nos autres offres</span>
-          <ul className="sub-menu">
-            {subItems?.map((item, index) => (
-              <li key={`sub-item-${index}`} className="sub-menu-item">
-                <Link
-                  to={`/${item.slug.current}`}
-                  activeClassName="active"
-                  partiallyActive
-                  onClick={() => {
-                    setOpen(!open);
-                  }}
-                >
-                  {item.page.titleMenu ? (
-                    <span className="text">{item.page.titleMenu.fr}</span>
-                  ) : (
-                    <span className="text">{item.page.title.fr}</span>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li>
       </ul>
     </NavStyles>
   );
