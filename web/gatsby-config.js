@@ -4,8 +4,6 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-console.log(process.env.NODE_ENV);
-
 const isProd = process.env.NODE_ENV === 'production';
 
 const token = process.env.SANITY_TOKEN;
