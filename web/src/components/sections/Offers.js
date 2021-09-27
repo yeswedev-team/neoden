@@ -26,6 +26,7 @@ const SectionOfferStyles = styled.section`
   z-index: ${(props) => handleZIndex(props)};
 
   .container {
+    border-top: 1px solid var(--brownlighter);
     position: relative;
   }
 

@@ -199,6 +199,10 @@ const GlobalStyles = createGlobalStyle`
       padding: 0;
       z-index: 2;
 
+      + .section__intro {
+        z-index: 3 !important
+      }
+
       .hero__content {
         background-color: transparent;
         left: 50%;
