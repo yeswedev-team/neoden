@@ -15,27 +15,3 @@
   to = "/"
   status = 301
   force = false
-
-[[redirects]]
-  from = "/offres-bien-etre?offer=flottaison"
-  to = "/flottaison-isolation-sensorielle"
-  status = 301
-  force = false
-
-[[redirects]]
-  from = "/offres-bien-etre?offer=massage"
-  to = "/massage-nantes"
-  status = 301
-  force = false
-
-[[redirects]]
-  from = "/offres-bien-etre?offer=flottaison-massage"
-  to = "/massage-flottaison"
-  status = 301
-  force = false
-
-[[redirects]]
-  from = "/offres-bien-etre?offer=produits-cosmetiques"
-  to = "/cosmetiques"
-  status = 301
-  force = false
