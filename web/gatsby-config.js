@@ -18,6 +18,7 @@ module.exports = {
     siteUrl: `https://www.neoden.fr`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-plugin-react-helmet`,
     },
