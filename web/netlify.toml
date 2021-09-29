@@ -6,42 +6,36 @@
 
 [[redirects]]
   from = "/bienfaits-flottaison"
-  to = "https://www.neoden.fr/flottaison-isolation-sensorielle"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+  to = "/flottaison-isolation-sensorielle"
+  status = 301
+  force = false
 
 [[redirects]]
   from = "/offres-bien-etre"
-  to = "https://www.neoden.fr/"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+  to = "/"
+  status = 301
+  force = false
 
 [[redirects]]
   from = "/offres-bien-etre?offer=flottaison"
-  to = "https://www.neoden.fr/flottaison-isolation-sensorielle"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+  to = "/flottaison-isolation-sensorielle"
+  status = 301
+  force = false
 
 [[redirects]]
   from = "/offres-bien-etre?offer=massage"
-  to = "https://www.neoden.fr/massage-nantes"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+  to = "/massage-nantes"
+  status = 301
+  force = false
 
 [[redirects]]
   from = "/offres-bien-etre?offer=flottaison-massage"
-  to = "https://www.neoden.fr/massage-flottaison"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+  to = "/massage-flottaison"
+  status = 301
+  force = false
 
 [[redirects]]
   from = "/offres-bien-etre?offer=produits-cosmetiques"
-  to = "https://www.neoden.fr/cosmetiques"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+  to = "/cosmetiques"
+  status = 301
+  force = false
