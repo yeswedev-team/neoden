@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import SwiperCore, {
   Controller,
   Navigation,
@@ -51,7 +51,9 @@ export default function Slider({
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide._key} className="slide">
-              {slide.image && <GatsbyImage image={getImage(slide.image.asset)} alt="" />}
+              {slide.image && (
+                <GatsbyImage image={getImage(slide.image.asset)} alt="" />
+              )}
             </SwiperSlide>
           ))}
         </Swiper>

@@ -20,7 +20,7 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{ type: 'offre' }],
+          to: [{ type: 'page' }],
         },
       ],
       validation: (Rule) => Rule.required(),

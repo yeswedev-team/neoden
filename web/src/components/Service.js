@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { MdCardGiftcard } from 'react-icons/md';
 import { IoMdOpen } from 'react-icons/io';
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import PortableText from './PortableText';
 // import Modal from './Modal';
 
 export default function Service({ service }) {
   const [selectedOption, setSelectedOption] = useState(
-    service.places[0].bookingLink
+    service?.places[0]?.bookingLink
   );
   /*
   const modalRef = useRef();

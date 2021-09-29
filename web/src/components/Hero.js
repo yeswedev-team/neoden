@@ -23,18 +23,13 @@ const handleLocation = (location) => {
 };
 
 const handleLocationMargin = (location) => {
-  switch (location) {
-    case 'home':
-      return '0';
-    case 'offres-bien-etre':
-      return '-6.75rem';
-    case 'bienfaits-flottaison':
-      return '-13.75rem';
-    case 'flottaison-isolation-sensorielle':
-      return '-13.75rem';
-    default:
-      return '-13.75.rem';
+  if (location === 'home') {
+    return '0';
   }
+  if (location === 'offres-bien-etre') {
+    return '-6.75rem';
+  }
+  return '-13.75.rem';
 };
 
 const HeroStyles = styled.section`
@@ -48,6 +43,7 @@ const HeroStyles = styled.section`
 
   ${mq[1]} {
     + .section > .container {
+      margin-top: -13.75rem;
       margin-top: ${({ location }) => handleLocationMargin(location)};
     }
     + .section.section__promo > .container {
