@@ -132,7 +132,7 @@ module.exports = {
       options: {
         host: 'https://www.neoden.fr',
         sitemap: 'https://www.neoden.fr/sitemap.xml',
-        policy: [{ userAgent: '*', disallow: '/' }],
+        policy: [{ userAgent: '*', allow: '/', disallow: '/?offer=' }],
       },
     },
     {
