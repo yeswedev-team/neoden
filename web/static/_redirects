@@ -1,7 +1,7 @@
 # Redirects from what the browser requests to what we serve
 /bienfaits-flottaison /flottaison-isolation-sensorielle 301!
-/offres-bien-etre offer=flottaison /flottaison-isolation-sensorielle 301!
-/offres-bien-etre offer=massage /massage-nantes 301!
-/offres-bien-etre offer=flottaison-massage /massage-flottaison 301!
-/offres-bien-etre offer=produits-cosmetiques /cosmetiques 301!
+/offres-bien-etre offer=flottaison /flottaison-isolation-sensorielle/:splat 301!
+/offres-bien-etre offer=massage /massage-nantes/:splat 301!
+/offres-bien-etre offer=flottaison-massage /massage-flottaison/:splat 301!
+/offres-bien-etre offer=produits-cosmetiques /cosmetiques/:splat 301!
 /offres-bien-etre / 301!
