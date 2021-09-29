@@ -123,14 +123,6 @@ async function turnRoutesIntoPages({ graphql, actions }) {
 }
 
 async function createPages(params) {
-  const { createRedirect } = params.actions;
-
-  createRedirect({
-    fromPath: '/bienfaits-flottaison',
-    toPath: 'https://www.neoden.fr/flottaison-isolation-sensorielle',
-    isPermanent: true,
-    force: true,
-  });
   // Create pages dynamically
   // run promises concurrently (at the same time) || wait for all promises to be resolved before finishing this function
   await Promise.all([
