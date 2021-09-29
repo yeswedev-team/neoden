@@ -1,0 +1,7 @@
+# Redirects from what the browser requests to what we serve
+/bienfaits-flottaison                         /flottaison-isolation-sensorielle
+# /offres-bien-etre                             /
+# /offres-bien-etre?offer=flottaison            /flottaison-isolation-sensorielle
+# /offres-bien-etre?offer=massage               /massage-nantes
+# /offres-bien-etre?offer=flottaison-massage    /massage-flottaison
+# /offres-bien-etre?offer=produits-cosmetiques  /cosmetiques
