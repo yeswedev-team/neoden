@@ -30,14 +30,8 @@ const HeaderStyles = styled.header`
     z-index: 4;
   }
   .logo {
-    align-items: center;
-    background: red;
-    color: var(--white);
-    display: flex;
-    min-height: 3.0625rem;
-    padding: 10px;
-    text-align: center;
-    width: auto;
+    display: block;
+    width: ${pxtoem(147)};
     z-index: 2;
   }
 
@@ -169,8 +163,8 @@ const Header = ({ navItems, navItemsRight, offersItems }) => {
           open={open}
           setOpen={setOpen}
         />
-        <Link to="/" className="logo">
-          NEODEN PREPROD
+        <Link to="/">
+          <Logo className="logo" />
         </Link>
         <NavRight navItemsRight={navItemsRight} open={open} setOpen={setOpen} />
         <div className="header__actions">
