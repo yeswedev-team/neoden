@@ -29,6 +29,13 @@ const HeaderStyles = styled.header`
     position: relative;
     z-index: 4;
   }
+
+  .nav {
+    ${mq[3]} {
+      display: flex;
+      padding-top: ${pxtoem(15)};
+    }
+  }
   .logo {
     display: block;
     width: ${pxtoem(147)};
@@ -44,10 +51,15 @@ const HeaderStyles = styled.header`
   }
 
   .bgwave {
-    bottom: -0.625rem;
     fill: transparent;
     position: absolute;
+    top: 0;
     z-index: -1;
+
+    ${mq[4]} {
+      bottom: -0.625rem;
+      top: auto;
+    }
   }
 
   .header__actions {
@@ -62,7 +74,8 @@ const HeaderStyles = styled.header`
     padding-bottom: ${pxtoem(25)};
 
     .container {
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       position: static;
     }
 
@@ -70,10 +83,6 @@ const HeaderStyles = styled.header`
       display: block;
     }
     .logo {
-      left: 50%;
-      position: absolute;
-      top: ${pxtoem(15)};
-      transform: translateX(-50%);
       width: ${pxtoem(160)};
     }
   }
@@ -157,25 +166,31 @@ const Header = ({ navItems, navItemsRight, offersItems }) => {
       style={{ transform: visible ? 'translateY(0)' : 'translateY(-100%)' }}
     >
       <div className="container container--xl">
-        <Nav
-          navItems={navItems}
-          offersItems={offersItems}
-          open={open}
-          setOpen={setOpen}
-        />
         <Link to="/">
           <Logo className="logo" />
         </Link>
-        <NavRight navItemsRight={navItemsRight} open={open} setOpen={setOpen} />
-        <div className="header__actions">
-          <a
-            href="https://app.flexybeauty.com/neoden/home"
-            className="button"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Réserver ou offrir
-          </a>
+        <div className="nav">
+          <Nav
+            navItems={navItems}
+            offersItems={offersItems}
+            open={open}
+            setOpen={setOpen}
+          />
+          <NavRight
+            navItemsRight={navItemsRight}
+            open={open}
+            setOpen={setOpen}
+          />
+          <div className="header__actions">
+            <a
+              href="https://app.flexybeauty.com/neoden/home"
+              className="button"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Réserver ou offrir
+            </a>
+          </div>
         </div>
       </div>
       <Burger open={open} setOpen={setOpen} />

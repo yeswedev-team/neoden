@@ -1,12 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 150.9">
-    <defs>
-        <path id="waveMenu-a" d="M0 0H1366V149.9H0z" />
-    </defs>
-    <clipPath id="waveMenu-b">
-        <use xlink:href="#waveMenu-a" overflow="visible" />
-    </clipPath>
-    <g clip-path="url(#waveMenu-b)">
-        <path
-            d="M-56,152.5c57.5-15.5,422.7-5.2,677.9-4.2s414.4-14.2,605.8-8.4s268.7,15.1,366.8,12.6 c98.1-2.5-96.9-578.3-96.9-578.3S1291.4-497.7,1052-479S789-453.8,492.4-440.7s-519.1-9.7-519.1-9.7L-56,152.5z" />
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 170.8">
+  <defs>
+    <path id="waveMenu-a" d="M0 0h1366v169.8H0z"/>
+  </defs>
+  <clipPath id="waveMenu-b">
+    <use xlink:href="#waveMenu-a" overflow="visible"/>
+  </clipPath>
+  <g clip-path="url(#waveMenu-b)">
+    <path d="M-56 172.4c57.5-15.5 422.7-5.2 677.9-4.2s414.4-14.2 605.8-8.4 268.7 15.1 366.8 12.6c98.1-2.5-96.9-578.3-96.9-578.3s-206.2-71.9-445.6-53.2-263 25.2-559.6 38.3-519.1-9.7-519.1-9.7L-56 172.4z"/>
+  </g>
 </svg>

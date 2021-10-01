@@ -21,6 +21,10 @@ const WaveContainerStyles = styled.div`
     position: absolute;
     transform: none;
   }
+
+  ${mq[3]} {
+    padding-top: 25rem;
+  }
 `;
 
 const FirstNodeStyles = styled.div`

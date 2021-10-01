@@ -6,11 +6,12 @@ import { mq } from '../styles/breakpoints';
 
 const NavStyles = styled.nav`
   background-color: var(--brown);
-  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-200%)')};
   position: fixed;
   height: 50vh;
+  left: 0;
   top: calc(50vh - 1px);
   transition: transform 600ms ease-out;
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-200%)')};
   width: 100%;
   will-change: transform;
   z-index: 1000;
@@ -67,7 +68,6 @@ const NavStyles = styled.nav`
   ${mq[3]} {
     background-color: transparent;
     height: auto;
-    margin-left: auto;
     margin-right: 1.25rem;
     position: relative;
     top: auto;
@@ -83,10 +83,6 @@ const NavStyles = styled.nav`
     }
     .menuItem {
       font-size: 1rem;
-
-      &:first-child {
-        margin-left: ${remCalc(-15)};
-      }
     }
   }
 `;

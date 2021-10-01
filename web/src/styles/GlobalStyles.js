@@ -459,14 +459,13 @@ const GlobalStyles = createGlobalStyle`
       margin: 1em;
     }
     a {
+      border-bottom: 1px dotted var(--brown);
       color: var(----brown);
-      display: inline-block;
-      position: relative;
 
-      &:after {
+      /* &:after {
         background-image: linear-gradient(to right, var(--brown) 33%, rgba(255,255,255,0) 0%);
         background-position: bottom;
-        background-size: 3px 1px;  /* Adjust values to change dot size and spacing */
+        background-size: 3px 1px;
         background-repeat: repeat-x;
         bottom: 0;
         content: '';
@@ -474,7 +473,7 @@ const GlobalStyles = createGlobalStyle`
         height: 1px;
         position: absolute;
         width: 100%;
-      }
+      } */
       &:hover {
         color: var(--browndark);
       }

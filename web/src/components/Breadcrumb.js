@@ -12,7 +12,7 @@ const BreadcrumbsStyles = styled.div`
   z-index: 4;
 
   ${mq[3]} {
-    top: 6.25rem;
+    top: 10.625rem;
   }
 
   ol {

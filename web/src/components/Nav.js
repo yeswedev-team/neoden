@@ -6,11 +6,12 @@ import { mq } from '../styles/breakpoints';
 
 const NavStyles = styled.nav`
   background-color: var(--brown);
-  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
+  left: 0;
   position: fixed;
   height: 50vh;
   top: 0;
   transition: transform 600ms ease-out;
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
   width: 100%;
   will-change: transform;
   z-index: 1000;
