@@ -48,7 +48,7 @@ export default {
       name: 'mainNavigation',
       description: "Sélectionnez les pages pour le menu d'entête",
       validation: (Rule) => [
-        Rule.max(3).error('Vous ne pouvez pas sélectionner plus de 3 items'),
+        Rule.max(5).warning('Êtes-vous certain de vouloir plus de 5 items ?'),
         Rule.unique().error('Des items du menu sont dupliqués'),
       ],
       type: 'array',
@@ -64,7 +64,7 @@ export default {
       name: 'mainRightNavigation',
       description: "Sélectionnez les pages pour le menu d'entête",
       validation: (Rule) => [
-        Rule.max(3).error('Vous ne pouvez pas sélectionner plus de 3 items'),
+        Rule.max(5).warning('Êtes-vous certain de vouloir plus de 5 items ?'),
         Rule.unique().error('Des items du menu sont dupliqués'),
       ],
       type: 'array',
@@ -97,7 +97,7 @@ export default {
       name: 'footerNavigation',
       description: 'Sélectionnez les pages pour le menu de pied-de-page',
       validation: (Rule) => [
-        Rule.max(5).warning('Êtes-vous certain de vouloir plus de 5 items ?'),
+        Rule.max(8).warning('Êtes-vous certain de vouloir plus de 8 items ?'),
         Rule.unique().error('Des items du menu sont dupliqués'),
       ],
       type: 'array',
