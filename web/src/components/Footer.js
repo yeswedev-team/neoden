@@ -100,7 +100,7 @@ const FooterStyles = styled.footer`
     ${mq[2]} {
       margin-bottom: 0;
       padding-left: 15px;
-      width: ${pxtopc(250, 1278)};
+      width: ${pxtopc(180, 1278)};
     }
   }
   .logo-footer-only {
@@ -115,7 +115,16 @@ const FooterStyles = styled.footer`
 
   nav {
     ${mq[2]} {
-      width: ${pxtopc(112, 1278)};
+      width: ${pxtopc(232, 1278)};
+
+      ul {
+        column-gap: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      li {
+        width: calc(50% - 0.5rem);
+      }
     }
   }
   .footer__address,
@@ -128,6 +137,7 @@ const FooterStyles = styled.footer`
       width: 30%;
     }
     ${mq[2]} {
+      padding-left: 20px;
       width: ${pxtopc(196, 1278)};
     }
   }
@@ -141,12 +151,12 @@ const FooterStyles = styled.footer`
     }
 
     ${mq[2]} {
-      width: ${pxtopc(167, 1278)};
+      width: ${pxtopc(137, 1278)};
     }
   }
   .footer__networks {
     ${mq[2]} {
-      width: ${pxtopc(202, 1278)};
+      width: ${pxtopc(162, 1278)};
     }
   }
   .footer__actions {
