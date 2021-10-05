@@ -48,7 +48,7 @@ module.exports = {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
         googleAnalytics: {
-          trackingId: 'G-XV5XS024JM', // leave empty if you want to disable the tracker
+          trackingId: 'UA-189099477-1', // leave empty if you want to disable the tracker
           cookieName: 'gatsby-gdpr-google-analytics', // default
           anonymize: true, // default
           allowAdFeatures: false, // default
@@ -67,28 +67,11 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: 'GTM-539NRKN',
-
-        // Include GTM in development.
-        //
-        // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: false,
-
-        // datalayer to be set before GTM is loaded
-        // should be an object or a function that is executed in the browser
-        //
-        // Defaults to null
-        defaultDataLayer: { platform: 'gatsby' },
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
         trackingIds: [
-          'G-XV5XS024JM', // Google Analytics / GA
+          'UA-189099477-1', // Google Analytics / GA
           // 'AW-CONVERSION_ID', // Google Ads / Adwords / AW
           // 'DC-FLOODIGHT_ID', // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
         ],
