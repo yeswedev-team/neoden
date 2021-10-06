@@ -5,3 +5,4 @@
 /offres-bien-etre offer=flottaison-massage /massage-flottaison/?no-query-string 301!
 /offres-bien-etre offer=produits-cosmetiques /cosmetiques/?no-query-string 301!
 /offres-bien-etre / 301!
+/accueil / 301!
