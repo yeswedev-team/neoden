@@ -144,24 +144,27 @@ export default function Nav({ navItems, offersItems, open, setOpen }) {
   return (
     <NavStyles open={open}>
       <ul className="navList">
-        {items?.map((item, index) => (
-          <li className="menuItem" key={`item-${index}`}>
-            <Link
-              to={`/${item.slug.current}`}
-              activeClassName="active"
-              partiallyActive
-              onClick={() => {
-                setOpen(!open);
-              }}
-            >
-              {item.page.titleMenu ? (
-                <span className="text">{item.page.titleMenu.fr}</span>
-              ) : (
-                <span className="text">{item.page.title.fr}</span>
-              )}
-            </Link>
-          </li>
-        ))}
+        {items?.map((item, index) => {
+          const slug = item.slug.current === 'home' ? '' : item.slug.current;
+          return (
+            <li className="menuItem" key={`item-${index}`}>
+              <Link
+                to={`/${slug}`}
+                activeClassName="active"
+                partiallyActive
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                {item.page.titleMenu ? (
+                  <span className="text">{item.page.titleMenu.fr}</span>
+                ) : (
+                  <span className="text">{item.page.title.fr}</span>
+                )}
+              </Link>
+            </li>
+          );
+        })}
         <li className="menuItem">
           <span>Nos autres offres</span>
           <ul className="sub-menu">
