@@ -151,7 +151,6 @@ export default function Nav({ navItems, offersItems, open, setOpen }) {
               <Link
                 to={`/${slug}`}
                 activeClassName="active"
-                partiallyActive
                 onClick={() => {
                   setOpen(!open);
                 }}
