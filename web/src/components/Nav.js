@@ -117,7 +117,7 @@ const NavStyles = styled.nav`
       }
     }
     .sub-menu {
-      background: var(--white);
+      background: var(--brownlight);
       border: 1px solid var(--brown);
       border-radius: 0.375rem;
       left: 50%;
@@ -129,9 +129,34 @@ const NavStyles = styled.nav`
       transition: opacity 300ms linear, transform 300ms ease-out;
     }
     .sub-menu-item {
+      font-size: 0.9em;
+
       a {
-        color: var(--brown);
+        color: var(--white);
         padding: ${remCalc(5)} ${remCalc(15)};
+
+        span:after {
+          display: none;
+        }
+
+        &:hover {
+          font-weight: bold;
+
+          span:after {
+            display: none;
+          }
+        }
+
+        &.active,
+        &[aria-current='page'] {
+          font-weight: bold;
+
+          span {
+            &:after {
+              display: none !important;
+            }
+          }
+        }
       }
     }
   }
