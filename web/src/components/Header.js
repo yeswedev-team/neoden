@@ -89,7 +89,6 @@ const HeaderStyles = styled.header`
 `;
 
 const Header = ({ navItems, navItemsRight, offersItems }) => {
-  console.log(navItemsRight);
   const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
