@@ -140,7 +140,11 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
   }
 
   let images;
-  if (heroData?.background) {
+  if (
+    heroData?.background &&
+    heroData?.background?.desktopImage &&
+    heroData?.background?.mobileImage
+  ) {
     images = withArtDirection(
       getImage(heroData?.background?.desktopImage?.asset),
       [
@@ -159,11 +163,13 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
       }`}
       location={context}
     >
-      {heroData?.background && (
-        <div className="hero__illustr">
-          <GatsbyImage image={images} alt={title.fr} />
-        </div>
-      )}
+      {heroData?.background &&
+        heroData?.background?.desktopImage &&
+        heroData?.background?.mobileImage && (
+          <div className="hero__illustr">
+            <GatsbyImage image={images} alt={title.fr} />
+          </div>
+        )}
       {context !== 'home' && (
         <Breadcrumb
           location={location}

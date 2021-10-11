@@ -76,7 +76,7 @@ const Intro = ({
   }
 
   let images;
-  if (frontImage) {
+  if (frontImage && frontImage.desktopImage && frontImage.mobileImage) {
     images = withArtDirection(getImage(frontImage?.desktopImage?.asset), [
       {
         media: '(max-width: 767px)',
@@ -101,7 +101,7 @@ const Intro = ({
         />
       )}
       <div className="container container--md">
-        {frontImage && (
+        {frontImage && frontImage.desktopImage && frontImage.mobileImage && (
           <div className="img-container">
             <GatsbyImage image={images} alt={title} />
             <Overprint className="overprint" />
