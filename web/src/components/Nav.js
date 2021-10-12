@@ -117,24 +117,35 @@ const NavStyles = styled.nav`
       }
     }
     .sub-menu {
-      background: var(--brown);
+      background: var(--white);
       border: 1px solid var(--brownlight);
       border-radius: 0.375rem;
       left: 50%;
-      min-width: ${pxtoem(275)};
       opacity: 0;
       pointer-events: none;
       position: absolute;
       transform: translate(-50%, -10px);
-      transition: opacity 300ms linear, transform 300ms ease-out;
+      transition: opacity 300ms linear, transform 300ms ease-out,
+        background 300ms linear;
+
+      &:hover {
+        background: var(--brown);
+
+        .sub-menu-item {
+          a {
+            color: var(--white);
+          }
+        }
+      }
     }
     .sub-menu-item {
       font-size: 0.9em;
       text-align: left;
 
       a {
-        color: var(--white);
+        color: var(--brown);
         padding: ${remCalc(5)} ${remCalc(15)};
+        transition: color 300ms linear;
 
         span:after {
           display: none;
