@@ -117,8 +117,8 @@ const NavStyles = styled.nav`
       }
     }
     .sub-menu {
-      background: var(--brownlight);
-      border: 1px solid var(--brown);
+      background: var(--brown);
+      border: 1px solid var(--brownlight);
       border-radius: 0.375rem;
       left: 50%;
       min-width: ${pxtoem(275)};
@@ -130,6 +130,7 @@ const NavStyles = styled.nav`
     }
     .sub-menu-item {
       font-size: 0.9em;
+      text-align: left;
 
       a {
         color: var(--white);
@@ -140,7 +141,7 @@ const NavStyles = styled.nav`
         }
 
         &:hover {
-          font-weight: bold;
+          text-decoration: underline;
 
           span:after {
             display: none;
