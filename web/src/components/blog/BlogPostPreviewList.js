@@ -160,8 +160,8 @@ export default function BlogPostPreviewList({ nodes, location }) {
   const firstNode = nodes[0];
   const otherNodes = nodes.slice(1);
   const objectPosition = {
-    x: `${firstNode.firstImage.hotspot.x * 100}%`,
-    y: `${firstNode.firstImage.hotspot.y * 100}%`,
+    x: `${firstNode?.firstImage?.hotspot?.x * 100}%`,
+    y: `${firstNode?.firstImage?.hotspot?.y * 100}%`,
   };
 
   return (
