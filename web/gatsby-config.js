@@ -53,15 +53,15 @@ module.exports = {
           anonymize: true, // default
           allowAdFeatures: false, // default
         },
-        // googleTagManager: {
-        //   trackingId: 'YOUR_GOOGLE_TAG_MANAGER_TRACKING_ID', // leave empty if you want to disable the tracker
-        //   cookieName: 'gatsby-gdpr-google-tagmanager', // default
-        //   dataLayerName: 'dataLayer', // default
-        // },
-        // facebookPixel: {
-        //   pixelId: 'YOUR_FACEBOOK_PIXEL_ID', // leave empty if you want to disable the tracker
-        //   cookieName: 'gatsby-gdpr-facebook-pixel', // default
-        // },
+        googleTagManager: {
+          trackingId: 'UA-189099477-1', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-google-tagmanager', // default
+          dataLayerName: 'dataLayer', // default
+        },
+        facebookPixel: {
+          pixelId: '186328809700559', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-facebook-pixel', // default
+        },
         // defines the environments where the tracking should be available  - default is ["production"]
         environments: ['production'],
       },
