@@ -118,12 +118,6 @@ export default function Layout({ pageContext, children }) {
   const location = useLocation();
   const slug = location.pathname.replace(/[\/\\]/g, '');
 
-  function clearCookies() {
-    $.each(Cookies.get(), function (key) {
-      return Cookies.remove(key);
-    });
-  }
-
   return (
     <div className={`app ${pageContext.slug || slug}`}>
       <GlobalStyles />
@@ -235,10 +229,17 @@ export default function Layout({ pageContext, children }) {
           }}
           enableDeclineButton
           onDecline={() => {
-            clearCookies();
+            // clearCookies();
             Cookies.set('gatsby-gdpr-google-tagmanager', false);
             Cookies.set('gatsby-gdpr-facebook-pixel', false);
             Cookies.set('gatsby-gdpr-google-analytics', false);
+            Cookies.remove('_ga');
+            Cookies.remove('_gat');
+            Cookies.remove('lidc');
+            Cookies.remove('li_gc');
+            Cookies.remove('_gid');
+            Cookies.remove('_fbp');
+            Cookies.remove('_gat_gtag_UA_189099477_1');
           }}
         >
           En continuant à utiliser le site, vous acceptez l’utilisation de
