@@ -229,16 +229,16 @@ export default function Layout({ pageContext, children }) {
             Cookies.set('gatsby-gdpr-google-tagmanager', false);
             Cookies.set('gatsby-gdpr-facebook-pixel', false);
             Cookies.set('gatsby-gdpr-google-analytics', false);
-            Cookies.remove('_ga', { domain: '.neoden.fr', path: '/' });
-            Cookies.remove('lidc', { domain: '.linkedin.com', path: '/' });
-            Cookies.remove('bcookie', { domain: '.linkedin.com', path: '/' });
-            Cookies.remove('li_gc', { domain: '.linkedin.com', path: '/' });
-            Cookies.remove('_gid', { domain: '.neoden.fr', path: '/' });
-            Cookies.remove('_fbp', { domain: '.neoden.fr', path: '/' });
-            Cookies.remove('_gat_gtag_UA_189099477_1', {
-              domain: '.neoden.fr',
-              path: '/',
-            });
+            // Cookies.remove('_ga', { domain: '.neoden.fr', path: '/' });
+            // Cookies.remove('lidc', { domain: '.linkedin.com', path: '/' });
+            // Cookies.remove('bcookie', { domain: '.linkedin.com', path: '/' });
+            // Cookies.remove('li_gc', { domain: '.linkedin.com', path: '/' });
+            // Cookies.remove('_gid', { domain: '.neoden.fr', path: '/' });
+            // Cookies.remove('_fbp', { domain: '.neoden.fr', path: '/' });
+            // Cookies.remove('_gat_gtag_UA_189099477_1', {
+            //   domain: '.neoden.fr',
+            //   path: '/',
+            // });
           }}
         >
           En continuant à utiliser le site, vous acceptez l’utilisation de
