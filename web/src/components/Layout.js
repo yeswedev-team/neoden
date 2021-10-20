@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import 'normalize.css';
 import styled from 'styled-components';
-import CookieConsent, {
-  Cookies,
-  getCookieConsentValue,
-} from 'react-cookie-consent';
+import CookieConsent, { Cookies } from 'react-cookie-consent';
 import { useLocation } from '@gatsbyjs/reach-router'; // this helps tracking the location
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 import { Helmet } from 'react-helmet';
@@ -229,17 +226,18 @@ export default function Layout({ pageContext, children }) {
           }}
           enableDeclineButton
           onDecline={() => {
-            // clearCookies();
             Cookies.set('gatsby-gdpr-google-tagmanager', false);
             Cookies.set('gatsby-gdpr-facebook-pixel', false);
             Cookies.set('gatsby-gdpr-google-analytics', false);
-            Cookies.remove('_ga');
-            Cookies.remove('_gat');
-            Cookies.remove('lidc');
-            Cookies.remove('li_gc');
-            Cookies.remove('_gid');
-            Cookies.remove('_fbp');
-            Cookies.remove('_gat_gtag_UA_189099477_1');
+            Cookies.remove('_ga', { domain: '.neoden.fr' });
+            Cookies.remove('lidc', { domain: '.linkedin.com' });
+            Cookies.remove('bcookie', { domain: '.linkedin.com' });
+            Cookies.remove('li_gc', { domain: '.linkedin.com' });
+            Cookies.remove('_gid', { domain: '.neoden.fr' });
+            Cookies.remove('_fbp', { domain: '.neoden.fr' });
+            Cookies.remove('_gat_gtag_UA_189099477_1', {
+              domain: '.neoden.fr',
+            });
           }}
         >
           En continuant à utiliser le site, vous acceptez l’utilisation de
