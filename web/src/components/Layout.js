@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import 'normalize.css';
 import styled from 'styled-components';
@@ -118,6 +118,12 @@ export default function Layout({ pageContext, children }) {
   const location = useLocation();
   const slug = location.pathname.replace(/[\/\\]/g, '');
 
+  function clearCookies() {
+    $.each(Cookies.get(), function (key) {
+      return Cookies.remove(key);
+    });
+  }
+
   return (
     <div className={`app ${pageContext.slug || slug}`}>
       <GlobalStyles />
@@ -224,12 +230,15 @@ export default function Layout({ pageContext, children }) {
           onAccept={() => {
             Cookies.set('gatsby-gdpr-google-tagmanager', true);
             Cookies.set('gatsby-gdpr-facebook-pixel', true);
+            Cookies.set('gatsby-gdpr-google-analytics', true);
             initializeAndTrack(location);
           }}
           enableDeclineButton
           onDecline={() => {
+            clearCookies();
             Cookies.set('gatsby-gdpr-google-tagmanager', false);
             Cookies.set('gatsby-gdpr-facebook-pixel', false);
+            Cookies.set('gatsby-gdpr-google-analytics', false);
           }}
         >
           En continuant à utiliser le site, vous acceptez l’utilisation de
