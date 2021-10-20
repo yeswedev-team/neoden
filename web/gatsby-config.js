@@ -45,28 +45,6 @@ module.exports = {
     },
     `gatsby-plugin-netlify`,
     {
-      resolve: `gatsby-plugin-gdpr-cookies`,
-      options: {
-        // googleAnalytics: {
-        //   trackingId: 'UA-189099477-1', // leave empty if you want to disable the tracker
-        //   cookieName: 'gatsby-gdpr-google-analytics', // default
-        //   anonymize: true, // default
-        //   allowAdFeatures: true, // default
-        // },
-        googleTagManager: {
-          trackingId: 'UA-189099477-1', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-google-tagmanager', // default
-          defaultDataLayer: { platform: 'gatsby' },
-        },
-        facebookPixel: {
-          pixelId: '186328809700559', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-facebook-pixel', // default
-        },
-        // defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production', 'development'],
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
@@ -100,9 +78,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-sitemap`,
-    },
-    {
       resolve: `gatsby-plugin-linkedin-insight`,
       options: {
         partnerId: `3191954`,
@@ -110,6 +85,31 @@ module.exports = {
         // Defaults to false meaning LinkedIn Insight will only be loaded in production.
         includeInDevelopment: false,
       },
+    },
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        // googleAnalytics: {
+        //   trackingId: 'UA-189099477-1', // leave empty if you want to disable the tracker
+        //   cookieName: 'gatsby-gdpr-google-analytics', // default
+        //   anonymize: true, // default
+        //   allowAdFeatures: true, // default
+        // },
+        googleTagManager: {
+          trackingId: 'UA-189099477-1', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-google-tagmanager', // default
+          defaultDataLayer: { platform: 'gatsby' },
+        },
+        facebookPixel: {
+          pixelId: '186328809700559', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-facebook-pixel', // default
+        },
+        // defines the environments where the tracking should be available  - default is ["production"]
+        environments: ['production', 'development'],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
