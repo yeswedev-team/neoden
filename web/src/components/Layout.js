@@ -2,13 +2,9 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import 'normalize.css';
 import styled from 'styled-components';
-import CookieConsent, {
-  Cookies,
-  getCookieConsentValue,
-} from 'react-cookie-consent';
 import { useLocation } from '@gatsbyjs/reach-router'; // this helps tracking the location
-import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies';
 import { Helmet } from 'react-helmet';
+import CookieConsent from './CookieConsent';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 import Header from './Header';
@@ -198,41 +194,7 @@ export default function Layout({ pageContext, children }) {
           {children}
           <Footer footerItems={footerItems} />
         </div>
-        <CookieConsent
-          location="bottom"
-          buttonText="J'accepte"
-          declineButtonText="Je refuse"
-          cookieName="gatsby-gdpr-google-analytics"
-          style={{
-            background: '#E1E0DC',
-            color: '#916D5B',
-            fontSize: '0.875rem',
-          }}
-          buttonStyle={{
-            background: '#fff',
-            borderRadius: '5px',
-            color: '#916D5B',
-            fontSize: '0.875rem',
-          }}
-          declineButtonStyle={{
-            background: '#fff',
-            borderRadius: '5px',
-            color: '#916D5B',
-            fontSize: '0.875rem',
-          }}
-          expires={150}
-          onAccept={() => {
-            initializeAndTrack(location);
-          }}
-          enableDeclineButton
-          onDecline={() => {}}
-        >
-          En continuant à utiliser le site, vous acceptez l’utilisation de
-          cookies.
-          {/* <span style={{ fontSize: '14px' }}>
-            This bit of text is smaller :O
-          </span> */}
-        </CookieConsent>
+        <CookieConsent />
       </LayoutStyles>
     </div>
   );
