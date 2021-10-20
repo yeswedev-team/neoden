@@ -56,7 +56,7 @@ module.exports = {
         googleTagManager: {
           trackingId: 'UA-189099477-1', // leave empty if you want to disable the tracker
           cookieName: 'gatsby-gdpr-google-tagmanager', // default
-          dataLayerName: 'dataLayer', // default
+          defaultDataLayer: { platform: 'gatsby' },
         },
         facebookPixel: {
           pixelId: '186328809700559', // leave empty if you want to disable the tracker
