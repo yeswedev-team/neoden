@@ -228,8 +228,8 @@ export default function Layout({ pageContext, children }) {
           }}
           enableDeclineButton
           onDecline={() => {
-            Cookies.remove('gatsby-gdpr-google-tagmanager');
-            Cookies.remove('gatsby-gdpr-facebook-pixel');
+            Cookies.set('gatsby-gdpr-google-tagmanager', false);
+            Cookies.set('gatsby-gdpr-facebook-pixel', false);
           }}
         >
           En continuant à utiliser le site, vous acceptez l’utilisation de
