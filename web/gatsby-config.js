@@ -22,6 +22,9 @@ module.exports = {
       resolve: `gatsby-plugin-react-helmet`,
     },
     {
+      resolve: `gatsby-plugin-sitemap`,
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Neoden - espace de flottaison`,
@@ -107,9 +110,6 @@ module.exports = {
         // defines the environments where the tracking should be available  - default is ["production"]
         environments: ['production', 'development'],
       },
-    },
-    {
-      resolve: `gatsby-plugin-sitemap`,
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
