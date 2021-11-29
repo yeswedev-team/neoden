@@ -13,6 +13,9 @@ const LastPostsStyles = styled.div`
   .posts-list {
     margin-top: 1.75rem;
   }
+  .middle-title {
+    font-family: var(--font-titles);
+  }
 
   .last-post {
     a {
@@ -20,9 +23,13 @@ const LastPostsStyles = styled.div`
       margin-bottom: 1.25rem;
     }
 
-    h4 {
+    .last-post__content__title {
+      font-family: var(--font-titles);
       font-size: 1.25rem;
       font-weight: normal;
+      line-height: 0.909091;
+      margin-top: 0;
+      margin-bottom: 0;
     }
     .date {
       color: var(--beige);
@@ -84,7 +91,7 @@ export default function LastPosts({ posts }) {
       // onStateChange={handleStateChange}
     >
       <LastPostsStyles>
-        <h3 className="middle-title">Articles récents</h3>
+        <span className="middle-title">Articles récents</span>
         <div className="posts-list">
           {posts?.map((post) => (
             <div key={post.node.id} className="last-post">
@@ -96,7 +103,7 @@ export default function LastPosts({ posts }) {
                   alt={post.node.title}
                 />
                 <div className="last-post__content">
-                  <h4>{post.node.title}</h4>
+                  <p className="last-post__content__title">{post.node.title}</p>
                   <p className="date">
                     {format(new Date(post.node.publishedAt), 'dd MMMM yyyy', {
                       locale: fr,
