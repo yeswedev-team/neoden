@@ -83,6 +83,10 @@ const BlogArticleStyles = styled.article`
     margin-top: 3.875rem;
     padding: 2.5rem;
 
+    .mini-title {
+      margin-top: 0;
+    }
+
     ol {
       list-style: decimal;
       margin: 1em 1em 0;
