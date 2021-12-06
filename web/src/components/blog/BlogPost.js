@@ -186,7 +186,7 @@ export default function BlogPost(props) {
             </p>
             {summary[0] && (
               <div className="summary">
-                <h3 className="mini-title">Sommaire</h3>
+                <p className="mini-title">Sommaire</p>
                 <ol>
                   {summary.map((anchor, index) => (
                     <li key={`anchor-${index}`}>
