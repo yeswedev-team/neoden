@@ -27,7 +27,7 @@ export default function AlertSimple({ content }) {
       <div className="alert__content">
         {alertTitle && <h3>{alertTitle}</h3>}
         {_rawAlertText && <PortableText blocks={_rawAlertText} />}
-        {alertLink && (
+        {alertLink.length > 0 && (
           <Link
             to={getBlogUrl(
               alertLink[0]?.publishedAt,
