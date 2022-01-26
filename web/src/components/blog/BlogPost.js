@@ -51,27 +51,40 @@ const BlogArticleStyles = styled.article`
     z-index: 3;
 
     ${mq[2]} {
+      margin-top: -12.5rem;
       padding: 3.125rem 7.3125rem 5rem;
     }
-    @media screen and (min-width: 1024px) and (max-height: 799px) {
+
+    ${mq[3]} {
+      margin-top: -18.75rem;
+    }
+
+    ${mq[4]} {
+      margin-top: -25rem;
+    }
+    /* @media screen and (min-width: 1024px) and (max-height: 799px) {
       margin-top: -50vh;
     }
     @media screen and (min-width: 1024px) and (min-height: 800px) {
       margin-top: -60vh;
-    }
+    } */
     /* @media screen and (min-width: 1024px) and (min-height: 1000px) {
       margin-top: -50vh;
     } */
-    @media screen and (min-width: 1024px) and (min-height: 1200px) {
+    /* @media screen and (min-width: 1024px) and (min-height: 1200px) {
       margin-top: -60vh;
-    }
+    } */
   }
 
   .excerpt {
-    font-weight: 600;
+    font-weight: normal;
     margin-top: 1.875rem;
     padding: 0 1.875rem;
     text-align: center;
+
+    a {
+      font-weight: 700;
+    }
   }
   .blog-article__meta {
     color: var(--beige);
@@ -118,13 +131,15 @@ const BlogArticleStyles = styled.article`
       font-size: 2.1875rem;
       font-weight: normal;
       line-height: 1;
-      margin-top: 1.5rem;
+      margin-top: 2em;
+      margin-bottom: 1em;
     }
     .heading-3 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       font-weight: normal;
       line-height: 1;
-      margin-top: 1rem;
+      margin-top: 2rem;
+      margin-bottom: 0.75em;
     }
     figure {
       margin: 2em -1em;
@@ -165,13 +180,13 @@ export default function BlogPost(props) {
       <BlogArticleStyles className="blog-article">
         {mainImage && (
           <div className="blog-article__illustr">
-            <Breadcrumb location={location} title={title} origin="blog" />
             <GatsbyImage image={getImage(mainImage?.asset)} alt={title} />
           </div>
         )}
         <Wavify direction="up" bgcolor="#ffffff" />
         {edges.length > 0 && <LastPosts posts={edges} />}
         <div className="container container--md" id="content">
+          <Breadcrumb location={location} title={title} origin="blog" />
           <div className="blog-article__content">
             <h1 className="blogpost-title">{title}</h1>
             {_rawExcerpt && <PortableText blocks={_rawExcerpt} id="excerpt" />}
