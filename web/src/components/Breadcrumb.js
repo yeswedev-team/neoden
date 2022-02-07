@@ -11,15 +11,40 @@ const BreadcrumbsStyles = styled.div`
   top: 1.25rem;
   z-index: 4;
 
+  .blog-article & {
+    color: var(--brown);
+    left: auto;
+    margin-bottom: 1rem;
+    position: relative;
+    top: auto;
+
+    a {
+      color: var(--brown);
+
+      &:hover {
+        color: var(--brownlight);
+      }
+    }
+    ol {
+      justify-content: center;
+    }
+  }
+
   ${mq[3]} {
     top: 10.625rem;
+
+    .blog-article & {
+      top: auto;
+    }
   }
 
   ol {
     display: flex;
+    flex-wrap: wrap;
 
     li {
       position: relative;
+      white-space: nowrap;
 
       &:after {
         content: '|';

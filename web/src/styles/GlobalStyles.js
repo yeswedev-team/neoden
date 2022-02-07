@@ -459,7 +459,7 @@ const GlobalStyles = createGlobalStyle`
       margin: 1em;
     }
     a {
-      border-bottom: 1px dotted var(--brown);
+      text-decoration: underline;
       color: var(----brown);
 
       /* &:after {
