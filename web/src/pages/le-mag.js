@@ -47,7 +47,6 @@ export default function BlogIndex({ data, location, pageContext }) {
         title={titleSeo || title.fr}
         description={descriptionSeo}
         location={location}
-        canonical="https://www.neoden.fr/le-mag"
       />
       <PostListStyles>
         {postNodes && (

@@ -116,7 +116,9 @@ module.exports = {
       options: {
         host: 'https://www.neoden.fr',
         sitemap: 'https://www.neoden.fr/sitemap.xml',
-        policy: [{ userAgent: '*', allow: '/', disallow: '/?offer=' }],
+        policy: [
+          { userAgent: '*', allow: '/', disallow: ['/?offer=', '/le-mag/*'] },
+        ],
       },
     },
     {
