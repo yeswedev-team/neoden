@@ -328,7 +328,7 @@ const Footer = ({ footerItems }) => {
         </div>
       </div>
       <div className="copyright">
-        <p>&copy; 2021 - Neoden</p>
+        <p>&copy; 2022 - Neoden</p>
         <ul>
           {copyNavigation.map((item) => (
             <li key={item.id}>
