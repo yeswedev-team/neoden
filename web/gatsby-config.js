@@ -74,21 +74,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-facebook-pixel`,
-    //   options: {
-    //     pixelId: '186328809700559',
-    //   },
-    // },
-    {
-      resolve: `gatsby-plugin-linkedin-insight`,
-      options: {
-        partnerId: `3191954`,
-        // Include LinkedIn Insight in development.
-        // Defaults to false meaning LinkedIn Insight will only be loaded in production.
-        includeInDevelopment: false,
-      },
-    },
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
@@ -144,7 +129,7 @@ module.exports = {
           placeholder: `blurred`,
           quality: 75,
           breakpoints: [512, 768, 1024, 1280, 1520],
-          layout: `fullWidth`,
+          // layout: `fullWidth`,
         },
       },
     },
@@ -165,7 +150,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-portal`,
     `gatsby-plugin-optimize-svgs`,
     {
       resolve: 'gatsby-plugin-react-svg',
