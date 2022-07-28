@@ -14,7 +14,9 @@ module.exports = {
   siteMetadata: {
     title: `Neoden`,
     description: 'espace de flottaison',
-    gmap_api_key: process.env.GOOGLE_MAPS_API_KEY,
+    gmap_api_key:
+      process.env.GOOGLE_MAPS_API_KEY ||
+      'AIzaSyCEkoxqKIY3nlohKIdKPUgp3rTkVDQKSJU',
     siteUrl: `https://www.neoden.fr`,
   },
   plugins: [
