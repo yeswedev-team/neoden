@@ -7,7 +7,7 @@ import SwiperCore, {
   EffectFade,
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import 'swiper/css/bundle';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import SliderStyles from '../../styles/SliderStyles';

@@ -61,9 +61,9 @@ export const query = graphql`
 `;
 
 export default function FourOhFourPage({ data }) {
-  console.log(data);
+  // console.log(data);
   const { defaultImage } = data.allSanitySingletonSite.nodes[0];
-  console.log(defaultImage);
+  // console.log(defaultImage);
 
   return (
     <FourOhFourStyles>

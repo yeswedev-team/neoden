@@ -19,11 +19,15 @@ export default class Portal extends Component {
   }
 
   componentDidMount = () => {
-    portalRoot.appendChild(this.el);
+    if (portalRoot) {
+      portalRoot.appendChild(this.el);
+    }
   };
 
   componentWillUnmount = () => {
-    portalRoot.removeChild(this.el);
+    if (portalRoot) {
+      portalRoot.removeChild(this.el);
+    }
   };
 
   render() {

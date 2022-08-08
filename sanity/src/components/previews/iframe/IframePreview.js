@@ -16,7 +16,7 @@ const assembleProjectUrl = ({ displayed, options }) => {
   }
   if (_type === 'post') {
     const dateSegment = format(parseISO(publishedAt), 'yyyy/MM');
-    console.log(`/le-mag/${dateSegment}/${slug.current}/`);
+    // console.log(`/le-mag/${dateSegment}/${slug.current}/`);
     return `${previewURL}/le-mag/${dateSegment}/${slug.current}/`;
   }
   if (slug.current === 'home') {
