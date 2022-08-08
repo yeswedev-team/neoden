@@ -152,7 +152,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-optimize-svgs`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
