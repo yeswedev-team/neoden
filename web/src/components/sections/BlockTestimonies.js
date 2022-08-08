@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'gatsby';
 import { IoMdOpen } from 'react-icons/io';
 import { getBlogUrl } from '../../utils/helpers';
-import 'swiper/swiper-bundle.css';
+import 'swiper/css/bundle';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import { mq } from '../../styles/breakpoints';
@@ -39,6 +39,10 @@ const TestimoniesStyles = styled.section`
   .testimonies__header {
     padding-bottom: 2.25rem;
     text-align: center;
+  }
+  
+  .swiper-autoheight .swiper-slide {
+    height: inherit;
   }
 
   .slide {
@@ -103,7 +107,7 @@ const TestimoniesStyles = styled.section`
     align-items: stretch;
   }
 
-  .swiper-container {
+  .swiper {
     padding-bottom: 4.375rem;
   }
   .swiper-container-horizontal > .swiper-pagination-bullets,

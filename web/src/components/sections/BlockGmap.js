@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import SwiperCore, { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import 'swiper/css/bundle';
 import Wavify from '../Wave';
 import iconMarker from '../../assets/images/marker.svg';
 import iconMarkerBrown from '../../assets/images/markerBrown.svg';
