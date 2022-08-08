@@ -58,7 +58,7 @@
     "google-map-react": "^2.1.9",
     "gsap": "file:gsap-bonus.tgz",
     "isomorphic-fetch": "^3.0.0",
-    "netlify-cli": "^5.4.1",
+    "netlify-cli": "^10.0.0",
     "netlify-lambda": "^2.0.1",
     "netlify-plugin-gatsby-cache": "^0.3.2",
     "normalize.css": "^8.0.1",
