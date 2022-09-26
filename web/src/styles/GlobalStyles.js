@@ -39,6 +39,78 @@ const GlobalStyles = createGlobalStyle`
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
   }
+  
+  @font-face {
+      font-family: 'Crimson Text';
+      font-weight: 400;
+      font-display: swap;
+      font-style: normal;
+      font-named-instance: 'Regular';
+      src: url(/fonts/CrimsonText-Regular.woff2) format("woff2");
+    }
+    
+    @font-face {
+      font-family: 'Crimson Text';
+      font-weight: 600;
+      font-display: swap;
+      font-style: normal;
+      font-named-instance: 'SemiBold';
+      src: url(/fonts/CrimsonText-SemiBold.woff2) format("woff2");
+    }
+    
+    @font-face {
+      font-family: 'Crimson Text';
+      font-weight: 700;
+      font-display: swap;
+      font-style: normal;
+      font-named-instance: 'Bold';
+      src: url(/fonts/CrimsonText-Bold.woff2) format("woff2");
+    }
+    
+    @font-face {
+      font-family: 'Crimson Text';
+      font-weight: 400;
+      font-display: swap;
+      font-style: italic;
+      font-named-instance: 'Regular';
+      src: url(/assets/fonts/CrimsonText-Italic.woff2) format("woff2");
+    }
+    
+    @font-face {
+      font-family: 'Raleway';
+      font-weight: 400;
+      font-display: swap;
+      font-style: regular;
+      font-named-instance: 'Regular';
+      src: url(/fonts/Raleway-Regular.woff2) format("woff2");
+    }
+    
+    @font-face {
+      font-family: 'Raleway';
+      font-weight: 400;
+      font-display: swap;
+      font-style: italic;
+      font-named-instance: 'Regular';
+      src: url(/fonts/Raleway-Italic.woff2) format("woff2");
+    }
+    
+    @font-face {
+      font-family: 'Raleway';
+      font-weight: 600;
+      font-display: swap;
+      font-style: normal;
+      font-named-instance: 'SemiBold';
+      src: url(/fonts/Raleway-SemiBold.woff2) format("woff2");
+    }
+    
+      @font-face {
+      font-family: 'Raleway';
+      font-weight: 700;
+      font-display: swap;
+      font-style: normal;
+      font-named-instance: 'Bold';
+      src: url(/fonts/Raleway-Bold.woff2) format("woff2");
+    }
 
   ul,
   ol {
