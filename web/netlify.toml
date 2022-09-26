@@ -3,3 +3,8 @@
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self';"
