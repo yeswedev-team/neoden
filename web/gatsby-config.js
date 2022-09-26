@@ -114,16 +114,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `crimson text\: 400, 400i, 600, 700`,
-          `raleway\:300,400,400i, 500, 600, 700, 900`, // you can also specify font weights and styles
-        ],
-        display: 'swap',
-      },
-    },
-    {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
