@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../assets/images/logo-neoden.inline.svg';
-import LogoOnly from '../assets/images/logo-neoden-seul.inline.svg';
+import LogoOnly from '../assets/images/logo-neoden-seul2.inline.svg';
 import PortableText from './PortableText';
 import { lsEm, pxtopc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
