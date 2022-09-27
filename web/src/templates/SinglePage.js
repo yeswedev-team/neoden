@@ -495,9 +495,8 @@ export const query = graphql`
                   image {
                     asset {
                       gatsbyImageData(
-                        width: 600
-                        height: 707
-                        layout: FULL_WIDTH
+                        width: 500
+                        layout: CONSTRAINED, aspectRatio: 1
                       )
                     }
                   }
@@ -607,7 +606,7 @@ export const query = graphql`
             _rawText(resolveReferences: { maxDepth: 10 })
             image {
               asset {
-                gatsbyImageData(width: 600, layout: FULL_WIDTH)
+                gatsbyImageData(width: 468, layout: CONSTRAINED, aspectRatio: 1.5)
               }
             }
             ctas {
