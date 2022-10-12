@@ -20,7 +20,6 @@ const CtaPlugStyles = styled.section`
 export default function CtaPlug({ title, label, ctas }) {
     let link
     let pagelink
-    const links = [];
     ctas.map((cta) => {
             pagelink = cta.ctaPageLink[0];
             if (cta._type === 'post') {
@@ -38,7 +37,7 @@ export default function CtaPlug({ title, label, ctas }) {
     <CtaPlugStyles className="section">
       <div className="container container--md">
         <h1 className="middle-title">{title}</h1>
-          <div class="cta-container">
+          <div className="cta-container">
           {ctas.map((cta) => (
               <a
                   href={`${cta.link}`}
