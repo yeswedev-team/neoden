@@ -20,25 +20,25 @@ const CtaPlugStyles = styled.section`
 export default function CtaPlug({ title, label, ctas }) {
     let link
     let pagelink
-    ctas.map((cta) => {
-            pagelink = cta.ctaPageLink[0];
-            if (cta._type === 'post') {
-                link = getBlogUrl(pagelink.publishedAt, cta.slug.current);
-            } else {
-                link = `/${pagelink.slug.current}`;
-            }
-            return {
-                title: cta.title,
-                link: link,
-            }
+    const links = [];
+    ctas.forEach((cta) => {
+        pagelink = cta.ctaPageLink[0];
+        if (cta._type === 'post') {
+            link = getBlogUrl(pagelink.publishedAt, cta.slug.current);
+        } else {
+            link = `/${pagelink.slug.current}`;
         }
-    )
+        links.push({
+            title: cta.title,
+            link: link,
+        });
+    })
   return (
     <CtaPlugStyles className="section">
       <div className="container container--md">
         <h1 className="middle-title">{title}</h1>
           <div className="cta-container">
-          {ctas.map((cta) => (
+          {links.map((cta) => (
               <a
                   href={`${cta.link}`}
                   className="button button--brownlight"
