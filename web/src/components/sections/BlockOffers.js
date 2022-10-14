@@ -63,7 +63,7 @@ const BlockOffersStyles = styled.section`
     ${mq[1]} {
       width: 48%;
     }
-    ${mq[2]} {
+    ${mq[4]} {
       width: 30%;
     }
 
@@ -132,8 +132,11 @@ export default function Offers({
                 <div key={offer.id} className="offer grow">
                   <Link to={`/${offer.slug.current}`}>
                     <h3 className="offer__title">{offer.title.fr}</h3>
-                    <GatsbyImage
-                      image={getImage(offer.image.asset)}
+                    <img
+                      src={
+                        offer.image.asset.gatsbyImageData.images.fallback.src
+                      }
+                      loading="lazy"
                       alt={offer.title.fr}
                     />
                   </Link>

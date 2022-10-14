@@ -167,7 +167,7 @@ export default function Hero({ hero, title, titleMenu, context, location }) {
         heroData?.background?.desktopImage &&
         heroData?.background?.mobileImage && (
           <div className="hero__illustr">
-            <GatsbyImage image={images} alt={title.fr} />
+            <GatsbyImage image={images} alt={title.fr} loading="eager" />
           </div>
         )}
       {context !== 'home' && (

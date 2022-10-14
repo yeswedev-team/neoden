@@ -14,7 +14,9 @@ module.exports = {
   siteMetadata: {
     title: `Neoden`,
     description: 'espace de flottaison',
-    gmap_api_key: process.env.GOOGLE_MAPS_API_KEY,
+    gmap_api_key:
+      process.env.GOOGLE_MAPS_API_KEY ||
+      'AIzaSyCEkoxqKIY3nlohKIdKPUgp3rTkVDQKSJU',
     siteUrl: `https://www.neoden.fr`,
   },
   plugins: [
@@ -74,21 +76,6 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-facebook-pixel`,
-    //   options: {
-    //     pixelId: '186328809700559',
-    //   },
-    // },
-    {
-      resolve: `gatsby-plugin-linkedin-insight`,
-      options: {
-        partnerId: `3191954`,
-        // Include LinkedIn Insight in development.
-        // Defaults to false meaning LinkedIn Insight will only be loaded in production.
-        includeInDevelopment: false,
-      },
-    },
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
@@ -127,16 +114,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `crimson text\: 400, 400i, 600, 700`,
-          `raleway\:300,400,400i, 500, 600, 700, 900`, // you can also specify font weights and styles
-        ],
-        display: 'swap',
-      },
-    },
-    {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaults: {
@@ -144,7 +121,7 @@ module.exports = {
           placeholder: `blurred`,
           quality: 75,
           breakpoints: [512, 768, 1024, 1280, 1520],
-          layout: `fullWidth`,
+          // layout: `fullWidth`,
         },
       },
     },
@@ -165,8 +142,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-portal`,
-    `gatsby-plugin-optimize-svgs`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {

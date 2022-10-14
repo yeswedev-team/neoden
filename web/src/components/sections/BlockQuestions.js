@@ -62,6 +62,7 @@ export default function BlockQuestions({
   hasWaveUp,
 }) {
   const jsonArray = questions.map((question) => {
+    if(!question) return
     const textResArray = question._rawReponse.map(
       (res) => res.children[0].text
     );
@@ -100,7 +101,7 @@ export default function BlockQuestions({
           <h2 className="section-title">{title}</h2>
           <div className="accordion-container">
             {questions.map((question) => (
-              <Accordion key={question.id} title={question.title}>
+                question && <Accordion key={question.id} title={question.title}>
                 <PortableText blocks={question._rawReponse} />
               </Accordion>
             ))}

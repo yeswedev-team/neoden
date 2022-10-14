@@ -19,6 +19,7 @@ import Form from '../components/Form';
 import Alert from '../components/Alert';
 import OverprintLogo from '../assets/images/logo-neoden-grey-seul.inline.svg';
 import SEO from '../components/SEO';
+import CtaPlug from '../components/sections/CtaPlug';
 
 export default function SinglePage({
   pageContext,
@@ -80,6 +81,7 @@ export default function SinglePage({
           upload: Upload,
           form: FormSendinblue,
           richtext: Text,
+          ctaPlug: CtaPlug,
         }}
         mapDataToProps={{
           intro: ({ data }) => ({
@@ -177,6 +179,11 @@ export default function SinglePage({
             hasWaveDown: data.hasWaveDown,
             hasWaveUp: data.hasWaveUp,
             hasDoubleBotMargin: data.hasDoubleBotMargin,
+          }),
+          ctaPlug: ({ data }) => ({
+            label: data.label,
+            title: data.title,
+            ctas: data.ctas,
           }),
         }}
       />
@@ -448,9 +455,9 @@ export const query = graphql`
                   image {
                     asset {
                       gatsbyImageData(
-                        width: 600
-                        height: 476
-                        layout: FULL_WIDTH
+                        width: 400,
+                        layout: CONSTRAINED, 
+                        aspectRatio: 1.26
                       )
                     }
                   }
@@ -495,10 +502,10 @@ export const query = graphql`
                   image {
                     asset {
                       gatsbyImageData(
-                        width: 600
-                        height: 707
-                        layout: FULL_WIDTH
-                      )
+                        width: 479,
+                        aspectRatio: 1
+                        layout: CONSTRAINED, 
+                      ),
                     }
                   }
                 }
@@ -607,7 +614,7 @@ export const query = graphql`
             _rawText(resolveReferences: { maxDepth: 10 })
             image {
               asset {
-                gatsbyImageData(width: 600, layout: FULL_WIDTH)
+                gatsbyImageData(width: 468, layout: CONSTRAINED, aspectRatio: 1.5)
               }
             }
             ctas {
@@ -651,6 +658,30 @@ export const query = graphql`
             }
             hasWaveDown
             hasWaveUp
+          }
+          ... on SanityCtaPlug {
+            _key
+            _type
+            title
+            label
+            ctas {
+              title
+              ctaPageLink {
+                ... on SanityPost {
+                  publishedAt
+                  slug {
+                    current
+                  }
+                  _type
+                }
+                ... on SanityRoute {
+                  slug {
+                    current
+                  }
+                  _type
+                }
+              }
+            }
           }
         }
       }

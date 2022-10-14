@@ -205,7 +205,7 @@ export default function Nav({ navItems, offersItems, open, setOpen }) {
           <span>Nos autres offres</span>
           <ul className="sub-menu">
             {subItems?.map((item, index) => (
-              <li key={`sub-item-${index}`} className="sub-menu-item">
+                item && <li key={`sub-item-${index}`} className="sub-menu-item">
                 <Link
                   to={`/${item.slug.current}`}
                   activeClassName="active"

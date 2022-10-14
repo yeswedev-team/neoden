@@ -11,9 +11,8 @@ import SwiperCore, {
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'gatsby';
-import { IoMdOpen } from 'react-icons/io';
 import { getBlogUrl } from '../../utils/helpers';
-import 'swiper/swiper-bundle.css';
+import 'swiper/css/bundle';
 import Wavify from '../Wave';
 import PortableText from '../PortableText';
 import { mq } from '../../styles/breakpoints';
@@ -39,6 +38,10 @@ const TestimoniesStyles = styled.section`
   .testimonies__header {
     padding-bottom: 2.25rem;
     text-align: center;
+  }
+  
+  .swiper-autoheight .swiper-slide {
+    height: inherit;
   }
 
   .slide {
@@ -103,7 +106,7 @@ const TestimoniesStyles = styled.section`
     align-items: stretch;
   }
 
-  .swiper-container {
+  .swiper {
     padding-bottom: 4.375rem;
   }
   .swiper-container-horizontal > .swiper-pagination-bullets,
@@ -263,7 +266,7 @@ export default function BlockTestimonies({
                     rel="noreferrer"
                     className="button button--brown"
                   >
-                    {slide.buttonText} <IoMdOpen />
+                    {slide.buttonText} <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M405.34 405.332H106.66V106.668H240V64H106.66C83.191 64 64 83.197 64 106.668v298.664C64 428.803 83.191 448 106.66 448h298.68c23.469 0 42.66-19.197 42.66-42.668V272h-42.66v133.332zM288 64v42.668h87.474L159.999 322.133l29.866 29.866 215.476-215.47V224H448V64H288z"></path></svg>
                   </a>
                 )}
               </SwiperSlide>
