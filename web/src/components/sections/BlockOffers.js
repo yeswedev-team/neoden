@@ -127,7 +127,6 @@ export default function Offers({
         {offerLink && (
           <div className="offersList">
             {offerLink.map((offer) => {
-              console.log(offer);
               return (
                 <div key={offer.id} className="offer grow">
                   <Link to={`/${offer.slug.current}`}>

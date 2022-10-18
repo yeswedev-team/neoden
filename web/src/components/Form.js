@@ -114,7 +114,7 @@ export default function Form() {
         </div>
         <p>
           Pour toute autre demande, nous sommes à votre écoute au&nbsp;
-          <a href="mailto:+33649494868">06&nbsp;49&nbsp;49&nbsp;48&nbsp;68</a>
+          <a href="mailto:+33228492937">02&nbsp;28&nbsp;49&nbsp;29&nbsp;37</a>
           <br />
           ou via le formulaire ci-dessous :
         </p>
