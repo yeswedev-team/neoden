@@ -151,6 +151,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-portal`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
