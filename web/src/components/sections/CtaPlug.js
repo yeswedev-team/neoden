@@ -15,7 +15,7 @@ const CtaPlugStyles = styled.section`
     display: flex;
     justify-content: center;
 }
-h1{
+h2{
     text-align: center;
 }
 `;
