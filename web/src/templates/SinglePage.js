@@ -41,7 +41,7 @@ export default function SinglePage({
         image={
           hero[0]?.background?.mobileImage?.asset.gatsbyImageData.images
             .fallback.src ||
-          intro[0]?.frontimage?.mobileImage?.asset.gatsbyImageData.images
+          intro[0]?.frontimage?.mobileImage?.asset?.gatsbyImageData?.images
             .fallback.src
         }
       />
