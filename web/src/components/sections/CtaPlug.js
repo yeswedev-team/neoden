@@ -39,7 +39,7 @@ export default function CtaPlug({ title, label, ctas }) {
   return (
     <CtaPlugStyles className="section">
       <div className="container container--md">
-        <h2 className="middle-title">{title}</h1>
+        <h2 className="middle-title">{title}</h2>
           <div className="cta-container">
           {links.map((cta) => (
               <a
