@@ -7,6 +7,7 @@ import Logo from '../assets/images/logo-neoden.inline.svg';
 import { pxtoem } from '../styles/Mixins';
 import Nav from './Nav';
 import NavRight from './NavRight';
+import KalendesWidget from './KalendesWidget';
 import WavesMenu from '../assets/images/wavesMenu.inline.svg';
 import { mq } from '../styles/breakpoints';
 import Burger from './Burger';
@@ -181,14 +182,7 @@ const Header = ({ navItems, navItemsRight, offersItems }) => {
             setOpen={setOpen}
           />
           <div className="header__actions">
-            <a
-              href="https://app.flexybeauty.com/neoden/home"
-              className="button"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Réserver ou offrir
-            </a>
+            <KalendesWidget />
           </div>
         </div>
       </div>

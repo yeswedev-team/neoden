@@ -6,6 +6,7 @@ import LogoOnly from '../assets/images/logo-neoden-seul2.inline.svg';
 import PortableText from './PortableText';
 import { lsEm, pxtopc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
+import KalendesWidget from './KalendesWidget';
 
 const FooterStyles = styled.footer`
   background-color: var(--brownlight);
@@ -307,14 +308,7 @@ const Footer = ({ footerItems }) => {
           </ul>
         </div>
         <div className="footer__actions">
-          <a
-            href="https://app.kiute.com/neoden/home"
-            className="button"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Réserver ou offrir
-          </a>
+          <KalendesWidget />
           {tel && (
             <a
               href={`tel:${tel}`}
