@@ -40,30 +40,30 @@ const SliderStyles = styled.section`
     margin: 0;
   }
 
-  .swiper-container {
+  .container--xl {
     width: 100%;
 
     ${mq[2]} {
-      &.slider-illustr {
+      .slider-illustr {
         width: 50%;
       }
-      &.slider-content {
+      .slider-content {
         width: 50%;
       }
     }
     ${mq[3]} {
-      &.slider-illustr {
+      .slider-illustr {
         width: 65%;
       }
-      &.slider-content {
+      .slider-content {
         width: 35%;
       }
     }
     ${mq[4]} {
-      &.slider-illustr {
+      .slider-illustr {
         width: 70%;
       }
-      &.slider-content {
+      .slider-content {
         width: 30%;
       }
     }
@@ -94,6 +94,7 @@ const SliderStyles = styled.section`
     border-radius: 0 0 var(--radius) var(--radius);
     font-size: 0.875rem;
     padding: 1.25rem 1.25rem 3.25rem;
+    width: 100%;
 
     ${mq[1]} {
       border-radius: 0 var(--radius) var(--radius) 0;
