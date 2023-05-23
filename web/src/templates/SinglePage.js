@@ -39,7 +39,7 @@ export default function SinglePage({
         location={location}
         description={descriptionSeo}
         image={
-          hero[0]?.background?.mobileImage?.asset.gatsbyImageData.images
+          hero[0]?.background?.mobileImage?.asset?.gatsbyImageData?.images
             .fallback.src ||
           intro[0]?.frontimage?.mobileImage?.asset?.gatsbyImageData?.images
             .fallback.src
