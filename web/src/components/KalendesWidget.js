@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const KalendesWidget = () => {
+const KalendesWidget = ({ title, className }) => {
 
   const handleClick = () => {
     kalendes.show();
@@ -31,7 +31,7 @@ const KalendesWidget = () => {
 
   return (
     <div id="script-container">
-        <button className="button" onClick={handleClick}>Réserver ou offrir</button>
+        <button className={className} onClick={handleClick}>{title}</button>
     </div>
   );
 };
