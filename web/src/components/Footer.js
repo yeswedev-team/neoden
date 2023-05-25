@@ -150,6 +150,9 @@ const FooterStyles = styled.footer`
       color: var(--white);
       text-decoration: underline;
     }
+    p:last-child {
+      margin-bottom: 0;
+    }
 
     ${mq[2]} {
       width: ${pxtopc(137, 1278)};
@@ -272,6 +275,7 @@ const Footer = ({ footerItems }) => {
           <div className="footer__contact">
             <p className="label">Contact</p>
             <PortableText blocks={_rawContact} />
+            <KalendesWidget link="true" title="Nous contacter"/>
           </div>
         )}
         <div className="footer__networks">
