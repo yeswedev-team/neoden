@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { getBlogUrl } from '../../utils/helpers';
 import Wavify from '../Wave';
 import Button from '../Button';
+import KalendesWidget from '../KalendesWidget';
 
 const BlockCtaStyles = styled.section`
   /* padding-bottom: calc(var(--section-bot-padding) * 1.2); */
@@ -40,7 +41,11 @@ export default function Cta({ title, buttonTitle, link, hasDoubleBotMargin }) {
       <Wavify direction="up" bgcolor="#ffffff" />
       <div className="container container--xs">
         <h2 className="middle-title">{title}</h2>
-        <Button styles="brown" title={buttonTitle} target={target} />
+        { buttonTitle == 'Nous contacter' ? (
+          <KalendesWidget className="button button--brown" title="Nous contacter"/>
+        ) : (
+          <Button styles="brown" title={buttonTitle} target={target} />
+        )}
       </div>
       <Wavify direction="down" bgcolor="#ffffff" />
     </BlockCtaStyles>

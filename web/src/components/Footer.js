@@ -308,7 +308,7 @@ const Footer = ({ footerItems }) => {
           </ul>
         </div>
         <div className="footer__actions">
-          <KalendesWidget />
+          <KalendesWidget className="button" title="Réserver ou offrir"/>
           {tel && (
             <a
               href={`tel:${tel}`}

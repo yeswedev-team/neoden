@@ -25,9 +25,9 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'route' }, { type: 'post' }] }],
       validation: (Rule) => [
-        Rule.required().min(1).error('Champ obligatoire'),
         Rule.max(1).error('Un seul lien possible'),
       ],
+      description: 'Si le titre du block CTA est : Nous contacter ; le cta ouvrira Kalendès',
     },
   ],
   preview: {

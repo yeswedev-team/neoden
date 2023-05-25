@@ -17,7 +17,6 @@ export default function AlertSimple({ content }) {
     content;
 
   const btnText = alertLinkText || 'En savoir plus';
-  console.log(alertLink[0]?.slug?.current);
   return (
     <AlertSimpleStyles>
       {image && (

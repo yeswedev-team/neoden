@@ -182,7 +182,7 @@ const Header = ({ navItems, navItemsRight, offersItems }) => {
             setOpen={setOpen}
           />
           <div className="header__actions">
-            <KalendesWidget />
+            <KalendesWidget className="button" title="Réserver ou offrir"/>
           </div>
         </div>
       </div>
