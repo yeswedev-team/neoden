@@ -111,7 +111,14 @@ export default {
       title: "Lien de l'alerte",
       name: 'alertLink',
       type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'post' }] }],
+      of: [
+        { type: 'reference',
+        to: [
+          { type: 'post' }, 
+          { type: 'page' }
+          ]
+        }
+      ],
       validation: (Rule) => Rule.max(1).error('Un seul lien possible'),
     },
     {
