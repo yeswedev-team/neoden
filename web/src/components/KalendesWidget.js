@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const KalendesWidget = ({ title, className, link }) => {
+const KalendesWidget = ({ title, className, link, textDecoration }) => {
 
   const handleClick = () => {
     kalendes.show();
@@ -31,9 +31,10 @@ const KalendesWidget = ({ title, className, link }) => {
 
   return (
     <div id="script-container">
-      { link ? (
-          
-          <a style={{textDecoration: "underline", cursor: "pointer"}} className={className} onClick={handleClick}>{title}</a>
+      { link && textDecoration ? (
+          <a style={{textDecoration: 'underline', cursor: 'pointer'}} className={className} onClick={handleClick}>{title}</a>
+        ) : link ? (
+          <a style={{cursor: 'pointer'}} className={className} onClick={handleClick}>{title}</a>
         ) : (
           <button className={className} onClick={handleClick}>{title}</button>
         )}
