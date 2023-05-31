@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { remCalc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
+import KalendesWidget from './KalendesWidget';
 
 const NavStyles = styled.nav`
   background-color: var(--brown);
@@ -174,9 +175,10 @@ const NavStyles = styled.nav`
   }
 `;
 
-export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
+export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem, navRightCtaItem }) {
   const items = navItemsRight?.mainRightNavigation;
   const urlItem = navRightUrlItem?.urlfield;
+  const ctaItem = navRightCtaItem;
 
   return (
     <NavStyles open={open}>
@@ -203,6 +205,9 @@ export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
           <span>Contact</span>
           <ul className="sub-menu">
             <li key="sub-item-0" className="sub-menu-item">
+              <KalendesWidget link="true" title="Nous contacter"/>
+            </li>
+            <li key="sub-item-1" className="sub-menu-item">
               <Link
                 to={urlItem}
                 activeClassName="active"
