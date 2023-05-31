@@ -89,7 +89,7 @@ const HeaderStyles = styled.header`
   }
 `;
 
-const Header = ({ navItems, navItemsRight, offersItems }) => {
+const Header = ({ navItems, navItemsRight, offersItems, navRightUrlItem }) => {
   const headerRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -180,6 +180,7 @@ const Header = ({ navItems, navItemsRight, offersItems }) => {
             navItemsRight={navItemsRight}
             open={open}
             setOpen={setOpen}
+            navRightUrlItem={navRightUrlItem}
           />
           <div className="header__actions">
             <KalendesWidget className="button" title="Réserver ou offrir"/>
