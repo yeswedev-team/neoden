@@ -14,7 +14,7 @@ import Footer from './Footer';
 const LayoutStyles = styled.div``;
 
 export default function Layout({ pageContext, children }) {
-  const { navItems, navItemsRight, navOffersItems, navRightUrlItem, footerItems, logo } =
+  const { navItems, navItemsRight, navOffersItems, navRightUrlItem, navRightCtaItem, footerItems, logo } =
     useStaticQuery(
       graphql`
         query {
@@ -74,6 +74,10 @@ export default function Layout({ pageContext, children }) {
           }
           navRightUrlItem: sanitySingletonSite(_id: { eq: "singletonSite" }) {
             urlfield
+
+          }
+          navRightCtaItem: sanitySingletonSite(_id: { eq: "singletonSite" }) {
+            ctafield
 
           }
           footerItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
@@ -196,6 +200,7 @@ export default function Layout({ pageContext, children }) {
           navItemsRight={navItemsRight}
           offersItems={navOffersItems}
           navRightUrlItem={navRightUrlItem}
+          navRightCtaItem={navRightCtaItem}
         />
         <div className="content">
           {children}
