@@ -6,12 +6,12 @@ import { mq } from '../styles/breakpoints';
 
 const NavStyles = styled.nav`
   background-color: var(--brown);
+  left: 0;
   position: fixed;
   height: 50vh;
-  left: 0;
-  top: calc(50vh - 1px);
+  top: 0;
   transition: transform 600ms ease-out;
-  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-200%)')};
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
   width: 100%;
   will-change: transform;
   z-index: 1000;
@@ -21,10 +21,18 @@ const NavStyles = styled.nav`
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
   .menuItem {
     font-size: 1.25rem;
+    position: relative;
+
+    > span {
+      color: var(--white);
+      cursor: pointer;
+      display: none;
+      padding: ${remCalc(10)} ${remCalc(15)};
+    }
 
     a {
       color: var(--white);
@@ -65,12 +73,20 @@ const NavStyles = styled.nav`
     }
   }
 
+  .sub-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  .sub-menu-item {
+    text-align: center;
+  }
+
   ${mq[3]} {
     background-color: transparent;
     height: auto;
-    margin-right: 1.25rem;
     position: relative;
-    top: auto;
     transform: none;
     transition: none;
     width: auto;
@@ -83,14 +99,85 @@ const NavStyles = styled.nav`
     }
     .menuItem {
       font-size: 1rem;
+
+      > span {
+        display: block;
+      }
+
+      &:hover {
+        .sub-menu {
+          opacity: 1;
+          transform: translate(-50%, -1px);
+          pointer-events: auto;
+        }
+      }
+
+      &:first-child {
+        margin-left: ${remCalc(-15)};
+      }
+    }
+    .sub-menu {
+      background: var(--white);
+      border: 1px solid var(--brownlight);
+      border-radius: 0.375rem;
+      left: 50%;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transform: translate(-50%, -10px);
+      transition: opacity 300ms linear, transform 300ms ease-out,
+        background 300ms linear;
+
+      &:hover {
+        background: var(--brown);
+
+        .sub-menu-item {
+          a {
+            color: var(--white);
+          }
+        }
+      }
+    }
+    .sub-menu-item {
+      font-size: 0.9em;
+      text-align: left;
+
+      a {
+        color: var(--brown);
+        padding: ${remCalc(5)} ${remCalc(15)};
+        transition: color 300ms linear;
+
+        span:after {
+          display: none;
+        }
+
+        &:hover {
+          text-decoration: underline;
+
+          span:after {
+            display: none;
+          }
+        }
+
+        &.active,
+        &[aria-current='page'] {
+          font-weight: bold;
+
+          span {
+            &:after {
+              display: none !important;
+            }
+          }
+        }
+      }
     }
   }
 `;
 
 export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
   const items = navItemsRight?.mainRightNavigation;
-  const urlItems = navRightUrlItem?.urlfield;
-console.log(urlItems);
+  const urlItem = navRightUrlItem?.urlfield;
+
   return (
     <NavStyles open={open}>
       <ul className="navList">
@@ -112,29 +199,23 @@ console.log(urlItems);
             </Link>
           </li>
         ))}
-        {/* <li className="menuItem">
+        <li className="menuItem">
           <span>Contact</span>
           <ul className="sub-menu">
-            {subItems?.map((item, index) => (
-                item && <li key={`sub-item-${index}`} className="sub-menu-item">
-                <Link
-                  to={`/${item.slug.current}`}
-                  activeClassName="active"
-                  partiallyActive
-                  onClick={() => {
-                    setOpen(!open);
-                  }}
-                >
-                  {item.page.titleMenu ? (
-                    <span className="text">{item.page.titleMenu.fr}</span>
-                  ) : (
-                    <span className="text">{item.page.title.fr}</span>
-                  )}
-                </Link>
-              </li>
-            ))}
+            <li key="sub-item-0" className="sub-menu-item">
+              <Link
+                to={urlItem}
+                activeClassName="active"
+                partiallyActive
+                onClick={() => {
+                  setOpen(!open);
+                }}
+              >
+                <span className="text">Prendre rdv téléphone</span>
+              </Link>
+            </li>
           </ul>
-        </li> */}
+        </li>
       </ul>
     </NavStyles>
   );
