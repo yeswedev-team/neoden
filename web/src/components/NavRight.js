@@ -87,9 +87,10 @@ const NavStyles = styled.nav`
   }
 `;
 
-export default function Nav({ navItemsRight, open, setOpen }) {
+export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
   const items = navItemsRight?.mainRightNavigation;
-
+  const urlItems = navRightUrlItem?.urlfield;
+console.log(urlItems);
   return (
     <NavStyles open={open}>
       <ul className="navList">
@@ -111,6 +112,29 @@ export default function Nav({ navItemsRight, open, setOpen }) {
             </Link>
           </li>
         ))}
+        {/* <li className="menuItem">
+          <span>Contact</span>
+          <ul className="sub-menu">
+            {subItems?.map((item, index) => (
+                item && <li key={`sub-item-${index}`} className="sub-menu-item">
+                <Link
+                  to={`/${item.slug.current}`}
+                  activeClassName="active"
+                  partiallyActive
+                  onClick={() => {
+                    setOpen(!open);
+                  }}
+                >
+                  {item.page.titleMenu ? (
+                    <span className="text">{item.page.titleMenu.fr}</span>
+                  ) : (
+                    <span className="text">{item.page.title.fr}</span>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </li> */}
       </ul>
     </NavStyles>
   );
