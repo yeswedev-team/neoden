@@ -177,7 +177,7 @@ const NavStyles = styled.nav`
 
 export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem, navRightCtaItem }) {
   const items = navItemsRight?.mainRightNavigation;
-  const urlItem = navRightUrlItem?.facebook;
+  const urlItem = navRightUrlItem?.urlfield;
 
   return (
     <NavStyles open={open}>

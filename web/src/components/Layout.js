@@ -73,7 +73,7 @@ export default function Layout({ pageContext, children }) {
             }
           }
           navRightUrlItem: sanitySingletonSite(_id: { eq: "singletonSite" }) {
-            facebook
+            urlfield
           }
           footerItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
             tel
