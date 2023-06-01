@@ -93,6 +93,11 @@ export default {
       ],
     },
     {
+      title: 'Url de l\'item du menu contact',
+      name: 'urlfield',
+      type: 'url',
+    },
+    {
       title: 'Navigation de pied-de-page',
       name: 'footerNavigation',
       description: 'Sélectionnez les pages pour le menu de pied-de-page',
