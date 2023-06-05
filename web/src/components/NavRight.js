@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { remCalc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
@@ -9,8 +9,8 @@ const NavStyles = styled.nav`
   background-color: var(--brown);
   left: 0;
   position: fixed;
-  height: 50vh;
-  top: 0;
+  height: ${props => (props.open ? '20vh' : '50vh')};
+  top: ${props => (props.open ? '400px' : '0')};
   transition: transform 600ms ease-out;
   transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
   width: 100%;
@@ -78,15 +78,21 @@ const NavStyles = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px 0;
   }
   .sub-menu-item {
     text-align: center;
+  }
+  .header__actions--mobile {
+    display: ${props => (props.open ? 'block' : 'none')};
+    background-color: var(--brown);
+    text-align: center;
+    height: 60px;
   }
 
   ${mq[3]} {
     background-color: transparent;
     height: auto;
+    top: 0;
     position: relative;
     transform: none;
     transition: none;
@@ -172,12 +178,18 @@ const NavStyles = styled.nav`
         }
       }
     }
+    .header__actions--mobile {
+      display: none;
+    }
   }
 `;
 
-export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem, navRightCtaItem }) {
+export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
   const items = navItemsRight?.mainRightNavigation;
-  const urlItem = navRightUrlItem?.facebook;
+  const urlItem = navRightUrlItem?.urlfield;
+  const contact = 'Nous contacter';
+  const url = 'Prendre rdv téléphone';
+  const [contactArray, setContactArray] = useState([contact, url]);
 
   return (
     <NavStyles open={open}>
@@ -203,24 +215,36 @@ export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem, nav
         <li className="menuItem">
           <span>Contact</span>
           <ul className="sub-menu">
-            <li key="sub-item-0" className="sub-menu-item">
-              <KalendesWidget link="true" title="Nous contacter"/>
-            </li>
-            <li key="sub-item-1" className="sub-menu-item">
-              <Link
-                to={urlItem}
-                activeClassName="active"
-                partiallyActive
-                onClick={() => {
-                  setOpen(!open);
-                }}
-              >
-                <span className="text">Prendre rdv téléphone</span>
-              </Link>
-            </li>
+            {contactArray?.map((item, index) => {
+              if (item === 'Prendre rdv téléphone') {
+                return (
+                  <li key={`sub-item-${index}`} className="sub-menu-item">
+                    <Link
+                      to={urlItem}
+                      activeClassName="active"
+                      partiallyActive
+                      onClick={() => {
+                        setOpen(!open);
+                      }}
+                    >
+                      <span className="text">Prendre rdv téléphone</span>
+                    </Link>
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={`sub-item-${index}`} className="sub-menu-item">
+                    <KalendesWidget link="true" title="Nous contacter" />
+                  </li>
+                );
+              }
+            })}
           </ul>
         </li>
       </ul>
+        <div className="header__actions--mobile">
+          <KalendesWidget className="button" title="Réserver ou offrir"/>
+        </div>
     </NavStyles>
   );
 }
