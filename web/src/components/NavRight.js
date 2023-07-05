@@ -217,19 +217,19 @@ export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
           <span>Contact</span>
           <ul className="sub-menu">
             {contactArray?.map((item, index) => {
-              if (index === 1) {
+              if (index === 0) {
                 return (
-                  <li key={`sub-item-${index}`} className="sub-menu-item">
-                    <a href="{urlItem}" target="_blank">
-                      <span className="text">{item}</span>
-                    </a>
-                  </li>
+                    <li key={`sub-item-${index}`} className="sub-menu-item">
+                      <KalendesWidget link="true" title={item} />
+                    </li>
                 );
               } else {
                 return (
-                  <li key={`sub-item-${index}`} className="sub-menu-item">
-                    <KalendesWidget link="true" title="{item}" />
-                  </li>
+                    <li key={`sub-item-${index}`} className="sub-menu-item">
+                      <a href={urlItem} target="_blank">
+                        <span className="text">{item}</span>
+                      </a>
+                    </li>
                 );
               }
             })}
