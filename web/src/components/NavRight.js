@@ -187,9 +187,10 @@ const NavStyles = styled.nav`
 export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
   const items = navItemsRight?.mainRightNavigation;
   const urlItem = navRightUrlItem?.urlfield;
-  const contact = 'Nous contacter';
-  const url = 'Prendre rdv téléphone';
-  const [contactArray, setContactArray] = useState([contact, url]);
+  const [contactArray, setContactArray] = useState([
+    'Nous contacter',
+    'Prendre rdv tel',
+  ]);
 
   return (
     <NavStyles open={open}>
@@ -216,25 +217,18 @@ export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
           <span>Contact</span>
           <ul className="sub-menu">
             {contactArray?.map((item, index) => {
-              if (item === 'Prendre rdv téléphone') {
+              if (index === 1) {
                 return (
                   <li key={`sub-item-${index}`} className="sub-menu-item">
-                    <Link
-                      to={urlItem}
-                      activeClassName="active"
-                      partiallyActive
-                      onClick={() => {
-                        setOpen(!open);
-                      }}
-                    >
-                      <span className="text">Prendre rdv téléphone</span>
-                    </Link>
+                    <a href="{urlItem}" target="_blank">
+                      <span className="text">{item}</span>
+                    </a>
                   </li>
                 );
               } else {
                 return (
                   <li key={`sub-item-${index}`} className="sub-menu-item">
-                    <KalendesWidget link="true" title="Nous contacter" />
+                    <KalendesWidget link="true" title="{item}" />
                   </li>
                 );
               }
