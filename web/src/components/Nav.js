@@ -8,7 +8,7 @@ const NavStyles = styled.nav`
   background-color: var(--brown);
   left: 0;
   position: fixed;
-  height: 50vh;
+  height: 336px; //Same as NavRight L13
   top: 0;
   transition: transform 600ms ease-out;
   transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
@@ -24,20 +24,20 @@ const NavStyles = styled.nav`
     justify-content: flex-end;
   }
   .menuItem {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     position: relative;
 
     > span {
       color: var(--white);
       cursor: pointer;
       display: none;
-      padding: ${remCalc(10)} ${remCalc(15)};
+      padding: ${remCalc(8)} ${remCalc(15)};
     }
 
     a {
       color: var(--white);
       display: block;
-      padding: ${remCalc(10)} ${remCalc(15)};
+      padding: ${remCalc(8)} ${remCalc(15)};
 
       span {
         &:after {
@@ -77,7 +77,6 @@ const NavStyles = styled.nav`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px 0;
   }
   .sub-menu-item {
     text-align: center;
@@ -127,6 +126,7 @@ const NavStyles = styled.nav`
       transform: translate(-50%, -10px);
       transition: opacity 300ms linear, transform 300ms ease-out,
         background 300ms linear;
+      padding: 10px 0;
 
       &:hover {
         background: var(--brown);

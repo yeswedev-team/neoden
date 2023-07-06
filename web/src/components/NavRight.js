@@ -9,8 +9,8 @@ const NavStyles = styled.nav`
   background-color: var(--brown);
   left: 0;
   position: fixed;
-  height: ${props => (props.open ? '20vh' : '50vh')};
-  top: ${props => (props.open ? '400px' : '0')};
+  height: ${props => (props.open ? '125px' : '336px')};
+  top: ${props => (props.open ? '336px' : '0')}; //Same as Nav L11
   transition: transform 600ms ease-out;
   transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
   width: 100%;
@@ -25,20 +25,20 @@ const NavStyles = styled.nav`
     justify-content: flex-end;
   }
   .menuItem {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     position: relative;
 
     > span {
       color: var(--white);
       cursor: pointer;
       display: none;
-      padding: ${remCalc(10)} ${remCalc(15)};
+      padding: ${remCalc(8)} ${remCalc(15)};
     }
 
     a {
       color: var(--white);
       display: block;
-      padding: ${remCalc(10)} ${remCalc(15)};
+      padding: ${remCalc(8)} ${remCalc(15)};
 
       span {
         &:after {
@@ -87,6 +87,7 @@ const NavStyles = styled.nav`
     background-color: var(--brown);
     text-align: center;
     height: 60px;
+    padding-top: ${remCalc(8)};
   }
 
   ${mq[3]} {
