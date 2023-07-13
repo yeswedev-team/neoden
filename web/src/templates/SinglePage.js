@@ -209,9 +209,17 @@ export const query = graphql`
           _rawAlertText(resolveReferences: { maxDepth: 10 })
           alertLinkText
           alertLink {
-            publishedAt
-            slug {
-              current
+            __typename
+            ... on SanityPage {
+              slug {
+                current
+              }
+            }
+            ... on SanityPost {
+              publishedAt
+              slug {
+                current
+              }
             }
           }
         }

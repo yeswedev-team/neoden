@@ -1,17 +1,18 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { remCalc } from '../styles/Mixins';
 import { mq } from '../styles/breakpoints';
+import KalendesWidget from './KalendesWidget';
 
 const NavStyles = styled.nav`
   background-color: var(--brown);
-  position: fixed;
-  height: 50vh;
   left: 0;
-  top: calc(50vh - 1px);
+  position: fixed;
+  height: ${props => (props.open ? '125px' : '336px')};
+  top: ${props => (props.open ? '336px' : '0')}; //Same as Nav L11
   transition: transform 600ms ease-out;
-  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-200%)')};
+  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-100%)')};
   width: 100%;
   will-change: transform;
   z-index: 1000;
@@ -21,15 +22,23 @@ const NavStyles = styled.nav`
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
   .menuItem {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    position: relative;
+
+    > span {
+      color: var(--white);
+      cursor: pointer;
+      display: none;
+      padding: ${remCalc(8)} ${remCalc(15)};
+    }
 
     a {
       color: var(--white);
       display: block;
-      padding: ${remCalc(10)} ${remCalc(15)};
+      padding: ${remCalc(8)} ${remCalc(15)};
 
       span {
         &:after {
@@ -65,12 +74,27 @@ const NavStyles = styled.nav`
     }
   }
 
+  .sub-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .sub-menu-item {
+    text-align: center;
+  }
+  .header__actions--mobile {
+    display: ${props => (props.open ? 'block' : 'none')};
+    background-color: var(--brown);
+    text-align: center;
+    height: 60px;
+    padding-top: ${remCalc(8)};
+  }
+
   ${mq[3]} {
     background-color: transparent;
     height: auto;
-    margin-right: 1.25rem;
+    top: 0;
     position: relative;
-    top: auto;
     transform: none;
     transition: none;
     width: auto;
@@ -83,12 +107,91 @@ const NavStyles = styled.nav`
     }
     .menuItem {
       font-size: 1rem;
+
+      > span {
+        display: block;
+      }
+
+      &:hover {
+        .sub-menu {
+          opacity: 1;
+          transform: translate(-50%, -1px);
+          pointer-events: auto;
+        }
+      }
+
+      &:first-child {
+        margin-left: ${remCalc(-15)};
+      }
+    }
+    .sub-menu {
+      background: var(--white);
+      border: 1px solid var(--brownlight);
+      border-radius: 0.375rem;
+      left: 50%;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transform: translate(-50%, -10px);
+      transition: opacity 300ms linear, transform 300ms ease-out,
+        background 300ms linear;
+
+      &:hover {
+        background: var(--brown);
+
+        .sub-menu-item {
+          a {
+            color: var(--white);
+          }
+        }
+      }
+    }
+    .sub-menu-item {
+      font-size: 0.9em;
+      text-align: left;
+
+      a {
+        color: var(--brown);
+        padding: ${remCalc(5)} ${remCalc(15)};
+        transition: color 300ms linear;
+
+        span:after {
+          display: none;
+        }
+
+        &:hover {
+          text-decoration: underline;
+
+          span:after {
+            display: none;
+          }
+        }
+
+        &.active,
+        &[aria-current='page'] {
+          font-weight: bold;
+
+          span {
+            &:after {
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
+    .header__actions--mobile {
+      display: none;
     }
   }
 `;
 
-export default function Nav({ navItemsRight, open, setOpen }) {
+export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
   const items = navItemsRight?.mainRightNavigation;
+  const urlItem = navRightUrlItem?.urlfield;
+  const [contactArray, setContactArray] = useState([
+    'Nous contacter',
+    'Prendre rdv tel',
+  ]);
 
   return (
     <NavStyles open={open}>
@@ -111,7 +214,32 @@ export default function Nav({ navItemsRight, open, setOpen }) {
             </Link>
           </li>
         ))}
+        <li className="menuItem">
+          <span>Contact</span>
+          <ul className="sub-menu">
+            {contactArray?.map((item, index) => {
+              if (index === 0) {
+                return (
+                    <li key={`sub-item-${index}`} className="sub-menu-item">
+                      <KalendesWidget link="true" title={item} />
+                    </li>
+                );
+              } else {
+                return (
+                    <li key={`sub-item-${index}`} className="sub-menu-item">
+                      <a href={urlItem} target="_blank">
+                        <span className="text">{item}</span>
+                      </a>
+                    </li>
+                );
+              }
+            })}
+          </ul>
+        </li>
       </ul>
+        <div className="header__actions--mobile">
+          <KalendesWidget className="button" title="Réserver ou offrir"/>
+        </div>
     </NavStyles>
   );
 }

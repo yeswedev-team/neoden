@@ -275,7 +275,7 @@ const Footer = ({ footerItems }) => {
           <div className="footer__contact">
             <p className="label">Contact</p>
             <PortableText blocks={_rawContact} />
-            <KalendesWidget link="true" title="Nous contacter"/>
+            <KalendesWidget textDecoration="underline" link="true" title="Nous contacter"/>
           </div>
         )}
         <div className="footer__networks">
