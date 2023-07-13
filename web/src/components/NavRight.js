@@ -199,7 +199,7 @@ export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
         {items?.map((item, index) => (
           <li className="menuItem" key={`item-right-${index}`}>
             <Link
-              to={`/${item.slug?.current}`}
+              to={`/${item?.slug.current}`}
               activeClassName="active"
               partiallyActive
               onClick={() => {
