@@ -29,7 +29,7 @@ export default function CtaPlug({ title, label, ctas }) {
         if (cta._type === 'post') {
             link = getBlogUrl(pagelink.publishedAt, cta.slug.current);
         } else {
-            link = `/${pagelink.slug.current}`;
+            link = `/${pagelink.slug?.current}`;
         }
         links.push({
             title: cta.title,
