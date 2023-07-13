@@ -206,7 +206,7 @@ export default function Nav({ navItemsRight, open, setOpen, navRightUrlItem }) {
                 setOpen(!open);
               }}
             >
-              {item.page.titleMenu ? (
+              {item?.page.titleMenu ? (
                 <span className="text">{item.page.titleMenu.fr}</span>
               ) : (
                 <span className="text">{item.page.title.fr}</span>
