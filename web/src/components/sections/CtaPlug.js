@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {getBlogUrl} from "../../utils/helpers";
+import KalendesWidget from "../KalendesWidget";
 
 const CtaPlugStyles = styled.section`
 .button--brownlight{
@@ -24,17 +25,27 @@ export default function CtaPlug({ title, label, ctas }) {
     let link
     let pagelink
     const links = [];
+    const kalendesLinks = [];
     ctas.forEach((cta) => {
         pagelink = cta.ctaPageLink[0];
+        link = null;
         if (cta._type === 'post') {
             link = getBlogUrl(pagelink.publishedAt, cta.slug.current);
         } else {
-            link = `/${pagelink.slug.current}`;
+            if(pagelink){
+                link = `/${pagelink.slug.current}`;
+            }
         }
-        links.push({
-            title: cta.title,
-            link: link,
-        });
+        if(link){
+            links.push({
+                title: cta.title,
+                link: link,
+            });
+        } else {
+            kalendesLinks.push({
+                title: cta.title
+            });
+        }
     })
   return (
     <CtaPlugStyles className="section">
@@ -50,6 +61,9 @@ export default function CtaPlug({ title, label, ctas }) {
               >
                   {cta.title}
               </a>
+          ))}
+          {kalendesLinks.map((cta) => (
+              <KalendesWidget className="button button--brown" title="Nous contacter"/>
           ))}
           </div>
       </div>

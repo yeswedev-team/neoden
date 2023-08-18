@@ -14,7 +14,7 @@ import Footer from './Footer';
 const LayoutStyles = styled.div``;
 
 export default function Layout({ pageContext, children }) {
-  const { navItems, navItemsRight, navOffersItems, footerItems, logo } =
+  const { navItems, navItemsRight, navOffersItems, navRightUrlItem,  footerItems, logo } =
     useStaticQuery(
       graphql`
         query {
@@ -73,7 +73,7 @@ export default function Layout({ pageContext, children }) {
             }
           }
           navRightUrlItem: sanitySingletonSite(_id: { eq: "singletonSite" }) {
-            facebook
+            urlfield
           }
           footerItems: sanitySingletonSite(_id: { eq: "singletonSite" }) {
             tel
@@ -115,6 +115,7 @@ export default function Layout({ pageContext, children }) {
         }
       `
     );
+
   const location = useLocation();
   const slug = location.pathname.replace(/[\/\\]/g, '');
 
@@ -193,6 +194,7 @@ export default function Layout({ pageContext, children }) {
           navItems={navItems}
           navItemsRight={navItemsRight}
           offersItems={navOffersItems}
+          navRightUrlItem={navRightUrlItem}
         />
         <div className="content">
           {children}
