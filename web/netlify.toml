@@ -7,15 +7,4 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "
-        connect-src 'self';
-        script-src 'self' https://www.googletagmanager.com https://cloudfront.net;
-        style-src 'self' 'unsafe-inline';
-        base-uri 'self';
-        font-src 'self';
-        img-src https://res.cloudinary.com https://cdn.sanity.io;
-        form-action 'none';
-        frame-ancestors 'none';
-        sandbox allow-scripts allow-same-origin;
-        report-to report-uri;
-    "
+    Content-Security-Policy = "connect-src 'self';script-src 'self' https://www.googletagmanager.com https://cloudfront.net;style-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self';img-src https://res.cloudinary.com https://cdn.sanity.io;form-action 'none';frame-ancestors 'none';sandbox allow-scripts allow-same-origin;report-to report-uri;"
